@@ -50,16 +50,16 @@ public final class Constants {
     public static final int ALIAS_SYSTEM_BLOCK = 0;
     public static final int TRANSPARENT_FORGING_BLOCK = 0;
     public static final int ARBITRARY_MESSAGES_BLOCK = 0;
-    public static final int TRANSPARENT_FORGING_BLOCK_2 = 47000;
-    public static final int TRANSPARENT_FORGING_BLOCK_3 = 51000;
-    public static final int TRANSPARENT_FORGING_BLOCK_4 = 64000;
-    public static final int TRANSPARENT_FORGING_BLOCK_5 = 67000;
-    public static final int TRANSPARENT_FORGING_BLOCK_6 = isTestnet ? 75000 : 130000;
-    public static final int TRANSPARENT_FORGING_BLOCK_7 = isTestnet ? 75000 : Integer.MAX_VALUE;
-    public static final int NQT_BLOCK = isTestnet ? 76500 : 132000;
-    public static final int FRACTIONAL_BLOCK = isTestnet ? NQT_BLOCK : 134000;
-    public static final int ASSET_EXCHANGE_BLOCK = isTestnet ? NQT_BLOCK : 135000;
-    public static final int REFERENCED_TRANSACTION_FULL_HASH_BLOCK = isTestnet ? 78000 : 140000;
+    public static final int TRANSPARENT_FORGING_BLOCK_2 = 0;
+    public static final int TRANSPARENT_FORGING_BLOCK_3 = 0;
+    public static final int TRANSPARENT_FORGING_BLOCK_4 = 0;
+    public static final int TRANSPARENT_FORGING_BLOCK_5 = 0;
+    public static final int TRANSPARENT_FORGING_BLOCK_6 = isTestnet ? 0 : 0;
+    public static final int TRANSPARENT_FORGING_BLOCK_7 = isTestnet ? 0 : Integer.MAX_VALUE;
+    public static final int NQT_BLOCK = isTestnet ? 0 : 0;
+    public static final int FRACTIONAL_BLOCK = isTestnet ? NQT_BLOCK : 0;
+    public static final int ASSET_EXCHANGE_BLOCK = isTestnet ? NQT_BLOCK : 0;
+    public static final int REFERENCED_TRANSACTION_FULL_HASH_BLOCK = isTestnet ? 0 : 1000;
     public static final int VOTING_SYSTEM_BLOCK = isTestnet ? 0 : Integer.MAX_VALUE;
     public static final int DIGITAL_GOODS_STORE_BLOCK = isTestnet ? 0 : Integer.MAX_VALUE;
 

@@ -8,7 +8,7 @@ public final class Constants {
     public static final int BLOCK_HEADER_LENGTH = 232;
     public static final int MAX_NUMBER_OF_TRANSACTIONS = 255;
     public static final int MAX_PAYLOAD_LENGTH = MAX_NUMBER_OF_TRANSACTIONS * 160;
-    public static final long MAX_BALANCE_NXT = 1000000000;
+    public static final long MAX_BALANCE_NXT = 5000000000L;
     public static final long ONE_NXT = 100000000;
     public static final long MAX_BALANCE_NQT = MAX_BALANCE_NXT * ONE_NXT;
     public static final long INITIAL_BASE_TARGET = 153722867;
@@ -47,9 +47,9 @@ public final class Constants {
 
     public static final boolean isTestnet = Nxt.getBooleanProperty("nxt.isTestnet");
 
-    public static final int ALIAS_SYSTEM_BLOCK = 22000;
-    public static final int TRANSPARENT_FORGING_BLOCK = 30000;
-    public static final int ARBITRARY_MESSAGES_BLOCK = 40000;
+    public static final int ALIAS_SYSTEM_BLOCK = 0;
+    public static final int TRANSPARENT_FORGING_BLOCK = 0;
+    public static final int ARBITRARY_MESSAGES_BLOCK = 0;
     public static final int TRANSPARENT_FORGING_BLOCK_2 = 47000;
     public static final int TRANSPARENT_FORGING_BLOCK_3 = 51000;
     public static final int TRANSPARENT_FORGING_BLOCK_4 = 64000;
@@ -68,9 +68,9 @@ public final class Constants {
     public static final long EPOCH_BEGINNING;
     static {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-        calendar.set(Calendar.YEAR, 2013);
-        calendar.set(Calendar.MONTH, Calendar.NOVEMBER);
-        calendar.set(Calendar.DAY_OF_MONTH, 24);
+        calendar.set(Calendar.YEAR, 2014);
+        calendar.set(Calendar.MONTH, Calendar.MAY);
+        calendar.set(Calendar.DAY_OF_MONTH, 17);
         calendar.set(Calendar.HOUR_OF_DAY, 12);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);

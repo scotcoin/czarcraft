@@ -4,7 +4,7 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.server = "";
 	NRS.state = {};
 	NRS.blocks = [];
-	NRS.genesis = "1739068987193023818";
+	NRS.genesis = "551183386468445512";
 
 	NRS.account = "";
 	NRS.accountRS = ""

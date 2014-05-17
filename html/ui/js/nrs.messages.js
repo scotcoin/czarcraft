@@ -469,7 +469,7 @@ var NRS = (function(NRS, $, undefined) {
 		}
 
 		if (NRS.currentPage == "messages") {
-			var date = new Date(Date.UTC(2013, 10, 24, 12, 0, 0, 0)).getTime();
+			var date = new Date(Date.UTC(2014, 4, 17, 12, 0, 0, 0)).getTime();
 
 			var now = parseInt(((new Date().getTime()) - date) / 1000, 10);
 

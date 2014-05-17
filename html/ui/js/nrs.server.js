@@ -338,7 +338,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		if (!("recipient" in data)) {
 			//recipient == genesis
-			data.recipient = "1739068987193023818";
+			data.recipient = "551183386468445512";
 			data.recipientRS = "NXT-MRCC-2YLS-8M54-3CMAJ";
 		}
 

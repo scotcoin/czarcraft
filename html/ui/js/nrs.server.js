@@ -338,8 +338,8 @@ var NRS = (function(NRS, $, undefined) {
 
 		if (!("recipient" in data)) {
 			//recipient == genesis
-			data.recipient = "551183386468445512";
-			data.recipientRS = "NXT-MRCC-2YLS-8M54-3CMAJ";
+			data.recipient = "-6550284871017505443";
+			data.recipientRS = "NXT-G3GS-J4SW-T2WM-3DDYJ";
 		}
 
 		if (transaction.senderPublicKey != NRS.accountInfo.publicKey) {

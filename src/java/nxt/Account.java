@@ -255,7 +255,7 @@ public final class Account {
         Block lastBlock = Nxt.getBlockchain().getLastBlock();
 
         if (this.height == 0) {
-        		return Constants.MAX_BALANCE_NXT / 100;
+        		return Constants.MAX_BALANCE_NQT / Constants.ONE_NXT;
         }
 
         if (lastBlock.getHeight() >= Constants.TRANSPARENT_FORGING_BLOCK_6

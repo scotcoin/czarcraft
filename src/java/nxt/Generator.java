@@ -171,10 +171,6 @@ public final class Generator {
 
         Block lastBlock = Nxt.getBlockchain().getLastBlock();
 
-        if (lastBlock.getHeight() < Constants.ASSET_EXCHANGE_BLOCK) {
-            return;
-        }
-
         if (! lastBlock.equals(lastBlocks.get(accountId))) {
 
             BigInteger hit = getHit(publicKey, lastBlock);

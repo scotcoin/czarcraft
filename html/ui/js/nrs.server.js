@@ -64,7 +64,7 @@ var NRS = (function(NRS, $, undefined) {
 
 			for (var i = 0; i < nxtFields.length; i++) {
 				var nxtField = nxtFields[i];
-				var field = nxtField.replace("NFD", "");
+				var field = nxtField.replace("NXT", "");
 
 				if (nxtField in data) {
 					data[field + "NQT"] = NRS.convertToNQT(data[nxtField]);
@@ -210,7 +210,7 @@ var NRS = (function(NRS, $, undefined) {
 			}
 
 			if (typeof data == "object" && "recipient" in data) {
-				if (/^NFD\-/i.test(data.recipient)) {
+				if (/^NXT\-/i.test(data.recipient)) {
 					data.recipientRS = data.recipient;
 
 					var address = new NxtAddress();

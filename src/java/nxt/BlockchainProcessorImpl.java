@@ -481,30 +481,6 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                     throw new BlockNotAcceptedException("Invalid version " + block.getVersion());
                 }
 
-                if (previousLastBlock.getHeight() == Constants.TRANSPARENT_FORGING_BLOCK) {
-                    byte[] checksum = calculateTransactionsChecksum();
-                    if (CHECKSUM_TRANSPARENT_FORGING == null) {
-                        Logger.logMessage("Checksum calculated:\n" + Arrays.toString(checksum));
-                    } else if (!Arrays.equals(checksum, CHECKSUM_TRANSPARENT_FORGING)) {
-                        Logger.logMessage("Checksum failed at block " + Constants.TRANSPARENT_FORGING_BLOCK);
-                        throw new BlockNotAcceptedException("Checksum failed");
-                    } else {
-                        Logger.logMessage("Checksum passed at block " + Constants.TRANSPARENT_FORGING_BLOCK);
-                    }
-                }
-
-                if (previousLastBlock.getHeight() == Constants.NQT_BLOCK) {
-                    byte[] checksum = calculateTransactionsChecksum();
-                    if (CHECKSUM_NQT_BLOCK == null) {
-                        Logger.logMessage("Checksum calculated:\n" + Arrays.toString(checksum));
-                    } else if (!Arrays.equals(checksum, CHECKSUM_NQT_BLOCK)) {
-                        Logger.logMessage("Checksum failed at block " + Constants.NQT_BLOCK);
-                        throw new BlockNotAcceptedException("Checksum failed");
-                    } else {
-                        Logger.logMessage("Checksum passed at block " + Constants.NQT_BLOCK);
-                    }
-                }
-
                 if (block.getVersion() != 1 && ! Arrays.equals(Crypto.sha256().digest(previousLastBlock.getBytes()), block.getPreviousBlockHash())) {
                     throw new BlockNotAcceptedException("Previous block hash doesn't match");
                 }
@@ -738,10 +714,6 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
         byte[] payloadHash = digest.digest();
 
         BlockImpl previousBlock = blockchain.getLastBlock();
-        if (previousBlock.getHeight() < Constants.TRANSPARENT_FORGING_BLOCK) {
-            Logger.logDebugMessage("Generate block below " + Constants.TRANSPARENT_FORGING_BLOCK + " no longer supported");
-            return;
-        }
 
         digest.update(previousBlock.getGenerationSignature());
         byte[] generationSignature = digest.digest(publicKey);
@@ -808,10 +780,7 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
     }
 
     private boolean verifyVersion(Block block, int currentHeight) {
-        return block.getVersion() ==
-                (currentHeight < Constants.TRANSPARENT_FORGING_BLOCK ? 1
-                        : currentHeight < Constants.NQT_BLOCK ? 2
-                        : 3);
+        return block.getVersion() == 3;
     }
 
     private boolean hasAllReferencedTransactions(Transaction transaction, int timestamp, int count) {

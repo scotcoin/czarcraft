@@ -116,9 +116,6 @@ public final class Generator {
     }
 
     private static BigInteger getHit(byte[] publicKey, Block block) {
-        if (block.getHeight() < Constants.TRANSPARENT_FORGING_BLOCK) {
-            throw new IllegalArgumentException("Not supported below Transparent Forging Block");
-        }
         MessageDigest digest = Crypto.sha256();
         digest.update(block.getGenerationSignature());
         byte[] generationSignatureHash = digest.digest(publicKey);

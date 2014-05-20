@@ -258,8 +258,7 @@ public final class Account {
         		return Constants.MAX_BALANCE_NQT / Constants.ONE_NXT;
         }
 
-        if (lastBlock.getHeight() >= Constants.TRANSPARENT_FORGING_BLOCK_6
-                && (publicKey == null || keyHeight == -1 || lastBlock.getHeight() - keyHeight <= 1440)) {
+        if (publicKey == null || keyHeight == -1 || lastBlock.getHeight() - keyHeight <= 1440) {
             return 0; // cfb: Accounts with the public key revealed less than 1440 blocks ago are not allowed to generate blocks
         }
 
@@ -544,9 +543,7 @@ public final class Account {
                     && i < guaranteedBalances.size() - 1
                     && guaranteedBalances.get(i + 1).height >= blockchainHeight - maxTrackedBalanceConfirmations) {
                 trimTo = i; // trim old gb records but keep at least one at height lower than the supported maxTrackedBalanceConfirmations
-                if (blockchainHeight >= Constants.TRANSPARENT_FORGING_BLOCK_4 && blockchainHeight < Constants.TRANSPARENT_FORGING_BLOCK_5) {
-                    gb.balance += amountNQT; // because of a bug which leads to a fork
-                } else if (blockchainHeight >= Constants.TRANSPARENT_FORGING_BLOCK_5 && amountNQT < 0) {
+                if (amountNQT < 0) {
                     gb.balance += amountNQT;
                 }
             } else if (amountNQT < 0) {

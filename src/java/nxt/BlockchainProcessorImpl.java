@@ -821,7 +821,6 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                         currentBlock = BlockDb.loadBlock(con, rs);
                         if (! currentBlock.getId().equals(currentBlockId)) {
                         	 throw new NxtException.ValidationException("Database blocks in the wrong order! Is: " + currentBlockId + " expect " + currentBlock.getId());
-                           // throw new NxtException.ValidationException("Database blocks in the wrong order!");
                         }
                         if (validateAtScan && ! currentBlockId.equals(Genesis.GENESIS_BLOCK_ID)) {
                             if (!currentBlock.verifyBlockSignature() || !currentBlock.verifyGenerationSignature()) {

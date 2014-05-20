@@ -64,7 +64,7 @@ var NRS = (function(NRS, $, undefined) {
 
 			for (var i = 0; i < nxtFields.length; i++) {
 				var nxtField = nxtFields[i];
-				var field = nxtField.replace("NXT", "");
+				var field = nxtField.replace("NFD", "");
 
 				if (nxtField in data) {
 					data[field + "NQT"] = NRS.convertToNQT(data[nxtField]);
@@ -210,7 +210,7 @@ var NRS = (function(NRS, $, undefined) {
 			}
 
 			if (typeof data == "object" && "recipient" in data) {
-				if (/^NXT\-/i.test(data.recipient)) {
+				if (/^NFD\-/i.test(data.recipient)) {
 					data.recipientRS = data.recipient;
 
 					var address = new NxtAddress();
@@ -339,7 +339,7 @@ var NRS = (function(NRS, $, undefined) {
 		if (!("recipient" in data)) {
 			//recipient == genesis
 			data.recipient = "-6550284871017505443";
-			data.recipientRS = "NXT-G3GS-J4SW-T2WM-3DDYJ";
+			data.recipientRS = "NFD-G3GS-J4SW-T2WM-3DDYJ";
 		}
 
 		if (transaction.senderPublicKey != NRS.accountInfo.publicKey) {

@@ -46,7 +46,7 @@ public final class Constants {
     public static final long MIN_HUB_EFFECTIVE_BALANCE = 100000;
 
     public static final boolean isTestnet = Nxt.getBooleanProperty("nxt.isTestnet");
-    public static final int GENESIS_FORGING_BLOCK = isTestnet ? Integer.MAX_VALUE : 0;
+    public static final int GENESIS_FORGING_BLOCK = isTestnet ? Integer.MAX_VALUE : 2880;
     public static final int TRANSPARENT_FORGING_BLOCK_7 = isTestnet ? 0 : Integer.MAX_VALUE;
     public static final int NQT_BLOCK = isTestnet ? 0 : 0;
     public static final int REFERENCED_TRANSACTION_FULL_HASH_BLOCK = isTestnet ? 0 : 1000;

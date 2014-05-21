@@ -253,8 +253,8 @@ public final class Account {
     public long getEffectiveBalanceNXT() {
 
         Block lastBlock = Nxt.getBlockchain().getLastBlock();
-
-        if (this.height == 0) {
+        
+        if (this.height == 0 && lastBlock.getHeight()< Constants.GENESIS_FORGING_BLOCK) {
         		return Constants.MAX_BALANCE_NQT / Constants.ONE_NXT;
         }
 

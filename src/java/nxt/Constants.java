@@ -6,7 +6,7 @@ import java.util.TimeZone;
 public final class Constants {
 
     public static final int BLOCK_HEADER_LENGTH = 232;
-    public static final int MAX_NUMBER_OF_TRANSACTIONS = 255;
+    public static final int MAX_NUMBER_OF_TRANSACTIONS = 1023;
     public static final int MAX_PAYLOAD_LENGTH = MAX_NUMBER_OF_TRANSACTIONS * 160;
     public static final long MAX_BALANCE_NXT = 5000000000L;
     public static final long ONE_NXT = 100000000;
@@ -46,7 +46,7 @@ public final class Constants {
     public static final long MIN_HUB_EFFECTIVE_BALANCE = 100000;
 
     public static final boolean isTestnet = Nxt.getBooleanProperty("nxt.isTestnet");
-
+    public static final int GENESIS_FORGING_BLOCK = isTestnet ? Integer.MAX_VALUE : 0;
     public static final int TRANSPARENT_FORGING_BLOCK_7 = isTestnet ? 0 : Integer.MAX_VALUE;
     public static final int NQT_BLOCK = isTestnet ? 0 : 0;
     public static final int REFERENCED_TRANSACTION_FULL_HASH_BLOCK = isTestnet ? 0 : 1000;

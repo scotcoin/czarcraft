@@ -36,7 +36,7 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.assetTableKeys = [];
 
 	NRS.init = function() {
-		if (location.port && location.port != "6876") {
+		if (location.port && location.port != "9876") {
 			$(".testnet_only").hide();
 		} else {
 			NRS.isTestNet = true;

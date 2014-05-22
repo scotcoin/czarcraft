@@ -33,10 +33,6 @@ import java.util.TreeSet;
 
 final class BlockchainProcessorImpl implements BlockchainProcessor {
 
-    private static final byte[] CHECKSUM_TRANSPARENT_FORGING = new byte[]{-95, 102, -31, -12, 85, 104, 13, 36, 27, -97, -19, -39, 54, -2, 63, 32, 65, -34, 52, 105, 62, -60, -18, -122, -117, 79, 112, 78, -39, 118, 43, 18};    
-    private static final byte[] CHECKSUM_NQT_BLOCK = Constants.isTestnet ? new byte[]{-126, -117, -94, -16, 125, -94, 38, 10, 11, 37, -33, 4, -70, -8, -40, -80, 18, -21, -54, -126, 109, -73, 63, -56, 67, 59, -30, 83, -6, -91, -24, 34}
-            : new byte[]{-95, 102, -31, -12, 85, 104, 13, 36, 27, -97, -19, -39, 54, -2, 63, 32, 65, -34, 52, 105, 62, -60, -18, -122, -117, 79, 112, 78, -39, 118, 43, 18};
-
     private static final BlockchainProcessorImpl instance = new BlockchainProcessorImpl();
 
     static BlockchainProcessorImpl getInstance() {

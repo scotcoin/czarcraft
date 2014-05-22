@@ -590,7 +590,7 @@ var NRS = (function(NRS, $, undefined) {
 		} else {
 			NRS.assetSearch = [];
 
-			if (/NXT\-/i.test(input)) {
+			if (/NFD\-/i.test(input)) {
 				$.each(NRS.assets, function(key, asset) {
 					if (asset.accountRS == input) {
 						NRS.assetSearch.push(asset.asset);
@@ -874,16 +874,16 @@ var NRS = (function(NRS, $, undefined) {
 		var priceNQTPerWholeQNT = priceNQT.multiply(new BigInteger("" + Math.pow(10, NRS.currentAsset.decimals)));
 
 		if (orderType == "buy") {
-			var description = "Buy <strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong> assets at <strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NXT</strong> each.";
-			var tooltipTitle = "Per whole asset bought you will pay " + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NXT, making a total of " + totalNXT + " NXT once everything have been bought.";
+			var description = "Buy <strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong> assets at <strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong> each.";
+			var tooltipTitle = "Per whole asset bought you will pay " + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD, making a total of " + totalNXT + " NFD once everything have been bought.";
 		} else {
-			var description = "Sell <strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong> assets at <strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NXT</strong> each.";
-			var tooltipTitle = "Per whole asset sold you will receive " + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NXT, making a total of " + totalNXT + " NXT once everything has been sold.";
+			var description = "Sell <strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong> assets at <strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong> each.";
+			var tooltipTitle = "Per whole asset sold you will receive " + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD, making a total of " + totalNXT + " NFD once everything has been sold.";
 		}
 
 		$("#asset_order_description").html(description);
-		$("#asset_order_total").html(totalNXT + " NXT");
-		$("#asset_order_fee_paid").html(NRS.formatAmount(feeNQT) + " NXT");
+		$("#asset_order_total").html(totalNXT + " NFD");
+		$("#asset_order_fee_paid").html(NRS.formatAmount(feeNQT) + " NFD");
 
 		if (quantity != "1") {
 			$("#asset_order_total_tooltip").show();

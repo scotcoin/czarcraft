@@ -656,7 +656,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		var id = $.trim($("#id_search input[name=q]").val());
 
-		if (/NXT\-/i.test(id)) {
+		if (/NFD\-/i.test(id)) {
 			NRS.sendRequest("getAccount", {
 				"account": id
 			}, function(response, input) {

@@ -2,7 +2,7 @@
 <html class="lockscreen">
     <head>
         <meta charset="UTF-8">
-        <title>NXT Wallet</title>
+        <title>NFD Wallet</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -532,7 +532,7 @@
 							        <th>Percentage</th>
 							        <th>Lowest Ask</th>
 							        <th>Highest Bid</th>
-							        <th>Value in NXT</th>
+							        <th>Value in NFD</th>
 							        <th>Transfer</th>
 							    </tr>
 							    </thead>
@@ -656,7 +656,7 @@
 										                	    	<div class="form-group form-group-last">
 										                	    		<div class="col-sm-3"></div>
 										                	    		<div class="col-sm-9">
-										                	    			<button type="button" class="btn btn-primary btn-lg btn-block" id="buy_asset_button" data-toggle="modal" data-target="#asset_order_modal" data-asset="" data-type="Buy">Buy (NXT → <span class="asset_name"></span>)</button>
+										                	    			<button type="button" class="btn btn-primary btn-lg btn-block" id="buy_asset_button" data-toggle="modal" data-target="#asset_order_modal" data-asset="" data-type="Buy">Buy (NFD → <span class="asset_name"></span>)</button>
 										                	    		</div>
 										                	    	</div>
 									                	    	</div>
@@ -715,7 +715,7 @@
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input id="sell_asset_price" type="text" value="0" name="sell_asset_price" class="form-control" data-type="sell" />
-										                        				<span class="input-group-addon">NXT / <span class="asset_name"></span></span>
+										                        				<span class="input-group-addon">NFD / <span class="asset_name"></span></span>
 										                        			</div>
 										                        		</div>
 										                        	</div>
@@ -724,7 +724,7 @@
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input type="text" name="sell_asset_total" id="sell_asset_total" readonly value="0" class="form-control disabled" />
-										                        				<span class="input-group-addon">NXT</span>
+										                        				<span class="input-group-addon">NFD</span>
 										                        			</div>
 										                        		</div>
 										                        	</div>
@@ -733,14 +733,14 @@
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input type="text" id="sell_asset_fee" name="sell_asset_fee" value="1" class="form-control" />
-										                        				<span class="input-group-addon">NXT</span>
+										                        				<span class="input-group-addon">NFD</span>
 										                        			</div>
 										                        		</div>
 										                        	</div>
 										                        	<div class="form-group form-group-last">
 										                        		<div class="col-sm-3"></div>
 										                        		<div class="col-sm-9">
-										                        			<button type="button" class="btn btn-primary btn-lg btn-block" id="sell_asset_button" data-toggle="modal" data-target="#asset_order_modal" data-asset="" data-type="Sell">Sell (<span class="asset_name"></span> → NXT)</button>
+										                        			<button type="button" class="btn btn-primary btn-lg btn-block" id="sell_asset_button" data-toggle="modal" data-target="#asset_order_modal" data-asset="" data-type="Sell">Sell (<span class="asset_name"></span> → NFD)</button>
 										                        		</div>
 										                        	</div>
 										                        </div>
@@ -1692,7 +1692,7 @@
 							</div>
 							<div class="form-group">
 								<label for="add_contact_account_id">ACCOUNT ID</label>
-								<input type="text" class="form-control" name="account_id" id="add_contact_account_id" placeholder="NXT Account ID" tabindex="2" />
+								<input type="text" class="form-control" name="account_id" id="add_contact_account_id" placeholder="NFD Account ID" tabindex="2" />
 							</div>
 							<div class="form-group">
 								<label for="add_contact_email">EMAIL ADDRESS</label>
@@ -1733,7 +1733,7 @@
 							</div>
 							<div class="form-group">
 								<label for="update_contact_account_id">ACCOUNT ID</label>
-								<input type="text" class="form-control" name="account_id" id="update_contact_account_id" placeholder="NXT Account ID" tabindex="2" />
+								<input type="text" class="form-control" name="account_id" id="update_contact_account_id" placeholder="NFD Account ID" tabindex="2" />
 							</div>
 							<div class="form-group">
 								<label for="update_contact_email">EMAIL ADDRESS</label>
@@ -2047,7 +2047,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 						<div class="callout account_info" style="display:none;margin-bottom: 0;"></div>
 					</div>
 		      		<div class="modal-footer" style="margin-top:0;">
-		      			<input type="hidden" name="failure_message" value="An unknown error occured! NXT may or may not be sent." />
+		      			<input type="hidden" name="failure_message" value="An unknown error occured! NFD may or may not be sent." />
 		      			<input type="hidden" name="request_type" value="sendMoney" />
 		      			<input type="hidden" name="converted_account_id" value="" />
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

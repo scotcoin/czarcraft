@@ -572,7 +572,7 @@ var NRS = (function(NRS, $, undefined) {
 	}
 
 	NRS.formatTimestamp = function(timestamp, date_only) {
-		var date = new Date(Date.UTC(2014, 4, 17, 12, 0, 0, 0) + timestamp * 1000);
+		var date = new Date(Date.UTC(2014, 5, 21, 12, 0, 0, 0) + timestamp * 1000);
 
 		if (!isNaN(date) && typeof(date.getFullYear) == 'function') {
 			var d = date.getDate();
@@ -903,7 +903,7 @@ var NRS = (function(NRS, $, undefined) {
 					value = NRS.formatQuantity(value, 0);
 				}
 			} else if (key == "Price" || key == "Total" || key == "Amount" || key == "Fee") {
-				value = NRS.formatAmount(new BigInteger(value)) + " NXT";
+				value = NRS.formatAmount(new BigInteger(value)) + " NFD";
 			} else if (key == "Sender" || key == "Recipient") {
 				value = "<a href='#' data-user='" + String(value).escapeHTML() + "'>" + NRS.getAccountTitle(value) + "</a>";
 			} else {

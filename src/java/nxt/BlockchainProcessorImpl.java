@@ -445,21 +445,6 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
         }
     }
 
-    private byte[] calculateTransactionsChecksum() {
-        MessageDigest digest = Crypto.sha256();
-        try (Connection con = Db.getConnection();
-             PreparedStatement pstmt = con.prepareStatement(
-                     "SELECT * FROM transaction ORDER BY id ASC, timestamp ASC");
-             DbIterator<TransactionImpl> iterator = blockchain.getTransactions(con, pstmt)) {
-            while (iterator.hasNext()) {
-                digest.update(iterator.next().getBytes());
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e.toString(), e);
-        }
-        return digest.digest();
-    }
-
     private void pushBlock(final BlockImpl block) throws BlockNotAcceptedException {
 
         int curTime = Convert.getEpochTime();

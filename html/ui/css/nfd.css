@@ -451,13 +451,15 @@ body > .header .logo {
 	-moz-text-shadow: 0px 0px 3px #ae1301;
 	text-shadow: 0px 0px 3px #ae1301;
 	
-} */
+} 
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     body > .header .logo {
  		 line-height: 45px;
     }
 }
+*/
+
 
 body > .header .logo .icon {
   margin-right: 10px;
@@ -1226,30 +1228,30 @@ body > .header .logo .icon {
   position: relative;
   text-align: center;
   padding: 3px 0;
-  color: #fff;
-  color: rgba(255, 255, 255, 0.8);
+  color: #743c00;
   display: block;
   z-index: 10;
   background: rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
 .small-box > .small-box-footer:hover {
-  color: #fff;
+  color: #743c00;
   background: rgba(0, 0, 0, 0.15);
 }
 .small-box h3 {
-  font-size: 38px;
+  font-size: 18px;
+  line-height:30px;
   font-weight: bold;
   margin: 0 0 10px 0;
   white-space: nowrap;
   padding: 0;
 }
 .small-box p {
-  font-size: 15px;
+  font-size: 14px;
 }
 .small-box p > small {
   display: block;
-  color: #f9f9f9;
+  color: #743c00;
   font-size: 13px;
   margin-top: 5px;
 }
@@ -1264,7 +1266,7 @@ body > .header .logo .icon {
   right: 5px;
   z-index: 0;
   font-size: 90px;
-  color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.15) !important;
 }
 .small-box .icon-smaller {
 	position: absolute;
@@ -1272,7 +1274,12 @@ body > .header .logo .icon {
 	right: 5px;
 	z-index: 0;
 	font-size: 75px;
-	color: rgba(0, 0, 0, 0.15);
+	color: rgba(0, 0, 0, 0.15) !important;
+}
+
+.small-box .icon i,
+.small-box .icon-smaller i{
+  color: rgba(0, 0, 0, 0.15) !important;
 }
 
 .small-box > .inner-smaller {

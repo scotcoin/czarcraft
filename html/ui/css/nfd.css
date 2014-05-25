@@ -12,7 +12,7 @@
 /*! 
  *   AdminLTE v1.0
  *   Author: AlmsaeedStudio.com
- *   License: MIT Licence
+ *   License: MIT License
  *
  *   Copyright (c) 2013 almasaeed2010
  *   Copyright (c) 2014 The NFD Developers
@@ -421,6 +421,21 @@ body > .header .navbar .nav > li > a > .label {
 body > .header .navbar .nav > li > a:hover > .label {
   top: 3px;
 }
+
+body > .header .logo {
+  float: left;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+  padding: 0 10px;
+  width: 220px;
+  font-family: sans-serif;
+  height: 50px;
+  display: block;
+  font-weight:bold;
+}
+
+/*
 body > .header .logo {
   float: left;
   font-size: 50px;
@@ -436,7 +451,7 @@ body > .header .logo {
 	-moz-text-shadow: 0px 0px 3px #ae1301;
 	text-shadow: 0px 0px 3px #ae1301;
 	
-}
+} */
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     body > .header .logo {

@@ -142,7 +142,7 @@ var NRS = (function(NRS, $, undefined) {
 		if (NRS.currentPage == "polls") {
 			var $table = $("#polls_table tbody");
 
-			var date = new Date(Date.UTC(2014, 5, 25, 23, 53, 0, 0)).getTime();
+			var date = new Date(Date.UTC(2014, 4, 28, 19, 36, 0, 0)).getTime();
 
 			var now = parseInt(((new Date().getTime()) - date) / 1000, 10);
 

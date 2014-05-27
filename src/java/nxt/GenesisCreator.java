@@ -23,6 +23,7 @@ import nxt.util.Convert;
 import java.security.MessageDigest;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -36,13 +37,31 @@ class GenesisCreator {
 
 	public static void main(String[] args) {
 		try {
-			pubkey = Crypto.getPublicKey(secretPhrase);
 
-			Long accountIdLong = Convert.fullHashToId(pubkey);
-			System.out.println("PubKey hash: " + Convert.toHexString(pubkey));
-			System.out.println("PubKey Long: " + accountIdLong);
-			System.out.println("PubKey human:"
-					+ Convert.toUnsignedLong(accountIdLong));
+			try {
+
+				byte[] pubkeyHash = Crypto.sha256().digest(
+						secretPhrase.getBytes("UTF-8"));
+				System.out.println("PubKey hash: "
+						+ Convert.toHexString(pubkeyHash));
+				pubkey = Crypto.getPublicKey(secretPhrase);
+				long accounIdLong = getId(pubkey);
+
+				String accountIdString = Convert.toUnsignedLong(accounIdLong);
+				System.out.println("AccountId: " + accountIdString);
+				System.out.println("AccountId long: "
+						+ (new BigInteger(accountIdString)).longValue());
+
+				System.out.println("PubKey reed solomon:"
+						+ Crypto.rsEncode(accounIdLong));
+				System.out.println(Convert.toUnsignedLong(Crypto
+						.rsDecode("G3GS-J4SW-T2WM-3DDYJ")));
+
+			} catch (UnsupportedEncodingException usEE) {
+
+			}
+
+			System.out.print("Genesis.java CREATOR_PUBLIC_KEY: ");
 			for (int a = 0; a < pubkey.length; a++)
 				System.out.print(pubkey[a] + ", ");
 			System.out.println();
@@ -61,7 +80,7 @@ class GenesisCreator {
 			}
 
 			System.out.println("Total Amount: " + total_amount);
-
+			//FIXME payloadHash is wrong
 			byte[] payloadHash = digest.digest();
 
 			// calculate block signature
@@ -140,10 +159,16 @@ class GenesisCreator {
 			transaction = new TransactionImpl(TransactionType.Payment.ORDINARY,
 					0, (short) 0, pubkey, rx_acct, amount, 0, null, signature);
 		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
 		}
 
 		transactionsMap.put(transaction.getId(), transaction);
 
 		return transaction;
+	}
+
+	public static Long getId(byte[] publicKey) {
+		byte[] publicKeyHash = Crypto.sha256().digest(publicKey);
+		return Convert.fullHashToId(publicKeyHash);
 	}
 }

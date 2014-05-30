@@ -432,7 +432,7 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                 digest.update(transaction.getBytes());
             }
 
-            BlockImpl genesisBlock = new BlockImpl(-1, 0, null, Constants.MAX_BALANCE_NQT, 0, transactionsMap.size() * 160, digest.digest(),
+            BlockImpl genesisBlock = new BlockImpl(-1, 0, null, Constants.MAX_BALANCE_NQT, 0, transactionsMap.size() * 168, digest.digest(),
                     Genesis.CREATOR_PUBLIC_KEY, new byte[64], Genesis.GENESIS_BLOCK_SIGNATURE, null, new ArrayList<>(transactionsMap.values()));
 
             genesisBlock.setPrevious(null);

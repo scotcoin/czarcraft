@@ -572,7 +572,7 @@ var NRS = (function(NRS, $, undefined) {
 	}
 
 	NRS.formatTimestamp = function(timestamp, date_only) {
-		var date = new Date(Date.UTC(2014, 4, 28, 19, 36, 0, 0) + timestamp * 1000);
+		var date = new Date(Date.UTC(2014, 4, 29, 19, 36, 0, 0) + timestamp * 1000);
 
 		if (!isNaN(date) && typeof(date.getFullYear) == 'function') {
 			var d = date.getDate();
@@ -616,7 +616,7 @@ var NRS = (function(NRS, $, undefined) {
 	}
 
 	NRS.formatTime = function(timestamp) {
-		var date = new Date(Date.UTC(2014, 4, 28, 19, 36, 0, 0) + timestamp * 1000);
+		var date = new Date(Date.UTC(2014, 4, 29, 19, 36, 0, 0) + timestamp * 1000);
 
 		if (!isNaN(date) && typeof(date.getFullYear) == 'function') {
 			var res = "";

@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
-final class TransactionImpl implements Transaction {
+public final class TransactionImpl implements Transaction {
 
     private final short deadline;
     private final byte[] senderPublicKey;
@@ -34,7 +34,7 @@ final class TransactionImpl implements Transaction {
     private volatile Long senderId;
     private volatile String fullHash;
 
-    TransactionImpl(TransactionType type, int timestamp, short deadline, byte[] senderPublicKey, Long recipientId,
+    public TransactionImpl(TransactionType type, int timestamp, short deadline, byte[] senderPublicKey, Long recipientId,
                     long amountNQT, long feeNQT, String referencedTransactionFullHash, byte[] signature) throws NxtException.ValidationException {
 
         if ((timestamp == 0 && Arrays.equals(senderPublicKey, Genesis.CREATOR_PUBLIC_KEY))

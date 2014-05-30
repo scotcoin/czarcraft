@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-final class BlockImpl implements Block {
+public final class BlockImpl implements Block {
 
     private final int version;
     private final int timestamp;
@@ -40,7 +40,7 @@ final class BlockImpl implements Block {
     private volatile Long generatorId;
 
 
-    BlockImpl(int version, int timestamp, Long previousBlockId, long totalAmountNQT, long totalFeeNQT, int payloadLength, byte[] payloadHash,
+    public BlockImpl(int version, int timestamp, Long previousBlockId, long totalAmountNQT, long totalFeeNQT, int payloadLength, byte[] payloadHash,
               byte[] generatorPublicKey, byte[] generationSignature, byte[] blockSignature, byte[] previousBlockHash, List<TransactionImpl> transactions)
             throws NxtException.ValidationException {
 
@@ -367,7 +367,7 @@ final class BlockImpl implements Block {
         generatorAccount.addToForgedBalanceNQT(-totalFeeNQT);
     }
 
-    void setPrevious(BlockImpl previousBlock) {
+    public void setPrevious(BlockImpl previousBlock) {
         if (previousBlock != null) {
             if (! previousBlock.getId().equals(getPreviousBlockId())) {
                 // shouldn't happen as previous id is already verified, but just in case

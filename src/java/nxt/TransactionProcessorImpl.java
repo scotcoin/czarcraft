@@ -239,7 +239,6 @@ final class TransactionProcessorImpl implements TransactionProcessor {
         if (Convert.emptyToNull(referencedTransactionFullHashBytes) != null) {
             referencedTransactionFullHash = Convert.toHexString(referencedTransactionFullHashBytes);
         }
-        long genesisBlockId=buffer.getLong();
         byte[] signature = new byte[64];
         buffer.get(signature);
         signature = Convert.emptyToNull(signature);

@@ -274,9 +274,6 @@ public final class TransactionImpl implements Transaction {
                 buffer.putLong(0L);
             }
         }
-		if (Arrays.equals(senderPublicKey, Genesis.CREATOR_PUBLIC_KEY)) {
-			buffer.putLong(0L);
-		} else buffer.putLong(Genesis.CREATOR_ID.longValue());
         buffer.put(signature != null ? signature : new byte[64]);
         if (attachment != null) {
             buffer.put(attachment.getBytes());
@@ -357,7 +354,7 @@ public final class TransactionImpl implements Transaction {
     }
 
     private int signatureOffset() {
-        return 1 + 1 + 4 + 2 + 32 + 8 + (useNQT() ? 8 + 8 + 32 + 8 : 4 + 4 + 8);
+        return 1 + 1 + 4 + 2 + 32 + 8 + (useNQT() ? 8 + 8 + 32 : 4 + 4 + 8);
     }
 
     private boolean useNQT() {

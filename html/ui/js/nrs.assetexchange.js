@@ -173,13 +173,13 @@ var NRS = (function(NRS, $, undefined) {
 			};
 		}
 
-		if (!/^\d+$/.test(data.id) && !/^NXT\-/i.test(data.id)) {
+		if (!/^\d+$/.test(data.id) && !/^NFD\-/i.test(data.id)) {
 			return {
 				"error": "Asset or account ID is invalid."
 			};
 		}
 
-		if (/^NXT\-/i.test(data.id)) {
+		if (/^NFD\-/i.test(data.id)) {
 			NRS.sendRequest("getAssetsByIssuer", {
 				"account": data.id
 			}, function(response) {

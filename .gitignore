@@ -13,3 +13,5 @@
 /package.sh
 /bin/
 /nxt.log.lck
+.classpath
+.project

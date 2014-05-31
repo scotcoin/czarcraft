@@ -221,7 +221,7 @@ var NRS = (function(NRS, $, undefined) {
 							var alias = response.uri;
 							var timestamp = response.timestamp;
 
-							var regex_1 = /acct:(\d+)@nxt/;
+							var regex_1 = /acct:(\d+)@nfd/;
 							var regex_2 = /nacc:(\d+)/;
 
 							var match = alias.match(regex_1);

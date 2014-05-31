@@ -60,7 +60,7 @@ public final class Constants {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.set(Calendar.YEAR, 2014);
         calendar.set(Calendar.MONTH, Calendar.MAY);
-        calendar.set(Calendar.DAY_OF_MONTH, 28);
+        calendar.set(Calendar.DAY_OF_MONTH, 29);
         calendar.set(Calendar.HOUR_OF_DAY, 19);
         calendar.set(Calendar.MINUTE, 36);
         calendar.set(Calendar.SECOND, 0);

@@ -1,0 +1,37 @@
+*{
+	font-family: courier;
+	color:#743c00;
+}
+
+html{
+	background:#E1D7B8;
+}
+
+a{
+	text-decoration:none;
+	color:#ff7614;
+}
+
+input[type=submit]{
+	background-color: #f6f5d8;
+	border-color: #cdc4a8;
+	font-weight: 500;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid transparent;
+	-webkit-box-shadow: inset 0px -2px 0px 0px rgba(0, 0, 0, 0.09);
+	-moz-box-shadow: inset 0px -2px 0px 0px rgba(0, 0, 0, 0.09);
+	box-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, 0.09);
+}
+
+table{
+	border:1px solid #743c00 !important;
+	background:#f6f5d8;
+	border-collapse:collapse;
+}
+table td,
+table th{
+	border:1px solid #cdc4a8;
+	padding:5px;
+}

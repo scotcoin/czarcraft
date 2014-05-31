@@ -60,9 +60,9 @@ public final class Constants {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.set(Calendar.YEAR, 2014);
         calendar.set(Calendar.MONTH, Calendar.MAY);
-        calendar.set(Calendar.DAY_OF_MONTH, 29);
-        calendar.set(Calendar.HOUR_OF_DAY, 19);
-        calendar.set(Calendar.MINUTE, 36);
+        calendar.set(Calendar.DAY_OF_MONTH, isTestnet ? 22 : 29);
+        calendar.set(Calendar.HOUR_OF_DAY, isTestnet ? 22 : 19);
+        calendar.set(Calendar.MINUTE, isTestnet ? 0 : 36);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
         EPOCH_BEGINNING = calendar.getTimeInMillis();

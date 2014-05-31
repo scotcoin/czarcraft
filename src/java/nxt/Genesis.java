@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public final class Genesis {
 
     public static final Long GENESIS_BLOCK_ID = -5984289973625010005L;
-    public static final Long CREATOR_ID = 1763558929574856152L;
+    public static final Long CREATOR_ID = Nxt.getBooleanProperty("nxt.isTestnet") ? -6550284871017505443L :1763558929574856152L ;
     public static final byte[] CREATOR_PUBLIC_KEY = {93, -35, 98, 93, -99, -74, 24, -91, -6, -18, 14, 38, -36, 67, -90, -47, 32, 8, 99, -6, -128, -106, -40, 61, 11, -110, 64, 1, 96, -98, 89, 42    	
     };
 

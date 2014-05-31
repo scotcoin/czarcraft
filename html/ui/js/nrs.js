@@ -40,6 +40,7 @@ var NRS = (function(NRS, $, undefined) {
 			$(".testnet_only").hide();
 		} else {
 			NRS.isTestNet = true;
+			NRS.genesis = "-6550284871017505443";
 			$(".testnet_only, #testnet_login, #testnet_warning").show();
 		}
 

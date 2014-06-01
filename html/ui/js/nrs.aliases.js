@@ -97,7 +97,7 @@ var NRS = (function(NRS, $, undefined) {
 			}, function(response) {
 				if (/http:\/\//i.test(response.aliasURI)) {
 					NRS.forms.setAliasType("uri");
-				} else if (/acct:(\d+)@nfd.test(response.aliasURI) || /nacc:(\d+)/.test(response.aliasURI)) {
+				} else if (/acct:(\d+)@nfd/.test(response.aliasURI) || /nacc:(\d+)/.test(response.aliasURI)) {
 					NRS.forms.setAliasType("account");
 				} else {
 					NRS.forms.setAliasType("general");

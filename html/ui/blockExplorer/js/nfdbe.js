@@ -8,7 +8,7 @@
 
 $(function(){
 	var NFDBE = {};
-	var initialValue = getUrlParameter('id');
+	var id = getUrlParameter('id');
 	
 	function getUrlParameter(sParam)
 	{
@@ -97,9 +97,35 @@ $(function(){
 		});
 	}
 	
-	$('#searchForm').bind('submit',function(){
-		var id = $(this).find('input[name=searchId]').val();
-		console.log(id);
+//	$('#searchForm').bind('submit',function(){
+//		var id = $(this).find('input[name=searchId]').val();
+//		console.log(id);
+//		NFDBE.getTransaction(id,function(result){
+//			if (result == null){
+//				NFDBE.getBlock(id,function(result){
+//					if (result == null){
+//						NFDBE.getAccount(id,function(result){
+//							if (result == null){
+//								$( "#searchResult" ).html("No such Id <b>"+id+"</b>");
+//							}
+//							else 
+//								$( "#searchResult" ).html(result);
+//						});
+//					}
+//					else {
+//						$( "#searchResult" ).html(result);
+//						NFDBE.dataComplete();
+//					}
+//				});
+//			}
+//			else 
+//				$( "#searchResult" ).html(result);
+//		});
+//		return false;
+//	})
+	
+	if (id.length > 0) {
+		$('#searchForm [name=id]').val(id);
 		NFDBE.getTransaction(id,function(result){
 			if (result == null){
 				NFDBE.getBlock(id,function(result){
@@ -121,11 +147,5 @@ $(function(){
 			else 
 				$( "#searchResult" ).html(result);
 		});
-		return false;
-	})
-	
-	if (initialValue.length > 0) {
-		$('#searchForm [name=searchId]').val(initialValue);
-		$('#searchForm').trigger("submit");
 	}
 });

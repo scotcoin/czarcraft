@@ -339,7 +339,7 @@ var NRS = (function(NRS, $, undefined) {
 		if (!("recipient" in data)) {
 			//recipient == genesis
 			if (NRS.isTestNet) {
-				data.recipient = "-6550284871017505443";
+				data.recipient = "11896459202692046173";
 			} else {
 				data.recipient = "1763558929574856152";
 			}

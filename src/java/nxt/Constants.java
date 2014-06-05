@@ -5,7 +5,9 @@ import java.util.TimeZone;
 
 public final class Constants {
 
-    public static final int BLOCK_HEADER_LENGTH = 232;
+	public static final boolean isTestnet = Nxt.getBooleanProperty("nxt.isTestnet");
+	
+	public static final int BLOCK_HEADER_LENGTH = 232;
     public static final int MAX_NUMBER_OF_TRANSACTIONS = 1023;
     public static final int MAX_PAYLOAD_LENGTH = MAX_NUMBER_OF_TRANSACTIONS * 160;
     public static final long MAX_BALANCE_NXT = 5000000000L;
@@ -23,7 +25,7 @@ public final class Constants {
     public static final int MAX_ACCOUNT_DESCRIPTION_LENGTH = 1000;
 
     public static final long MAX_ASSET_QUANTITY_QNT = 1000000000L * 100000000L;
-    public static final long ASSET_ISSUANCE_FEE_NQT = 1000 * ONE_NXT;
+    public static final long ASSET_ISSUANCE_FEE_NQT = isTestnet ? 1000 * ONE_NXT : 10000 * ONE_NXT;
     public static final int MIN_ASSET_NAME_LENGTH = 3;
     public static final int MAX_ASSET_NAME_LENGTH = 10;
     public static final int MAX_ASSET_DESCRIPTION_LENGTH = 1000;
@@ -44,8 +46,7 @@ public final class Constants {
     public static final int MAX_HUB_ANNOUNCEMENT_URIS = 100;
     public static final int MAX_HUB_ANNOUNCEMENT_URI_LENGTH = 1000;
     public static final long MIN_HUB_EFFECTIVE_BALANCE = 100000;
-
-    public static final boolean isTestnet = Nxt.getBooleanProperty("nxt.isTestnet");
+    
     public static final int GENESIS_FORGING_BLOCK = isTestnet ? Integer.MAX_VALUE : 2880;
     public static final int TRANSPARENT_FORGING_BLOCK_7 = isTestnet ? 0 : Integer.MAX_VALUE;
     public static final int NQT_BLOCK = isTestnet ? 0 : 0;

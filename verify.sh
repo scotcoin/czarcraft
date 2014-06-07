@@ -1,1 +1,1 @@
-java -cp nxt.jar:lib/*:conf nxt.VerifyTrace
+java -cp nfd.jar:lib/*:conf nxt.VerifyTrace

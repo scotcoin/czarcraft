@@ -5,13 +5,13 @@
 /*.log
 /html/doc/*
 /keystore
-/nxt.jar
-/nxt_test_db/
+/nfd.jar
+/nfd_test_db/
 *.trace
 /nxt-trace.csv
 /README_win.txt
 /package.sh
 /bin/
 /nxt.log.lck
-.classpath
-.project
+/nfd_db
+/.metadata

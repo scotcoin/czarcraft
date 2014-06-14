@@ -33,10 +33,10 @@
                 </a>
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
-                    	<li class="dropdown"><a href="#" style="font-weight:bold;" data-toggle="modal" data-target="#send_money_modal">Send NFD</a></li>
-                    	<li class="dropdown"><a href="#" style="font-weight:bold;" data-toggle="modal" data-target="#send_message_modal">Send Message</a></li>
-	                    <li class="dropdown"><a href="#" style="font-weight:bold;" data-toggle="modal" data-target="#generate_token_modal">Generate Token</a></li>
-						<li class="dropdown"><a href="#" style="font-weight:bold;" class="goto-page" data-page="settings">Settings</a></li>
+                    	<li class="dropdown"><a href="#" style="font-weight:bold;" data-toggle="modal" data-target="#send_money_modal" data-lang="SEND_NFD">Send NFD</a></li>
+                    	<li class="dropdown"><a href="#" style="font-weight:bold;" data-toggle="modal" data-target="#send_message_modal" data-lang="SEND_MESSAGE">Send Message</a></li>
+	                    <li class="dropdown"><a href="#" style="font-weight:bold;" data-toggle="modal" data-target="#generate_token_modal" data-lang="GENERATE_TOKEN">Generate Token</a></li>
+						<li class="dropdown"><a href="#" style="font-weight:bold;" class="goto-page" data-page="settings" data-lang="SETTINGS">Settings</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-question-circle"></i>
@@ -114,7 +114,7 @@
 	                <section class="content-header"><h1>Dashboard</h1></section>
 	                
 	                <section class="content">
-	                	<div class="alert-danger alert alert-no-icon" id="dashboard_message" style="display:none;padding:5px;padding-left:5px;margin-bottom:15px;"><b>Warning!</b>: Your account does not have a public key! This means it's not as protected as other accounts. You must make an outgoing transaction to fix this issue (<a href="#" data-toggle="modal" data-target="#send_message_modal">send a message</a>, <a href="#" data-toggle="modal" data-target="#register_alias_modal">buy an alias</a>, <a href="#" data-toggle="modal" data-target="#send_money_modal">send NFD</a>, ...)</div>
+	                	<div class="alert-danger alert alert-no-icon" id="dashboard_message" style="display:none;padding:5px;padding-left:5px;margin-bottom:15px;"><b>Warning!</b>: Your account does not have a public key! This means it's not as protected as other accounts. You must make an outgoing transaction to fix this issue (<a href="#" data-toggle="modal" data-target="#send_message_modal">send a message</a>, <a href="#" data-toggle="modal" data-target="#register_alias_modal">buy an alias</a>, <a href="#" data-toggle="modal" data-target="#send_money_modal" data-lang="SEND_NFD">send NFD</a>, ...)</div>
 	               
 	                    <div class="row">
 	                        <div class="col-lg-3 col-xs-6">
@@ -2033,7 +2033,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Send NFD</h4>
+		        		<h4 class="modal-title" data-lang="SEND_NFD">Send NFD</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
@@ -2079,7 +2079,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		      			<input type="hidden" name="request_type" value="sendMoney" />
 		      			<input type="hidden" name="converted_account_id" value="" />
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Send NFD</button>
+				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="SEND_NFD">Send NFD</button>
 		      		</div>
 		    	</div>
 		  	</div>
@@ -2469,7 +2469,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 						<div class="user_info_modal_content data-never-loading" id="user_info_modal_actions" style="display:none;">
 							<div class="row">
 								<div class="col-xs-6 col-md-6" style="margin-left:auto;margin-right:auto;float:none;">
-									<button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#send_money_modal" data-account="">Send NFD</button>
+									<button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#send_money_modal" data-account="" data-lang="SEND_NFD">Send NFD</button>
 									<button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#send_message_modal" data-account="">Send a Message</button>
 									<button type="button" id="user_info_modal_add_as_contact" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#add_contact_modal" data-account="">Add as Contact</button>
 								</div>
@@ -2747,7 +2747,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    <ul class="dropdown-menu" data-container="body" role="menu" style="display:block;position:static;margin-bottom:5px;">
 		    	<li><a tabindex="-1" href="#" data-option="account_info">Account Info</a></li>
 		        <li><a tabindex="-1" href="#" data-option="add_contact">Add Contact</a></li>
-				<li><a tabindex="-1" href="#" data-option="send_nxt">Send NFD</a></li>
+				<li><a tabindex="-1" href="#" data-option="send_nxt" data-lang="SEND_NFD">Send NFD</a></li>
 		    </ul>
 		</div>
 		
@@ -2755,7 +2755,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    <ul class="dropdown-menu" data-container="body" role="menu" style="display:block;position:static;margin-bottom:5px;">
 		    	<li><a tabindex="-1" href="#" data-option="account_info">Account Info</a></li>
 		        <li><a tabindex="-1" href="#" data-option="update_contact">Update Contact</a></li>
-				<li><a tabindex="-1" href="#" data-option="send_nxt">Send NFD</a></li>
+				<li><a tabindex="-1" href="#" data-option="send_nxt" data-lang="SEND_NFD">Send NFD</a></li>
 		    </ul>
 		</div>
 		

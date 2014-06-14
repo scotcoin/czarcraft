@@ -8,6 +8,19 @@
 $(function() {
 	"use strict";
 
+	//load language tokens
+	$.ajax({
+		  dataType: "json",
+		  url: "/js/lang/lang.en.js",
+		  success: function(data){
+			  $('[data-lang]').each(function(){
+					$(this).text(data[$(this).attr('data-lang')]);
+			  });
+		  }
+		});
+	
+	
+	
 	//Enable sidebar toggle
 	$("[data-toggle='offcanvas']").click(function(e) {
 		e.preventDefault();

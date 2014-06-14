@@ -10,7 +10,7 @@ $(function() {
 
 	//load language tokens
 
-	var userLang = navigator.language || navigator.userLanguage;
+	var userLang = navigator.language || navigator.userLanguage || "en";
 	userLang = userLang.split('-')[0];
 	$.ajax({
 		  dataType: "json",

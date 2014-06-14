@@ -9,12 +9,15 @@ $(function() {
 	"use strict";
 
 	//load language tokens
+
+	var userLang = navigator.language || navigator.userLanguage;
+	userLang = userLang.split('-')[0];
 	$.ajax({
 		  dataType: "json",
-		  url: "/js/lang/lang.en.js",
+		  url: "/js/lang/lang."+userLang+".json",
 		  success: function(data){
 			  $('[data-lang]').each(function(){
-					$(this).text(data[$(this).attr('data-lang')]);
+				  $(this).text(data[$(this).attr('data-lang')]);
 			  });
 		  }
 		});

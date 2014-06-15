@@ -16,7 +16,7 @@ import java.util.Properties;
 
 public final class Nxt {
 
-    public static final String VERSION = "NFD 1.1.4";
+    public static final String VERSION = "NFD-1.1.4-20140615-A";
 
     private static final Properties defaultProperties = new Properties();
     static {

@@ -52,7 +52,7 @@ public final class BlockImpl implements Block {
             throw new NxtException.ValidationException("attempted to create a block with payloadLength " + payloadLength);
         }
 
-        this.version = version;        
+        this.version = version;
         this.timestamp = timestamp;
         this.previousBlockId = previousBlockId;
         this.totalAmountNQT = totalAmountNQT;
@@ -62,11 +62,6 @@ public final class BlockImpl implements Block {
         this.generatorPublicKey = generatorPublicKey;
         this.generationSignature = generationSignature;
         this.blockSignature = blockSignature;
-        
-        if (this.version!=3) {
-       	 	Logger.logDebugMessage("block version != 3: found block with version "+ this.version);
-       	 	Logger.logDebugMessage("Previous BlockId is "+ this.previousBlockId);       	
-       }
 
         this.previousBlockHash = previousBlockHash;
         this.blockTransactions = Collections.unmodifiableList(transactions);

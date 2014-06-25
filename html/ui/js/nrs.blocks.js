@@ -144,17 +144,16 @@ var NRS = (function(NRS, $, undefined) {
 
 			var nrConfirmations = confirmations + newBlocks.length;
 
-			if (confirmations <= 10) {
-				$(this).data("confirmations", nrConfirmations);
-				$(this).attr("data-content", NRS.formatAmount(nrConfirmations, false, true) + " confirmations");
-
+			$(this).data("confirmations", nrConfirmations);
+			$(this).attr("data-content", NRS.formatAmount(nrConfirmations, false, true) + " confirmations");
+			
+			if (confirmations <= 11) {
 				if (nrConfirmations > 10) {
 					nrConfirmations = '10+';
 				}
 				$(this).html(nrConfirmations);
-			} else {
-				$(this).attr("data-content", NRS.formatAmount(nrConfirmations, false, true) + " confirmations");
 			}
+	
 		});
 	}
 

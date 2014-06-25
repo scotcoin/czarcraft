@@ -102,16 +102,17 @@ var NRS = (function(NRS, $, undefined) {
 		var v1parts = v1.split('.');
 		var v2parts = v2.split('.');
 
-		function isValidPart(x) {
-			return /^\d+$/.test(x);
-		}
-
-		if (!v1parts.every(isValidPart) || !v2parts.every(isValidPart)) {
-			return NaN;
-		}
-
-		v1parts = v1parts.map(Number);
-		v2parts = v2parts.map(Number);
+// remove further checks because we want to use characters for version numbers
+//		function isValidPart(x) {
+//			return /^\d+$/.test(x);
+//		}
+//
+//		if (!v1parts.every(isValidPart) || !v2parts.every(isValidPart)) {
+//			return NaN;
+//		}
+//
+//		v1parts = v1parts.map(Number);
+//		v2parts = v2parts.map(Number);
 
 		for (var i = 0; i < v1parts.length; ++i) {
 			if (v2parts.length == i) {
@@ -229,7 +230,7 @@ var NRS = (function(NRS, $, undefined) {
 			}, "*");
 			$("#nrs_modal").modal("hide");
 		} else {
-			$("#nrs_update_iframe").attr("src", "https://bitbucket.org/JeanLucPicard/nxt/downloads/nxt-client-" + NRS.downloadedVersion.versionNr + ".zip");
+			$("#nrs_update_iframe").attr("src", "https://bitbucket.org/NFDcoin/nfdcoin/downloads/nfd-client-" + NRS.downloadedVersion.versionNr + ".zip");
 			$("#nrs_update_explanation").hide();
 			$("#nrs_update_drop_zone").show();
 

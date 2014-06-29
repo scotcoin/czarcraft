@@ -16,6 +16,7 @@ import static nxt.http.JSONResponses.INCORRECT_ALIAS_LENGTH;
 import static nxt.http.JSONResponses.INCORRECT_ALIAS_NAME;
 import static nxt.http.JSONResponses.INCORRECT_URI_LENGTH;
 import static nxt.http.JSONResponses.MISSING_ALIAS_NAME;
+import static nxt.http.JSONResponses.ERROR_ALIAS_USED;;
 
 public final class SetAlias extends CreateTransaction {
 
@@ -54,11 +55,8 @@ public final class SetAlias extends CreateTransaction {
         Account account = ParameterParser.getSenderAccount(req);
 
         Alias alias = Alias.getAlias(normalizedAlias);
-        if (alias != null && !alias.getAccount().getId().equals(account.getId())) {
-            JSONObject response = new JSONObject();
-            response.put("errorCode", 8);
-            response.put("errorDescription", "\"" + aliasName + "\" is already used");
-            return response;
+        if (alias != null && !alias.getAccount().getId().equals(account.getId())) {           
+            return ERROR_ALIAS_USED;
         }
 
         Attachment attachment = new Attachment.MessagingAliasAssignment(aliasName, aliasURI);

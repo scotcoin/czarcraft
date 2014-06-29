@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import static nxt.http.JSONResponses.INCORRECT_PERIOD;
 import static nxt.http.JSONResponses.MISSING_PERIOD;
+import static nxt.http.JSONResponses.ERROR_RECIPIENT_NO_PUBKEY;;
 
 public final class LeaseBalance extends CreateTransaction {
 
@@ -40,11 +41,8 @@ public final class LeaseBalance extends CreateTransaction {
         Account account = ParameterParser.getSenderAccount(req);
         Long recipient = ParameterParser.getRecipientId(req);
         Account recipientAccount = Account.getAccount(recipient);
-        if (recipientAccount == null || recipientAccount.getPublicKey() == null) {
-            JSONObject response = new JSONObject();
-            response.put("errorCode", 8);
-            response.put("errorDescription", "recipient account does not have public key");
-            return response;
+        if (recipientAccount == null || recipientAccount.getPublicKey() == null) {            
+            return ERROR_RECIPIENT_NO_PUBKEY;
         }
         Attachment attachment = new Attachment.AccountControlEffectiveBalanceLeasing(period);
         return createTransaction(req, account, recipient, 0, attachment);

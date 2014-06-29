@@ -12,7 +12,8 @@ public final class JSONResponses {
     public static final JSONStreamAware INCORRECT_ALIAS = incorrect("alias");
     public static final JSONStreamAware INCORRECT_ALIAS_LENGTH = incorrect("alias", "(length must be in [1.." + Constants.MAX_ALIAS_LENGTH + "] range)");
     public static final JSONStreamAware INCORRECT_ALIAS_NAME = incorrect("alias", "(must contain only digits and latin letters)");
-    public static final JSONStreamAware INCORRECT_URI_LENGTH = incorrect("uri", "(length must be not longer than " + Constants.MAX_ALIAS_URI_LENGTH + " characters)");
+    public static final JSONStreamAware ERROR_ALIAS_USED=error("aliasName is already used");
+    public static final JSONStreamAware INCORRECT_URI_LENGTH = incorrect("uri", "(length must be not longer than " + Constants.MAX_ALIAS_URI_LENGTH + " characters)");    
     public static final JSONStreamAware MISSING_SECRET_PHRASE = missing("secretPhrase");
     public static final JSONStreamAware INCORRECT_PUBLIC_KEY = incorrect("publicKey");
     public static final JSONStreamAware MISSING_ALIAS_NAME = missing("aliasName");
@@ -31,17 +32,14 @@ public final class JSONResponses {
     public static final JSONStreamAware MISSING_WEBSITE = missing("website");
     public static final JSONStreamAware INCORRECT_WEBSITE = incorrect("website");
     public static final JSONStreamAware MISSING_TOKEN = missing("token");
-    public static final JSONStreamAware INCORRECT_TOKEN = incorrect("token");
     public static final JSONStreamAware MISSING_ACCOUNT = missing("account");
     public static final JSONStreamAware INCORRECT_ACCOUNT = incorrect("account");
-    public static final JSONStreamAware MISSING_TIMESTAMP = missing("timestamp");
     public static final JSONStreamAware INCORRECT_TIMESTAMP = incorrect("timestamp");
     public static final JSONStreamAware UNKNOWN_ACCOUNT = unknown("account");
     public static final JSONStreamAware UNKNOWN_ALIAS = unknown("alias");
     public static final JSONStreamAware MISSING_ASSET = missing("asset");
     public static final JSONStreamAware UNKNOWN_ASSET = unknown("asset");
     public static final JSONStreamAware INCORRECT_ASSET = incorrect("asset");
-    public static final JSONStreamAware MISSING_ASSET_NAME = missing("assetName");
     public static final JSONStreamAware MISSING_BLOCK = missing("block");
     public static final JSONStreamAware UNKNOWN_BLOCK = unknown("block");
     public static final JSONStreamAware INCORRECT_BLOCK = incorrect("block");
@@ -52,7 +50,6 @@ public final class JSONResponses {
     public static final JSONStreamAware MISSING_TRANSACTION = missing("transaction");
     public static final JSONStreamAware UNKNOWN_TRANSACTION = unknown("transaction");
     public static final JSONStreamAware INCORRECT_TRANSACTION = incorrect("transaction");
-    public static final JSONStreamAware INCORRECT_ASSET_ISSUANCE_FEE = incorrect("fee", "(must be not less than 10'000 NFD)");
     public static final JSONStreamAware INCORRECT_ASSET_DESCRIPTION = incorrect("description", "(length must not exceed " + Constants.MAX_ASSET_DESCRIPTION_LENGTH + " characters)");
     public static final JSONStreamAware INCORRECT_ASSET_NAME = incorrect("name", "(must contain only digits and latin letters)");
     public static final JSONStreamAware INCORRECT_ASSET_NAME_LENGTH = incorrect("name", "(length must be in [" + Constants.MIN_ASSET_NAME_LENGTH + ".." + Constants.MAX_ASSET_NAME_LENGTH + "] range)");
@@ -60,7 +57,6 @@ public final class JSONResponses {
     public static final JSONStreamAware MISSING_NAME = missing("name");
     public static final JSONStreamAware MISSING_QUANTITY = missing("quantityQNT");
     public static final JSONStreamAware INCORRECT_QUANTITY = incorrect("quantity");
-    public static final JSONStreamAware INCORRECT_ASSET_QUANTITY = incorrect("quantity", "(must be in [1..5'000'000'000] range)");
     public static final JSONStreamAware INCORRECT_DECIMALS = incorrect("decimals");
     public static final JSONStreamAware MISSING_HOST = missing("host");
     public static final JSONStreamAware MISSING_DATE = missing("date");
@@ -74,6 +70,7 @@ public final class JSONResponses {
     public static final JSONStreamAware MISSING_MESSAGE = missing("message");
     public static final JSONStreamAware MISSING_RECIPIENT = missing("recipient");
     public static final JSONStreamAware INCORRECT_RECIPIENT = incorrect("recipient");
+    public static final JSONStreamAware ERROR_RECIPIENT_NO_PUBKEY = error("recipient account does not have public key");
     public static final JSONStreamAware INCORRECT_ARBITRARY_MESSAGE = incorrect("message", "(length must be not longer than " + Constants.MAX_ARBITRARY_MESSAGE_LENGTH + " bytes)");
     public static final JSONStreamAware MISSING_AMOUNT = missing("amountNQT");
     public static final JSONStreamAware INCORRECT_AMOUNT = incorrect("amount");
@@ -96,6 +93,7 @@ public final class JSONResponses {
     public static final JSONStreamAware MISSING_PERIOD = missing("period");
     public static final JSONStreamAware INCORRECT_PERIOD = incorrect("period", "(period must be at least 1440 blocks)");
     public static final JSONStreamAware INCORRECT_UNSIGNED_BYTES = incorrect("unsignedTransactionBytes");
+    public static final JSONStreamAware INCORRECT_UNSIGNED_BYTES_ALREADY_SIGNED = incorrect("\"unsignedTransactionBytes\" - transaction is already signed");
     public static final JSONStreamAware MISSING_UNSIGNED_BYTES = missing("unsignedTransactionBytes");
     public static final JSONStreamAware MISSING_SIGNATURE_HASH = missing("signatureHash");
     public static final JSONStreamAware MISSING_SECRET_PHRASE_OR_PUBLIC_KEY = missing("secretPhrase", "publicKey");
@@ -178,6 +176,13 @@ public final class JSONResponses {
         return JSON.prepare(response);
     }
 
+    private static JSONStreamAware error(String message) {
+        JSONObject response = new JSONObject();
+        response.put("errorCode", 8);
+        response.put("errorDescription", "Error " + message);
+        return JSON.prepare(response);
+    }
+    
     private static JSONStreamAware unknown(String objectName) {
         JSONObject response = new JSONObject();
         response.put("errorCode", 5);

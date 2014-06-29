@@ -11,6 +11,7 @@ import org.json.simple.JSONStreamAware;
 import javax.servlet.http.HttpServletRequest;
 
 import static nxt.http.JSONResponses.INCORRECT_UNSIGNED_BYTES;
+import static nxt.http.JSONResponses.INCORRECT_UNSIGNED_BYTES_ALREADY_SIGNED;
 import static nxt.http.JSONResponses.MISSING_SECRET_PHRASE;
 import static nxt.http.JSONResponses.MISSING_UNSIGNED_BYTES;
 
@@ -38,11 +39,8 @@ public final class SignTransaction extends APIServlet.APIRequestHandler {
             byte[] bytes = Convert.parseHexString(transactionBytes);
             Transaction transaction = Nxt.getTransactionProcessor().parseTransaction(bytes);
             transaction.validateAttachment();
-            if (transaction.getSignature() != null) {
-                JSONObject response = new JSONObject();
-                response.put("errorCode", 4);
-                response.put("errorDescription", "Incorrect \"unsignedTransactionBytes\" - transaction is already signed");
-                return response;
+            if (transaction.getSignature() != null) {                
+                return INCORRECT_UNSIGNED_BYTES_ALREADY_SIGNED;
             }
             transaction.sign(secretPhrase);
             JSONObject response = new JSONObject();

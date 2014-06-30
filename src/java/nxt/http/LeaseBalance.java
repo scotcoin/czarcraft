@@ -9,10 +9,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_PERIOD;
-import static nxt.http.JSONResponses.MISSING_PERIOD;
-import static nxt.http.JSONResponses.ERROR_RECIPIENT_NO_PUBKEY;;
-
 public final class LeaseBalance extends CreateTransaction {
 
     static final LeaseBalance instance = new LeaseBalance();
@@ -26,23 +22,23 @@ public final class LeaseBalance extends CreateTransaction {
 
         String periodString = Convert.emptyToNull(req.getParameter("period"));
         if (periodString == null) {
-            return MISSING_PERIOD;
+            return JSONI18NResponses.getErrorResponse("MISSING_PERIOD");
         }
         short period;
         try {
             period = Short.parseShort(periodString);
             if (period < 1440) {
-                return INCORRECT_PERIOD;
+                return JSONI18NResponses.getErrorResponse("INCORRECT_PERIOD");
             }
         } catch (NumberFormatException e) {
-            return INCORRECT_PERIOD;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_PERIOD");
         }
 
         Account account = ParameterParser.getSenderAccount(req);
         Long recipient = ParameterParser.getRecipientId(req);
         Account recipientAccount = Account.getAccount(recipient);
         if (recipientAccount == null || recipientAccount.getPublicKey() == null) {            
-            return ERROR_RECIPIENT_NO_PUBKEY;
+            return JSONI18NResponses.getErrorResponse("ERROR_RECIPIENT_NO_PUBKEY");
         }
         Attachment attachment = new Attachment.AccountControlEffectiveBalanceLeasing(period);
         return createTransaction(req, account, recipient, 0, attachment);

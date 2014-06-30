@@ -9,9 +9,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_ARBITRARY_MESSAGE;
-import static nxt.http.JSONResponses.MISSING_MESSAGE;
-
 public final class SendMessage extends CreateTransaction {
 
     static final SendMessage instance = new SendMessage();
@@ -27,17 +24,17 @@ public final class SendMessage extends CreateTransaction {
 
         String messageValue = req.getParameter("message");
         if (messageValue == null) {
-            return MISSING_MESSAGE;
+            return JSONI18NResponses.getErrorResponse("MISSING_MESSAGE");
         }
 
         byte[] message;
         try {
             message = Convert.parseHexString(messageValue);
         } catch (RuntimeException e) {
-            return INCORRECT_ARBITRARY_MESSAGE;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_ARBITRARY_MESSAGE");
         }
         if (message.length > Constants.MAX_ARBITRARY_MESSAGE_LENGTH) {
-            return INCORRECT_ARBITRARY_MESSAGE;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_ARBITRARY_MESSAGE");
         }
 
         Account account = ParameterParser.getSenderAccount(req);

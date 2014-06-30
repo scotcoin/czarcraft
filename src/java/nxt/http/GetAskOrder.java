@@ -6,8 +6,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.UNKNOWN_ORDER;
-
 public final class GetAskOrder extends APIServlet.APIRequestHandler {
 
     static final GetAskOrder instance = new GetAskOrder();
@@ -21,7 +19,7 @@ public final class GetAskOrder extends APIServlet.APIRequestHandler {
         Long orderId = ParameterParser.getOrderId(req);
         Order.Ask askOrder = Order.Ask.getAskOrder(orderId);
         if (askOrder == null) {
-            return UNKNOWN_ORDER;
+            return JSONI18NResponses.getErrorResponse("UNKNOWN_ORDER");
         }
         return JSONData.askOrder(askOrder);
     }

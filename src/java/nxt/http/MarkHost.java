@@ -7,15 +7,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_DATE;
-import static nxt.http.JSONResponses.INCORRECT_HOST;
-import static nxt.http.JSONResponses.INCORRECT_WEIGHT;
-import static nxt.http.JSONResponses.MISSING_DATE;
-import static nxt.http.JSONResponses.MISSING_HOST;
-import static nxt.http.JSONResponses.MISSING_SECRET_PHRASE;
-import static nxt.http.JSONResponses.MISSING_WEIGHT;
-
-
 public final class MarkHost extends APIServlet.APIRequestHandler {
 
     static final MarkHost instance = new MarkHost();
@@ -32,27 +23,27 @@ public final class MarkHost extends APIServlet.APIRequestHandler {
         String weightValue = req.getParameter("weight");
         String dateValue = req.getParameter("date");
         if (secretPhrase == null) {
-            return MISSING_SECRET_PHRASE;
+            return JSONI18NResponses.getErrorResponse("MISSING_SECRET_PHRASE");
         } else if (host == null) {
-            return MISSING_HOST;
+            return JSONI18NResponses.getErrorResponse("MISSING_HOST");
         } else if (weightValue == null) {
-            return MISSING_WEIGHT;
+            return JSONI18NResponses.getErrorResponse("MISSING_WEIGHT");
         } else if (dateValue == null) {
-            return MISSING_DATE;
+            return JSONI18NResponses.getErrorResponse("MISSING_DATE");
         }
 
         if (host.length() > 100) {
-            return INCORRECT_HOST;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_HOST");
         }
 
         int weight;
         try {
             weight = Integer.parseInt(weightValue);
             if (weight <= 0 || weight > Constants.MAX_BALANCE_NXT) {
-                return INCORRECT_WEIGHT;
+                return JSONI18NResponses.getErrorResponse("INCORRECT_WEIGHT");
             }
         } catch (NumberFormatException e) {
-            return INCORRECT_WEIGHT;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_WEIGHT");
         }
 
         try {
@@ -64,7 +55,7 @@ public final class MarkHost extends APIServlet.APIRequestHandler {
             return response;
 
         } catch (RuntimeException e) {
-            return INCORRECT_DATE;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_DATE");
         }
 
     }

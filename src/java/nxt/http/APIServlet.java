@@ -17,14 +17,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
-import static nxt.http.JSONResponses.ERROR_INCORRECT_REQUEST;
-import static nxt.http.JSONResponses.ERROR_NOT_ALLOWED;
-import static nxt.http.JSONResponses.POST_REQUIRED;
-
 public final class APIServlet extends HttpServlet {
-
+	
     abstract static class APIRequestHandler {
 
         private final List<String> parameters;
@@ -134,34 +131,40 @@ public final class APIServlet extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
-        resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate, private");
+    	
+        String lang=req.getParameter("lang");        
+        
+        if (lang!= null) {
+        	JSONI18NResponses.setDefaultLocale(Locale.forLanguageTag(lang));
+        } else JSONI18NResponses.setDefaultLocale(Locale.ROOT);
+        
+    	resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate, private");
         resp.setHeader("Pragma", "no-cache");
         resp.setDateHeader("Expires", 0);
 
         JSONStreamAware response = JSON.emptyJSON;
-
+        
         try {
 
             if (API.allowedBotHosts != null && ! API.allowedBotHosts.contains(req.getRemoteHost())) {
-                response = ERROR_NOT_ALLOWED;
+                response = JSONI18NResponses.getErrorResponse("ERROR_NOT_ALLOWED");
                 return;
             }
 
             String requestType = req.getParameter("requestType");
             if (requestType == null) {
-                response = ERROR_INCORRECT_REQUEST;
+            	response = JSONI18NResponses.getErrorResponse("ERROR_INCORRECT_REQUEST");
                 return;
             }
 
             APIRequestHandler apiRequestHandler = apiRequestHandlers.get(requestType);
             if (apiRequestHandler == null) {
-                response = ERROR_INCORRECT_REQUEST;
+            	response = JSONI18NResponses.getErrorResponse("ERROR_INCORRECT_REQUEST");
                 return;
             }
 
             if (enforcePost && apiRequestHandler.requirePost() && ! "POST".equals(req.getMethod())) {
-                response = POST_REQUIRED;
+            	response = JSONI18NResponses.getErrorResponse("POST_REQUIRED");
                 return;
             }
 
@@ -171,7 +174,7 @@ public final class APIServlet extends HttpServlet {
                 response = e.getErrorResponse();
             } catch (NxtException |RuntimeException e) {
                 Logger.logDebugMessage("Error processing API request", e);
-                response = ERROR_INCORRECT_REQUEST;
+                response = JSONI18NResponses.getErrorResponse("ERROR_INCORRECT_REQUEST");
             }
 
         } finally {

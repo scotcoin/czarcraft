@@ -10,43 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static nxt.http.JSONResponses.INCORRECT_ACCOUNT;
-import static nxt.http.JSONResponses.INCORRECT_AMOUNT;
-import static nxt.http.JSONResponses.INCORRECT_ASSET;
-import static nxt.http.JSONResponses.INCORRECT_FEE;
-import static nxt.http.JSONResponses.INCORRECT_ORDER;
-import static nxt.http.JSONResponses.INCORRECT_PRICE;
-import static nxt.http.JSONResponses.INCORRECT_PUBLIC_KEY;
-import static nxt.http.JSONResponses.INCORRECT_QUANTITY;
-import static nxt.http.JSONResponses.INCORRECT_RECIPIENT;
-import static nxt.http.JSONResponses.INCORRECT_TIMESTAMP;
-import static nxt.http.JSONResponses.MISSING_ACCOUNT;
-import static nxt.http.JSONResponses.MISSING_AMOUNT;
-import static nxt.http.JSONResponses.MISSING_ASSET;
-import static nxt.http.JSONResponses.MISSING_FEE;
-import static nxt.http.JSONResponses.MISSING_ORDER;
-import static nxt.http.JSONResponses.MISSING_PRICE;
-import static nxt.http.JSONResponses.MISSING_QUANTITY;
-import static nxt.http.JSONResponses.MISSING_RECIPIENT;
-import static nxt.http.JSONResponses.MISSING_SECRET_PHRASE_OR_PUBLIC_KEY;
-import static nxt.http.JSONResponses.UNKNOWN_ACCOUNT;
-import static nxt.http.JSONResponses.UNKNOWN_ASSET;
-
 final class ParameterParser {
 
     static long getAmountNQT(HttpServletRequest req) throws ParameterException {
         String amountValueNQT = Convert.emptyToNull(req.getParameter("amountNQT"));
         if (amountValueNQT == null) {
-            throw new ParameterException(MISSING_AMOUNT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_AMOUNT"));
         }
         long amountNQT;
         try {
             amountNQT = Long.parseLong(amountValueNQT);
         } catch (RuntimeException e) {
-            throw new ParameterException(INCORRECT_AMOUNT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_AMOUNT"));
         }
         if (amountNQT <= 0 || amountNQT >= Constants.MAX_BALANCE_NQT) {
-            throw new ParameterException(INCORRECT_AMOUNT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_AMOUNT"));
         }
         return amountNQT;
     }
@@ -54,16 +32,16 @@ final class ParameterParser {
     static long getFeeNQT(HttpServletRequest req) throws ParameterException {
         String feeValueNQT = Convert.emptyToNull(req.getParameter("feeNQT"));
         if (feeValueNQT == null) {
-            throw new ParameterException(MISSING_FEE);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_FEE"));
         }
         long feeNQT;
         try {
             feeNQT = Long.parseLong(feeValueNQT);
         } catch (RuntimeException e) {
-            throw new ParameterException(INCORRECT_FEE);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_FEE"));
         }
         if (feeNQT <= 0 || feeNQT >= Constants.MAX_BALANCE_NQT) {
-            throw new ParameterException(INCORRECT_FEE);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_FEE"));
         }
         return feeNQT;
     }
@@ -71,16 +49,16 @@ final class ParameterParser {
     static long getPriceNQT(HttpServletRequest req) throws ParameterException {
         String priceValueNQT = Convert.emptyToNull(req.getParameter("priceNQT"));
         if (priceValueNQT == null) {
-            throw new ParameterException(MISSING_PRICE);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_PRICE"));
         }
         long priceNQT;
         try {
             priceNQT = Long.parseLong(priceValueNQT);
         } catch (RuntimeException e) {
-            throw new ParameterException(INCORRECT_PRICE);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_PRICE"));
         }
         if (priceNQT <= 0 || priceNQT > Constants.MAX_BALANCE_NQT) {
-            throw new ParameterException(INCORRECT_PRICE);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_PRICE"));
         }
         return priceNQT;
     }
@@ -88,17 +66,17 @@ final class ParameterParser {
     static Asset getAsset(HttpServletRequest req) throws ParameterException {
         String assetValue = Convert.emptyToNull(req.getParameter("asset"));
         if (assetValue == null) {
-            throw new ParameterException(MISSING_ASSET);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_ASSET"));
         }
         Asset asset;
         try {
             Long assetId = Convert.parseUnsignedLong(assetValue);
             asset = Asset.getAsset(assetId);
         } catch (RuntimeException e) {
-            throw new ParameterException(INCORRECT_ASSET);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_ASSET"));
         }
         if (asset == null) {
-            throw new ParameterException(UNKNOWN_ASSET);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("UNKNOWN_ASSET"));
         }
         return asset;
     }
@@ -106,16 +84,16 @@ final class ParameterParser {
     static long getQuantityQNT(HttpServletRequest req) throws ParameterException {
         String quantityValueQNT = Convert.emptyToNull(req.getParameter("quantityQNT"));
         if (quantityValueQNT == null) {
-            throw new ParameterException(MISSING_QUANTITY);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_QUANTITY"));
         }
         long quantityQNT;
         try {
             quantityQNT = Long.parseLong(quantityValueQNT);
         } catch (RuntimeException e) {
-            throw new ParameterException(INCORRECT_QUANTITY);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_QUANTITY"));
         }
         if (quantityQNT <= 0 || quantityQNT > Constants.MAX_ASSET_QUANTITY_QNT) {
-            throw new ParameterException(INCORRECT_QUANTITY);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_QUANTITY"));
         }
         return quantityQNT;
     }
@@ -123,12 +101,12 @@ final class ParameterParser {
     static Long getOrderId(HttpServletRequest req) throws ParameterException {
         String orderValue = Convert.emptyToNull(req.getParameter("order"));
         if (orderValue == null) {
-            throw new ParameterException(MISSING_ORDER);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_ORDER"));
         }
         try {
             return Convert.parseUnsignedLong(orderValue);
         } catch (RuntimeException e) {
-            throw new ParameterException(INCORRECT_ORDER);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_ORDER"));
         }
     }
 
@@ -142,13 +120,13 @@ final class ParameterParser {
             try {
                 account = Account.getAccount(Convert.parseHexString(publicKeyString));
             } catch (RuntimeException e) {
-                throw new ParameterException(INCORRECT_PUBLIC_KEY);
+                throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_PUBLIC_KEY"));
             }
         } else {
-            throw new ParameterException(MISSING_SECRET_PHRASE_OR_PUBLIC_KEY);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_SECRET_PHRASE_OR_PUBLIC_KEY"));
         }
         if (account == null) {
-            throw new ParameterException(UNKNOWN_ACCOUNT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("UNKNOWN_ACCOUNT"));
         }
         return account;
     }
@@ -156,23 +134,23 @@ final class ParameterParser {
     static Account getAccount(HttpServletRequest req) throws ParameterException {
         String accountValue = Convert.emptyToNull(req.getParameter("account"));
         if (accountValue == null) {
-            throw new ParameterException(MISSING_ACCOUNT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_ACCOUNT"));
         }
         try {
             Account account = Account.getAccount(Convert.parseAccountId(accountValue));
             if (account == null) {
-                throw new ParameterException(UNKNOWN_ACCOUNT);
+                throw new ParameterException(JSONI18NResponses.getErrorResponse("UNKNOWN_ACCOUNT"));
             }
             return account;
         } catch (RuntimeException e) {
-            throw new ParameterException(INCORRECT_ACCOUNT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_ACCOUNT"));
         }
     }
 
     static List<Account> getAccounts(HttpServletRequest req) throws ParameterException {
         String[] accountValues = req.getParameterValues("account");
         if (accountValues == null || accountValues.length == 0) {
-            throw new ParameterException(MISSING_ACCOUNT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_ACCOUNT"));
         }
         List<Account> result = new ArrayList<>();
         for (String accountValue : accountValues) {
@@ -182,11 +160,11 @@ final class ParameterParser {
             try {
                 Account account = Account.getAccount(Convert.parseAccountId(accountValue));
                 if (account == null) {
-                    throw new ParameterException(UNKNOWN_ACCOUNT);
+                    throw new ParameterException(JSONI18NResponses.getErrorResponse("UNKNOWN_ACCOUNT"));
                 }
                 result.add(account);
             } catch (RuntimeException e) {
-                throw new ParameterException(INCORRECT_ACCOUNT);
+                throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_ACCOUNT"));
             }
         }
         return result;
@@ -201,10 +179,10 @@ final class ParameterParser {
         try {
             timestamp = Integer.parseInt(timestampValue);
         } catch (NumberFormatException e) {
-            throw new ParameterException(INCORRECT_TIMESTAMP);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_TIMESTAMP"));
         }
         if (timestamp < 0) {
-            throw new ParameterException(INCORRECT_TIMESTAMP);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_TIMESTAMP"));
         }
         return timestamp;
     }
@@ -212,16 +190,16 @@ final class ParameterParser {
     static Long getRecipientId(HttpServletRequest req) throws ParameterException {
         String recipientValue = Convert.emptyToNull(req.getParameter("recipient"));
         if (recipientValue == null || "0".equals(recipientValue)) {
-            throw new ParameterException(MISSING_RECIPIENT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("MISSING_RECIPIENT"));
         }
         Long recipientId;
         try {
             recipientId = Convert.parseAccountId(recipientValue);
         } catch (RuntimeException e) {
-            throw new ParameterException(INCORRECT_RECIPIENT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_RECIPIENT"));
         }
         if (recipientId == null) {
-            throw new ParameterException(INCORRECT_RECIPIENT);
+            throw new ParameterException(JSONI18NResponses.getErrorResponse("INCORRECT_RECIPIENT"));
         }
         return recipientId;
     }

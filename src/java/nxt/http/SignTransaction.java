@@ -10,11 +10,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_UNSIGNED_BYTES;
-import static nxt.http.JSONResponses.INCORRECT_UNSIGNED_BYTES_ALREADY_SIGNED;
-import static nxt.http.JSONResponses.MISSING_SECRET_PHRASE;
-import static nxt.http.JSONResponses.MISSING_UNSIGNED_BYTES;
-
 public final class SignTransaction extends APIServlet.APIRequestHandler {
 
     static final SignTransaction instance = new SignTransaction();
@@ -28,11 +23,11 @@ public final class SignTransaction extends APIServlet.APIRequestHandler {
 
         String transactionBytes = Convert.emptyToNull(req.getParameter("unsignedTransactionBytes"));
         if (transactionBytes == null) {
-            return MISSING_UNSIGNED_BYTES;
+            return JSONI18NResponses.getErrorResponse("MISSING_UNSIGNED_BYTES");
         }
         String secretPhrase = Convert.emptyToNull(req.getParameter("secretPhrase"));
         if (secretPhrase == null) {
-            return MISSING_SECRET_PHRASE;
+            return JSONI18NResponses.getErrorResponse("MISSING_SECRET_PHRASE");
         }
 
         try {
@@ -40,7 +35,7 @@ public final class SignTransaction extends APIServlet.APIRequestHandler {
             Transaction transaction = Nxt.getTransactionProcessor().parseTransaction(bytes);
             transaction.validateAttachment();
             if (transaction.getSignature() != null) {                
-                return INCORRECT_UNSIGNED_BYTES_ALREADY_SIGNED;
+                return JSONI18NResponses.getErrorResponse("INCORRECT_UNSIGNED_BYTES_ALREADY_SIGNED");
             }
             transaction.sign(secretPhrase);
             JSONObject response = new JSONObject();
@@ -52,7 +47,7 @@ public final class SignTransaction extends APIServlet.APIRequestHandler {
             return response;
         } catch (NxtException.ValidationException|RuntimeException e) {
             //Logger.logDebugMessage(e.getMessage(), e);
-            return INCORRECT_UNSIGNED_BYTES;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_UNSIGNED_BYTES");
         }
     }
 

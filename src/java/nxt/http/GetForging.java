@@ -10,11 +10,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.MISSING_SECRET_PHRASE;
-import static nxt.http.JSONResponses.NOT_FORGING;
-import static nxt.http.JSONResponses.UNKNOWN_ACCOUNT;
-
-
 public final class GetForging extends APIServlet.APIRequestHandler {
 
     static final GetForging instance = new GetForging();
@@ -28,16 +23,16 @@ public final class GetForging extends APIServlet.APIRequestHandler {
 
         String secretPhrase = req.getParameter("secretPhrase");
         if (secretPhrase == null) {
-            return MISSING_SECRET_PHRASE;
+            return JSONI18NResponses.getErrorResponse("MISSING_SECRET_PHRASE");
         }
         Account account = Account.getAccount(Crypto.getPublicKey(secretPhrase));
         if (account == null) {
-            return UNKNOWN_ACCOUNT;
+            return JSONI18NResponses.getErrorResponse("UNKNOWN_ACCOUNT");
         }
 
         Generator generator = Generator.getGenerator(secretPhrase);
         if (generator == null) {
-            return NOT_FORGING;
+            return JSONI18NResponses.getErrorResponse("NOT_FORGING");
         }
 
         JSONObject response = new JSONObject();

@@ -9,9 +9,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_TRANSACTION_BYTES;
-import static nxt.http.JSONResponses.MISSING_TRANSACTION_BYTES;
-
 public final class ParseTransaction extends APIServlet.APIRequestHandler {
 
     static final ParseTransaction instance = new ParseTransaction();
@@ -25,7 +22,7 @@ public final class ParseTransaction extends APIServlet.APIRequestHandler {
 
         String transactionBytes = req.getParameter("transactionBytes");
         if (transactionBytes == null) {
-            return MISSING_TRANSACTION_BYTES;
+            return JSONI18NResponses.getErrorResponse("MISSING_TRANSACTION_BYTES");
         }
         JSONObject response;
         try {
@@ -36,7 +33,7 @@ public final class ParseTransaction extends APIServlet.APIRequestHandler {
             response.put("verify", transaction.verify());
         } catch (NxtException.ValidationException|RuntimeException e) {
             //Logger.logDebugMessage(e.getMessage(), e);
-            return INCORRECT_TRANSACTION_BYTES;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_TRANSACTION_BYTES");
         }
         return response;
     }

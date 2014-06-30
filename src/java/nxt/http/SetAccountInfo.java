@@ -9,9 +9,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_ACCOUNT_DESCRIPTION_LENGTH;
-import static nxt.http.JSONResponses.INCORRECT_ACCOUNT_NAME_LENGTH;
-
 public final class SetAccountInfo extends CreateTransaction {
 
     static final SetAccountInfo instance = new SetAccountInfo();
@@ -27,11 +24,11 @@ public final class SetAccountInfo extends CreateTransaction {
         String description = Convert.nullToEmpty(req.getParameter("description")).trim();
 
         if (name.length() > Constants.MAX_ACCOUNT_NAME_LENGTH) {
-            return INCORRECT_ACCOUNT_NAME_LENGTH;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_ACCOUNT_NAME_LENGTH");
         }
 
         if (description.length() > Constants.MAX_ACCOUNT_DESCRIPTION_LENGTH) {
-            return INCORRECT_ACCOUNT_DESCRIPTION_LENGTH;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_ACCOUNT_DESCRIPTION_LENGTH");
         }
 
         Account account = ParameterParser.getSenderAccount(req);

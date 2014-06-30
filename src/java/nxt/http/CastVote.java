@@ -9,10 +9,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_POLL;
-import static nxt.http.JSONResponses.INCORRECT_VOTE;
-import static nxt.http.JSONResponses.MISSING_POLL;
-
 public final class CastVote extends CreateTransaction {
 
     static final CastVote instance = new CastVote();
@@ -27,7 +23,7 @@ public final class CastVote extends CreateTransaction {
         String pollValue = req.getParameter("poll");
 
         if (pollValue == null) {
-            return MISSING_POLL;
+            return JSONI18NResponses.getErrorResponse("MISSING_POLL");
         }
 
         Poll pollData;
@@ -37,10 +33,10 @@ public final class CastVote extends CreateTransaction {
             if (pollData != null) {
                 numberOfOptions = pollData.getOptions().length;
             } else {
-                return INCORRECT_POLL;
+                return JSONI18NResponses.getErrorResponse("INCORRECT_POLL");
             }
         } catch (RuntimeException e) {
-            return INCORRECT_POLL;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_POLL");
         }
 
         byte[] vote = new byte[numberOfOptions];
@@ -52,7 +48,7 @@ public final class CastVote extends CreateTransaction {
                 }
             }
         } catch (NumberFormatException e) {
-            return INCORRECT_VOTE;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_VOTE");
         }
 
         Account account = ParameterParser.getSenderAccount(req);

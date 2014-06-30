@@ -7,10 +7,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_TRANSACTION;
-import static nxt.http.JSONResponses.MISSING_TRANSACTION;
-import static nxt.http.JSONResponses.UNKNOWN_TRANSACTION;
-
 public final class GetTransaction extends APIServlet.APIRequestHandler {
 
     static final GetTransaction instance = new GetTransaction();
@@ -25,7 +21,7 @@ public final class GetTransaction extends APIServlet.APIRequestHandler {
         String transactionIdString = Convert.emptyToNull(req.getParameter("transaction"));
         String transactionFullHash = Convert.emptyToNull(req.getParameter("fullHash"));
         if (transactionIdString == null && transactionFullHash == null) {
-            return MISSING_TRANSACTION;
+            return JSONI18NResponses.getErrorResponse("MISSING_TRANSACTION");
         }
 
         Long transactionId = null;
@@ -37,17 +33,17 @@ public final class GetTransaction extends APIServlet.APIRequestHandler {
             } else {
                 transaction = Nxt.getBlockchain().getTransactionByFullHash(transactionFullHash);
                 if (transaction == null) {
-                    return UNKNOWN_TRANSACTION;
+                    return JSONI18NResponses.getErrorResponse("UNKNOWN_TRANSACTION");
                 }
             }
         } catch (RuntimeException e) {
-            return INCORRECT_TRANSACTION;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_TRANSACTION");
         }
 
         if (transaction == null) {
             transaction = Nxt.getTransactionProcessor().getUnconfirmedTransaction(transactionId);
             if (transaction == null) {
-                return UNKNOWN_TRANSACTION;
+                return JSONI18NResponses.getErrorResponse("UNKNOWN_TRANSACTION");
             }
             return JSONData.unconfirmedTransaction(transaction);
         } else {

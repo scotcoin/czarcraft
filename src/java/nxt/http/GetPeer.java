@@ -6,9 +6,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.MISSING_PEER;
-import static nxt.http.JSONResponses.UNKNOWN_PEER;
-
 public final class GetPeer extends APIServlet.APIRequestHandler {
 
     static final GetPeer instance = new GetPeer();
@@ -22,12 +19,12 @@ public final class GetPeer extends APIServlet.APIRequestHandler {
 
         String peerAddress = req.getParameter("peer");
         if (peerAddress == null) {
-            return MISSING_PEER;
+            return JSONI18NResponses.getErrorResponse("MISSING_PEER");
         }
 
         Peer peer = Peers.getPeer(peerAddress);
         if (peer == null) {
-            return UNKNOWN_PEER;
+            return JSONI18NResponses.getErrorResponse("UNKNOWN_PEER");
         }
 
         return JSONData.peer(peer);

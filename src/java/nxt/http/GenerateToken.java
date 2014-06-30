@@ -6,11 +6,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_WEBSITE;
-import static nxt.http.JSONResponses.MISSING_SECRET_PHRASE;
-import static nxt.http.JSONResponses.MISSING_WEBSITE;
-
-
 public final class GenerateToken extends APIServlet.APIRequestHandler {
 
     static final GenerateToken instance = new GenerateToken();
@@ -25,9 +20,9 @@ public final class GenerateToken extends APIServlet.APIRequestHandler {
         String secretPhrase = req.getParameter("secretPhrase");
         String website = req.getParameter("website");
         if (secretPhrase == null) {
-            return MISSING_SECRET_PHRASE;
+            return JSONI18NResponses.getErrorResponse("MISSING_SECRET_PHRASE");
         } else if (website == null) {
-            return MISSING_WEBSITE;
+            return JSONI18NResponses.getErrorResponse("MISSING_WEBSITE");
         }
 
         try {
@@ -40,7 +35,7 @@ public final class GenerateToken extends APIServlet.APIRequestHandler {
             return response;
 
         } catch (RuntimeException e) {
-            return INCORRECT_WEBSITE;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_WEBSITE");
         }
 
     }

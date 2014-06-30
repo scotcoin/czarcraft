@@ -9,9 +9,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_TRANSACTION_BYTES;
-import static nxt.http.JSONResponses.MISSING_TRANSACTION_BYTES;
-
 public final class BroadcastTransaction extends APIServlet.APIRequestHandler {
 
     static final BroadcastTransaction instance = new BroadcastTransaction();
@@ -25,7 +22,7 @@ public final class BroadcastTransaction extends APIServlet.APIRequestHandler {
 
         String transactionBytes = req.getParameter("transactionBytes");
         if (transactionBytes == null) {
-            return MISSING_TRANSACTION_BYTES;
+            return JSONI18NResponses.getErrorResponse("MISSING_TRANSACTION_BYTES");
         }
 
         try {
@@ -47,7 +44,7 @@ public final class BroadcastTransaction extends APIServlet.APIRequestHandler {
             return response;
 
         } catch (RuntimeException e) {
-            return INCORRECT_TRANSACTION_BYTES;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_TRANSACTION_BYTES");
         }
     }
 

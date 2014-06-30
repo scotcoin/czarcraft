@@ -8,8 +8,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.UNKNOWN_ORDER;
-
 public final class CancelAskOrder extends CreateTransaction {
 
     static final CancelAskOrder instance = new CancelAskOrder();
@@ -24,7 +22,7 @@ public final class CancelAskOrder extends CreateTransaction {
         Account account = ParameterParser.getSenderAccount(req);
         Order.Ask orderData = Order.Ask.getAskOrder(orderId);
         if (orderData == null || !orderData.getAccount().getId().equals(account.getId())) {
-            return UNKNOWN_ORDER;
+            return JSONI18NResponses.getErrorResponse("UNKNOWN_ORDER");
         }
         Attachment attachment = new Attachment.ColoredCoinsAskOrderCancellation(orderId);
         return createTransaction(req, account, attachment);

@@ -10,9 +10,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_ASSET_TRANSFER_COMMENT;
-import static nxt.http.JSONResponses.NOT_ENOUGH_ASSETS;
-
 public final class TransferAsset extends CreateTransaction {
 
     static final TransferAsset instance = new TransferAsset();
@@ -28,7 +25,7 @@ public final class TransferAsset extends CreateTransaction {
 
         String comment = Convert.nullToEmpty(req.getParameter("comment")).trim();
         if (comment.length() > Constants.MAX_ASSET_TRANSFER_COMMENT_LENGTH) {
-            return INCORRECT_ASSET_TRANSFER_COMMENT;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_ASSET_TRANSFER_COMMENT");
         }
 
         Asset asset = ParameterParser.getAsset(req);
@@ -37,7 +34,7 @@ public final class TransferAsset extends CreateTransaction {
 
         Long assetBalance = account.getUnconfirmedAssetBalanceQNT(asset.getId());
         if (assetBalance == null || quantityQNT > assetBalance) {
-            return NOT_ENOUGH_ASSETS;
+            return JSONI18NResponses.getErrorResponse("NOT_ENOUGH_ASSETS");
         }
 
         Attachment attachment = new Attachment.ColoredCoinsAssetTransfer(asset.getId(), quantityQNT, comment);

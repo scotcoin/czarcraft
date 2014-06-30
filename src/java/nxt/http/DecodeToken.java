@@ -5,10 +5,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_WEBSITE;
-import static nxt.http.JSONResponses.MISSING_TOKEN;
-import static nxt.http.JSONResponses.MISSING_WEBSITE;
-
 public final class DecodeToken extends APIServlet.APIRequestHandler {
 
     static final DecodeToken instance = new DecodeToken();
@@ -23,9 +19,9 @@ public final class DecodeToken extends APIServlet.APIRequestHandler {
         String website = req.getParameter("website");
         String tokenString = req.getParameter("token");
         if (website == null) {
-            return MISSING_WEBSITE;
+            return JSONI18NResponses.getErrorResponse("MISSING_WEBSITE");
         } else if (tokenString == null) {
-            return MISSING_TOKEN;
+            return JSONI18NResponses.getErrorResponse("MISSING_TOKEN");
         }
 
         try {
@@ -35,7 +31,7 @@ public final class DecodeToken extends APIServlet.APIRequestHandler {
             return JSONData.token(token);
 
         } catch (RuntimeException e) {
-            return INCORRECT_WEBSITE;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_WEBSITE");
         }
     }
 

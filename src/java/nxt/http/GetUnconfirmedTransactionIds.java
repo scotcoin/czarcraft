@@ -9,8 +9,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_ACCOUNT;
-
 public final class GetUnconfirmedTransactionIds extends APIServlet.APIRequestHandler {
 
     static final GetUnconfirmedTransactionIds instance = new GetUnconfirmedTransactionIds();
@@ -29,7 +27,7 @@ public final class GetUnconfirmedTransactionIds extends APIServlet.APIRequestHan
             try {
                 accountId = Convert.parseUnsignedLong(accountIdString);
             } catch (RuntimeException e) {
-                return INCORRECT_ACCOUNT;
+                return JSONI18NResponses.getErrorResponse("INCORRECT_ACCOUNT");
             }
         }
 

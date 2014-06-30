@@ -41,7 +41,7 @@ public final class GetNextBlockGenerators extends APIServlet.APIRequestHandler {
 
         Block curBlock = Nxt.getBlockchain().getLastBlock();
         if (curBlock.getHeight() < Constants.TRANSPARENT_FORGING_BLOCK_7) {
-            return JSONResponses.FEATURE_NOT_AVAILABLE;
+            return JSONI18NResponses.getErrorResponse("FEATURE_NOT_AVAILABLE");
         }
 
 

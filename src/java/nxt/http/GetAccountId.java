@@ -8,8 +8,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.MISSING_SECRET_PHRASE;
-
 public final class GetAccountId extends APIServlet.APIRequestHandler {
 
     static final GetAccountId instance = new GetAccountId();
@@ -23,7 +21,7 @@ public final class GetAccountId extends APIServlet.APIRequestHandler {
 
         String secretPhrase = req.getParameter("secretPhrase");
         if (secretPhrase == null) {
-            return MISSING_SECRET_PHRASE;
+            return JSONI18NResponses.getErrorResponse("MISSING_SECRET_PHRASE");
         }
 
         byte[] publicKey = Crypto.getPublicKey(secretPhrase);

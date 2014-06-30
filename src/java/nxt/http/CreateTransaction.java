@@ -16,14 +16,6 @@ import org.json.simple.JSONStreamAware;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
-import static nxt.http.JSONResponses.FEATURE_NOT_AVAILABLE;
-import static nxt.http.JSONResponses.INCORRECT_DEADLINE;
-import static nxt.http.JSONResponses.INCORRECT_FEE;
-import static nxt.http.JSONResponses.INCORRECT_REFERENCED_TRANSACTION;
-import static nxt.http.JSONResponses.MISSING_DEADLINE;
-import static nxt.http.JSONResponses.MISSING_SECRET_PHRASE;
-import static nxt.http.JSONResponses.NOT_ENOUGH_FUNDS;
-
 abstract class CreateTransaction extends APIServlet.APIRequestHandler {
 
     private static final String[] commonParameters = new String[] {"secretPhrase", "publicKey", "feeNQT",
@@ -55,36 +47,36 @@ abstract class CreateTransaction extends APIServlet.APIRequestHandler {
         boolean broadcast = !"false".equalsIgnoreCase(req.getParameter("broadcast"));
 
         if (secretPhrase == null && publicKeyValue == null) {
-            return MISSING_SECRET_PHRASE;
+            return JSONI18NResponses.getErrorResponse("MISSING_SECRET_PHRASE");
         } else if (deadlineValue == null) {
-            return MISSING_DEADLINE;
+            return JSONI18NResponses.getErrorResponse("MISSING_DEADLINE");
         }
 
         short deadline;
         try {
             deadline = Short.parseShort(deadlineValue);
             if (deadline < 1 || deadline > 1440) {
-                return INCORRECT_DEADLINE;
+                return JSONI18NResponses.getErrorResponse("INCORRECT_DEADLINE");
             }
         } catch (NumberFormatException e) {
-            return INCORRECT_DEADLINE;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_DEADLINE");
         }
 
         long feeNQT = ParameterParser.getFeeNQT(req);
         if (feeNQT < minimumFeeNQT()) {
-            return INCORRECT_FEE;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_FEE");
         }
 
         try {
             if (Convert.safeAdd(amountNQT, feeNQT) > senderAccount.getUnconfirmedBalanceNQT()) {
-                return NOT_ENOUGH_FUNDS;
+                return JSONI18NResponses.getErrorResponse("NOT_ENOUGH_FUNDS");
             }
         } catch (ArithmeticException e) {
-            return NOT_ENOUGH_FUNDS;
+            return JSONI18NResponses.getErrorResponse("NOT_ENOUGH_FUNDS");
         }
 
         if (referencedTransactionId != null) {
-            return INCORRECT_REFERENCED_TRANSACTION;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_REFERENCED_TRANSACTION");
         }
 
         JSONObject response = new JSONObject();
@@ -118,7 +110,7 @@ abstract class CreateTransaction extends APIServlet.APIRequestHandler {
             response.put("unsignedTransactionBytes", Convert.toHexString(transaction.getUnsignedBytes()));
 
         } catch (TransactionType.NotYetEnabledException e) {
-            return FEATURE_NOT_AVAILABLE;
+            return JSONI18NResponses.getErrorResponse("FEATURE_NOT_AVAILABLE");
         } catch (NxtException.ValidationException e) {
             response.put("error", e.getMessage());
         }

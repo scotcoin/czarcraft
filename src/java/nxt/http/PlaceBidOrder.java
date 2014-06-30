@@ -9,8 +9,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.NOT_ENOUGH_FUNDS;
-
 public final class PlaceBidOrder extends CreateTransaction {
 
     static final PlaceBidOrder instance = new PlaceBidOrder();
@@ -30,10 +28,10 @@ public final class PlaceBidOrder extends CreateTransaction {
 
         try {
             if (Convert.safeAdd(feeNQT, Convert.safeMultiply(priceNQT, quantityQNT)) > account.getUnconfirmedBalanceNQT()) {
-                return NOT_ENOUGH_FUNDS;
+                return JSONI18NResponses.getErrorResponse("NOT_ENOUGH_FUNDS");
             }
         } catch (ArithmeticException e) {
-            return NOT_ENOUGH_FUNDS;
+            return JSONI18NResponses.getErrorResponse("NOT_ENOUGH_FUNDS");
         }
 
         Attachment attachment = new Attachment.ColoredCoinsBidOrderPlacement(asset.getId(), quantityQNT, priceNQT);

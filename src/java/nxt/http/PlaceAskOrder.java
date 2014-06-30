@@ -8,8 +8,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.NOT_ENOUGH_ASSETS;
-
 public final class PlaceAskOrder extends CreateTransaction {
 
     static final PlaceAskOrder instance = new PlaceAskOrder();
@@ -28,7 +26,7 @@ public final class PlaceAskOrder extends CreateTransaction {
 
         Long assetBalance = account.getUnconfirmedAssetBalanceQNT(asset.getId());
         if (assetBalance == null || quantityQNT > assetBalance) {
-            return NOT_ENOUGH_ASSETS;
+            return JSONI18NResponses.getErrorResponse("NOT_ENOUGH_ASSETS");
         }
 
         Attachment attachment = new Attachment.ColoredCoinsAskOrderPlacement(asset.getId(), quantityQNT, priceNQT);

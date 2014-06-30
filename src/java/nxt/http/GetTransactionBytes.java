@@ -8,10 +8,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_TRANSACTION;
-import static nxt.http.JSONResponses.MISSING_TRANSACTION;
-import static nxt.http.JSONResponses.UNKNOWN_TRANSACTION;
-
 public final class GetTransactionBytes extends APIServlet.APIRequestHandler {
 
     static final GetTransactionBytes instance = new GetTransactionBytes();
@@ -25,7 +21,7 @@ public final class GetTransactionBytes extends APIServlet.APIRequestHandler {
 
         String transactionValue = req.getParameter("transaction");
         if (transactionValue == null) {
-            return MISSING_TRANSACTION;
+            return JSONI18NResponses.getErrorResponse("MISSING_TRANSACTION");
         }
 
         Long transactionId;
@@ -33,7 +29,7 @@ public final class GetTransactionBytes extends APIServlet.APIRequestHandler {
         try {
             transactionId = Convert.parseUnsignedLong(transactionValue);
         } catch (RuntimeException e) {
-            return INCORRECT_TRANSACTION;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_TRANSACTION");
         }
 
         transaction = Nxt.getBlockchain().getTransaction(transactionId);
@@ -41,7 +37,7 @@ public final class GetTransactionBytes extends APIServlet.APIRequestHandler {
         if (transaction == null) {
             transaction = Nxt.getTransactionProcessor().getUnconfirmedTransaction(transactionId);
             if (transaction == null) {
-                return UNKNOWN_TRANSACTION;
+                return JSONI18NResponses.getErrorResponse("UNKNOWN_TRANSACTION");
             }
         } else {
             response.put("confirmations", Nxt.getBlockchain().getLastBlock().getHeight() - transaction.getHeight());

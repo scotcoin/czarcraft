@@ -5,9 +5,6 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static nxt.http.JSONResponses.INCORRECT_HALLMARK;
-import static nxt.http.JSONResponses.MISSING_HALLMARK;
-
 public final class DecodeHallmark extends APIServlet.APIRequestHandler {
 
     static final DecodeHallmark instance = new DecodeHallmark();
@@ -21,7 +18,7 @@ public final class DecodeHallmark extends APIServlet.APIRequestHandler {
 
         String hallmarkValue = req.getParameter("hallmark");
         if (hallmarkValue == null) {
-            return MISSING_HALLMARK;
+            return JSONI18NResponses.getErrorResponse("MISSING_HALLMARK");
         }
 
         try {
@@ -31,7 +28,7 @@ public final class DecodeHallmark extends APIServlet.APIRequestHandler {
             return JSONData.hallmark(hallmark);
 
         } catch (RuntimeException e) {
-            return INCORRECT_HALLMARK;
+            return JSONI18NResponses.getErrorResponse("INCORRECT_HALLMARK");
         }
     }
 

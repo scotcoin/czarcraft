@@ -8,9 +8,6 @@ import org.json.simple.JSONStreamAware;
 import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 
-import static nxt.http.JSONResponses.MISSING_SIGNATURE_HASH;
-import static nxt.http.JSONResponses.MISSING_UNSIGNED_BYTES;
-
 public final class CalculateFullHash extends APIServlet.APIRequestHandler {
 
     static final CalculateFullHash instance = new CalculateFullHash();
@@ -26,9 +23,9 @@ public final class CalculateFullHash extends APIServlet.APIRequestHandler {
         String signatureHashString = Convert.emptyToNull(req.getParameter("signatureHash"));
 
         if (unsignedBytesString == null) {
-            return MISSING_UNSIGNED_BYTES;
+            return JSONI18NResponses.getErrorResponse("MISSING_UNSIGNED_BYTES");
         } else if (signatureHashString == null) {
-            return MISSING_SIGNATURE_HASH;
+            return JSONI18NResponses.getErrorResponse("MISSING_SIGNATURE_HASH");
         }
 
         MessageDigest digest = Crypto.sha256();

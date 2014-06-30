@@ -18,7 +18,7 @@ public class ResponseErrorResourceBundleFactory {
 		ResourceBundle rb = rbMap.get(key);
 
 		if (rb == null) {
-			rb = ResourceBundle.getBundle("localization", locale);
+			rb = ResourceBundle.getBundle("responseCodes", locale);
 			rbMap.put(key, rb);
 		}
 

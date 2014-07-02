@@ -80,7 +80,7 @@
 		"MESSAGE_ALIASHASAD":"If you want to type an alias, prepend it with the @ character.",
 		"ERROR_RECIPIENT_UNKNOWN_NOACTION":"The recipient account is an unknown account, meaning it has never had an incoming or outgoing transaction. Please double check your recipient address before submitting.",
 		"ERROR_PROBLEM_WITHRECIPIENT":"There is a problem with the recipient account:",
-		"ERROR_RECIPIENT_NOPUBKEY_NOACTION":"The recipient account does not have a public key, meaning it has never had an outgoing transaction. The account has a balance of $1 NFD. Please double check your recipient address before submitting.",
+		"ERROR_RECIPIENT_NOPUBKEY_NOACTION":"The recipient account does not have a public key, meaning it has never had an outgoing transaction. The account has a balance of $1 NFD. Please double check your recipient address before submitting."
 		
 		
 		

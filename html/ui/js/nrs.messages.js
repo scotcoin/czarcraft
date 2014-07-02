@@ -374,7 +374,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		if (!NRS.rememberPassword) {
 			if ($("#inline_message_password").val() == "") {
-				$.growl("Secret phrase is a required field.", {
+				$.growl(NRS.getLangString("ERROR_SECRET_REQUIREDFIELD"), {
 					"type": "danger"
 				});
 				return;
@@ -383,7 +383,7 @@ var NRS = (function(NRS, $, undefined) {
 			var accountId = NRS.generateAccountId(data.secretPhrase);
 
 			if (accountId != NRS.account) {
-				$.growl("Incorrect secret phrase.", {
+				$.growl(NRS.getLangString("ERROR_SECRET_INCORRECT"), {
 					"type": "danger"
 				});
 				return;
@@ -393,7 +393,7 @@ var NRS = (function(NRS, $, undefined) {
 		var message = $.trim($("#inline_message_text").val());
 
 		if (!message) {
-			$.growl("Message is a required field.", {
+			$.growl(NRS.getLangString("ERROR_MESSAGE_REQUIREDFIELD"), {
 				"type": "danger"
 			});
 			return;
@@ -411,7 +411,7 @@ var NRS = (function(NRS, $, undefined) {
 				"account": $("#inline_message_recipient").val()
 			}, function(response) {
 				if (!response.publicKey) {
-					$.growl("Could not find public key for recipient, which is necessary for sending encrypted messages.", {
+					$.growl(NRS.getLangString("ERROR_COULDNT_FIND_PUBLICKEY"), {
 						"type": "danger"
 					});
 				}
@@ -429,11 +429,11 @@ var NRS = (function(NRS, $, undefined) {
 
 		NRS.sendRequest("sendMessage", data, function(response, input) {
 			if (response.errorCode) {
-				$.growl(response.errorDescription ? response.errorDescription.escapeHTML() : "Unknown error occured.", {
+				$.growl(response.errorDescription ? response.errorDescription.escapeHTML() : NRS.getLangString("ERROR_UNKNOWNERROR"), {
 					type: "danger"
 				});
 			} else if (response.fullHash) {
-				$.growl("Message sent.", {
+				$.growl(NRS.getLangString("SUCCESS_MESSAGE_SENT"), {
 					type: "success"
 				});
 
@@ -447,7 +447,7 @@ var NRS = (function(NRS, $, undefined) {
 
 				//leave password alone until user moves to another page.
 			} else {
-				$.growl("An unknown error occured. Your message may or may not have been sent.", {
+				$.growl(NRS.getLangString("ERROR_UNKNOWN_MESSAGENOTSENT"), {
 					type: "danger"
 				});
 			}
@@ -459,11 +459,11 @@ var NRS = (function(NRS, $, undefined) {
 		data.message = data._extra.message;
 
 		if (!(data["_extra"] && data["_extra"].convertedAccount)) {
-			$.growl("Your message has been sent! <a href='#' data-account='" + NRS.getAccountFormatted(data, "recipient") + "' data-toggle='modal' data-target='#add_contact_modal' style='text-decoration:underline'>Add recipient to contacts?</a>", {
+			$.growl(NRS.getLangString("SUCCESS_MESSAGE_SENT")+"<a href='#' data-account='" + NRS.getAccountFormatted(data, "recipient") + "' data-toggle='modal' data-target='#add_contact_modal' style='text-decoration:underline'>"+NRS.getLangString("MESSAGE_QADDRECEPIENTS")+"</a>", {
 				"type": "success"
 			});
 		} else {
-			$.growl("Your message has been sent!", {
+			$.growl(NRS.getLangString("SUCCESS_MESSAGE_SENT"), {
 				"type": "success"
 			});
 		}

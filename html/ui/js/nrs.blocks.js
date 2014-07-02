@@ -106,7 +106,7 @@ var NRS = (function(NRS, $, undefined) {
 				$("#dashboard_message").hide();
 				$("#downloading_blockchain, #nrs_update_explanation_blockchain_sync").hide();
 				$("#show_console").show();
-				$.growl("The block chain is now up to date.", {
+				$.growl(NRS.getLangString("MESSAGE_BLOCKCHAIN_UPTODATE"), {
 					"type": "success"
 				});
 				NRS.checkAliasVersions();

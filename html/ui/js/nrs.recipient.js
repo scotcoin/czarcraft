@@ -56,11 +56,11 @@ var NRS = (function(NRS, $, undefined) {
 
 	NRS.forms.sendMoneyComplete = function(response, data) {
 		if (!(data["_extra"] && data["_extra"].convertedAccount) && !(data.recipient in NRS.contacts)) {
-			$.growl("NFD has been sent! <a href='#' data-account='" + NRS.getAccountFormatted(data, "recipient") + "' data-toggle='modal' data-target='#add_contact_modal' style='text-decoration:underline'>Add recipient to contacts?</a>", {
+			$.growl(NRS.getLangString("MESSAGE_NFD_SENT!")+" <a href='#' data-account='" + NRS.getAccountFormatted(data, "recipient") + "' data-toggle='modal' data-target='#add_contact_modal' style='text-decoration:underline'>"+NRS.getLangString("MESSAGE_QADDRECEPIENTS")+"</a>", {
 				"type": "success"
 			});
 		} else {
-			$.growl("NFD has been sent!", {
+			$.growl(NRS.getLangString("MESSAGE_NFD_SENT!"), {
 				"type": "success"
 			});
 		}
@@ -84,7 +84,7 @@ var NRS = (function(NRS, $, undefined) {
 			if (response.publicKey) {
 				callback({
 					"type": "info",
-					"message": "The recipient account has a public key and a balance of " + NRS.formatAmount(response.unconfirmedBalanceNQT, false, true) + "NFD.",
+					"message": NRS.getLangString("MESSAGE_RECIPIENT_HAS_BALANCEOF").replace(/$1/g, + NRS.formatAmount(response.unconfirmedBalanceNQT, false, true) + "NFD."),
 					"account": response
 				});
 			} else {
@@ -92,26 +92,26 @@ var NRS = (function(NRS, $, undefined) {
 					if (response.errorCode == 4) {
 						callback({
 							"type": "danger",
-							"message": "The recipient account is malformed, please adjust." + (!/^(NFD\-)/i.test(accountId) ? " If you want to type an alias, prepend it with the @ character." : ""),
+							"message": NRS.getLangString("ERROR_RECIPIENT_ACCOUNTMALFORMED") + (!/^(NFD\-)/i.test(accountId) ? " "+NRS.getLangString("MESSAGE_ALIASHASAD") : ""),
 							"account": null
 						});
 					} else if (response.errorCode == 5) {
 						callback({
 							"type": "warning",
-							"message": "The recipient account is an unknown account, meaning it has never had an incoming or outgoing transaction. Please double check your recipient address before submitting.",
+							"message": NRS.getLangString("ERROR_RECIPIENT_UNKNOWN_NOACTION"),
 							"account": null
 						});
 					} else {
 						callback({
 							"type": "danger",
-							"message": "There is a problem with the recipient account: " + response.errorDescription,
+							"message": NRS.getLangString("ERROR_PROBLEM_WITHRECIPIENT") + " " + response.errorDescription,
 							"account": null
 						});
 					}
 				} else {
 					callback({
 						"type": "warning",
-						"message": "The recipient account does not have a public key, meaning it has never had an outgoing transaction. The account has a balance of " + NRS.formatAmount(response.unconfirmedBalanceNQT, false, true) + " NFD. Please double check your recipient address before submitting.",
+						"message": NRS.getLangString("ERROR_RECIPIENT_NOPUBKEY_NOACTION").replace(/$1/g, NRS.formatAmount(response.unconfirmedBalanceNQT, false, true)),
 						"account": response
 					});
 				}

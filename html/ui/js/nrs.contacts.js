@@ -173,7 +173,7 @@ var NRS = (function(NRS, $, undefined) {
 						$btn.button("reset");
 						$modal.modal("unlock");
 						$modal.modal("hide");
-						$.growl("Contact added successfully.", {
+						$.growl(NRS.getLangString("SUCCESS_CONTACT_ADDED"), {
 							"type": "success"
 						});
 
@@ -343,7 +343,7 @@ var NRS = (function(NRS, $, undefined) {
 						$btn.button("reset");
 						$modal.modal("unlock");
 						$modal.modal("hide");
-						$.growl("Contact updated successfully.", {
+						$.growl(NRS.getLangString("SUCCESS_CONTACT_UPDATED"), {
 							"type": "success"
 						});
 
@@ -387,7 +387,7 @@ var NRS = (function(NRS, $, undefined) {
 			delete NRS.contacts[$("#delete_contact_account_id").val()];
 
 			setTimeout(function() {
-				$.growl("Contact deleted successfully.", {
+				$.growl(NRS.getLangString("SUCCESS_CONTACT_DELETED"), {
 					"type": "success"
 				});
 

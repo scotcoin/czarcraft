@@ -419,7 +419,7 @@ var NRS = (function(NRS, $, undefined) {
 				}
 			} else {
 				if (NRS.accountRS && NRS.accountInfo.accountRS != NRS.accountRS) {
-					$.growl("Generated Reed Solomon address different from the one in the blockchain!", {
+					$.growl(NRS.getLangString("ERROR_ADDRESS_DIFFERENTFROMBLOCKCHAIN"), {
 						"type": "danger"
 					});
 					NRS.accountRS = NRS.accountInfo.accountRS;
@@ -644,10 +644,12 @@ var NRS = (function(NRS, $, undefined) {
 					asset.difference = input["_extra"].difference;
 					asset.asset = input["_extra"].asset;
 
+					var assetLink = "<a href='#' data-goto-asset='" + String(asset.asset).escapeHTML() + "'>" + quantity + " " + String(asset.name).escapeHTML() + " asset(s)</a>";
+					
 					if (asset.difference.charAt(0) != "-") {
 						var quantity = NRS.formatQuantity(asset.difference, asset.decimals)
 
-						$.growl("You received <a href='#' data-goto-asset='" + String(asset.asset).escapeHTML() + "'>" + quantity + " " + String(asset.name).escapeHTML() + (quantity == "1" ? " asset" : " assets") + "</a>.", {
+						$.growl(NRS.getLangString("MESSAGE_YOURECEIVED").replace(/$1/g,assetLink), {
 							"type": "success"
 						});
 					} else {
@@ -655,14 +657,14 @@ var NRS = (function(NRS, $, undefined) {
 
 						var quantity = NRS.formatQuantity(asset.difference, asset.decimals)
 
-						$.growl("You sold or transferred <a href='#' data-goto-asset='" + String(asset.asset).escapeHTML() + "'>" + quantity + " " + String(asset.name).escapeHTML() + (quantity == "1" ? " asset" : " assets") + "</a>.", {
+						$.growl(NRS.getLangString("MESSAGE_YOUTRANSFERRED").replace(/$1/g,assetLink), {
 							"type": "success"
 						});
 					}
 				});
 			}
 		} else {
-			$.growl("Multiple different assets have been sold and/or bought.", {
+			$.growl(NRS.getLangString("SUCCESS_MULTIPLE_ASSETS_SOLD"), {
 				"type": "success"
 			});
 		}
@@ -731,14 +733,14 @@ var NRS = (function(NRS, $, undefined) {
 					response.account = input.account;
 					NRS.showAccountModal(response);
 				} else {
-					$.growl("Nothing found, please try another query.", {
+					$.growl(NRS.getLangString("ERROR_NOTHING_FOUND"), {
 						"type": "danger"
 					});
 				}
 			});
 		} else {
 			if (!/^\d+$/.test(id)) {
-				$.growl("Invalid input. Search by ID or reed solomon account number.", {
+				$.growl(NRS.getLangString("ERROR_INVALID_INPUT_SOLOMON"), {
 					"type": "danger"
 				});
 				return;
@@ -764,7 +766,7 @@ var NRS = (function(NRS, $, undefined) {
 									response.block = input.block;
 									NRS.showBlockModal(response);
 								} else {
-									$.growl("Nothing found, please try another query.", {
+									$.growl(NRS.getLangString("ERROR_NOTHING_FOUND"), {
 										"type": "danger"
 									});
 								}

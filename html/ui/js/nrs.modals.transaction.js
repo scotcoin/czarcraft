@@ -84,7 +84,7 @@ var NRS = (function(NRS, $, undefined) {
 							"account": (transaction.recipient == NRS.account ? transaction.sender : transaction.recipient)
 						}, function(response) {
 							if (!response.publicKey) {
-								$.growl("Could not find public key for recipient, which is necessary for sending encrypted messages.", {
+								$.growl(NRS.getLangString("ERROR_COULDNTFIND_KEYFORRECIPIENT"), {
 									"type": "danger"
 								});
 							}
@@ -95,7 +95,7 @@ var NRS = (function(NRS, $, undefined) {
 						try {
 							message = converters.hexStringToString(hex);
 						} catch (err) {
-							message = "Could not convert hex to string: " + hex;
+							message = NRS.getLangString("ERROR_COULDNTCONVERTHEX") + " " + hex;
 						}
 					}
 
@@ -103,13 +103,13 @@ var NRS = (function(NRS, $, undefined) {
 
 					if (transaction.sender == NRS.account || transaction.recipient == NRS.account) {
 						if (transaction.sender == NRS.account) {
-							sender_info = "<strong>To</strong>: " + NRS.getAccountTitle(transaction, "recipient");
+							sender_info = "<strong>"+NRS.getLangString("STRING_TO")+"</strong>: " + NRS.getAccountTitle(transaction, "recipient");
 						} else {
-							sender_info = "<strong>From</strong>: " + NRS.getAccountTitle(transaction, "sender");
+							sender_info = "<strong>"+NRS.getLangString("STRING_FROM")+"</strong>: " + NRS.getAccountTitle(transaction, "sender");
 						}
 					} else {
-						sender_info = "<strong>To</strong>: " + NRS.getAccountTitle(transaction, "recipient") + "<br />";
-						sender_info += "<strong>From</strong>: " + NRS.getAccountTitle(transaction, "sender");
+						sender_info = "<strong>"+NRS.getLangString("STRING_TO")+"</strong>: " + NRS.getAccountTitle(transaction, "recipient") + "<br />";
+						sender_info += "<strong>"+NRS.getLangString("STRING_FROM")+"</strong>: " + NRS.getAccountTitle(transaction, "sender");
 					}
 
 					$("#transaction_info_output").html(message.escapeHTML().nl2br() + "<br /><br />" + sender_info).show();

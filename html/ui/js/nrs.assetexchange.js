@@ -236,7 +236,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		if (newAssets.length == 0) {
 			NRS.closeModal();
-			$.growl((submittedAssets.length == 1 ? "Asset" : "Assets") + " already in bookmark list.", {
+			$.growl(NRS.getLangString("ERROR_ASSET_ALREADY_INLIST"), {
 				"type": "danger"
 			});
 			$("#asset_exchange_sidebar a.active").removeClass("active");
@@ -244,7 +244,7 @@ var NRS = (function(NRS, $, undefined) {
 			return;
 		} else {
 			NRS.closeModal();
-			$.growl((newAssets.length == 1 ? "Asset" : newAssets.length + " assets") + " added successfully.", {
+			$.growl(NRS.getLangString("SUCCESS_ASSET_ADDED"), {
 				"type": "success"
 			});
 
@@ -655,7 +655,7 @@ var NRS = (function(NRS, $, undefined) {
 							}], function() {
 								setTimeout(function() {
 									NRS.pages.asset_exchange();
-									$.growl("Invalid asset.", {
+									$.growl(NRS.getLangString("ERROR_ASSET_INVALID"), {
 										"type": "danger"
 									});
 								}, 50);
@@ -854,7 +854,7 @@ var NRS = (function(NRS, $, undefined) {
 			/*
 			if (!NRS.assetSearch.length) {
 				if ($(".bootstrap-growl-top-right.alert-danger").length == 0) {
-					$.growl("Nothing found, please try another query.", {
+					$.growl(NRS.getLangString("ERROR_NOTHING_FOUND"), {
 						"type": "danger"
 					});
 				}
@@ -1021,7 +1021,7 @@ var NRS = (function(NRS, $, undefined) {
 		} else {
 			//do not allow period
 			if (charCode == 110 || charCode == 190 || charCode == 188) {
-				$.growl("Fractions are not allowed.", {
+				$.growl(NRS.getLangString("ERROR_FRACTIONS_NOTALLOWED"), {
 					"type": "danger"
 				});
 				e.preventDefault();
@@ -1039,9 +1039,9 @@ var NRS = (function(NRS, $, undefined) {
 
 			if (selectedText != $(this).val()) {
 				if (isQuantityField) {
-					errorMessage = "Only " + NRS.currentAsset.decimals + " digits after the decimal mark are allowed for this asset.";
+					errorMessage = NRS.getLangString("ERROR_ASSET_ONLYDIGITSALLOWED_ASSET").replace(/$1/g, NRS.currentAsset.decimals);
 				} else {
-					errorMessage = "Only " + (8 - NRS.currentAsset.decimals) + " digits after the decimal mark are allowed.";
+					errorMessage = NRS.getLangString("ERROR_ASSET_ONLYDIGITSALLOWED").replace(/$1/g, (8 - NRS.currentAsset.decimals));
 				}
 
 				$.growl(errorMessage, {
@@ -1059,7 +1059,7 @@ var NRS = (function(NRS, $, undefined) {
 		} else {
 			//comma
 			if (charCode == 188) {
-				$.growl("Comma is not allowed, use a dot instead.", {
+				$.growl(NRS.getLangString("ERROR_COMMA_NOTALLOWED"), {
 					"type": "danger"
 				});
 			}
@@ -1105,14 +1105,14 @@ var NRS = (function(NRS, $, undefined) {
 			var feeNQT = new BigInteger(NRS.convertToNQT(String($("#" + orderType + "_asset_fee").val())));
 			var totalNXT = NRS.formatAmount(NRS.calculateOrderTotalNQT(quantityQNT, priceNQT, NRS.currentAsset.decimals), false, true);
 		} catch (err) {
-			$.growl("Invalid input.", {
+			$.growl(NRS.getLangString("ERROR_INPUT_INVALID"), {
 				"type": "danger"
 			});
 			return e.preventDefault();
 		}
 
 		if (priceNQT.toString() == "0" || quantityQNT.toString() == "0") {
-			$.growl("Please fill in an amount and price.", {
+			$.growl(NRS.getLangString("ERROR_AMOUNT_PRICE_FILL"), {
 				"type": "danger"
 			});
 			return e.preventDefault();
@@ -1125,13 +1125,23 @@ var NRS = (function(NRS, $, undefined) {
 		var priceNQTPerWholeQNT = priceNQT.multiply(new BigInteger("" + Math.pow(10, NRS.currentAsset.decimals)));
 
 		if (orderType == "buy") {
-			var description = "Buy <strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong> assets at <strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong> each.";
-			var tooltipTitle = "Per whole asset bought you will pay " + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD, making a total of " + totalNXT + " NFD once everything have been bought.";
+			var description = NRS.getLangString("MESSAGE_ASSETS_BUYATEACH")
+				.replace(/$1/g, "<strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong>")
+				.replace(/$2/g, "<strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong>");
+			
+			var tooltipTitle = NRS.getLangString("MESSAGE_ASSET_PERWHOLEYOUPAY")
+				.replace(/$1/g, NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD")
+				.replace(/$2/g,	totalNXT + " NFD");
 		} else {
-			var description = "Sell <strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong> assets at <strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong> each.";
-			var tooltipTitle = "Per whole asset sold you will receive " + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD, making a total of " + totalNXT + " NFD once everything has been sold.";
+			var description = NRS.getLangString("MESSAGE_ASSETS_SELLATEACH")
+				.replace(/$1/g, "<strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong>")
+				.replace(/$2/g, "<strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong>");
+		
+			var tooltipTitle = NRS.getLangString("MESSAGE_ASSET_PERWHOLEYOURECEIVE")
+				.replace(/$1/g, NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD")
+				.replace(/$2/g,	totalNXT + " NFD");
 		}
-
+		
 		$("#asset_order_description").html(description);
 		$("#asset_order_total").html(totalNXT + " NFD");
 		$("#asset_order_fee_paid").html(NRS.formatAmount(feeNQT) + " NFD");
@@ -1272,7 +1282,7 @@ var NRS = (function(NRS, $, undefined) {
 		}], function() {
 			setTimeout(function() {
 				NRS.pages.asset_exchange();
-				$.growl("Group name updated successfully.", {
+				$.growl(NRS.getLangString("SUCCESS_GROUP_NAME_ADDED"), {
 					"type": "success"
 				});
 			}, 50);
@@ -1345,7 +1355,7 @@ var NRS = (function(NRS, $, undefined) {
 			}], function() {
 				setTimeout(function() {
 					NRS.pages.asset_exchange();
-					$.growl("Asset removed from group successfully.", {
+					$.growl(NRS.getLangString("SUCCESS_ASSET_REMOVEDGROUP"), {
 						"type": "success"
 					});
 				}, 50);
@@ -1363,7 +1373,7 @@ var NRS = (function(NRS, $, undefined) {
 			}
 
 			if (ownsAsset) {
-				$.growl("Asset cannot be removed (you own it).", {
+				$.growl(NRS.getLangString("ERROR_ASSET_CANNOTREMOVED"), {
 					"type": "danger"
 				});
 			} else {
@@ -1388,7 +1398,7 @@ var NRS = (function(NRS, $, undefined) {
 					*/
 					setTimeout(function() {
 						NRS.pages.asset_exchange();
-						$.growl("Asset removed from bookmarks successfully.", {
+						$.growl(NRS.getLangString("SUCCESS_ASSET_REMOVEDBOOKMARK"), {
 							"type": "success"
 						});
 					}, 50);
@@ -1425,11 +1435,11 @@ var NRS = (function(NRS, $, undefined) {
 			setTimeout(function() {
 				NRS.pages.asset_exchange();
 				if (!groupName) {
-					$.growl("Asset removed from group successfully.", {
+					$.growl(NRS.getLangString("SUCCESS_ASSET_REMOVEDGROUP"), {
 						"type": "success"
 					});
 				} else {
-					$.growl("Asset added to group successfully.", {
+					$.growl(NRS.getLangString("SUCCESS_ASSET_ADDEDGROUP"), {
 						"type": "success"
 					});
 				}
@@ -1778,7 +1788,7 @@ var NRS = (function(NRS, $, undefined) {
 								NRS.loadAsset(response);
 							});
 						} else {
-							$.growl("Could not find asset.", {
+							$.growl(NRS.getLangString("ERROR_ASSET_COULDNTFIND"), {
 								"type": "danger"
 							});
 						}

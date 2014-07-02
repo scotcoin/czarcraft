@@ -276,7 +276,7 @@ var NRS = (function(NRS, $, undefined) {
 			"aliasName": alias
 		}, function(response, input) {
 			if (response.errorCode) {
-				$.growl("Could not find alias.", {
+				$.growl(NRS.getLangString("ERROR_NOALIAS"), {
 					"type": "danger"
 				});
 				NRS.fetchingModalData = false;

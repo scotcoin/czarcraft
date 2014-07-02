@@ -9,7 +9,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		if (!url || url == "http://") {
 			return {
-				"error": "Website is a required field."
+				"error": NRS.getLangString("ERROR_WEBSITE_REQUIREDFIELD")
 			};
 			$("#generate_token_token").html("").hide();
 		} else {
@@ -21,9 +21,9 @@ var NRS = (function(NRS, $, undefined) {
 		$("#generate_token_modal").find(".error_message").hide();
 
 		if (response.token) {
-			$("#generate_token_token").html("The generated token for <strong>" + data.website.escapeHTML() + "</strong> is: <br /><br /><textarea style='width:100%' rows='3'>" + response.token.escapeHTML() + "</textarea>").show();
+			$("#generate_token_token").html(NRS.getLangString("MESSAGE_GENERATED_TOKENIS").replace(/$1/g,  "<strong>" + data.website.escapeHTML() + "</strong>")+" <br /><br /><textarea style='width:100%' rows='3'>" + response.token.escapeHTML() + "</textarea>").show();
 		} else {
-			$.growl("Could not generate token.", {
+			$.growl(NRS.getLangString("ERROR_COULDNTGENERATE_TOKEN"), {
 				"type": "danger"
 			});
 			$("#generate_token_modal").modal("hide");

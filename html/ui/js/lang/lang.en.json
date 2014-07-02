@@ -9,6 +9,7 @@
 		"ERROR_SECRET_NOTMATCH":"Secret phrases do not match.",
 		"ERROR_SECRET_ISLESSTHAN":"Your secret phrase is less than 35 characters long. This is not secure.",
 		"ERROR_SECRET_NOTCONTAINS":"Your secret phrase does not contain numbers and uppercase letters. This is not secure.",
+		"ERROR_SECRET_NOTCONFIRMED":"Secret phrase confirmed successfully, you are now logged in.",
 		"ERROR_NOTFORGE_MISSING_PUBLICKEY":"You cannot forge because your account has no public key. Please make an outgoing transaction first.",
 		"ERROR_SECRET_MUSTENTER":"You must enter your secret phrase. If you don't have one, click the registration button below.",
 		"ERROR_SERVER_CANTCONNECT":"Could not connect to server.",
@@ -21,7 +22,13 @@
 		"ERROR_NOTFORGING_BALANCEORNEWACCOUNT":"You cannot forge. Either your balance is 0 or your account is too new (you must wait a day or so).",
 		"SUCCESS_FORGIN_STARTED":"Forging started successfully.",
 		"SUCCESS_FORGING_STOPPED":"Forging stopped successfully.",
-		"SUCCESS_SECRETCONFIRMED":"Secret phrase confirmed successfully, you are now logged in."
+		"SUCCESS_SECRETCONFIRMED":"Secret phrase confirmed successfully, you are now logged in.",
+		"ERROR_COULDNOTGENERATESOLOMON":"Could not generate Reed Solomon address.",
+		"ERROR_ACCOUNT_TAKEN_CHOOSEOTHER":"This account is already taken. Please choose another pass phrase.",
+		"MESSAGE_REMEMBER_LOGOUT":"Remember to log out at the end of your session so as to clear the password from memory.",
+		"MESSAGE_GENERATING_SECRET":"Generating your secret phrase. Please wait",
+		"STRING_WARNING":"Warning",
+		"MESSAGE_UPDATE_AVAILABLE":"A new NRS release is available. It is recommended that you update."
 		
 		
 }

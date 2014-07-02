@@ -3,5 +3,7 @@
 		"SEND_MESSAGE":"Sende Message",
 		"GENERATE_TOKEN":"Generiere Token",
 		"SETTINGS":"Settings",
-		"ERROR_NOTFORGE_MISSING_PUBLICKEY":"Du kannst nicht forgen weil Dein Account keinen public key hat. Bitte mache zuerst eine ausgehende Transaktion."
+		"ERROR_NOTFORGE_MISSING_PUBLICKEY":"Du kannst nicht forgen weil Dein Account keinen public key hat. Bitte mache zuerst eine ausgehende Transaktion.",
+
+		"STRING_WARNING":"Warnung"
 }

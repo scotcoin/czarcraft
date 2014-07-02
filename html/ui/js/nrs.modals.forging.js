@@ -1,6 +1,6 @@
 var NRS = (function(NRS, $, undefined) {
 	NRS.forms.errorMessages.startForging = {
-		"5": "You cannot forge. Either your balance is 0 or your account is too new (you must wait a day or so)."
+		"5": NRS.getLangString("ERROR_NOTFORGING_BALANCEORNEWACCOUNT")
 	};
 
 	NRS.forms.startForgingComplete = function(response, data) {
@@ -8,12 +8,12 @@ var NRS = (function(NRS, $, undefined) {
 			$("#forging_indicator").addClass("forging");
 			$("#forging_indicator span").html("Forging");
 			NRS.isForging = true;
-			$.growl("Forging started successfully.", {
+			$.growl(NRS.getLangString("SUCCESS_FORGIN_STARTED"), {
 				type: "success"
 			});
 		} else {
 			NRS.isForging = false;
-			$.growl("Couldn't start forging, unknown error.", {
+			$.growl(NRS.getLangString("ERROR_NOTFORGING_UNKNOWN_ERROR"), {
 				type: 'danger'
 			});
 		}
@@ -31,11 +31,11 @@ var NRS = (function(NRS, $, undefined) {
 		NRS.isForging = false;
 
 		if (response.foundAndStopped) {
-			$.growl("Forging stopped successfully.", {
+			$.growl(NRS.getLangString("SUCCESS_FORGING_STOPPED"), {
 				type: 'success'
 			});
 		} else {
-			$.growl("You weren't forging to begin with.", {
+			$.growl(NRS.getLangString("ERROR_NOTFORGING_BEGIN"), {
 				type: 'danger'
 			});
 		}
@@ -45,11 +45,11 @@ var NRS = (function(NRS, $, undefined) {
 		e.preventDefault();
 
 		if (NRS.downloadingBlockchain) {
-			$.growl("The blockchain is busy downloading, you cannot forge during this time. Please try again when the blockchain is fully synced.", {
+			$.growl(NRS.getLangString("ERROR_NOTFORGE_BLOCKCHAIN_DOWNLOAD"), {
 				"type": "danger"
 			});
 		} else if (NRS.state.isScanning) {
-			$.growl("The blockchain is currently being rescanned, you cannot forge during this time. Please try again in a minute.", {
+			$.growl(NRS.getLangString("ERROR_NOTFORGE_BLOCKCHAIN_RESCAN"), {
 				"type": "danger"
 			});
 		} else if (!NRS.accountInfo.publicKey) {
@@ -58,11 +58,11 @@ var NRS = (function(NRS, $, undefined) {
 			});
 		} else if (NRS.accountInfo.effectiveBalanceNXT == 0) {
 			if (NRS.lastBlockHeight >= NRS.accountInfo.currentLeasingHeightFrom && NRS.lastBlockHeight <= NRS.accountInfo.currentLeasingHeightTo) {
-				$.growl("Your effective balance is leased out, you cannot forge at the moment.", {
+				$.growl(NRS.getLangString("ERROR_NOTFORGE_BALANCE_LEASEDOUT"), {
 					"type": "danger"
 				});
 			} else {
-				$.growl("Your effective balance is zero, you cannot forge.", {
+				$.growl(NRS.getLangString("ERROR_NOTFORGE_BALANCE_ZERO"), {
 					"type": "danger"
 				});
 			}

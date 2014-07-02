@@ -51,7 +51,7 @@ var NRS = (function(NRS, $, undefined) {
 		var $loaded = $("#account_phrase_generator_loaded");
 
 		if (window.crypto || window.msCrypto) {
-			$loading.find("span.loading_text").html("Generating your secret phrase. Please wait");
+			$loading.find("span.loading_text").html(NRS.getLangString("MESSAGE_GENERATING_SECRET"));
 		}
 
 		$loading.show();
@@ -85,7 +85,7 @@ var NRS = (function(NRS, $, undefined) {
 		} else {
 			NRS.newlyCreatedAccount = true;
 			NRS.login(password, function() {
-				$.growl("Secret phrase confirmed successfully, you are now logged in.", {
+				$.growl(NRS.getLangString("ERROR_SECRET_NOTCONFIRMED"), {
 					"type": "success"
 				});
 			});
@@ -104,11 +104,11 @@ var NRS = (function(NRS, $, undefined) {
 		var error = "";
 
 		if (password.length < 35) {
-			error = "Secret phrase must be at least 35 characters long.";
+			error = NRS.getLangString("ERROR_SECRET_ATMUSTATLEAST");
 		} else if (password.length < 50 && (!password.match(/[A-Z]/) || !password.match(/[0-9]/))) {
-			error = "Since your secret phrase is less than 50 characters long, it must contain numbers and uppercase letters.";
+			error = NRS.getLangString("ERROR_SECRET_ISLESSMUSTCONTAIN");
 		} else if (password != repeat) {
-			error = "Secret phrases do not match.";
+			error = NRS.getLangString("ERROR_SECRET_NOTMATCH");
 		}
 
 		if (error) {
@@ -116,7 +116,7 @@ var NRS = (function(NRS, $, undefined) {
 		} else {
 			$("#registration_password, #registration_password_repeat").val("");
 			NRS.login(password, function() {
-				$.growl("Secret phrase confirmed successfully, you are now logged in.", {
+				$.growl(NRS.getLangString("SUCCESS_SECRETCONFIRMED"), {
 					"type": "success"
 				});
 			});
@@ -127,7 +127,7 @@ var NRS = (function(NRS, $, undefined) {
 		$("#login_password, #registration_password, #registration_password_repeat").val("");
 
 		if (!password.length) {
-			$.growl("You must enter your secret phrase. If you don't have one, click the registration button below.", {
+			$.growl(NRS.getLangString("ERROR_SECRET_MUSTENTER"), {
 				"type": "danger",
 				"offset": 10
 			});
@@ -136,7 +136,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		NRS.sendRequest("getBlockchainStatus", function(response) {
 			if (response.errorCode) {
-				$.growl("Could not connect to server.", {
+				$.growl(NRS.getLangString("ERROR_SERVER_CANTCONNECT"), {
 					"type": "danger",
 					"offset": 10
 				});
@@ -163,7 +163,7 @@ var NRS = (function(NRS, $, undefined) {
 				if (nxtAddress.set(NRS.account)) {
 					NRS.accountRS = nxtAddress.toString();
 				} else {
-					$.growl("Could not generate Reed Solomon address.", {
+					$.growl(NRS.getLangString("ERROR_COULDNOTGENERATESOLOMON"), {
 						"type": "danger"
 					});
 				}
@@ -172,7 +172,7 @@ var NRS = (function(NRS, $, undefined) {
 					"account": NRS.account
 				}, function(response) {
 					if (response && response.publicKey && response.publicKey != NRS.generatePublicKey(password)) {
-						$.growl("This account is already taken. Please choose another pass phrase.", {
+						$.growl(NRS.getLangString("ERROR_ACCOUNT_TAKEN_CHOOSEOTHER"), {
 							"type": "danger",
 							"offset": 10
 						});
@@ -183,7 +183,7 @@ var NRS = (function(NRS, $, undefined) {
 						NRS.rememberPassword = true;
 						$("#remember_password").prop("checked", false);
 						sessionStorage.setItem("secret", password);
-						$.growl("Remember to log out at the end of your session so as to clear the password from memory.", {
+						$.growl(NRS.getLangString("MESSAGE_REMEMBER_LOGOUT"), {
 							"type": "danger"
 						});
 						$(".secret_phrase, .show_secret_phrase").hide();
@@ -201,11 +201,11 @@ var NRS = (function(NRS, $, undefined) {
 					if (password.length < 35) {
 						passwordNotice = NRS.getLangString("ERROR_SECRET_ISLESSTHAN");
 					} else if (password.length < 50 && (!password.match(/[A-Z]/) || !password.match(/[0-9]/))) {
-						passwordNotice = "Your secret phrase does not contain numbers and uppercase letters. This is not secure.";
+						passwordNotice = NRS.getLangString("ERROR_SECRET_NOTCONTAINS");
 					}
 
 					if (passwordNotice) {
-						$.growl("<strong>Warning</strong>: " + passwordNotice, {
+						$.growl("<strong>"+NRS.getLangString("STRING_WARNING")+"</strong>: " + passwordNotice, {
 							"type": "danger"
 						});
 					}
@@ -246,7 +246,7 @@ var NRS = (function(NRS, $, undefined) {
 					NRS.unlock();
 
 					if (NRS.isOutdated) {
-						$.growl("A new NRS release is available. It is recommended that you update.", {
+						$.growl(NRS.getLangString("MESSAGE_UPDATE_AVAILABLE"), {
 							"type": "danger"
 						});
 					}

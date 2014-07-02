@@ -46,27 +46,28 @@ var NRS = (function(NRS, $, undefined) {
 		NRS.userLang = navigator.language || navigator.userLanguage || NRS.defaultUserLang;
 		NRS.userLang = NRS.userLang.split('-')[0];
 		
+		
 		$.ajax({
 			  dataType: "json",
-			  url: "/js/lang/lang."+NRS.userLang+".json",
+			  url: "/js/lang/lang."+NRS.defaultUserLang+".json",
 			  success: function(data){
-				  NRS.langData = data;
-				  $('[data-lang]').each(function(){
-					  $(this).text(data[$(this).attr('data-lang')]);
-				  });
-				  
-				  // for default language (missing strings in user defined languages)
+				  NRS.defaultLangData = data;
 				  if(NRS.userLang != NRS.defaultUserLang){
 					  $.ajax({
 						  dataType: "json",
-						  url: "/js/lang/lang."+NRS.defaultUserLang+".json",
+						  url: "/js/lang/lang."+NRS.userLang+".json",
 						  success: function(data){
-							  NRS.defaultLangData = data;
+							  NRS.langData = data;
+							  $('[data-lang]').each(function(){
+								  // texts have only to be changed for not en language
+								  $(this).text(data[$(this).attr('data-lang')]);
+							  });
 						  }
 					});
 				  } 
 			  }
 		});
+		
 		
 		if (location.port && location.port != "9876") {
 			$(".testnet_only").hide();
@@ -157,7 +158,7 @@ var NRS = (function(NRS, $, undefined) {
 
 	// returns a string of a key in the current language (userLang)
 	NRS.getLangString = function(key){
-		return NRS.langData[key] || NRS.defaultLangData[key] || '- ? -';
+		return NRS.langData[key] || NRS.defaultLangData[key] || '---';
 	};
 	
 	NRS.getState = function(callback) {

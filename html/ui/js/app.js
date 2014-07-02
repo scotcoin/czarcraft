@@ -8,21 +8,6 @@
 $(function() {
 	"use strict";
 
-	//load language tokens
-
-	var userLang = navigator.language || navigator.userLanguage || "en";
-	userLang = userLang.split('-')[0];
-	$.ajax({
-		  dataType: "json",
-		  url: "/js/lang/lang."+userLang+".json",
-		  success: function(data){
-			  $('[data-lang]').each(function(){
-				  $(this).text(data[$(this).attr('data-lang')]);
-			  });
-		  }
-		});
-	
-	
 	
 	//Enable sidebar toggle
 	$("[data-toggle='offcanvas']").click(function(e) {

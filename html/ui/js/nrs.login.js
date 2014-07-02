@@ -199,7 +199,7 @@ var NRS = (function(NRS, $, undefined) {
 					var passwordNotice = "";
 
 					if (password.length < 35) {
-						passwordNotice = "Your secret phrase is less than 35 characters long. This is not secure.";
+						passwordNotice = NRS.getLangString("ERROR_SECRET_ISLESSTHAN");
 					} else if (password.length < 50 && (!password.match(/[A-Z]/) || !password.match(/[0-9]/))) {
 						passwordNotice = "Your secret phrase does not contain numbers and uppercase letters. This is not secure.";
 					}

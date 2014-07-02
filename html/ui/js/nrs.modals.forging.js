@@ -53,7 +53,7 @@ var NRS = (function(NRS, $, undefined) {
 				"type": "danger"
 			});
 		} else if (!NRS.accountInfo.publicKey) {
-			$.growl("You cannot forge because your account has no public key. Please make an outgoing transaction first.", {
+			$.growl(NRS.getLangString('ERROR_NOTFORGE_MISSING_PUBLICKEY'), {
 				"type": "danger"
 			});
 		} else if (NRS.accountInfo.effectiveBalanceNXT == 0) {

@@ -148,7 +148,7 @@ var NRS = (function(NRS, $, undefined) {
 		}
 
 		var type = ("secretPhrase" in data ? "POST" : "GET");
-		var url = NRS.server + "/nxt?requestType=" + requestType;
+		var url = NRS.server + "/nxt?requestType=" + requestType + "&lang="+NRS.userLang;
 
 		if (type == "GET") {
 			if (typeof data == "string") {
@@ -869,7 +869,7 @@ var NRS = (function(NRS, $, undefined) {
 
 	NRS.broadcastTransactionBytes = function(transactionData, callback, original_response, original_data) {
 		$.ajax({
-			url: NRS.server + "/nxt?requestType=broadcastTransaction",
+			url: NRS.server + "/nxt?requestType=broadcastTransaction" + "&lang="+NRS.userLang,
 			crossDomain: true,
 			dataType: "json",
 			type: "POST",

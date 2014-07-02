@@ -6,6 +6,11 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.blocks = [];
 	NRS.genesis = "1763558929574856152";
 
+	NRS.defaultUserLang = "en";
+	NRS.userLang = NRS.defaultUserLang;
+	NRS.langData = {};
+	NRS.defaultLangData = {};
+	
 	NRS.account = "";
 	NRS.accountRS = ""
 	NRS.accountInfo = {};
@@ -36,6 +41,33 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.assetTableKeys = [];
 
 	NRS.init = function() {
+		//load language tokens
+
+		NRS.userLang = navigator.language || navigator.userLanguage || NRS.defaultUserLang;
+		NRS.userLang = NRS.userLang.split('-')[0];
+		
+		$.ajax({
+			  dataType: "json",
+			  url: "/js/lang/lang."+NRS.userLang+".json",
+			  success: function(data){
+				  NRS.langData = data;
+				  $('[data-lang]').each(function(){
+					  $(this).text(data[$(this).attr('data-lang')]);
+				  });
+				  
+				  // for default language (missing strings in user defined languages)
+				  if(NRS.userLang != NRS.defaultUserLang){
+					  $.ajax({
+						  dataType: "json",
+						  url: "/js/lang/lang."+NRS.defaultUserLang+".json",
+						  success: function(data){
+							  NRS.defaultLangData = data;
+						  }
+					});
+				  } 
+			  }
+		});
+		
 		if (location.port && location.port != "9876") {
 			$(".testnet_only").hide();
 		} else {
@@ -123,6 +155,11 @@ var NRS = (function(NRS, $, undefined) {
 		});*/
 	}
 
+	// returns a string of a key in the current language (userLang)
+	NRS.getLangString = function(key){
+		return NRS.langData[key] || NRS.defaultLangData[key] || '- ? -';
+	};
+	
 	NRS.getState = function(callback) {
 		NRS.sendRequest("getBlockchainStatus", function(response) {
 			if (response.errorCode) {

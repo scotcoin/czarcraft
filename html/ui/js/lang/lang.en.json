@@ -2,5 +2,7 @@
 		"SEND_NFD":"Send NFD",
 		"SEND_MESSAGE":"Send Message",
 		"GENERATE_TOKEN":"Generate Token",
-		"SETTINGS":"Settings"
+		"SETTINGS":"Settings",
+		"ERROR_SECRET_ISLESSTHAN":"Your secret phrase is less than 35 characters long. This is not secure.",
+		"ERROR_NOTFORGE_MISSING_PUBLICKEY":"You cannot forge because your account has no public key. Please make an outgoing transaction first."
 }

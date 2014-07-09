@@ -1,20 +1,20 @@
 *{
-	font-family: courier;
-	color:#743c00;
+	font-family: Arial;
+	color: rgb(50, 50, 50);;
 }
 
 html{
-	background:#E1D7B8;
+	background:#d6d6d6;
 }
 
 a{
 	text-decoration:none;
-	color:#ff7614;
+	color:#690000;
 }
 
 input[type=submit]{
-	background-color: #f6f5d8;
-	border-color: #cdc4a8;
+	background-color: #fff;
+	border-color: #eee;
 	font-weight: 500;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -26,12 +26,12 @@ input[type=submit]{
 }
 
 table{
-	border:1px solid #743c00 !important;
-	background:#f6f5d8;
+	border:1px solid #ccc !important;
+	background:#eee;
 	border-collapse:collapse;
 }
 table td,
 table th{
-	border:1px solid #cdc4a8;
+	border:1px solid #ccc;
 	padding:5px;
 }

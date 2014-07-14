@@ -429,7 +429,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		NRS.sendRequest("sendMessage", data, function(response, input) {
 			if (response.errorCode) {
-				$.growl(response.errorDescription ? response.errorDescription.escapeHTML() : NRS.getLangString("ERROR_UNKNOWNERROR"), {
+				$.growl(response.errorDescription ? response.errorDescription.escapeHTML() : NRS.getLangString("UNKNOWN_ERROR_OCCURRED"), {
 					type: "danger"
 				});
 			} else if (response.fullHash) {

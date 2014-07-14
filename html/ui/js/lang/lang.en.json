@@ -23,7 +23,7 @@
 		"SUCCESS_FORGIN_STARTED":"Forging started successfully.",
 		"SUCCESS_FORGING_STOPPED":"Forging stopped successfully.",
 		"SUCCESS_SECRETCONFIRMED":"Secret phrase confirmed successfully, you are now logged in.",
-		"ERROR_COULDNOTGENERATESOLOMON":"Could not generate Reed Solomon address.",
+		"ERROR_COULDNOTGENERATESOLOMON":"Could not generate Reed-Solomon address.",
 		"ERROR_ACCOUNT_TAKEN_CHOOSEOTHER":"This account is already taken. Please choose another pass phrase.",
 		"MESSAGE_REMEMBER_LOGOUT":"Remember to log out at the end of your session so as to clear the password from memory.",
 		"MESSAGE_GENERATING_SECRET":"Generating your secret phrase. Please wait",
@@ -53,20 +53,19 @@
 		"ERROR_SECRET_INCORRECT":"Incorrect secret phrase.",
 		"ERROR_MESSAGE_REQUIREDFIELD":"Message is a required field.",
 		"ERROR_COULDNT_FIND_PUBLICKEY":"Could not find public key for recipient, which is necessary for sending encrypted messages.",
-		"ERROR_UNKNOWNERROR":"Unknown error occured.",
-		"ERROR_UNKNOWN_MESSAGENOTSENT":"An unknown error occured. Your message may or may not have been sent.",
+		"ERROR_UNKNOWN_MESSAGENOTSENT":"An unknown error occurred. Your message may or may not have been sent.",
 		"SUCCESS_MESSAGE_SENT":"Your message has been sent!",
 		"MESSAGE_QADDRECEPIENTS":"Add recipient to contacts?",
 		"MESSAGE_BLOCKCHAIN_UPTODATE":"The block chain is now up to date.",
 		"SUCCESS_CONTACT_ADDED":"Contact added successfully.",
 		"SUCCESS_CONTACT_UPDATED":"Contact updated successfully.",
 		"SUCCESS_CONTACT_DELETED":"Contact deleted successfully.",
-		"ERROR_ADDRESS_DIFFERENTFROMBLOCKCHAIN":"Generated Reed Solomon address different from the one in the blockchain!",
+		"ERROR_ADDRESS_DIFFERENTFROMBLOCKCHAIN":"Generated Reed-Solomon address different from the one in the blockchain!",
 		"MESSAGE_YOURECEIVED":"You received $1.",
 		"MESSAGE_YOUTRANSFERRED":"You sold or transferred $1.",
 		"SUCCESS_MULTIPLE_ASSETS_SOLD":"Multiple different assets have been sold and/or bought.",
 		"ERROR_NOTHING_FOUND":"Nothing found, please try another query.",
-		"ERROR_INVALID_INPUT_SOLOMON":"Invalid input. Search by ID or reed solomon account number.",
+		"ERROR_INVALID_INPUT_SOLOMON":"Invalid input. Search by ID or Reed-Solomon account number.",
 		"ERROR_COULDNTGENERATE_TOKEN":"Could not generate token.",
 		"ERROR_WEBSITE_REQUIREDFIELD":"Website is a required field.",
 		"MESSAGE_GENERATED_TOKENIS":"The generated token for $1 is:",
@@ -80,9 +79,15 @@
 		"MESSAGE_ALIASHASAD":"If you want to type an alias, prepend it with the @ character.",
 		"ERROR_RECIPIENT_UNKNOWN_NOACTION":"The recipient account is an unknown account, meaning it has never had an incoming or outgoing transaction. Please double check your recipient address before submitting.",
 		"ERROR_PROBLEM_WITHRECIPIENT":"There is a problem with the recipient account:",
-		"ERROR_RECIPIENT_NOPUBKEY_NOACTION":"The recipient account does not have a public key, meaning it has never had an outgoing transaction. The account has a balance of $1 NFD. Please double check your recipient address before submitting."
-		
-		
-		
-		
+		"ERROR_RECIPIENT_NOPUBKEY_NOACTION":"The recipient account does not have a public key, meaning it has never had an outgoing transaction. The account has a balance of $1 NFD. Please double check your recipient address before submitting.",
+		"UNKNOWN_ERROR_OCCURRED":"Unknown error occurred.",
+		"ERROR_COULD_NOT_VERIFY_SIGNATURE_CS":"Could not verify signature (client side).",
+		"ERROR_COULD_NOT_VERIFY_SIGNATURE":"Could not verify signature.",
+		"ERROR_COULD_NOT_VERIFY_TRANSACTION_BYTES_SS":"Could not verify transaction bytes (server side).",
+		"ERROR_COULD_NOT_VERIFY_TRANSACTION_BYTES":"Could not verify transaction bytes.",
+		"ERROR_COULD_NOT_CONNECT":"Could not connect.",
+		"WARNING_REQUEST_TIMED_OUT":" Warning: The request timed out. This does not mean the request did not go through. You should wait a couple of blocks and see if your request has been processed.",
+		"COPIED_TO_CLIPBOARD":"Copied to the clipboard successfully.",
+		"NO_FLASH_SUPPORT":"Your browser doesn't support flash, therefore copy to clipboard functionality will not work.",
+		"FLASH_TO_OLD":"Your browser flash version is too old. The copy to clipboard functionality needs version 10 or newer."
 }

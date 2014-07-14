@@ -766,7 +766,7 @@ var NRS = (function(NRS, $, undefined) {
 					"text": NRS.getClipboardText($(this).data("type"))
 				}, "*");
 
-				$.growl("Copied to the clipboard successfully.", {
+				$.growl(NRS.getLangString("COPIED_TO_CLIPBOARD"), {
 					"type": "success"
 				});
 			});
@@ -785,7 +785,7 @@ var NRS = (function(NRS, $, undefined) {
 			}
 
 			clipboard.on("complete", function(client, args) {
-				$.growl("Copied to the clipboard successfully.", {
+				$.growl(NRS.getLangString("COPIED_TO_CLIPBOARD"), {
 					"type": "success"
 				});
 			});
@@ -793,7 +793,7 @@ var NRS = (function(NRS, $, undefined) {
 			clipboard.on("noflash", function(client, args) {
 				$("#account_id_dropdown .dropdown-menu, #asset_id_dropdown .dropdown-menu").remove();
 				$("#account_id_dropdown, #asset_id").data("toggle", "");
-				$.growl("Your browser doesn't support flash, therefore copy to clipboard functionality will not work.", {
+				$.growl(NRS.getLangString("NO_FLASH_SUPPORT"), {
 					"type": "danger"
 				});
 			});
@@ -801,7 +801,7 @@ var NRS = (function(NRS, $, undefined) {
 			clipboard.on("wrongflash", function(client, args) {
 				$("#account_id_dropdown .dropdown-menu, #asset_id_dropdown .dropdown-menu").remove();
 				$("#account_id_dropdown, #asset_id").data("toggle", "");
-				$.growl("Your browser flash version is too old. The copy to clipboard functionality needs version 10 or newer.");
+				$.growl(NRS.getLangSupport("FLASH_TO_OLD"));
 			});
 		}
 	}

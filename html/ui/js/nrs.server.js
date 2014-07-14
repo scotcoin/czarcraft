@@ -22,7 +22,7 @@ var NRS = (function(NRS, $, undefined) {
 			data: data
 		}).done(function(json) {
 			if (json.errorCode && !json.errorDescription) {
-				json.errorDescription = (json.errorMessage ? json.errorMessage : "Unknown error occured.");
+				json.errorDescription = (json.errorMessage ? json.errorMessage : NRS.getLangString("UNKNOWN_ERROR_OCCURRED"));
 			}
 			if (callback) {
 				callback(json, data);
@@ -101,7 +101,7 @@ var NRS = (function(NRS, $, undefined) {
 				if (callback) {
 					callback({
 						"errorCode": 1,
-						"errorDescription": "Incorrect secret phrase."
+						"errorDescription": NRS.getLangString("ERROR_SECRET_INCORRECT")
 					});
 				}
 				return;
@@ -235,10 +235,10 @@ var NRS = (function(NRS, $, undefined) {
 					if (callback) {
 						callback({
 							"errorCode": 1,
-							"errorDescription": "Could not verify signature (client side)."
+							"errorDescription": NRS.getLangString("ERROR_COULD_NOT_VERIFY_SIGNATURE_CS")
 						}, data);
 					} else {
-						$.growl("Could not verify signature.", {
+						$.growl(NRS.getLangString("ERROR_COULD_NOT_VERIFY_SIGNATURE"), {
 							"type": "danger"
 						});
 					}
@@ -250,10 +250,10 @@ var NRS = (function(NRS, $, undefined) {
 						if (callback) {
 							callback({
 								"errorCode": 1,
-								"errorDescription": "Could not verify transaction bytes (server side)."
+								"errorDescription": NRS.getLangString("ERROR_COULD_NOT_VERIFY_TRANSACTION_BYTES_SS")
 							}, data);
 						} else {
-							$.growl("Could not verify transaction bytes.", {
+							$.growl(NRS.getLangString("ERROR_COULD_NOT_VERIFY_TRANSACTION_BYTES"), {
 								"type": "danger"
 							});
 						}
@@ -272,7 +272,7 @@ var NRS = (function(NRS, $, undefined) {
 				}
 			} else {
 				if (response.errorCode && !response.errorDescription) {
-					response.errorDescription = (response.errorMessage ? response.errorMessage : "Unknown error occured.");
+					response.errorDescription = (response.errorMessage ? response.errorMessage : NRS.getLangString("UNKNOWN_ERROR_OCCURRED"));
 				}
 
 				if (callback) {
@@ -289,7 +289,7 @@ var NRS = (function(NRS, $, undefined) {
 
 			if ((error == "error" || textStatus == "error") && (xhr.status == 404 || xhr.status == 0)) {
 				if (type == "POST") {
-					$.growl("Could not connect.", {
+					$.growl(NRS.getLangString("ERROR_COULD_NOT_CONNECT")), {
 						"type": "danger",
 						"offset": 10
 					});
@@ -300,7 +300,7 @@ var NRS = (function(NRS, $, undefined) {
 				return;
 			} else if (callback) {
 				if (error == "timeout") {
-					error = "The request timed out. Warning: This does not mean the request did not go through. You should wait a couple of blocks and see if your request has been processed.";
+					error = NRS.getLangString("WARNING_REQUEST_TIMED_OUT")
 				}
 				callback({
 					"errorCode": -1,
@@ -885,7 +885,7 @@ var NRS = (function(NRS, $, undefined) {
 
 			if (callback) {
 				if (response.errorCode && !response.errorDescription) {
-					response.errorDescription = (response.errorMessage ? response.errorMessage : "Unknown error occured.");
+					response.errorDescription = (response.errorMessage ? response.errorMessage : NRS.getLangString("UNKNOWN_ERROR_OCCURRED"));
 					callback(response, original_data);
 				} else if (response.error) {
 					response.errorCode = 1;
@@ -908,7 +908,7 @@ var NRS = (function(NRS, $, undefined) {
 
 			if (callback) {
 				if (error == "timeout") {
-					error = "The request timed out. Warning: This does not mean the request did not go through. You should a few blocks and see if your request has been processed before trying to submit it again.";
+					error = NRS.getLangString("WARNING_REQUEST_TIMED_OUT");
 				}
 				callback({
 					"errorCode": -1,

@@ -12,6 +12,6 @@
 /README_win.txt
 /package.sh
 /bin/
-/nxt.log.lck
+/nxt.log.*
 /nfd_db
 /.metadata

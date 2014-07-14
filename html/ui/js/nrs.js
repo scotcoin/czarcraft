@@ -72,7 +72,7 @@ var NRS = (function(NRS, $, undefined) {
 		if (location.port && location.port != "9876") {
 			$(".testnet_only").hide();
 		} else {
-			NRS.isTestNet = true;
+			NRS.isTestNet = true;			
 			$(".testnet_only, #testnet_login, #testnet_warning").show();
 		}
 

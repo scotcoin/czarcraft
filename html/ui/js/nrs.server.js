@@ -289,7 +289,7 @@ var NRS = (function(NRS, $, undefined) {
 
 			if ((error == "error" || textStatus == "error") && (xhr.status == 404 || xhr.status == 0)) {
 				if (type == "POST") {
-					$.growl(NRS.getLangString("ERROR_COULD_NOT_CONNECT")), {
+					$.growl(NRS.getLangString("ERROR_COULD_NOT_CONNECT"), {
 						"type": "danger",
 						"offset": 10
 					});

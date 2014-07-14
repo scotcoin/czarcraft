@@ -69,7 +69,6 @@
 		"ERROR_COULDNTGENERATE_TOKEN":"Could not generate token.",
 		"ERROR_WEBSITE_REQUIREDFIELD":"Website is a required field.",
 		"MESSAGE_GENERATED_TOKENIS":"The generated token for $1 is:",
-		"ERROR_COULDNTFIND_KEYFORRECIPIENT":"Could not find public key for recipient, which is necessary for sending encrypted messages.",
 		"ERROR_COULDNTCONVERTHEX":"Could not convert hex to string:",
 		"STRING_TO":"To",
 		"STRING_FROM":"From",
@@ -89,5 +88,6 @@
 		"WARNING_REQUEST_TIMED_OUT":" Warning: The request timed out. This does not mean the request did not go through. You should wait a couple of blocks and see if your request has been processed.",
 		"COPIED_TO_CLIPBOARD":"Copied to the clipboard successfully.",
 		"NO_FLASH_SUPPORT":"Your browser doesn't support flash, therefore copy to clipboard functionality will not work.",
-		"FLASH_TO_OLD":"Your browser flash version is too old. The copy to clipboard functionality needs version 10 or newer."
+		"FLASH_TO_OLD":"Your browser flash version is too old. The copy to clipboard functionality needs version 10 or newer.",
+		"COULD_NOT_LOAD_WORD_LIST":"Could not load word list..."
 }

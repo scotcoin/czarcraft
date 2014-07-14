@@ -67,7 +67,7 @@ var NRS = (function(NRS, $, undefined) {
 
 				PassPhraseGenerator.generatePassPhrase("#account_phrase_generator_panel");
 			}).fail(function(jqxhr, settings, exception) {
-				alert("Could not load word list...");
+				alert(NRS.getLangString("COULD_NOT_LOAD_WORD_LIST"));
 			});
 		} else {
 			$loading.hide();
@@ -85,7 +85,7 @@ var NRS = (function(NRS, $, undefined) {
 		} else {
 			NRS.newlyCreatedAccount = true;
 			NRS.login(password, function() {
-				$.growl(NRS.getLangString("ERROR_SECRET_NOTCONFIRMED"), {
+				$.growl(NRS.getLangString("SUCCESS_SECRETCONFIRMED"), {
 					"type": "success"
 				});
 			});

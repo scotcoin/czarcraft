@@ -84,7 +84,7 @@ var NRS = (function(NRS, $, undefined) {
 							"account": (transaction.recipient == NRS.account ? transaction.sender : transaction.recipient)
 						}, function(response) {
 							if (!response.publicKey) {
-								$.growl(NRS.getLangString("ERROR_COULDNTFIND_KEYFORRECIPIENT"), {
+								$.growl(NRS.getLangString("ERROR_COULDNT_FIND_PUBLICKEY"), {
 									"type": "danger"
 								});
 							}

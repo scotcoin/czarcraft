@@ -60,7 +60,15 @@ var NRS = (function(NRS, $, undefined) {
 							  NRS.langData = data;
 							  $('[data-lang]').each(function(){
 								  // texts have only to be changed for not en language
-								  $(this).text(data[$(this).attr('data-lang')]);
+								  if (this.nodeName != 'INPUT'){
+									  $(this).text(data[$(this).attr('data-lang')]);
+								  }
+								  else if(this.hasAttribute("value")){
+									  $(this).val(data[$(this).attr('data-lang')]);
+								  }
+								  else if(this.hasAttribute("placeholder")){
+									  $(this).attr('placeholder',data[$(this).attr('data-lang')]);
+								  }
 							  });
 						  }
 					});

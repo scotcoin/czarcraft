@@ -1,4 +1,4 @@
-CP="conf/;classes/;lib/*"
+CP="conf/;classes/;lib/*;lang/"
 SP=src/java/
 
 /bin/mkdir -p classes/

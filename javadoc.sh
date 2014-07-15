@@ -1,4 +1,4 @@
-CP=nfd.jar:lib/*:conf
+CP=nfd.jar:lib/*:conf:lang
 SP=src/java/
 
 /bin/rm -rf html/doc/*

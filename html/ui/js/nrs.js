@@ -652,18 +652,16 @@ var NRS = (function(NRS, $, undefined) {
 					asset.difference = input["_extra"].difference;
 					asset.asset = input["_extra"].asset;
 
+					var quantity = NRS.formatQuantity(asset.difference, asset.decimals);
 					var assetLink = "<a href='#' data-goto-asset='" + String(asset.asset).escapeHTML() + "'>" + quantity + " " + String(asset.name).escapeHTML() + " asset(s)</a>";
 					
 					if (asset.difference.charAt(0) != "-") {
-						var quantity = NRS.formatQuantity(asset.difference, asset.decimals)
 
 						$.growl(NRS.getLangString("MESSAGE_YOURECEIVED").replace(/\$1/g,assetLink), {
 							"type": "success"
 						});
 					} else {
 						asset.difference = asset.difference.substring(1);
-
-						var quantity = NRS.formatQuantity(asset.difference, asset.decimals)
 
 						$.growl(NRS.getLangString("MESSAGE_YOUTRANSFERRED").replace(/\$1/g,assetLink), {
 							"type": "success"

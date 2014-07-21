@@ -1039,9 +1039,9 @@ var NRS = (function(NRS, $, undefined) {
 
 			if (selectedText != $(this).val()) {
 				if (isQuantityField) {
-					errorMessage = NRS.getLangString("ERROR_ASSET_ONLYDIGITSALLOWED_ASSET").replace(/$1/g, NRS.currentAsset.decimals);
+					errorMessage = NRS.getLangString("ERROR_ASSET_ONLYDIGITSALLOWED_ASSET").replace(/\$1/g, NRS.currentAsset.decimals);
 				} else {
-					errorMessage = NRS.getLangString("ERROR_ASSET_ONLYDIGITSALLOWED").replace(/$1/g, (8 - NRS.currentAsset.decimals));
+					errorMessage = NRS.getLangString("ERROR_ASSET_ONLYDIGITSALLOWED").replace(/\$1/g, (8 - NRS.currentAsset.decimals));
 				}
 
 				$.growl(errorMessage, {
@@ -1126,20 +1126,20 @@ var NRS = (function(NRS, $, undefined) {
 
 		if (orderType == "buy") {
 			var description = NRS.getLangString("MESSAGE_ASSETS_BUYATEACH")
-				.replace(/$1/g, "<strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong>")
-				.replace(/$2/g, "<strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong>");
+				.replace(/\$1/g, "<strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong>")
+				.replace(/\$2/g, "<strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong>");
 			
 			var tooltipTitle = NRS.getLangString("MESSAGE_ASSET_PERWHOLEYOUPAY")
-				.replace(/$1/g, NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD")
-				.replace(/$2/g,	totalNXT + " NFD");
+				.replace(/\$1/g, NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD")
+				.replace(/\$2/g,	totalNXT + " NFD");
 		} else {
 			var description = NRS.getLangString("MESSAGE_ASSETS_SELLATEACH")
-				.replace(/$1/g, "<strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong>")
-				.replace(/$2/g, "<strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong>");
+				.replace(/\$1/g, "<strong>" + NRS.formatQuantity(quantityQNT, NRS.currentAsset.decimals, true) + " " + $("#asset_name").html() + "</strong>")
+				.replace(/\$2/g, "<strong>" + NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD</strong>");
 		
 			var tooltipTitle = NRS.getLangString("MESSAGE_ASSET_PERWHOLEYOURECEIVE")
-				.replace(/$1/g, NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD")
-				.replace(/$2/g,	totalNXT + " NFD");
+				.replace(/\$1/g, NRS.formatAmount(priceNQTPerWholeQNT, false, true) + " NFD")
+				.replace(/\$2/g,	totalNXT + " NFD");
 		}
 		
 		$("#asset_order_description").html(description);

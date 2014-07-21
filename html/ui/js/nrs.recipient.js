@@ -84,7 +84,7 @@ var NRS = (function(NRS, $, undefined) {
 			if (response.publicKey) {
 				callback({
 					"type": "info",
-					"message": NRS.getLangString("MESSAGE_RECIPIENT_HAS_BALANCEOF").replace(/$1/g, + NRS.formatAmount(response.unconfirmedBalanceNQT, false, true) + "NFD."),
+					"message": NRS.getLangString("MESSAGE_RECIPIENT_HAS_BALANCEOF").replace(/\$1/g, + NRS.formatAmount(response.unconfirmedBalanceNQT, false, true) + "NFD."),
 					"account": response
 				});
 			} else {
@@ -111,7 +111,7 @@ var NRS = (function(NRS, $, undefined) {
 				} else {
 					callback({
 						"type": "warning",
-						"message": NRS.getLangString("ERROR_RECIPIENT_NOPUBKEY_NOACTION").replace(/$1/g, NRS.formatAmount(response.unconfirmedBalanceNQT, false, true)),
+						"message": NRS.getLangString("ERROR_RECIPIENT_NOPUBKEY_NOACTION").replace(/\$1/g, NRS.formatAmount(response.unconfirmedBalanceNQT, false, true)),
 						"account": response
 					});
 				}

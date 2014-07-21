@@ -21,7 +21,7 @@ var NRS = (function(NRS, $, undefined) {
 		$("#generate_token_modal").find(".error_message").hide();
 
 		if (response.token) {
-			$("#generate_token_token").html(NRS.getLangString("MESSAGE_GENERATED_TOKENIS").replace(/$1/g,  "<strong>" + data.website.escapeHTML() + "</strong>")+" <br /><br /><textarea style='width:100%' rows='3'>" + response.token.escapeHTML() + "</textarea>").show();
+			$("#generate_token_token").html(NRS.getLangString("MESSAGE_GENERATED_TOKENIS").replace(/\$1/g,  "<strong>" + data.website.escapeHTML() + "</strong>")+" <br /><br /><textarea style='width:100%' rows='3'>" + response.token.escapeHTML() + "</textarea>").show();
 		} else {
 			$.growl(NRS.getLangString("ERROR_COULDNTGENERATE_TOKEN"), {
 				"type": "danger"

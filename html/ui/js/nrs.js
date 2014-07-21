@@ -657,7 +657,7 @@ var NRS = (function(NRS, $, undefined) {
 					if (asset.difference.charAt(0) != "-") {
 						var quantity = NRS.formatQuantity(asset.difference, asset.decimals)
 
-						$.growl(NRS.getLangString("MESSAGE_YOURECEIVED").replace(/$1/g,assetLink), {
+						$.growl(NRS.getLangString("MESSAGE_YOURECEIVED").replace(/\$1/g,assetLink), {
 							"type": "success"
 						});
 					} else {
@@ -665,7 +665,7 @@ var NRS = (function(NRS, $, undefined) {
 
 						var quantity = NRS.formatQuantity(asset.difference, asset.decimals)
 
-						$.growl(NRS.getLangString("MESSAGE_YOUTRANSFERRED").replace(/$1/g,assetLink), {
+						$.growl(NRS.getLangString("MESSAGE_YOUTRANSFERRED").replace(/\$1/g,assetLink), {
 							"type": "success"
 						});
 					}

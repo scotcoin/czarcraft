@@ -150,5 +150,6 @@
 		"FEE":"Gebühren",
 		"DEADLINE_HOURS_UPPER":"FRIST (in STUNDEN)",
 		"DEADLINE":"Frist",
-		"SECRET_PHRASE":"Geheimes Passwort"
+		"SECRET_PHRASE_UPPER":"PASSWORT",
+		"CANCEL":"Abbrechen"
 }

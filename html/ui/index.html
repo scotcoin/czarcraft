@@ -476,7 +476,7 @@
 												    <th>Quantity</th>
 												    <th>Price</th>
 												    <th>Total</th>
-												    <th>Cancel</th>
+												    <th data-lang="CANCEL">Cancel</th>
 												</tr>
 												</thead>
 		                 	                    <tbody>
@@ -501,7 +501,7 @@
 												    <th>Quantity</th>
 												    <th>Price</th>
 												    <th>Total</th>
-												    <th>Cancel</th>
+												    <th data-lang="CANCEL">Cancel</th>
 												</tr>
 												</thead>
 		                 		                <tbody>
@@ -1328,7 +1328,7 @@
 			                        <div class="col-sm-9"><input type="password" name="registration_password_repeat" class="form-control" id="registration_password_repeat" placeholder="" /></div>
 			                    </div>
 			                    
-								<div style="text-align:right"><input type="submit" class="btn btn-primary btn-sm" value="Register" />&nbsp;&nbsp;<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;">Cancel</button>
+								<div style="text-align:right"><input type="submit" class="btn btn-primary btn-sm" value="Register" />&nbsp;&nbsp;<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;" data-lang="CANCEL">Cancel</button>
 			                    </div>
 		                    </form>
 		                </div>
@@ -1355,7 +1355,7 @@
 									</div>
 									
 									<div style="text-align:right">
-										<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;">Cancel</button>
+										<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;" data-lang="CANCEL">Cancel</button>
 									</div>
 		        				</div>
 		        				
@@ -1376,7 +1376,7 @@
 			        					<div class="callout callout-danger"><strong>Attention</strong>: Don't ever disclose your secret phrase. If you lose it you lose access to your account!</div>
 			        				
 										<div style="text-align:right">
-											<input type="submit" class="btn btn-primary btn-sm" value="Next" onclick="$('.step_2').hide();$('.step_3').show();return false;" />&nbsp;&nbsp;<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;">Cancel</button>
+											<input type="submit" class="btn btn-primary btn-sm" value="Next" onclick="$('.step_2').hide();$('.step_3').show();return false;" />&nbsp;&nbsp;<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;" data-lang="CANCEL">Cancel</button>
 										</div>
 		        					</div>
 		        				</div>
@@ -1389,7 +1389,7 @@
 		        					<textarea style="width:100%;height:50px;margin-bottom:10px;" rows="2"></textarea>
 		        					
 		        					<div style="text-align:right">
-										<input type="submit" class="btn btn-primary btn-sm" value="Next" onclick="NRS.verifyGeneratedPassphrase();return false;" />&nbsp;&nbsp;<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;">Cancel</button>
+										<input type="submit" class="btn btn-primary btn-sm" value="Next" onclick="NRS.verifyGeneratedPassphrase();return false;" />&nbsp;&nbsp;<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;" data-lang="CANCEL">Cancel</button>
 									</div>
 		        				</div>
 		                	</div>
@@ -1453,7 +1453,7 @@
 		      			<input type="hidden" name="success_message" value="Your balance will be leased out in 1440 blocks." />
 		      			<input type="hidden" name="request_type" value="leaseBalance" />
 		      			<input type="hidden" name="converted_account_id" value="" />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Lease Balance</button>
 		      		</div>
 		    	</div>
@@ -1511,7 +1511,7 @@
 			      	<div class="modal-footer" style="margin-top:0;">
 			      		<input type="hidden" name="request_type" value="startForging" />
 			      		<input type="hidden" name="success_message" value="Forging has been started." />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" id="start_forging_button" data-loading-text="Submitting...">Start Forging</button>
 			      	</div>
 		    	</div>
@@ -1601,7 +1601,7 @@
 			      		<input type="hidden" name="request_type" value="orderAsset" />
 			      		<input type="hidden" name="success_message" value="The __ order has been submitted." />
 			      		<input type="hidden" name="error_message" value="An unknown error occured! The order may or may not have gone through." />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..." id="asset_order_modal_button"></button>
 			      	</div>
 		    	</div>
@@ -1669,7 +1669,7 @@
 						<input type="hidden" name="success_message" value="The asset has been transferred!" />
 						<input type="hidden" name="error_message" value="An unknown error occured! Asset may or may not be transferred." />
 						<input type="hidden" name="converted_account_id" value="" />
-				     	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				     	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Transfer Asset</button>
 					</div>
 		    	</div>
@@ -1696,7 +1696,7 @@
 						<input type="hidden" name="request_type" value="addAssetBookmark" />
 						<input type="hidden" name="success_message" value="The asset has been added!" />
 						<input type="hidden" name="error_message" value="An unknown error occured!" />
-				    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				    	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Add Asset</button>
 				    </div>
 				</div>
@@ -1738,7 +1738,7 @@
 						<input type="hidden" name="success_message" value="The contact has been created!" />
 						<input type="hidden" name="error_message" value="An unknown error occured!" />
 						<input type="hidden" name="converted_account_id" value="" />
-				    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				    	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Add Contact</button>
 				    </div>
 				</div>
@@ -1781,7 +1781,7 @@
 						<input type="hidden" name="success_message" value="The contact has been updated successfully!" />
 						<input type="hidden" name="error_message" value="An unknown error occured!" />
 						<input type="hidden" name="converted_account_id" value="" />
-				    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				    	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Update Contact</button>
 				    </div>
 				</div>
@@ -1873,7 +1873,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 						<input type="hidden" name="request_type" value="issueAsset" />
 						<input type="hidden" name="success_message" value="The asset has been created and will be available soon." />
 						<input type="hidden" name="error_message" value="An unknown error occured! Asset may or may not be created." />
-				    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				    	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Issue Asset</button>
 				    </div>
 				</div>
@@ -1962,7 +1962,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 						<input type="hidden" name="request_type" value="createPoll" />
 						<input type="hidden" name="success_message" value="The poll has been created!" />
 						<input type="hidden" name="error_message" value="An unknown error occured! Poll may or may not be created." />
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 						&nbsp;&nbsp;
 						<button type="button" class="btn btn-primary" data-loading-text="Submitting...">Create Poll</button>
 				    </div>
@@ -2020,7 +2020,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 						<input type="hidden" name="request_type" value="castVote" />
 						<input type="hidden" name="success_message" value="Your vote has been cast!" />
 						<input type="hidden" name="error_message" value="An unknown error occured! Vote may or may not be cast." />
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 						&nbsp;&nbsp;
 						<button type="button" class="btn btn-primary" data-loading-text="Submitting...">Cast Vote</button>
 				    </div>
@@ -2078,7 +2078,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		      			<input type="hidden" name="failure_message" value="An unknown error occured! NFD may or may not be sent." />
 		      			<input type="hidden" name="request_type" value="sendMoney" />
 		      			<input type="hidden" name="converted_account_id" value="" />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="SEND_NFD">Send NFD</button>
 		      		</div>
 		    	</div>
@@ -2134,7 +2134,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			       		<input type="hidden" name="request_type" value="sendMessage" />
 			       		<input type="hidden" name="error_message" value="An unknown error occured! Message may or may not be sent." />
 			       		<input type="hidden" name="converted_account_id" value="" />
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 			     	    <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Send Message</button>
 			      	</div>
 		    	</div>
@@ -2182,7 +2182,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			       	<div class="modal-footer" style="margin-top:0;">
 			       		<input type="hidden" name="request_type" value="setAccountInfo" />
 			       		<input type="hidden" name="success_message" value="Your account info has been saved successfully." />
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 			     	    <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Update Account Info</button>
 			      	</div>
 		    	</div>
@@ -2242,7 +2242,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			      		<input type="hidden" name="request_type" value="setAlias" />
 			      		<input type="hidden" name="success_message" value="Your alias has been registered!" />
 			      		<input type="hidden" name="error_message" value="An unknown error occured! Alias may or may not be registered." />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" id="register_alias_button" data-loading-text="Submitting...">Register</button>
 			    	</div>
 				</div>
@@ -2273,7 +2273,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 					</div>
 			      	<div class="modal-footer" style="margin-top:0;">
 			      		<input type="hidden" name="request_type" value="generateToken" />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" id="register_alias_button" data-loading-text="Submitting...">Generate</button>
 			    	</div>
 				</div>
@@ -2685,7 +2685,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			      	<div class="modal-footer" style="margin-top:0;">
 			      		<input type="hidden" name="request_type" value="assetExchangeChangeGroupName" />
 			      		<input type="hidden" name="success_message" value="Group name has been changed successfully." />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" id="asset_exchange_change_group_name_submit" data-loading-text="Submitting...">Change Group Name</button>
 			      	</div>
 		    	</div>
@@ -2722,7 +2722,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			      	<div class="modal-footer" style="margin-top:0;">
 			      		<input type="hidden" name="request_type" value="assetExchangeGroup" />
 			      		<input type="hidden" name="success_message" value="Asset has been added to group." />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 				        <button type="button" class="btn btn-primary" id="asset_exchange_group_submit" data-loading-text="Submitting...">Add to Group</button>
 			      	</div>
 		    	</div>

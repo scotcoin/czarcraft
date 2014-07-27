@@ -145,7 +145,7 @@ var NRS = (function(NRS, $, undefined) {
 			var nrConfirmations = confirmations + newBlocks.length;
 
 			$(this).data("confirmations", nrConfirmations);
-			$(this).attr("data-content", NRS.formatAmount(nrConfirmations, false, true) + " confirmations");
+			$(this).attr("data-content", NRS.formatAmount(nrConfirmations, false, true) + " "+NRS.getLangString("CONFIRMATIONS"));
 			
 			if (confirmations <= 11) {
 				if (nrConfirmations > 10) {

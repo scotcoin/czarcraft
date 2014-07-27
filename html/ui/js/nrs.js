@@ -416,11 +416,11 @@ var NRS = (function(NRS, $, undefined) {
 
 				if (NRS.accountInfo.errorCode == 5) {
 					if (NRS.downloadingBlockchain) {
-						$("#dashboard_message").addClass("alert-success").removeClass("alert-danger").html("The blockchain is currently downloading. Please wait until it is up to date." + (NRS.newlyCreatedAccount ? " Your account ID is: <strong>" + String(preferredAccountFormat).escapeHTML() + "</strong>" : "")).show();
+						$("#dashboard_message").addClass("alert-success").removeClass("alert-danger").html(NRS.getLangString("DASHBOARD_BLOCKCHAIN_DOWNLOADING")+ (NRS.newlyCreatedAccount ? " "+NRS.getLangString("YOUR_ACCOUNT_IS")+" <strong>" + String(preferredAccountFormat).escapeHTML() + "</strong>" : "")).show();
 					} else if (NRS.state && NRS.state.isScanning) {
-						$("#dashboard_message").addClass("alert-danger").removeClass("alert-success").html("The blockchain is currently rescanning. Please wait until that has completed.").show();
+						$("#dashboard_message").addClass("alert-danger").removeClass("alert-success").html(NRS.getLangString("DASHBOARD_BLOCKCHAIN_RESCANNING")).show();
 					} else {
-						$("#dashboard_message").addClass("alert-success").removeClass("alert-danger").html("Welcome to your brand new account. You should fund it with some coins. Your account ID is: <strong>" + String(preferredAccountFormat).escapeHTML() + "</strong>").show();
+						$("#dashboard_message").addClass("alert-success").removeClass("alert-danger").html(NRS.getLangString("DASHBOARD_WELCOME_NEW_ACCOUNT")+" "+NRS.getLangString("YOUR_ACCOUNT_IS")+" <strong>" + String(preferredAccountFormat).escapeHTML() + "</strong>").show();
 					}
 				} else {
 					$("#dashboard_message").addClass("alert-danger").removeClass("alert-success").html(NRS.accountInfo.errorDescription ? NRS.accountInfo.errorDescription.escapeHTML() : "An unknown error occured.").show();
@@ -434,9 +434,9 @@ var NRS = (function(NRS, $, undefined) {
 				}
 
 				if (NRS.downloadingBlockchain) {
-					$("#dashboard_message").addClass("alert-success").removeClass("alert-danger").html("The blockchain is currently downloading. Please wait until it is up to date." + (NRS.newlyCreatedAccount ? " Your account ID is: <strong>" + String(preferredAccountFormat).escapeHTML() + "</strong>" : "")).show();
+					$("#dashboard_message").addClass("alert-success").removeClass("alert-danger").html(NRS.getLangString("DASHBOARD_BLOCKCHAIN_DOWNLOADING")+ (NRS.newlyCreatedAccount ? " "+NRS.getLangString("YOUR_ACCOUNT_IS")+" <strong>" + String(preferredAccountFormat).escapeHTML() + "</strong>" : "")).show();
 				} else if (NRS.state && NRS.state.isScanning) {
-					$("#dashboard_message").addClass("alert-danger").removeClass("alert-success").html("The blockchain is currently rescanning. Please wait until that has completed.").show();
+					$("#dashboard_message").addClass("alert-danger").removeClass("alert-success").html(NRS.getLangString("DASHBOARD_BLOCKCHAIN_RESCANNING")).show();
 				} else if (!NRS.accountInfo.publicKey) {
 					$("#dashboard_message").addClass("alert-danger").removeClass("alert-success").html(NRS.getLangString("STRING_WARNING")+"!</b>: "+NRS.getLangString("DASHBOARD_PUBKEY_WARNING")+" (<a href='#' data-toggle='modal' data-target='#send_message_modal'>"+NRS.getLangString("SEND_A_MESSAGE")+"</a>, <a href='#' data-toggle='modal' data-target='#register_alias_modal'>"+NRS.getLangString("BUY_AN_ALIAS")+"</a>, <a href='#' data-toggle='modal' data-target='#send_money_modal'>"+NRS.getLangString("SEND_NFD")+"</a>, ...)").show();					
 				} else {

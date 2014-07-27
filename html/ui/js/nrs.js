@@ -63,7 +63,7 @@ var NRS = (function(NRS, $, undefined) {
 								  if (this.nodeName != 'INPUT'){
 									  $(this).text(data[$(this).attr('data-lang')]);
 								  }
-								  else if(this.hasAttribute("value")){
+								  else if(this.hasAttribute("value") && ! this.hasAttribute("placeholder")){
 									  $(this).val(data[$(this).attr('data-lang')]);
 								  }
 								  else if(this.hasAttribute("placeholder")){

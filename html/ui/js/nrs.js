@@ -44,8 +44,22 @@ var NRS = (function(NRS, $, undefined) {
 		//load language tokens
 
 		NRS.userLang = navigator.language || navigator.userLanguage || NRS.defaultUserLang;
-		NRS.userLang = NRS.userLang.split('-')[0];
+		NRS.userLangFallBack = NRS.userLang.split('-')[0];
 		
+		function changeNodes(){
+			 $('[data-lang]').each(function(){
+				 var langString = NRS.getLangString($(this).attr('data-lang'));
+				  if (this.nodeName != 'INPUT'){
+					  $(this).text(langString);
+				  }
+				  else if(this.hasAttribute("value") && ! this.hasAttribute("placeholder")){
+					  $(this).val(langString);
+				  }
+				  else if(this.hasAttribute("placeholder")){
+					  $(this).attr('placeholder',langString);
+				  }
+			  });
+		}
 		
 		$.ajax({
 			  dataType: "json",
@@ -58,18 +72,17 @@ var NRS = (function(NRS, $, undefined) {
 						  url: "/js/lang/lang."+NRS.userLang+".json",
 						  success: function(data){
 							  NRS.langData = data;
-							  $('[data-lang]').each(function(){
-								  // texts have only to be changed for not en language
-								  if (this.nodeName != 'INPUT'){
-									  $(this).text(data[$(this).attr('data-lang')]);
-								  }
-								  else if(this.hasAttribute("value") && ! this.hasAttribute("placeholder")){
-									  $(this).val(data[$(this).attr('data-lang')]);
-								  }
-								  else if(this.hasAttribute("placeholder")){
-									  $(this).attr('placeholder',data[$(this).attr('data-lang')]);
-								  }
-							  });
+							  changeNodes();
+						  },
+						  error: function(){
+								  $.ajax({
+									  dataType: "json",
+									  url: "/js/lang/lang."+NRS.userLangFallBack+".json",
+									  success: function(data){
+										  NRS.langData = data;
+										  changeNodes();
+									  }
+								});
 						  }
 					});
 				  } 

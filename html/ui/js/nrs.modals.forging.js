@@ -6,7 +6,7 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.forms.startForgingComplete = function(response, data) {
 		if ("deadline" in response) {
 			$("#forging_indicator").addClass("forging");
-			$("#forging_indicator span").html("Forging");
+			$("#forging_indicator span").html(NRS.getLangString("FORGING"));
 			NRS.isForging = true;
 			$.growl(NRS.getLangString("SUCCESS_FORGIN_STARTED"), {
 				type: "success"
@@ -26,7 +26,7 @@ var NRS = (function(NRS, $, undefined) {
 		}
 
 		$("#forging_indicator").removeClass("forging");
-		$("#forging_indicator span").html("Not forging");
+		$("#forging_indicator span").html(NRS.getLangString("NOT_FORGING"));
 
 		NRS.isForging = false;
 

@@ -14,6 +14,7 @@
 		"COPY_SEND_MESSAGE_LINK":"Copy 'Send Message' Link",
 		"COPY_SEND_NFD_LINK":"Copy 'Send NFD' Link",
 		"FORGING":"Forging",
+		"NOT_FORGING":"Not Forging",
 		"SEARCH_BY_ID":"Search by ID...",
 		"DASHBOARD":"Dashboard",
 		"TRANSACTIONS":"Transactions",

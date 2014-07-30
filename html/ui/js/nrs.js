@@ -571,7 +571,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		if (NRS.accountInfo.effectiveBalanceNXT == 0) {
 			$("#forging_indicator").removeClass("forging");
-			$("#forging_indicator span").html("Not Forging");
+			$("#forging_indicator span").html(NRS.getLangString("NOT_FORGING"));
 			$("#forging_indicator").show();
 			NRS.isForging = false;
 		}

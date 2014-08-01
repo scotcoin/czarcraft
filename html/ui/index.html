@@ -141,7 +141,7 @@
 	                            <div class="small-box bg-gray">
 	                                <div class="inner">
 	                                    <h3><span id="account_nr_assets" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-	                                    <p>Assets Owned</p>
+	                                    <p><span data-lang="ASSSETS_OWNED">Assets Owned</span></p>
 	                                </div>
 	                                <div class="icon"><i class="ion ion-pie-graph"></i></div>
 	                                <a href="#" class="small-box-footer goto-page" data-page="my_assets"><span data-lang="MORE_INFO">More info</span> <i class="fa fa-arrow-circle-right"></i></a>
@@ -151,7 +151,7 @@
 	                            <div class="small-box bg-gray">
 	                                <div class="inner">
 	                                    <h3><span id="nrs_version" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-	                                    <p><span id="nrs_version_info">NRS Version</span> <span class="label label-danger" id="nrs_update" style="display:none;"></span></p>
+	                                    <p><span id="nrs_version_info" data-lang="NRS_VERSION">NRS Version</span> <span class="label label-danger" id="nrs_update" style="display:none;"></span></p>
 	                                </div>
 	                                <div class="icon"><i class="fa fa-code"></i></div>
 	                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#nrs_modal"><span data-lang="MORE_INFO">More info</span> <i class="fa fa-arrow-circle-right"></i></a>
@@ -215,26 +215,26 @@
 				
 				<div id="transactions_page" class="page">
 	                <section class="content-header">
-	                	<h1>Transactions</h1>
+	                	<h1><span data-lang="TRANSACTIONS">Transactions</h1>
 						<div style="position:absolute;top:9px;right:9px;">
 							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-									<span class="text">All Transactions</span> <span class="caret"></span>
+									<span class="text" data-lang="ALL_TRANSACTIONS">All Transactions</span> <span class="caret"></span>
 								</button>
 					        	<ul id="transactions_page_type" class="dropdown-menu" role="menu" style="right:0;left:auto;">
-					        		<li><a href="#" data-type="">All Transactions</a></li>
-					          		<li><a href="#" data-type="0:0">Ordinary Payment</a></li>
-					           		<li><a href="#" data-type="1:0">Arbitrary Message</a></li>
-					           		<li><a href="#" data-type="1:1">Alias Assignment</a></li>
-					           		<li><a href="#" data-type="1:2">Poll Creation</a></li>
-					           		<li><a href="#" data-type="1:3">Vote Casting</a></li>
-					           		<li><a href="#" data-type="2:0">Asset Issuance</a></li>
-					           		<li><a href="#" data-type="2:1">Asset Transfer</a></li>
-					           		<li><a href="#" data-type="2:2">Ask Order Placement</a></li>
-					           		<li><a href="#" data-type="2:3">Bid Order Placement</a></li>
-					           		<li><a href="#" data-type="2:4">Ask Order Cancellation</a></li>
-					           		<li><a href="#" data-type="2:5">Bid Order Cancellation</a></li>
-					           		<li><a href="#" data-type="unconfirmed">Unconfirmed Transactions</a></li>
+					        		<li><a href="#" data-type="" data-lang="ALL_TRANSACTIONS">All Transactions</a></li>
+					          		<li><a href="#" data-type="0:0" data-lang="ORDINARY_PAYMENT">Ordinary Payment</a></li>
+					           		<li><a href="#" data-type="1:0" data-lang="ARBITRARY_MESSAGE">Arbitrary Message</a></li>
+					           		<li><a href="#" data-type="1:1" data-lang="ALIAS_ASSIGNMENT">Alias Assignment</a></li>
+					           		<li><a href="#" data-type="1:2" data-lang="POLL_CREATION">Poll Creation</a></li>
+					           		<li><a href="#" data-type="1:3" data-lang="VOTE_CASTING">Vote Casting</a></li>
+					           		<li><a href="#" data-type="2:0" data-lang="ASSET_ISSUANCE">Asset Issuance</a></li>
+					           		<li><a href="#" data-type="2:1" data-lang="ASSET_TRANSFER">Asset Transfer</a></li>
+					           		<li><a href="#" data-type="2:2" data-lang="ASK_ORDER_PLACEMENT">Ask Order Placement</a></li>
+					           		<li><a href="#" data-type="2:3" data-lang="BID_ORDER_PLACEMENT">Bid Order Placement</a></li>
+					           		<li><a href="#" data-type="2:4" data-lang="ASK_ORDER_CANCELLATION">Ask Order Cancellation</a></li>
+					           		<li><a href="#" data-type="2:5" data-lang="BID_ORDER_CANCELLATION">Bid Order Cancellation</a></li>
+					           		<li><a href="#" data-type="unconfirmed" data-lang="UNCONFIRMED_TRANSACTIONS">Unconfirmed Transactions</a></li>
 					          	</ul>
 							</div>
 	                	</div>
@@ -245,13 +245,13 @@
 							<table class="table table-striped" id="transactions_table">
 								<thead>
 							    <tr>
-							    	<th>Transaction ID</th>
-							        <th>Date</th>
-							        <th>Type</th>
-							        <th colspan="2">Amount</th>
-							        <th>Fee</th>
-							        <th>Account</th>
-							        <th>Confirmations</th>
+							    	<th data-lang="TRANSACTION_ID">Transaction ID</th>
+							        <th data-lang="DATE">Date</th>
+							        <th data-lang="TYPE">Type</th>
+							        <th colspan="2" data-lang="AMOUNT">Amount</th>
+							        <th  data-lang="FEE">Fee</th>
+							        <th  data-lang="ACCOUNT">Account</th>
+							        <th  data-lang="CONFIRMATIONS">Confirmations</th>
 							    </tr>
 							    </thead>
 							    <tbody>
@@ -266,7 +266,7 @@
                                 
                 <div id="messages_page" class="page">
 	                <section class="content-header">
-	                	<h1>Messages</h1>
+	                	<h1><span data-lang="MESSAGES">Messages</span></h1>
 	                	<!--
 						<div style="position:absolute;top:9px;right:9px;">
 				            <div class="btn-group">
@@ -284,20 +284,20 @@
 					          <div class="content-splitter-sidebar" id="message_sidebar" style="width:200px;overflow-x:hidden;">
 					              <div class="content-splitter-sidebar-inner">
 					              	<div class="list-group unselectable sidebar_context" id="messages_sidebar">
-				                        <div style="text-align:center;padding-top:10px;">Loading, please wait<span class="loading_dots"><span>.</span><span>.</span><span>.</span></span></div>
+				                        <div style="text-align:center;padding-top:10px;"><span data-lang="LOADING_PLEASE_WAIT">Loading, please wait</span><span class="loading_dots"><span>.</span><span>.</span><span>.</span></span></div>
 					              	</div>
 						             </div>
 						         </div>
 						         <div class="content-splitter-right" id="message_content">
 						         	<div class="content-splitter-right-inner">
-						         		<div id="no_message_selected" style="padding-top: 150px;text-align:center;">Please select a contact in the left sidebar.</div>
-						         		<div id="no_messages_available" style="padding-top: 150px;text-align:center;display:none;">No messages available, <a href="#" data-toggle="modal" data-target="#send_message_modal">send one</a>.</div>
+						         		<div id="no_message_selected" style="padding-top: 150px;text-align:center;" data-lang="SELECT_CONTACT">Please select a contact in the left sidebar.</div>
+						         		<div id="no_messages_available" style="padding-top: 150px;text-align:center;display:none;"><span data-lang="NO_MESSAGES_AVAILABLE">No messages available,</span> <a href="#" data-toggle="modal" data-target="#send_message_modal" data-lang="SEND_ONE">send one</a>.</div>
 						         		
 						         		<div id="message_details">
 							           	</div>
 							           	<form role="form" id="inline_message_form" method="post" style="display:none;position:fixed;bottom:0;right:20px;left:440px;">
 							           		<div class="form-group">
-							           			<textarea class="form-control" name="inline_message_text" id="inline_message_text" rows="3" placeholder="Message"></textarea>
+							           			<textarea class="form-control" name="inline_message_text" id="inline_message_text" rows="3" data-lang="MESSAGE" placeholder="Message"></textarea>
 							           		</div>
 							           		<div class="row">
 							           			<div class="col-xs-10 col-sm-10 col-md-10">
@@ -647,7 +647,7 @@
 										                	    		</div>
 										                	    	</div>
 										                	    	<div class="form-group">
-										                	    		<label for="buy_asset_fee" class="col-sm-3 control-label">Fee</label>
+										                	    		<label for="buy_asset_fee" class="col-sm-3 control-label" data-lang="FEE">Fee</label>
 										                	    		<div class="col-sm-9">
 										                	    			<div class="input-group">
 										                	    				<input type="text" id="buy_asset_fee" name="buy_asset_fee" value="1" class="form-control" />
@@ -731,7 +731,7 @@
 										                        		</div>
 										                        	</div>
 										                        	<div class="form-group">
-										                        		<label for="sell_asset_fee" class="col-sm-3 control-label">Fee</label>
+										                        		<label for="sell_asset_fee" class="col-sm-3 control-label" data-lang="FEE">Fee</label>
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input type="text" id="sell_asset_fee" name="sell_asset_fee" value="1" class="form-control" />
@@ -781,7 +781,7 @@
 						                                <table class="table table-striped" id="asset_exchange_trade_history_table">
 						                                	<thead>
 						                                    <tr>
-						                                        <th>Date</th>
+						                                        <th data-lang="DATE">Date</th>
 						                                        <th>Quantity</th>
 						                                        <th>Price</th>
 						                                        <th>Total</th>
@@ -866,29 +866,29 @@
 
 						<div class="box box-warning" id="settings_box">
 							<div class="box-header">
-							    <h3 class="box-title">Form Warnings</h3>
+							    <h3 class="box-title" data-lang="FORM_WARNINGS">Form Warnings</h3>
 							</div>
 							
 							<form role="form">
 							    <div class="box-body" style="padding-top:0;">
-							    	<p class="help-block">Show a warning when an amount / fee entered is higher than specified below.</p>
+							    	<p class="help-block"><span data-lang="WARNING_FORM_SHOW_AMOUNTFEE">Show a warning when an amount / fee entered is higher than specified below.</span></p>
 
 							        <div class="form-group">
-							            <label for="settings_amount_warning">Max Amount Warning</label>
+							            <label for="settings_amount_warning" data-lang="WARNING_MAX_AMOUNT">Max Amount Warning</label>
 	                        			<div class="input-group" style="width:150px">
 							          		<input type="text" name="amount_warning" id="settings_amount_warning" class="form-control" />
 	                        				<span class="input-group-addon">NFD</span>
 	                        			</div>
 							        </div>
 							        <div class="form-group">
-							            <label for="settings_fee_warning">Max Fee Warning</label>
+							            <label for="settings_fee_warning" data-lang="WARNING_MAX_FEE">Max Fee Warning</label>
 	                        			<div class="input-group" style="width:150px">
 							          		<input type="text" name="fee_warning" id="settings_fee_warning" class="form-control" />
 	                        				<span class="input-group-addon">NFD</span>
 	                        			</div>
 							        </div>
 							        <div class="form-group">
-							            <label for="settings_asset_transfer_warning">Max Asset Transfer Warning</label>
+							            <label for="settings_asset_transfer_warning" data-lang="WARNING_MAX_ASSET_TRANSFER">Max Asset Transfer Warning</label>
 	                        			<div class="input-group" style="width:150px">
 							          		<input type="text" name="asset_transfer_warning" id="settings_asset_transfer_warning" class="form-control" />
 	                        				<span class="input-group-addon">QNT</span>
@@ -1234,14 +1234,14 @@
 							<table class="table table-striped" id="blocks_table">
 								<thead>
 							    <tr>
-							        <th>Height</th>
-							        <th>Date</th>
-							        <th>Amount</th>
-							        <th>Fee</th>
-							        <th>Nr TX</th>
-							        <th>Generator</th>
-							        <th>Payload</th>
-							        <th>Base Target</th>
+							        <th data-lang="HEIGHT">Height</th>
+							        <th data-lang="DATE">Date</th>
+							        <th data-lang="AMOUNT">Amount</th>
+							        <th data-lang="FEE">Fee</th>
+							        <th data-lang="NUMBER_TRANSACTION">Nr TX</th>
+							        <th data-lang="GENERATOR">Generator</th>
+							        <th data-lang="PAYLOAD">Payload</th>
+							        <th data-lang="BASE_TARGET">Base Target</th>
 							    </tr>
 							    </thead>
 							    <tbody>
@@ -1249,7 +1249,7 @@
 							    </tbody>
 							</table>
 							<div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-							<div class="data-empty-container">No blocks found.</div>
+							<div class="data-empty-container" data-lang="NO_BLOCKS_FOUND">No blocks found.</div>
 						</div>
 	                </section>
 				</div>
@@ -1259,7 +1259,7 @@
 		<div id="testnet_warning" style="display:none;position:fixed;bottom:0;left:0;padding:5px;background:red;color:white;border-top-right-radius:5px;"><strong>Warning</strong>: You are connected to the TestNet. Do not use your real password!</div>
 
 		<div id="lockscreen">
-			<div id="old_browser_warning" style="display:none;margin-left:auto;margin-right:auto;margin-top:200px;background:white;color:black;padding:20px;width:300px;">You are using an old browser which this application does not support.</div>
+			<div id="old_browser_warning" style="display:none;margin-left:auto;margin-right:auto;margin-top:200px;background:white;color:black;padding:20px;width:300px;" data-lang="WARNING_OLD_BROWSER">You are using an old browser which this application does not support.</div>
 			
 			<!--
 			<div style="position:absolute;top:10px;left:10px;" id="server_select">
@@ -1303,28 +1303,28 @@
 		            </div>
 		            
 					<div class="panel panel-default" id="welcome_panel" style="display:none;max-width:500px;">
-		                <div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> Welcome to Nfd</div>
+		                <div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> <span data-lang="WELCOME_TO_NFD">Welcome to NFD</span></div>
 		                <div class="panel-body">
-		               		<button class="btn btn-primary" id="registration_cancel" onclick="NRS.showLoginScreen();return false;">Returning User?</button>
+		               		<button class="btn btn-primary" id="registration_cancel" onclick="NRS.showLoginScreen();return false;" data-lang="RETURNING_USER">Returning User?</button>
 					   		&nbsp;&nbsp;
-					   		<button class="btn btn-success" id="registration_cancel" onclick="NRS.registerAccount();return false;">New? Create Your Account!</button>
+					   		<button class="btn btn-success" id="registration_cancel" onclick="NRS.registerAccount();return false;" data-lang="NEW_USER">New? Create Your Account!</button>
 		                </div>
 		            </div>  
 					
 		            <div class="panel panel-default" id="account_phrase_custom_panel" style="display:none;max-width:500px;">
-		                <div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> Create Your Account</div>
+		                <div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> <span data-lang="CREATE_ACCOUNT">Create Your Account</span></div>
 		                <div class="panel-body">
 							<form class="form-horizontal" role="form" method="post">
-		        				<div class="callout callout-info" style="max-width:500px;">Your secret phrase must be at least 35 characters long.</div>
+		        				<div class="callout callout-info" style="max-width:500px;" data-lang="ERROR_SECRET_ATMUSTATLEAST">Your secret phrase must be at least 35 characters long.</div>
 		        				
-		        				<div class="callout callout-danger"><strong>Attention</strong>: Don't ever disclose your secret phrase. If you lose it you lose access to your account!</div>
+		        				<div class="callout callout-danger"><strong data-lang="ATTENTION">Attention</strong>: <span data-lang="DONT_DISCLOSE_SECRET">Don't ever disclose your secret phrase. If you lose it you lose access to your account!</span></div>
 
 			            		<div class="form-group">
-			            		    <label for="registration_password" class="col-sm-3 control-label">Secret Phrase</label>
+			            		    <label for="registration_password" class="col-sm-3 control-label" data-lang="SECRET_PHRASE">Secret Phrase</label>
 			            		    <div class="col-sm-9"><input type="password" name="registration_password" class="form-control" id="registration_password" placeholder="" /></div>
 			            		</div>
 			                    <div class="form-group">
-			                        <label for="registration_password_repeat" class="col-sm-3 control-label">Repeat</label>
+			                        <label for="registration_password_repeat" class="col-sm-3 control-label" data-lang="REPEAT">Repeat</label>
 			                        <div class="col-sm-9"><input type="password" name="registration_password_repeat" class="form-control" id="registration_password_repeat" placeholder="" /></div>
 			                    </div>
 			                    
@@ -1335,10 +1335,10 @@
 		            </div>
 	            
 		            <div class="panel panel-default" id="account_phrase_generator_panel" style="display:none;max-width:500px">
-		            	<div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> Create Your Account</div>
+		            	<div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> <span data-lang="CREATE_ACCOUNT">Create Your Account</span></div>
 		                <div class="panel-body">
 		                	<div id="account_phrase_generator_loading">
-		                		<p><span class="loading_text">Loading Word List</span><span class="loading_dots"><span>.</span><span>.</span><span>.</span></span></p>
+		                		<p><span class="loading_text" data-lang="LOADING_WORD_LIST">Loading Word List</span><span class="loading_dots"><span>.</span><span>.</span><span>.</span></span></p>
 		                		
 								<div style="text-align:center;margin-top:20px;margin-bottom:20px;"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
 		                	</div>
@@ -1346,7 +1346,7 @@
 		                	<div id="account_phrase_generator_loaded">	        				
 		        				<div class="step_1 account_phrase_generator_steps">
 									<div id="account_phrase_generator_seeder" class="seeder">
-										<p>Move your cursor around to seed the random number generator...</p>
+										<p data-lang="MOVE_YOUR_CURSOR">Move your cursor around to seed the random number generator...</p>
 										<div class="progress progress-striped">
 								            <div class="progress-bar progress-bar-info" id="account_phrase_generator_seed_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
 								                <span class="sr-only">0% Seeded</span>
@@ -1361,19 +1361,19 @@
 		        				
 		        				<div class="step_2 account_phrase_generator_steps">
 		        					<div id="account_phrase_generator_start">
-		        						<p>Generating your secret phrase. Please wait<span class="loading_dots"><span>.</span><span>.</span><span>.</span></span></p>
+		        						<p><span data-lang="GENERATING_SECRET_PHRASE">Generating your secret phrase. Please wait</span><span class="loading_dots"><span>.</span><span>.</span><span>.</span></span></p>
 		        						
 										<div style="text-align:center;margin-top:20px;margin-bottom:20px;"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
 		        					</div>
 		        					
 		        					<div id="account_phrase_generator_stop" style="display:none">
-			        					<p>Your automatically generated secret phrase is:</p>
+			        					<p data-lang="YOUR_AUTO_SECRET_PHRASE">Your automatically generated secret phrase is:</p>
 			        					
 			        					<textarea style="width:100%;height:50px;margin-bottom:10px;" rows="2"></textarea>
 		        					
-			        					<p>Please write down or memorize these 12 words (their order and capitalization matters - always lowercase). This secret phrase is needed in order to access your Nfd account.</p>
+			        					<p data-lang="SECRET_PLEASE_WRITE_DOWN">Please write down or memorize these 12 words (their order and capitalization matters - always lowercase). This secret phrase is needed in order to access your Nfd account.</p>
 			        						        					
-			        					<div class="callout callout-danger"><strong>Attention</strong>: Don't ever disclose your secret phrase. If you lose it you lose access to your account!</div>
+			        					<div class="callout callout-danger"><strong data-lang="ATTENTION">Attention</strong>: <span data-lang="DONT_DISCLOSE_SECRET">Don't ever disclose your secret phrase. If you lose it you lose access to your account!</span></div>
 			        				
 										<div style="text-align:right">
 											<input type="submit" class="btn btn-primary btn-sm" value="Next" onclick="$('.step_2').hide();$('.step_3').show();return false;" />&nbsp;&nbsp;<button class="btn btn-sm btn-default" id="registration_cancel" onclick="NRS.showLoginOrWelcomeScreen();return false;" data-lang="CANCEL">Cancel</button>
@@ -1382,9 +1382,9 @@
 		        				</div>
 		        				
 		        				<div class="step_3 account_phrase_generator_steps">
-		        					<p>Your secret phrase is very important! In order to be sure that you have saved it, please write your secret phrase below:</p>
+		        					<p data-lang="SECRET_VERY_IMPORTANT">Your secret phrase is very important! In order to be sure that you have saved it, please write your secret phrase below:</p>
 		        					
-		        					<div class="callout callout-danger" style="display:none">You have not typed the secret phrase correctly, please try again!</div>
+		        					<div class="callout callout-danger" style="display:none" data-lang="SECRET_NOT_TYPED_CORRECTLY">You have not typed the secret phrase correctly, please try again!</div>
 
 		        					<textarea style="width:100%;height:50px;margin-bottom:10px;" rows="2"></textarea>
 		        					
@@ -1397,7 +1397,7 @@
 		            </div>  
 	            
 		            <div id="custom_passphrase_link" style="margin-top:30px;text-align:center;display:none;">
-			    		<a href="#" style="color: #555555;" onclick="NRS.registerUserDefinedAccount();">Want to choose your own secret phrase? Click here.</a>
+			    		<a href="#" style="color: #555555;" onclick="NRS.registerUserDefinedAccount();" data-lang="WANT_CHOOSE_OWN_SECRET">Want to choose your own secret phrase? Click here.</a>
 					</div>
 				</td>
 				</tr>
@@ -1413,7 +1413,7 @@
 		      		</div>
 					<div class="modal-body">			
 						<form role="form">
-							<div class="callout callout-danger never_hide" id="lease_balance_message"><strong>Remember</strong>: Once submitted the lease cannot be cancelled.</div>
+							<div class="callout callout-danger never_hide" id="lease_balance_message"><strong data-lang="REMEMBER">Remember</strong>: <span data-lang="LEASE_SUBMITTED_NO_CANCEL">Once submitted the lease cannot be cancelled.</span></div>
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
 								<label for="lease_balance_recipient" data-lang="RECIPIENT">RECIPIENT</label>
@@ -1426,8 +1426,8 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-4 col-sm-4 col-md-4">
-									<label for="lease_balance_period">PERIOD <i class="fa fa-question-circle show_popover" style="color:#4CAA6E" data-content="The number of blocks the lease will last." data-container="body"></i></label>
-									<input type="number" name="period" id="lease_balance_period" class="form-control" step="any" min="1440" max="32767" placeholder="Period" data-default="1440" value="1440" tabindex="2">
+									<label for="lease_balance_period"><span data-lang="PERIOD_UPPER">PERIOD</span> <i class="fa fa-question-circle show_popover" style="color:#4CAA6E" data-content="The number of blocks the lease will last." data-container="body"></i></label>
+									<input type="number" name="period" id="lease_balance_period" class="form-control" step="any" min="1440" max="32767" data-lang="PERIOD" placeholder="Period" data-default="1440" value="1440" tabindex="2">
 								</div>
 								<div class="col-xs-4 col-sm-4 col-md-4">
 									<div class="form-group">
@@ -1465,13 +1465,13 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		      			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Confirm Forging Stop<span class="show_logout"> &amp; Logout</span></h4>
+		        		<h4 class="modal-title"><span data-lang="CONFIRM_FORGING_STOP">Confirm Forging Stop</span><span class="show_logout"> &amp; <span data-lang="LOGOUT">Logout</span></span></h4>
 		      		</div>
 		      		<div class="modal-body">			
 						<form role="form">
-							<p class="show_secret_phrase">If you are sure you want to stop forging, type your secret phrase to confirm.</p>
-							<p class="hide_secret_phrase" style="display:none">If you are sure you want to stop forging, click the button below to confirm.</p>
-							<div class="callout callout-danger remote_warning" style="display:none"><strong>Warning</strong>: Your secret phrase will be sent to the server!</div>
+							<p class="show_secret_phrase" data-lang="SURE_STOP_FORGING_TYPE_SECRET">If you are sure you want to stop forging, type your secret phrase to confirm.</p>
+							<p class="hide_secret_phrase" style="display:none" data-lang="SURE_STOP_FORGING_CLICK_BUTTON">If you are sure you want to stop forging, click the button below to confirm.</p>
+							<div class="callout callout-danger remote_warning" style="display:none"><strong data-lang="STRING_WARNING">Warning</strong>: <span data-lang="SECRET_SENT_TO_SERVER">Your secret phrase will be sent to the server!</span></div>
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group secret_phrase">
 								<label for="stop_forging_password" data-lang="SECRET_PHRASE_UPPER">SECRET PHRASE</label>
@@ -1482,8 +1482,8 @@
 			      	<div class="modal-footer" style="margin-top:0;">
 			      		<input type="hidden" name="request_type" value="stopForging" />
 			      		<input type="hidden" name="success_message" value="Forging has been stopped." />
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Continue Forging</button>
-				        <button type="button" class="btn btn-primary" id="stop_forging_button" data-loading-text="Submitting...">Stop Forging <span class="show_logout">and Logout</span></button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CONTINUE_FORGING">Continue Forging</button>
+				        <button type="button" class="btn btn-primary" id="stop_forging_button" data-loading-text="Submitting..."><span data-lang="STOP_FORGING">Stop Forging</span> <span class="show_logout" data-lang="AND_LOGOUT">and Logout</span></button>
 			      	</div>
 		    	</div>
 			</div>
@@ -2298,9 +2298,9 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 									<table class="table table-striped" id="block_info_transactions_table" style="margin-bottom:0">
 										<thead>
 									    <tr>
-									        <th>Date</th>
-									        <th>Amount</th>
-									        <th>Fee</th>
+									        <th data-lang="DATE">Date</th>
+									        <th data-lang="AMOUNT">Amount</th>
+									        <th data-lang="FEE">Fee</th>
 									        <th>To</th>
 									        <th>From</th>
 									    </tr>
@@ -2415,10 +2415,10 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 							<table class="table table-striped" id="user_info_modal_transactions_table">
 								<thead>
 							    <tr>
-							        <th>Date</th>
-							        <th>Type</th>
-							        <th colspan="2">Amount</th>
-							        <th>Fee</th>
+							        <th data-lang="DATE">Date</th>
+							        <th data-lang="TYPE">Type</th>
+							        <th colspan="2" data-lang="AMOUNT">Amount</th>
+							        <th data-lang="FEE">Fee</th>
 							        <th>Account</th>
 							    </tr>
 							    </thead>

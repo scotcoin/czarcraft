@@ -2,7 +2,7 @@
 <html class="lockscreen">
     <head>
         <meta charset="UTF-8">
-        <title>NFD Wallet</title>
+        <title data-lang="NFD_WALLET">NFD Wallet</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -26,7 +26,7 @@
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
                 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only" data-lang="TOGGLE_NAVIGATION">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -141,7 +141,7 @@
 	                            <div class="small-box bg-gray">
 	                                <div class="inner">
 	                                    <h3><span id="account_nr_assets" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-	                                    <p><span data-lang="ASSSETS_OWNED">Assets Owned</span></p>
+	                                    <p><span data-lang="ASSETS_OWNED">Assets Owned</span></p>
 	                                </div>
 	                                <div class="icon"><i class="ion ion-pie-graph"></i></div>
 	                                <a href="#" class="small-box-footer goto-page" data-page="my_assets"><span data-lang="MORE_INFO">More info</span> <i class="fa fa-arrow-circle-right"></i></a>
@@ -303,13 +303,13 @@
 							           			<div class="col-xs-10 col-sm-10 col-md-10">
 							           				<div class="form-group">
 							           					<input type="password" class="form-control secret_phrase" id="inline_message_password" name="inline_message_password" placeholder="Secret Phrase" style="display:inline;width:50%">
-							           					<span style="display:none"><label for="inline_message_encrypt" style="font-weight:normal;color:#666"><input type="checkbox" name="inline_message_encrypt" id="inline_message_encrypt" value="1" /> Encrypt</label></span>
+							           					<span style="display:none"><label for="inline_message_encrypt" style="font-weight:normal;color:#666"><input type="checkbox" name="inline_message_encrypt" id="inline_message_encrypt" value="1" /> <span data-lang="ENCRYPT">Encrypt</span></label></span>
 							           				</div>
 							           			</div>
 							           			<div class="col-xs-2-col-sm-2 col-md-2">
 							           				<div class="form-group" style="text-align:right">
 							           					<input type="hidden" name="inline_message_recipient" id="inline_message_recipient" value="" />
-							           					<button type="submit" id="inline_message_submit" class="btn btn-default" data-loading-text="Submitting...">Send</button>
+							           					<button type="submit" id="inline_message_submit" class="btn btn-default" data-loading-text="Submitting..."><span data-lang="SEND">Send</span></button>
 							           				</div>
 							           			</div>
 							           		</div>
@@ -323,23 +323,23 @@
                 
                 <div id="contacts_page" class="page">
                     <section class="content-header">
-                    	<h1>Contacts</h1>
+                    	<h1 data-lang="CONTACTS">Contacts</h1>
                     	<div style="position:absolute;top:9px;right:9px;">
-							<button id="add_contact_button" type="button" class="btn btn-default" data-toggle="modal" data-target="#add_contact_modal">Add Contact</button>
+							<button id="add_contact_button" type="button" class="btn btn-default" data-toggle="modal" data-target="#add_contact_modal"><span data-lang="ADD_CONTACT">Add Contact</span></button>
 						</div>
                     </section>
                 	
                     <section class="content">
-                    	<div id="contact_page_database_error" style="display:none">Your browser does not support database access, without which contacts cannot be created.</div>
+                    	<div id="contact_page_database_error" style="display:none" data-lang="BROWSER_DOES_NOT_SUPPORT_DB">Your browser does not support database access, without which contacts cannot be created.</div>
                   		<div class="data-container data-loading" id="contacts_table_container">
                 			<table class="table table-striped" id="contacts_table">
                 				<thead>
                 			    <tr>
-                			        <th>Name</th>
-                			        <th>Account ID</th>
-                			        <th>Email Address</th>
-                			        <th>Description</th>
-                			        <th style="width:10%">Actions</th>
+                			        <th data-lang="NAME">Name</th>
+                			        <th data-lang="ACCOUNT_ID">Account ID</th>
+                			        <th data-lang="EMAIL_ADDRESS">Email Address</th>
+                			        <th data-lang="DESCRIPTION">Description</th>
+                			        <th style="width:10%" data-lang="ACTIONS">Actions</th>
                 			    </tr>
                 			    </thead>
                 			    <tbody>
@@ -347,7 +347,7 @@
                 			    </tbody>
                 			</table>
                 			<div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-                			<div class="data-empty-container"><p>No contacts yet, <a href="#" data-toggle="modal" data-target="#add_contact_modal">add one.</a></p></div>
+                			<div class="data-empty-container"><p><span data-lang="NO_CONTACTS_YET">No contacts yet</span>, <a href="#" data-toggle="modal" data-target="#add_contact_modal"><span data-lang="ADD_ONE">add one</span>.</a></p></div>
                 		</div>
                     </section>
                 </div>
@@ -356,7 +356,7 @@
                     <section class="content-header">
                     	<h1>Polls</h1>
                     	<div style="position:absolute;top:9px;right:9px;">
-							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#create_poll_modal">Create Poll</button>
+							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#create_poll_modal" data-lang="CREATE_POLL">Create Poll</button>
 						</div>
                     </section>
                 	
@@ -365,11 +365,11 @@
                 			<table class="table table-striped" id="polls_table">
                 				<thead>
                 			    <tr>
-                			        <th>Title</th>
-                			        <th>Description</th>
-                			        <th>Sender</th>
-                			        <th>Start Date</th>
-                			        <th>Vote</th>
+                			        <th data-lang="TITLE">Title</th>
+                			        <th data-lang="DESCRIPTION">Description</th>
+                			        <th data-lang="SENDER">Sender</th>
+                			        <th data-lang="START_DATE">Start Date</th>
+                			        <th data-lang="VOTE">Vote</th>
                 			    </tr>
                 			    </thead>
                 			    <tbody>
@@ -377,24 +377,24 @@
                 			    </tbody>
                 			</table>
                 			<div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-                			<div class="data-empty-container"><p>No polls found.</p></div>
+                			<div class="data-empty-container"><p data-lang="NO_POLLS_FOUND">No polls found.</p></div>
                 		</div>
                     </section>
                 </div>
                 
             	<div id="aliases_page" class="page">
                 	<section class="content-header">
-                		<h1>Aliases</h1>
+                		<h1 data-lang="ALIASES">Aliases</h1>
                 		<div style="position:absolute;top:9px;right:9px;">
 							<form action="#" method="get" class="sidebar-form" id="alias_search" style="width:180px;margin:0;display:inline-block;vertical-align:middle;">
 								<div class="input-group">
-									<input type="text" name="q" class="form-control" placeholder="Search Aliases...">
+									<input type="text" name="q" class="form-control" data-lang="SEARCH_ALIASES" placeholder="Search Aliases...">
 									<span class="input-group-btn">
 										<button type="submit" name="seach" class="btn btn-flat"><i class="fa fa-search"></i></button>
 									</span>
 								</div>
 							</form>             
-							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#register_alias_modal" style="display:inline-block;vertical-align:middle;">Register Alias</button>
+							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#register_alias_modal" style="display:inline-block;vertical-align:middle;" data-lang="REGISTER_ALIAS">Register Alias</button>
 						</div>
                 	</section>
                 	<section class="content">
@@ -403,7 +403,7 @@
     	                        <div class="small-box bg-gray">
     	                            <div class="inner inner-smaller">
     	                                <h3><span id="alias_count" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-    	                                <p>Aliases Owned</p>
+    	                                <p data-lang="ALIAS_OWNED">Aliases Owned</p>
     	                            </div>
     	                            <div class="icon-smaller" style="bottom:-10px"><i class="fa fa-briefcase"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -413,7 +413,7 @@
     	                        <div class="small-box bg-gray">
     	                            <div class="inner inner-smaller">
     	                                <h3><span id="empty_alias_count" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-    	                                <p>Empty Aliases</p>
+    	                                <p data-lang="EMPTY_ALIASES">Empty Aliases</p>
     	                            </div>
     	                            <div class="icon-smaller" style="bottom:-10px"><i class="fa fa-exclamation"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -423,7 +423,7 @@
     	                        <div class="small-box bg-gray">
     	                            <div class="inner inner-smaller">
     	                                <h3><span id="alias_uri_count" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-    	                                <p>Aliases to URI</p>
+    	                                <p data-lang="ALIASES_TO_URI">Aliases to URI</p>
     	                            </div>
     	                            <div class="icon-smaller" style="bottom:-10px"><i class="fa fa-cloud"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -433,7 +433,7 @@
     	                        <div class="small-box bg-gray">
     	                            <div class="inner inner-smaller">
     	                                <h3><span id="alias_account_count" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-    	                                <p>Aliases to Account ID</p>
+    	                                <p data-lang="ALIASES_TO_ACCOUNT_ID">Aliases to Account ID</p>
     	                            </div>
     	                            <div class="icon-smaller" style="bottom:-10px"><i class="ion ion-person"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -445,9 +445,9 @@
 							<table class="table table-striped" id="aliases_table">
 								<thead>
 							    <tr>
-							        <th>Alias</th>
-							        <th>URI</th>
-							        <th>Edit</th>
+							        <th data-lang="ALIAS">Alias</th>
+							        <th data-lang="URI">URI</th>
+							        <th data-lang="EDIT">Edit</th>
 							    </tr>
 							    </thead>
 							    <tbody>
@@ -455,27 +455,27 @@
 							    </tbody>
 							</table>
 							<div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-							<div class="data-empty-container"><p>No aliases yet, <a href="#" data-toggle="modal" data-target="#register_alias_modal">register one!</a></p></div>
+							<div class="data-empty-container"><p><span data-lang="NO_ALIASES_YET">No aliases yet</span>, <a href="#" data-toggle="modal" data-target="#register_alias_modal" data-lang="REGISTER_ONE">register one!</a></p></div>
 						</div>
 	                </section>
                 </div>
                                 
                 <div id="open_orders_page" class="page">
-                	<section class="content-header"><h1>Open Orders</h1></section>
+                	<section class="content-header"><h1 data-lang="OPEN_ORDERS">Open Orders</h1></section>
                  	<section class="content">
 	                 	<div class="row">
 	                 	    <div class="col-md-6">
 	                 	        <div class="box box-primary">
-	                 	            <div class="box-header"><h3 class="box-title">Sell Orders</h3></div>
+	                 	            <div class="box-header"><h3 class="box-title" data-lang="SELL_ORDERS">Sell Orders</h3></div>
 	                 	            <div class="box-body no-padding">
                 	   					<div class="data-container data-loading" data-no-padding="true">
 		                 	                <table class="table table-striped" id="open_ask_orders_table">
 												<thead>
 												<tr>
-												    <th>Asset</th>
-												    <th>Quantity</th>
-												    <th>Price</th>
-												    <th>Total</th>
+												    <th data-lang="ASSET">Asset</th>
+												    <th data-lang="QUANTITY">Quantity</th>
+												    <th data-lang="PRICE">Price</th>
+												    <th data-lang="TOTAL">Total</th>
 												    <th data-lang="CANCEL">Cancel</th>
 												</tr>
 												</thead>
@@ -484,23 +484,23 @@
 		                 	                    </tbody>
 		                 	                </table>
 		                 	                <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-		                 	                <div class="data-empty-container"><p>No open sell orders.</p></div>
+		                 	                <div class="data-empty-container"><p data-lang="NO_OPEN_SELL_ORDERS">No open sell orders.</p></div>
 	                 	                </div>
 	                 	            </div>
 	                 	        </div>
 	                 		</div>				                        	
 	                 		<div class="col-md-6">
 	                 		    <div class="box box-primary">
-	                 		        <div class="box-header"><h3 class="box-title">Buy Orders</h3></div>
+	                 		        <div class="box-header"><h3 class="box-title" data-lang="BUY_ORDERS">Buy Orders</h3></div>
 	                 		        <div class="box-body no-padding">
 	                 		            <div class="data-container data-loading" data-no-padding="true">
 		                 		            <table class="table table-striped" id="open_bid_orders_table">
 												<thead>
 												<tr>
-												    <th>Asset</th>
-												    <th>Quantity</th>
-												    <th>Price</th>
-												    <th>Total</th>
+												    <th data-lang="ASSET">Asset</th>
+												    <th data-lang="QUANTITY">Quantity</th>
+												    <th data-lang="PRICE">Price</th>
+												    <th data-lang="TOTAL">Total</th>
 												    <th data-lang="CANCEL">Cancel</th>
 												</tr>
 												</thead>
@@ -509,7 +509,7 @@
 		                 		                </tbody>
 		                 		            </table>
 		                 		            <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-		                 		            <div class="data-empty-container"><p>No open buy orders.</p></div>
+		                 		            <div class="data-empty-container"><p data-lang="NO_OPEN_BUY_ORDERS">No open buy orders.</p></div>
 		                 		    	</div>
 	                 		        </div>
 	                 		    </div>
@@ -519,15 +519,15 @@
                 </div>
                                 					
                 <div id="my_assets_page" class="page">
-	                <section class="content-header"><h1>My Assets</h1></section>
+	                <section class="content-header"><h1 data-lang="MY_ASSET">My Assets</h1></section>
 					<section class="content">
 						<div class="data-container data-loading">
 							<table class="table table-striped" id="my_assets_table">
 								<thead>
 							    <tr>
-							        <th>Asset</th>
-							        <th>Quantity</th>
-							        <th>Total Available</th>
+							        <th data-lang="ASSET">Asset</th>
+							        <th data-lang="QUANTITY">Quantity</th>
+							        <th data-lang="TOTAL_AVAILABLE">Total Available</th>
 							        <th>Percentage</th>
 							        <th>Lowest Ask</th>
 							        <th>Highest Bid</th>
@@ -598,7 +598,7 @@
 							                <h3 style="margin-top:0" id="asset_name"></h3>
 
 							                <div style="color:#838383;margin-bottom:5px">
-								                <strong>Quantity</strong>: <span id="asset_quantity"></span>
+								                <strong data-lang="QUANTITY">Quantity</strong>: <span id="asset_quantity"></span>
 								                <strong>Asset Decimals</strong>: <span id="asset_decimals"></span>
 							                </div>
 
@@ -620,7 +620,7 @@
 									                	    <form role="form" class="form-horizontal" style="padding: 10px;;max-width:350px;margin-left:auto;margin-right:auto;">
 									                	    	<div style="margin-left:-20px">
 										                	    	<div class="form-group">
-										                	    		<label for="buy_asset_quantity" class="col-sm-3 control-label">Quantity</label>
+										                	    		<label for="buy_asset_quantity" class="col-sm-3 control-label" data-lang="QUANTITY">Quantity</label>
 										                	    		<div class="col-sm-9">
 										                	    			<div class="input-group">
 										                	    				<input id="buy_asset_quantity" type="text" name="buy_asset_quantity" value="0" class="form-control" data-type="buy" />
@@ -629,7 +629,7 @@
 										                	    		</div>
 										                	    	</div>
 										                	    	<div class="form-group">
-										                	    		<label for="buy_asset_price" class="col-sm-3 control-label">Price</label>
+										                	    		<label for="buy_asset_price" class="col-sm-3 control-label" data-lang="PRICE">Price</label>
 										                	    		<div class="col-sm-9">
 										                	    			<div class="input-group">
 										                	    				<input id="buy_asset_price" type="text" value="0" name="buy_asset_price" class="form-control" data-type="buy" />
@@ -638,7 +638,7 @@
 										                	    		</div>
 										                	    	</div>
 										                	    	<div class="form-group">
-										                	    		<label for="buy_asset_total" class="col-sm-3 control-label">Total</label>
+										                	    		<label for="buy_asset_total" class="col-sm-3 control-label" data-lang="TOTAL">Total</label>
 										                	    		<div class="col-sm-9">
 										                	    			<div class="input-group">
 										                	    				<input type="text" name="buy_asset_total" id="buy_asset_total" readonly value="0" class="form-control disabled" />
@@ -675,9 +675,9 @@
 								                	            	<thead>
 								                	                <tr>
 								                	                    <th>Account</th>
-								                	                    <th>Quantity</th>
-								                	                    <th>Price</th>
-								                	                    <th>Total</th>
+								                	                    <th data-lang="QUANTITY">Quantity</th>
+								                	                    <th data-lang="PRICE">Price</th>
+								                	                    <th data-lang="TOTAL">Total</th>
 								                	                </tr>
 								                	                </thead>
 								                	                <tbody>
@@ -704,7 +704,7 @@
 									                        <form role="form" class="form-horizontal" style="padding: 10px;max-width:350px;margin-left:auto;margin-right:auto;">
 										                        <div style="margin-left:-20px">
 										                        	<div class="form-group">
-										                        		<label for="sell_asset_quantity" class="col-sm-3 control-label">Quantity</label>
+										                        		<label for="sell_asset_quantity" class="col-sm-3 control-label" data-lang="QUANTITY">Quantity</label>
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input id="sell_asset_quantity" type="text" name="sell_asset_quantity" value="0" class="form-control" data-type="sell" />
@@ -713,7 +713,7 @@
 										                        		</div>
 										                        	</div>
 										                        	<div class="form-group">
-										                        		<label for="sell_asset_price" class="col-sm-3 control-label">Price</label>
+										                        		<label for="sell_asset_price" class="col-sm-3 control-label" data-lang="PRICE">Price</label>
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input id="sell_asset_price" type="text" value="0" name="sell_asset_price" class="form-control" data-type="sell" />
@@ -722,7 +722,7 @@
 										                        		</div>
 										                        	</div>
 										                        	<div class="form-group">
-										                        		<label for="sell_asset_total" class="col-sm-3 control-label">Total</label>
+										                        		<label for="sell_asset_total" class="col-sm-3 control-label" data-lang="TOTAL">Total</label>
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input type="text" name="sell_asset_total" id="sell_asset_total" readonly value="0" class="form-control disabled" />
@@ -757,9 +757,9 @@
 						                        	            	<thead>
 						                        	                <tr>
 						                        	                    <th>Account</th>
-						                        	                    <th>Quantity</th>
-						                        	                    <th>Price</th>
-						                        	                    <th>Total</th>
+						                        	                    <th data-lang="QUANTITY">Quantity</th>
+						                        	                    <th data-lang="PRICE">Price</th>
+						                        	                    <th data-lang="TOTAL">Total</th>
 						                        	                </tr>
 						                        	                </thead>
 						                        	                <tbody>
@@ -782,9 +782,9 @@
 						                                	<thead>
 						                                    <tr>
 						                                        <th data-lang="DATE">Date</th>
-						                                        <th>Quantity</th>
-						                                        <th>Price</th>
-						                                        <th>Total</th>
+						                                        <th data-lang="QUANTITY">Quantity</th>
+						                                        <th data-lang="PRICE">Price</th>
+						                                        <th data-lang="TOTAL">Total</th>
 						                                        <th>Ask Order ID</th>
 						                                        <th>Bid Order ID</th>
 						                                    </tr>
@@ -1349,7 +1349,7 @@
 										<p data-lang="MOVE_YOUR_CURSOR">Move your cursor around to seed the random number generator...</p>
 										<div class="progress progress-striped">
 								            <div class="progress-bar progress-bar-info" id="account_phrase_generator_seed_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-								                <span class="sr-only">0% Seeded</span>
+								                <span class="sr-only" data-lang="0_SEDDED">0% Seeded</span>
 								            </div>
 										</div>
 									</div>
@@ -1409,7 +1409,7 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		      			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Lease Your Balance</h4>
+		        		<h4 class="modal-title" data-lang="LEASE_YOUR_BALANCE">Lease Your Balance</h4>
 		      		</div>
 					<div class="modal-body">			
 						<form role="form">
@@ -1454,7 +1454,7 @@
 		      			<input type="hidden" name="request_type" value="leaseBalance" />
 		      			<input type="hidden" name="converted_account_id" value="" />
 				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Lease Balance</button>
+				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="LEASE_BALANCE">Lease Balance</button>
 		      		</div>
 		    	</div>
 			</div>
@@ -1727,7 +1727,7 @@
 								<input type="text" class="form-control" name="email" id="add_contact_email" placeholder="contact@email.com" tabindex="3" />
 							</div>
 							<div class="form-group">
-								<label for="add_contact_description">DESCRIPTION</label>
+								<label for="add_contact_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
 								<textarea class="form-control" id="add_contact_description" name="description" rows="3" tabindex="4" placeholder="Optional"></textarea>
 							</div>
 						</form>
@@ -1769,7 +1769,7 @@
 								        tabindex="3" />
 							</div>
 							<div class="form-group">
-								<label for="update_contact_description">DESCRIPTION</label>
+								<label for="update_contact_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
 								<textarea class="form-control" id="update_contact_description" name="description" rows="3" tabindex="4" placeholder="Optional"></textarea>
 							</div>
 						</form>
@@ -1798,7 +1798,7 @@
 			      	<div class="modal-body">			
 						<form role="form">
 							<div class="callout callout-danger">Are you sure you want to delete this contact?</div>
-							<p><strong>Name</strong>: <span id="delete_contact_name"></span></p>
+							<p><strong data-lang="NAME">Name</strong>: <span id="delete_contact_name"></span></p>
 						</form>
 			    	</div>
 					<div class="modal-footer" style="margin-top:0;">
@@ -1830,7 +1830,7 @@
 								<input type="text" class="form-control" name="name" id="issue_asset_name" placeholder="Asset Name" autofocus tabindex="1" />
 							</div>
 							<div class="form-group">
-								<label for="issue_asset_description">DESCRIPTION</label>
+								<label for="issue_asset_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
 								<textarea class="form-control" id="issue_asset_description" name="description" rows="3" tabindex="3"></textarea>
 							</div>
 							<div class="row">
@@ -1895,7 +1895,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 								<input type="text" class="form-control" name="name" id="create_poll_name" placeholder="Poll Name" autofocus tabindex="1" />
 							</div>
 							<div class="form-group">
-								<label for="create_poll_description">DESCRIPTION</label>
+								<label for="create_poll_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
 								<textarea class="form-control" id="create_poll_description" name="description" rows="3" tabindex="2"></textarea>
 							</div>
 							<div class="form-group" id="create_poll_answers">
@@ -1987,7 +1987,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 								<input type="text" class="form-control" name="name" id="cast_vote_poll_name" placeholder="Poll Name" autofocus tabindex="1" />
 							</div>
 							<div class="form-group">
-								<label for="cast_vote_poll_description">DESCRIPTION</label>
+								<label for="cast_vote_poll_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
 								<textarea class="form-control" id="cast_vote_poll_description" name="description" rows="3" tabindex="2"></textarea>
 							</div>
 							<div class="form-group" id="cast_vote_answers">
@@ -2156,7 +2156,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 								<input type="text" class="form-control" name="name" id="account_info_name" placeholder="Your Name" tabindex="1" />
 							</div>
 							<div class="form-group">
-								<label for="account_info_description">DESCRIPTION</label>
+								<label for="account_info_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
 								<textarea class="form-control" id="account_info_description" name="description" rows="4" tabindex="2"></textarea>
 							</div>
 							<div class="row">
@@ -2208,12 +2208,12 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="register_alias_alias">ALIAS</label>
+								<label for="register_alias_alias" data-lang="ALIAS_UPPER">ALIAS</label>
 								<input type="text" class="form-control" name="aliasName" id="register_alias_alias" placeholder="Alias" tabindex="1" />
 								<p id="register_alias_alias_noneditable" style="display:none"></p>
 							</div>
 							<div class="form-group">
-								<label for="register_alias_uri" id="register_alias_uri_label">URI</label>
+								<label for="register_alias_uri" id="register_alias_uri_label" data-lang="URI">URI</label>
 								<input type="text" class="form-control" name="aliasURI" id="register_alias_uri" placeholder="URI" tabindex="2" />
 								<p class="help-block" id="register_alias_help"></p>
 							</div>
@@ -2407,7 +2407,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 							<li class="active" id="user_info_transactions" data-tab="transactions"><a href="#">Transactions</a></li>
 							<li id="user_info_assets" data-tab="assets"><a href="#">Assets</a></li>
 							<li id="user_info_aliases" data-tab="aliases"><a href="#">Aliases</a></li>
-							<li id="user_info_description" data-tab="description"><a href="#">Description</a></li>
+							<li id="user_info_description" data-tab="description"><a href="#"  data-lang="DESCRIPTION">Description</a></li>
 							<li id="user_info_actions" data-tab="actions"><a href="#">Actions</a></li>
 						</ul>
 
@@ -2434,8 +2434,8 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 							<table class="table table-striped" id="user_info_modal_aliases_table">
 								<thead>
 							    <tr>
-							        <th>Alias</th>
-							        <th>URI</th>
+							        <th data-lang="ALIAS">Alias</th>
+							        <th data-lang="URI">URI</th>
 							    </tr>
 							    </thead>
 							    <tbody>
@@ -2450,9 +2450,9 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 							<table class="table table-striped" id="user_info_modal_assets_table">
 								<thead>
 							    <tr>
-							        <th>Asset</th>
-							        <th>Quantity</th>
-							        <th>Total Available</th>
+							        <th data-lang="ASSET">Asset</th>
+							        <th data-lang="QUANTITY">Quantity</th>
+							        <th data-lang="TOTAL_AVAILABLE">Total Available</th>
 							        <th>Percentage</th>
 							    </tr>
 							    </thead>

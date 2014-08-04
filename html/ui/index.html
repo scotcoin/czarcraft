@@ -528,11 +528,11 @@
 							        <th data-lang="ASSET">Asset</th>
 							        <th data-lang="QUANTITY">Quantity</th>
 							        <th data-lang="TOTAL_AVAILABLE">Total Available</th>
-							        <th>Percentage</th>
-							        <th>Lowest Ask</th>
-							        <th>Highest Bid</th>
-							        <th>Value in NFD</th>
-							        <th>Transfer</th>
+							        <th data-lang="PERCENTAGE">Percentage</th>
+							        <th data-lang="LOWEST_ASK">Lowest Ask</th>
+							        <th data-lang="HIGHEST_BID">Highest Bid</th>
+							        <th data-lang="VALUE_IN_NFD">Value in NFD</th>
+							        <th data-lang="TRANSFER">Transfer</th>
 							    </tr>
 							    </thead>
 							    <tbody>
@@ -540,18 +540,18 @@
 							    </tbody>
 							</table>
 							<div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-							<div class="data-empty-container"><p>No assets yet, go buy some on the exchange!</p></div>
+							<div class="data-empty-container"><p data-lang="NO_ASSETS_YET">No assets yet, go buy some on the exchange!</p></div>
 						</div>
 					</section>
 				</div>
 
                 <div id="asset_exchange_page" class="page">
 	                <section class="content-header">
-	                	<h1>Asset Exchange</h1>
+	                	<h1 data-lang="ASSET_EXCHANGE">Asset Exchange</h1>
 	                	<div style="position:absolute;top:9px;right:9px;">
-	                		<button type="button" class="btn btn-sm btn-default" id="asset_exchange_add_asset_bookmark" data-toggle="modal" data-target="#add_asset_bookmark_modal">Add Asset</button>
-	                		<button type="button" class="btn btn-sm btn-default" id="asset_exchange_bookmark_this_asset" style="display:none">Bookmark This Asset</button>
-		                	<button type="button" class="btn btn-sm btn-default" id="asset_exchange_clear_search" style="display:none">Clear Search Results</button>
+	                		<button type="button" class="btn btn-sm btn-default" id="asset_exchange_add_asset_bookmark" data-toggle="modal" data-target="#add_asset_bookmark_modal" data-lang="ADD_ASSET">Add Asset</button>
+	                		<button type="button" class="btn btn-sm btn-default" id="asset_exchange_bookmark_this_asset" style="display:none" data-lang="BOOKMARK_ASSET">Bookmark This Asset</button>
+		                	<button type="button" class="btn btn-sm btn-default" id="asset_exchange_clear_search" style="display:none" data-lang="CLEAR_SEARCH_RESULTS">Clear Search Results</button>
 	                	</div>
 	                </section>
 	                <section class="content content-stretch" style="position:fixed;margin-top:3px;padding:0; width:100%; height:100%;">
@@ -571,27 +571,27 @@
 												</form>     
 											</div>
 											<div id="asset_exchange_sidebar_content">
-				                        		<div style="text-align:center;padding-top:10px;">Loading, please wait<span class="loading_dots"><span>.</span><span>.</span><span>.</span></span></div>
+				                        		<div style="text-align:center;padding-top:10px;"><span data-lang="LOADING_PLEASE_WAIT">Loading, please wait</span><span class="loading_dots"><span>.</span><span>.</span><span>.</span></span></div>
 				                        	</div>
 			                        	</div>
 						             </div>
 						         </div>
 						         <div class="content-splitter-right">
 						         	<div class="content-splitter-right-inner">
-						         		<div id="no_assets_available" style="padding-top: 150px;text-align:center;display:none;">You don't have any assets in your bookmark list yet. Click on "Add Asset" in the top right corner to add one.</div>
-						         		<div id="no_asset_search_results" style="padding-top: 150px;text-align:center;display:none;">No assets found that match search query.</div>
-						         		<div id="no_asset_selected" style="padding-top: 150px;text-align:center;">Please select an asset in the left sidebar.</div>
-						         		<div id="loading_asset_data" style="padding-top: 150px;text-align:center;display: none;">Asset data loading, please wait...<br /><br /><img class="loading" src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
+						         		<div id="no_assets_available" style="padding-top: 150px;text-align:center;display:none;" data-lang="DONT_HAVE_ANY_ASSET_IN_BOOKMARK_LIST">You don't have any assets in your bookmark list yet. Click on "Add Asset" in the top right corner to add one.</div>
+						         		<div id="no_asset_search_results" style="padding-top: 150px;text-align:center;display:none;" data-lang="NO_ASSET_FOUND_SEARCH_QUERY">No assets found that match search query.</div>
+						         		<div id="no_asset_selected" style="padding-top: 150px;text-align:center;" data-lang="SELECT_ASSET">Please select an asset in the left sidebar.</div>
+						         		<div id="loading_asset_data" style="padding-top: 150px;text-align:center;display: none;"><span data-lang="ASSET_DATA_LOADING">Asset data loading, please wait...</span><br /><br /><img class="loading" src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
 						         		<div id="asset_details" style="display:none;">
-							            	<div class="alert alert-danger alert-no-icon" id="asset_exchange_duplicates_warning" style="display:none"><strong>Warning</strong>: There <span></span> with the same name in the asset exchange. Please make sure you choose the right one. Look at the account and asset id for confirmation.</div>
+							            	<div class="alert alert-danger alert-no-icon" id="asset_exchange_duplicates_warning" style="display:none"><strong data-lang="STRING_WARNING">Warning</strong>: There <span></span> <span data-lang="WARNING_ASSET_SAME_NAME">with the same name in the asset exchange. Please make sure you choose the right one. Look at the account and asset id for confirmation.</span></div>
 
 							            	<div style="float:right;color: #999999;background:white;padding:5px;border:1px solid #ccc;border-radius:3px">
-							            		<strong>Account</strong>: <span id="asset_account"></span><br />
+							            		<strong data-lang="ACCOUNT">Account</strong>: <span id="asset_account"></span><br />
 					                        	<span id="asset_id_dropdown" class="dropdown" style="margin-bottom:0;">
-					                        		<strong>Asset Id</strong>: &nbsp;<a href="#" id="asset_id" class="dropdown-toggle" data-toggle="dropdown"></a>
+					                        		<strong data-lang="ASSET_ID">Asset Id</strong>: &nbsp;<a href="#" id="asset_id" class="dropdown-toggle" data-toggle="dropdown"></a>
 													<ul class="dropdown-menu" role="menu" style="right:0;left:auto;text-align:left;">
-														<li role="presentation" class="copy_link"><a role="menuitem" tabindex="-1" href="#" data-type="asset_id">Copy Asset ID</a></li>
-														<li role="presentation" class="remote_only copy_link"><a role="menuitem" tabindex="-1" href="#" data-type="asset_link">Copy Asset Link</a></li>
+														<li role="presentation" class="copy_link"><a role="menuitem" tabindex="-1" href="#" data-type="asset_id" data-lang="COPY_ASSET_ID">Copy Asset ID</a></li>
+														<li role="presentation" class="remote_only copy_link"><a role="menuitem" tabindex="-1" href="#" data-type="asset_link" data-lang="COPY_ASSET_LINK">Copy Asset Link</a></li>
 													</ul>
 												</span>
 							            	</div>
@@ -599,7 +599,7 @@
 
 							                <div style="color:#838383;margin-bottom:5px">
 								                <strong data-lang="QUANTITY">Quantity</strong>: <span id="asset_quantity"></span>
-								                <strong>Asset Decimals</strong>: <span id="asset_decimals"></span>
+								                <strong data-lang="ASSET_DECIMALS">Asset Decimals</strong>: <span id="asset_decimals"></span>
 							                </div>
 
 							                <div id="asset_description"></div>
@@ -609,13 +609,13 @@
 							                	<div class="col-md-6">
 								                	<div class="box box-solid box-info collapsed-box" id="buy_asset_box">
 								                		<div class="box-header" style="background-color:#DFF0D9;color: #48AB6C;">
-								                	   	<h3 class="box-title">Buy <span class="asset_name"></span> with NFD</h3>
+								                	   	<h3 class="box-title"><span data-lang="BUY">Buy</span> <span class="asset_name"></span> <span data-lang="WITH_NFD">with NFD</span></h3>
 								                	       <div class="box-tools pull-right">
 								                	       	<button class="btn btn-info btn-sm" style="background-color: #48AB6C"><i class="fa fa-plus"></i></button>
 								                	        </div>
 								                	    </div>
 								                	    <div class="box-body no-padding" style="display:none">
-								                	    	<div style="background-color:#DFF0D9;color: #666;padding-left:10px;padding-right: 10px;padding-top: 0px;padding-bottom:3px;" id="buy_automatic_price"><strong>Balance</strong>: <span id="your_nxt_balance"></span> NFD</div>
+								                	    	<div style="background-color:#DFF0D9;color: #666;padding-left:10px;padding-right: 10px;padding-top: 0px;padding-bottom:3px;" id="buy_automatic_price"><strong data-lang="BALANCE">Balance</strong>: <span id="your_nxt_balance"></span> <span data-lang="NFD">NFD</span></div>
 								                	    
 									                	    <form role="form" class="form-horizontal" style="padding: 10px;;max-width:350px;margin-left:auto;margin-right:auto;">
 									                	    	<div style="margin-left:-20px">
@@ -633,7 +633,7 @@
 										                	    		<div class="col-sm-9">
 										                	    			<div class="input-group">
 										                	    				<input id="buy_asset_price" type="text" value="0" name="buy_asset_price" class="form-control" data-type="buy" />
-										                	    				<span class="input-group-addon">NFD / <span class="asset_name"></span></span>
+										                	    				<span class="input-group-addon"><span data-lang="NFD">NFD</span> / <span class="asset_name"></span></span>
 										                	    			</div>
 										                	    		</div>
 										                	    	</div>
@@ -642,7 +642,7 @@
 										                	    		<div class="col-sm-9">
 										                	    			<div class="input-group">
 										                	    				<input type="text" name="buy_asset_total" id="buy_asset_total" readonly value="0" class="form-control disabled" />
-										                	    				<span class="input-group-addon">NFD</span>
+										                	    				<span class="input-group-addon" data-lang="NFD">NFD</span>
 										                	    			</div>
 										                	    		</div>
 										                	    	</div>
@@ -651,14 +651,14 @@
 										                	    		<div class="col-sm-9">
 										                	    			<div class="input-group">
 										                	    				<input type="text" id="buy_asset_fee" name="buy_asset_fee" value="1" class="form-control" />
-										                	    				<span class="input-group-addon">NFD</span>
+										                	    				<span class="input-group-addon" data-lang="NFD">NFD</span>
 										                	    			</div>
 										                	    		</div>
 										                	    	</div>
 										                	    	<div class="form-group form-group-last">
 										                	    		<div class="col-sm-3"></div>
 										                	    		<div class="col-sm-9">
-										                	    			<button type="button" class="btn btn-primary btn-lg btn-block" id="buy_asset_button" data-toggle="modal" data-target="#asset_order_modal" data-asset="" data-type="Buy">Buy (NFD → <span class="asset_name"></span>)</button>
+										                	    			<button type="button" class="btn btn-primary btn-lg btn-block" id="buy_asset_button" data-toggle="modal" data-target="#asset_order_modal" data-asset="" data-type="Buy"><span data-lang="BUY">Buy</span> (<span data-lang="NFD">NFD</span> → <span class="asset_name"></span>)</button>
 										                	    		</div>
 										                	    	</div>
 									                	    	</div>
@@ -667,14 +667,14 @@
 								                	</div>
 								                	<div class="box box-danger" style="min-height:400px;max-height: 400px;overflow: auto;;">
 								                	    <div class="box-header">
-								                	    	<h3 class="box-title">Sell Orders <span id="sell_orders_count"></span></h3>
+								                	    	<h3 class="box-title"><span data-lang="SELL_ORDERS">Sell Orders</span> <span id="sell_orders_count"></span></h3>
 								                	    </div>
 								                	    <div class="box-body no-padding">
 								                	        <div class="data-container data-loading" data-no-padding="true">
 								                	            <table class="table table-striped" id="asset_exchange_ask_orders_table">
 								                	            	<thead>
 								                	                <tr>
-								                	                    <th>Account</th>
+								                	                    <th data-lang="ACCOUNT">Account</th>
 								                	                    <th data-lang="QUANTITY">Quantity</th>
 								                	                    <th data-lang="PRICE">Price</th>
 								                	                    <th data-lang="TOTAL">Total</th>
@@ -685,7 +685,7 @@
 								                	                </tbody>
 								                	            </table>
 								                	            <div class="data-loading-container"><img class="loading" src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-								                	            <div class="data-empty-container"><p>No sell orders for this asset.</p></div>
+								                	            <div class="data-empty-container"><p data-lang="NO_SELL_ORDERS_ASSET">No sell orders for this asset.</p></div>
 								                	    	</div>
 								                	    </div>
 								                	</div>
@@ -693,13 +693,13 @@
 							                    <div class="col-md-6">
 								                    <div class="box box-solid box-info collapsed-box" id="sell_asset_box">
 								                        <div class="box-header" style="background:#F2DEDE;color:#ED4348;">
-								                            <h3 class="box-title">Sell <span class="asset_name"></span> for NFD</h3>
+								                            <h3 class="box-title"><span data-lang="SELL">Sell</span> <span class="asset_name"></span> <span data-lang="FOR_NFD">for NFD</span></h3>
 								                            <div class="box-tools pull-right">
 								                                <button class="btn btn-info btn-sm" style="background-color: #ED4348"> <i class="fa fa-plus"></i></button>
 								                            </div>
 								                        </div>
 								                        <div class="box-body no-padding" style="display:none">
-								                       		<div style="background-color:#F2DEDE;color: #666;padding-left:10px;padding-right: 10px;padding-top: 0px;padding-bottom:3px;" id="sell_automatic_price"><strong>Balance</strong>: <span id="your_asset_balance"></span> <span class="asset_name"></span></div>
+								                       		<div style="background-color:#F2DEDE;color: #666;padding-left:10px;padding-right: 10px;padding-top: 0px;padding-bottom:3px;" id="sell_automatic_price"><strong data-lang="BALANCE">Balance</strong>: <span id="your_asset_balance"></span> <span class="asset_name"></span></div>
 								                        								                        								                        
 									                        <form role="form" class="form-horizontal" style="padding: 10px;max-width:350px;margin-left:auto;margin-right:auto;">
 										                        <div style="margin-left:-20px">
@@ -717,7 +717,7 @@
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input id="sell_asset_price" type="text" value="0" name="sell_asset_price" class="form-control" data-type="sell" />
-										                        				<span class="input-group-addon">NFD / <span class="asset_name"></span></span>
+										                        				<span class="input-group-addon"><span data-lang="NFD">NFD</span> / <span class="asset_name"></span></span>
 										                        			</div>
 										                        		</div>
 										                        	</div>
@@ -726,7 +726,7 @@
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input type="text" name="sell_asset_total" id="sell_asset_total" readonly value="0" class="form-control disabled" />
-										                        				<span class="input-group-addon">NFD</span>
+										                        				<span class="input-group-addon" data-lang="NFD">NFD</span>
 										                        			</div>
 										                        		</div>
 										                        	</div>
@@ -735,14 +735,14 @@
 										                        		<div class="col-sm-9">
 										                        			<div class="input-group">
 										                        				<input type="text" id="sell_asset_fee" name="sell_asset_fee" value="1" class="form-control" />
-										                        				<span class="input-group-addon">NFD</span>
+										                        				<span class="input-group-addon" data-lang="NFD">NFD</span>
 										                        			</div>
 										                        		</div>
 										                        	</div>
 										                        	<div class="form-group form-group-last">
 										                        		<div class="col-sm-3"></div>
 										                        		<div class="col-sm-9">
-										                        			<button type="button" class="btn btn-primary btn-lg btn-block" id="sell_asset_button" data-toggle="modal" data-target="#asset_order_modal" data-asset="" data-type="Sell">Sell (<span class="asset_name"></span> → NFD)</button>
+										                        			<button type="button" class="btn btn-primary btn-lg btn-block" id="sell_asset_button" data-toggle="modal" data-target="#asset_order_modal" data-asset="" data-type="Sell"><span data-lang="SELL">Sell</span> (<span class="asset_name"></span> → <span data-lang="NFD">NFD</span>)</button>
 										                        		</div>
 										                        	</div>
 										                        </div>
@@ -750,13 +750,13 @@
 								                        </div>
 								                    </div>
 					                        	    <div class="box box-success" style="min-height:400px;max-height: 400px;overflow: auto;;">
-					                        	        <div class="box-header"><h3 class="box-title">Buy Orders <span id="buy_orders_count"></span></h3></div>
+					                        	        <div class="box-header"><h3 class="box-title"><span data-lang="BUY_ORDERS">Buy Orders</span> <span id="buy_orders_count"></span></h3></div>
 					                        	        <div class="box-body no-padding">
 					                        	       		<div class="data-container data-loading" data-no-padding="true">
 						                        	            <table class="table table-striped" id="asset_exchange_bid_orders_table">
 						                        	            	<thead>
 						                        	                <tr>
-						                        	                    <th>Account</th>
+						                        	                    <th data-lang="ACCOUNT">Account</th>
 						                        	                    <th data-lang="QUANTITY">Quantity</th>
 						                        	                    <th data-lang="PRICE">Price</th>
 						                        	                    <th data-lang="TOTAL">Total</th>
@@ -767,7 +767,7 @@
 						                        	                </tbody>
 						                        	            </table>
 						                        	            <div class="data-loading-container"><img class="loading" src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-						                        	            <div class="data-empty-container"><p>No buy orders for this asset.</p></div>
+						                        	            <div class="data-empty-container"><p data-lang="NO_BUY_ORDER_ASSET">No buy orders for this asset.</p></div>
 						                        	    	</div>
 					                        	        </div>
 					                        	    </div>
@@ -775,7 +775,7 @@
 					                        </div>
 							                        
 					                        <div class="box box-primary" style="max-height:500px;overflow:auto;margin-bottom:100px;">
-					                            <div class="box-header"><h3 class="box-title">Trade History</h3></div>
+					                            <div class="box-header"><h3 class="box-title" data-lang="TRADE_HISTORY">Trade History</h3></div>
 					                            <div class="box-body no-padding">
 					                            	<div class="data-container data-loading" data-no-padding="true">
 						                                <table class="table table-striped" id="asset_exchange_trade_history_table">
@@ -785,8 +785,8 @@
 						                                        <th data-lang="QUANTITY">Quantity</th>
 						                                        <th data-lang="PRICE">Price</th>
 						                                        <th data-lang="TOTAL">Total</th>
-						                                        <th>Ask Order ID</th>
-						                                        <th>Bid Order ID</th>
+						                                        <th data-lang="ASK_ORDER_ID">Ask Order ID</th>
+						                                        <th data-lang="BID_ORDER_ID">Bid Order ID</th>
 						                                    </tr>
 						                                    </thead>
 						                                    <tbody>
@@ -794,7 +794,7 @@
 						                                    </tbody>
 						                                </table>
 						                                <div class="data-loading-container"><img class="loading" src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-						                                <div class="data-empty-container"><p>No trade history available.</p></div>
+						                                <div class="data-empty-container"><p data-lang="NO_TRADE_HISTORY">No trade history available.</p></div>
 						                        	</div>
 					                        	</div>
 					                    	</div>
@@ -807,14 +807,14 @@
                 </div>
                 
                 <div id="trade_history_page" class="page">
-					<section class="content-header"><h1>Trade History</h1></section>
+					<section class="content-header"><h1 data-lang="TRADE_HISTORY">Trade History</h1></section>
 					<section class="content">
 						<p>Todo!</p>
 					</section>
                 </div>
                 
                 <div id="settings_page" class="page">
-					<section class="content-header"><h1>Settings</h1></section>
+					<section class="content-header"><h1 data-lang="SETTINGS">Settings</h1></section>
 					<section class="content" id="settings_box">
 					
 						<style type="text/css">
@@ -877,21 +877,21 @@
 							            <label for="settings_amount_warning" data-lang="WARNING_MAX_AMOUNT">Max Amount Warning</label>
 	                        			<div class="input-group" style="width:150px">
 							          		<input type="text" name="amount_warning" id="settings_amount_warning" class="form-control" />
-	                        				<span class="input-group-addon">NFD</span>
+	                        				<span class="input-group-addon" data-lang="NFD">NFD</span>
 	                        			</div>
 							        </div>
 							        <div class="form-group">
 							            <label for="settings_fee_warning" data-lang="WARNING_MAX_FEE">Max Fee Warning</label>
 	                        			<div class="input-group" style="width:150px">
 							          		<input type="text" name="fee_warning" id="settings_fee_warning" class="form-control" />
-	                        				<span class="input-group-addon">NFD</span>
+	                        				<span class="input-group-addon" data-lang="NFD">NFD</span>
 	                        			</div>
 							        </div>
 							        <div class="form-group">
 							            <label for="settings_asset_transfer_warning" data-lang="WARNING_MAX_ASSET_TRANSFER">Max Asset Transfer Warning</label>
 	                        			<div class="input-group" style="width:150px">
 							          		<input type="text" name="asset_transfer_warning" id="settings_asset_transfer_warning" class="form-control" />
-	                        				<span class="input-group-addon">QNT</span>
+	                        				<span class="input-group-addon" data-lang="QNT">QNT</span>
 	                        			</div>
 							        </div>
 							    </div>
@@ -1154,7 +1154,7 @@
                 
                 <div id="blocks_page" class="page">
                		<section class="content-header">
-               			<h1>Blocks</h1>
+               			<h1 data-lang="BLOCKS">Blocks</h1>
 						<div style="position:absolute;top:9px;right:9px;">
 							<div class="btn-group" data-toggle="buttons" id="blocks_page_type">
 								<label class="btn btn-default active">
@@ -1256,7 +1256,7 @@
             </aside>
         </div>
 	
-		<div id="testnet_warning" style="display:none;position:fixed;bottom:0;left:0;padding:5px;background:red;color:white;border-top-right-radius:5px;"><strong>Warning</strong>: You are connected to the TestNet. Do not use your real password!</div>
+		<div id="testnet_warning" style="display:none;position:fixed;bottom:0;left:0;padding:5px;background:red;color:white;border-top-right-radius:5px;"><strong data-lang="STRING_WARNING">Warning</strong>: You are connected to the TestNet. Do not use your real password!</div>
 
 		<div id="lockscreen">
 			<div id="old_browser_warning" style="display:none;margin-left:auto;margin-right:auto;margin-top:200px;background:white;color:black;padding:20px;width:300px;" data-lang="WARNING_OLD_BROWSER">You are using an old browser which this application does not support.</div>
@@ -1500,7 +1500,7 @@
 						<form role="form">
 							<p class="show_secret_phrase">If you want to start forging, type your secret phrase to confirm.</p>
 							<p class="hide_secret_phrase" style="display:none">If you you want to start forging, click the button below to confirm.</p>
-							<div class="callout callout-danger remote_warning" style="display:none"><strong>Warning</strong>: Your secret phrase will be sent to the server!</div>
+							<div class="callout callout-danger remote_warning" style="display:none"><strong data-lang="STRING_WARNING">Warning</strong>: Your secret phrase will be sent to the server!</div>
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group secret_phrase">
 								<label for="start_forging_password" data-lang="SECRET_PHRASE_UPPER">SECRET PHRASE</label>
@@ -1823,7 +1823,7 @@
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
-							<div class="callout callout-danger never_hide"><strong>Warning</strong>: Once submitted, you will not be able to change this information again, ever. Make sure it is correct.</div>
+							<div class="callout callout-danger never_hide"><strong data-lang="STRING_WARNING">Warning</strong>: Once submitted, you will not be able to change this information again, ever. Make sure it is correct.</div>
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
 								<label for="issue_asset_name">ASSET NAME <i class="fa fa-question-circle show_popover" data-content="The asset name is non-unique. Should be between 3 and 10 characters long." data-container="body" style="color:#4CAA6E" ></i></label>
@@ -2194,17 +2194,17 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Register Alias</h4>
+		        		<h4 class="modal-title" data-lang="REGISTER_ALIAS">Register Alias</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label for="register_alias_type">TYPE</label>
+								<label for="register_alias_type" data-lang="TYPE_UPPER">TYPE</label>
 								<select class="form-control" name="type" id="register_alias_type">
-									<option value="uri">URI</option>
-									<option value="account">Account</option>
-									<option value="general">Other</option>
+									<option value="uri" data-lang="URI">URI</option>
+									<option value="account" data-lang="ACCOUNT">Account</option>
+									<option value="general" data-lang="OTHER">Other</option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -2243,7 +2243,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			      		<input type="hidden" name="success_message" value="Your alias has been registered!" />
 			      		<input type="hidden" name="error_message" value="An unknown error occured! Alias may or may not be registered." />
 				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-				        <button type="button" class="btn btn-primary" id="register_alias_button" data-loading-text="Submitting...">Register</button>
+				        <button type="button" class="btn btn-primary" id="register_alias_button" data-loading-text="Submitting..." data-lang="REGISTER">Register</button>
 			    	</div>
 				</div>
 		  	</div>
@@ -2254,16 +2254,16 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Generate Website Token</h4>
+		        		<h4 class="modal-title" data-lang="GENERATE_WEBSITE_TOKEN">Generate Website Token</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
-							<div class="callout callout-danger remote_warning" style="display:none"><strong>Warning</strong>: Your secret phrase will be sent to the server!</div>
+							<div class="callout callout-danger remote_warning" style="display:none"><strong data-lang="STRING_WARNING">Warning</strong>: <span data-lang="SECRET_SEND_TO_SERVER">Your secret phrase will be sent to the server!</span></div>
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="callout callout-info" id="generate_token_token" style="display:none;"></div>
 							<div class="form-group">
-								<label for="generate_token_website">WEBSITE</label>
-								<input type="text" class="form-control" name="website" id="generate_token_website" placeholder="Website URL" tabindex="1" value="http://" />
+								<label for="generate_token_website" data-lang="WEBSITE_UPPER">WEBSITE</label>
+								<input type="text" class="form-control" name="website" id="generate_token_website" data-lang="WEBSITE_URL" placeholder="Website URL" tabindex="1" value="http://" />
 							</div>
 							<div class="form-group secret_phrase">
 								<label for="generate_token_password" data-lang="SECRET_PHRASE_UPPER">SECRET PHRASE</label>
@@ -2274,7 +2274,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			      	<div class="modal-footer" style="margin-top:0;">
 			      		<input type="hidden" name="request_type" value="generateToken" />
 				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-				        <button type="button" class="btn btn-primary" id="register_alias_button" data-loading-text="Submitting...">Generate</button>
+				        <button type="button" class="btn btn-primary" id="register_alias_button" data-loading-text="Submitting..." data-lang="GENERATE">Generate</button>
 			    	</div>
 				</div>
 		  	</div>
@@ -2285,7 +2285,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Block <strong><span id="block_info_modal_block"></span></strong> Info</h4>
+		        		<h4 class="modal-title"><span data-lang="BLOCK">Block</span> <strong><span id="block_info_modal_block"></span></strong> Info</h4>
 		     		</div>
 			      	<div class="modal-body">	
 			      		<div class="tabbable">
@@ -2419,7 +2419,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 							        <th data-lang="TYPE">Type</th>
 							        <th colspan="2" data-lang="AMOUNT">Amount</th>
 							        <th data-lang="FEE">Fee</th>
-							        <th>Account</th>
+							        <th data-lang="ACCOUNT">Account</th>
 							    </tr>
 							    </thead>
 							    <tbody>
@@ -2453,7 +2453,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 							        <th data-lang="ASSET">Asset</th>
 							        <th data-lang="QUANTITY">Quantity</th>
 							        <th data-lang="TOTAL_AVAILABLE">Total Available</th>
-							        <th>Percentage</th>
+							        <th data-lang="PERCENTAGE">Percentage</th>
 							    </tr>
 							    </thead>
 							    <tbody>

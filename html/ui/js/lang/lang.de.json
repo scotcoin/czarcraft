@@ -263,7 +263,7 @@
 		"NO_ALIASES_YET":"Noch keine Aliase vohanden",
 		"REGISTER_ONE":"registriere eins",
 		"SELL_ORDERS":"Verkaufsgebote",
-		"NO_OPEN_SELL_ORDERS":"Keine offenen Verkaufsgebote vorhanden."
+		"NO_OPEN_SELL_ORDERS":"Keine offenen Verkaufsgebote vorhanden.",
 		"BUY_ORDERS":"Kaufgebote",
 		"NO_OPEN_BUY_ORDERS":"Keine offenen Kaufgebote vorhanden.",
 		"TOTAL_AVAILABLE":"Gesamt verfügbar",
@@ -288,7 +288,7 @@
 		"ADD_ASSET":"Asset hinzufügen",
 		"BOOKMARK_ASSET":"Erstellein Lesezeichen für das Asset",
 		"CLEAR_SEARCH_RESULTS":"Lösche Suchergebnis",
-		"DONT_HAVE_ANY_ASSET_IN_BOOKMARK_LIST":"Sie haben noch keine Assets in ihrer Lesezeichen Liste. Klicken Sie zum Hinzufügen auf den Button "Asset hinzufügen" in der oberen rechten Ecke des Fensters.",
+		"DONT_HAVE_ANY_ASSET_IN_BOOKMARK_LIST":"Sie haben noch keine Assets in ihrer Lesezeichen Liste. Klicken Sie zum Hinzufügen auf den Button \"Asset hinzufügen\" in der oberen rechten Ecke des Fensters.",
 		"NO_ASSET_FOUND_SEARCH_QUERY":"Kein Asset gefunden was der Suchanfrage entspricht",
 		"SELECT_ASSET":"Bitte wählen Sie ein Asset im linken Seitenmenu.",
 		"ASSET_DATA_LOADING":"Asset Daten werden geladen. bitte warten...",

@@ -50,7 +50,12 @@ var NRS = (function(NRS, $, undefined) {
 			 $('[data-lang]').each(function(){
 				 var langString = NRS.getLangString($(this).attr('data-lang'));
 				  if (this.nodeName != 'INPUT'){
-					  $(this).text(langString);
+					  if (this.hasAttribute("data-content")) {
+						  $(this).attr('data-content',langString);
+					  }
+					  else{
+						  $(this).text(langString);
+					  }
 				  }
 				  else if(this.hasAttribute("value") && ! this.hasAttribute("placeholder")){
 					  $(this).val(langString);

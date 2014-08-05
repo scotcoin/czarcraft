@@ -823,43 +823,43 @@
 						
 						<div class="box box-primary">
 							<div class="box-header">
-							    <h3 class="box-title">General</h3>
+							    <h3 class="box-title" data-lang="GENERAL">General</h3>
 							</div>
 							
 							<form role="form">
 							    <div class="box-body">
 							        <div class="form-group">
-							            <label for="settings_submit_on_enter">Submit Forms on Enter</label>
+							            <label for="settings_submit_on_enter" data-lang="SUBMIT_FORMS_ON_ENTER">Submit Forms on Enter</label>
 							            <select name="submit_on_enter" id="settings_submit_on_enter" class="form-control" style="width:150px">
-							                <option value="1">Yes</option>
-							                <option value="0">No</option>
+							                <option value="1" data-lang="YES">Yes</option>
+							                <option value="0" data-lang="NO">No</option>
 							            </select>
-							            <p class="help-block">Be careful when choosing to submit forms via the enter key, submitting can't be undone.</p>
+							            <p class="help-block" data-lang="BE_CAREFUL_SUBMIT_FORMS_ENTER_KEY">Be careful when choosing to submit forms via the enter key, submitting can't be undone.</p>
 							        </div>
 							        <div class="form-group">
 							        <!-- rs -->
-							            <label for="settings_reed_solomon">Use Reed Solomon Format</label>
+							            <label for="settings_reed_solomon" data-lang="USE_REED_SOLOMON">Use Reed Solomon Format</label>
 							            <select name="reed_solomon" id="settings_reed_solomon" class="form-control" style="width:150px">
-							                <option value="1">Yes</option>
-							                <option value="0">No</option>
+							                <option value="1" data-lang="YES">Yes</option>
+							                <option value="0" data-lang="NO">No</option>
 							            </select>
-							            <p class="help-block">The reed solomon format has built-in error detection.</p>
+							            <p class="help-block" data-lang="RS_BUILT_IN_ERR_DETECTION">The reed solomon format has built-in error detection.</p>
 							        </div>
 									<div class="form-group">
-							            <label for="settings_animate_forging">Animate Forging Indicator</label>
+							            <label for="settings_animate_forging" data-lang="ANIMATE_FORGING_INDICATOR">Animate Forging Indicator</label>
 							            <select name="animate_forging" id="settings_animate_forging" class="form-control" style="width:150px">
-							                <option value="1">Yes</option>
-							                <option value="0">No</option>
+							                <option value="1" data-lang="YES">Yes</option>
+							                <option value="0" data-lang="NO">No</option>
 							            </select>
 							        </div>
-							        <div class="form-group">
-							            <label for="settings_news">Enable News Section</label>
+<!-- 						        <div class="form-group"> 
+							            <label for="settings_news" data-lang="">Enable News Section</label>
 							            <select name="news" id="settings_news" class="form-control" style="width:150px">
 							            	<option value="-1" id="settings_news_initial">Choose</option>
-							                <option value="1">Yes</option>
-							                <option value="0">No</option>
+							                <option value="1" data-lang="YES">Yes</option>
+							                <option value="0" data-lang="NO">No</option>
 							            </select>
-							        </div>
+							        </div> -->
 							    </div>
 							</form>
 						</div>
@@ -900,17 +900,17 @@
                                             
                         <div class="box box-success" style="overflow:visible">
 							<div class="box-header">
-							    <h3 class="box-title">Theme Settings</h3>
+							    <h3 class="box-title" data-lang="THEME_SETTINGS">Theme Settings</h3>
 							</div>
 
 							<form role="form">
 							    <div class="box-body">
 									<div class="form-group">
-										<label class="control-label">Header</label>
+										<label class="control-label" data-lang="HEADER">Header</label>
 										<div class="input-group">
 										    <div class="btn-group colors">
 												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width:140px;text-align:left;">
-													<span class="text">Select Color Scheme</span> <span class="caret"></span>
+													<span class="text" data-lang="SELECT_COLOR_SCHEME">Select Color Scheme</span> <span class="caret"></span>
 												</button>
 									        	<ul id="header_color_scheme" class="dropdown-menu color_scheme_editor" role="menu" data-scheme="header" data-container="body"> 
 									          	</ul>
@@ -923,11 +923,11 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="control-label">Sidebar</label>
+										<label class="control-label" data-lang="SIDEBAR">Sidebar</label>
 										<div class="input-group">
 										    <div class="btn-group colors">
 												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width:140px;text-align:left;">
-													<span class="text">Select Color Scheme</span> <span class="caret"></span>
+													<span class="text" data-lang="SELECT_COLOR_SCHEME">Select Color Scheme</span> <span class="caret"></span>
 												</button>
 									        	<ul id="sidebar_color_scheme" class="dropdown-menu color_scheme_editor" role="menu" data-scheme="sidebar" data-container="body"> 
 									          	</ul>
@@ -962,11 +962,11 @@
 									-->
 									
 									<div class="form-group">
-										<label class="control-label">Page Header</label>
+										<label class="control-label" data-lang="PAGE_HEADER">Page Header</label>
 										<div class="input-group">
 										    <div class="btn-group colors">
 												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width:140px;text-align:left;">
-													<span class="text">Select Color Scheme</span> <span class="caret"></span>
+													<span class="text" data-lang="SELECT_COLOR_SCHEME">Select Color Scheme</span> <span class="caret"></span>
 												</button>
 									        	<ul id="page_header_color_scheme" class="dropdown-menu color_scheme_editor" role="menu" data-scheme="page_header" data-container="body"> 
 									          	</ul>
@@ -1024,14 +1024,14 @@
                 </div>
                 
                 <div id="peers_page" class="page">
-               		<section class="content-header"><h1>Peers</h1></section>
+               		<section class="content-header"><h1 data-lang="PEERS">Peers</h1></section>
 	                <section class="content">
 		                <div class="row">
 		                    <div class="col-lg-3 col-xs-6">
 		                        <div class="small-box bg-gray">
 		                            <div class="inner inner-smaller">
 		                                <h3><span id="peers_uploaded_volume" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-		                                <p>Uploaded Volume</p>
+		                                <p data-lang="UPLOADED_VOLUME">Uploaded Volume</p>
 		                            </div>
 		                            <div class="icon-smaller"><i class="fa fa-upload"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1041,7 +1041,7 @@
 		                        <div class="small-box bg-gray">
 		                            <div class="inner inner-smaller">
 		                            	<h3><span id="peers_downloaded_volume" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-		                                <p>Downloaded Volume</p>
+		                                <p data-lang="DOWNLOADED_VOLUME">Downloaded Volume</p>
 		                            </div>
 		                            <div class="icon-smaller" style="bottom:-12px"><i class="fa fa-download"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1051,7 +1051,7 @@
 		                        <div class="small-box bg-gray">
 		                            <div class="inner inner-smaller">
 		                                <h3><span id="peers_connected" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-		                                <p>Connected Peers</p>
+		                                <p data-lang="CONNECTED_PEERS">Connected Peers</p>
 		                            </div>
 		                            <div class="icon-smaller" style="bottom:-12px"><i class="fa fa-cloud"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1061,7 +1061,7 @@
 		                        <div class="small-box bg-gray">
 		                            <div class="inner inner-smaller">
 		                                <h3><span id="peers_up_to_date" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-		                                <p>Up-to-date Peers</p>
+		                                <p data-lang="UP_TO_DATE_PEERS">Up-to-date Peers</p>
 		                            </div>
 		                            <div class="icon-smaller"><i class="ion ion-pie-graph"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1073,12 +1073,12 @@
 							<table class="table table-striped table-hover" id="peers_table">
 								<thead>
 							    <tr>
-							        <th>Address</th>
-							        <th>Weight</th>
-							        <th>Downloaded</th>
-							        <th>Uploaded</th>
-							        <th>Application</th>
-							        <th>Platform</th>
+							        <th data-lang="ADDRESS">Address</th>
+							        <th data-lang="WEIGHT">Weight</th>
+							        <th data-lang="DOWNLOADED">Downloaded</th>
+							        <th data-lang="UPLOADED">Uploaded</th>
+							        <th data-lang="APPLICATION">Application</th>
+							        <th data-lang="PLATFORM">Platform</th>
 							    </tr>
 							    </thead>
 							    <tbody>
@@ -1086,12 +1086,12 @@
 							    </tbody>
 							</table>
 							<div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
-							<div class="data-empty-container"><p>No peers found.</p></div>
+							<div class="data-empty-container"><p data-lang="NO_PEERS_FOUND">No peers found.</p></div>
 						</div>
 	                </section>
                 </div>
                 
-	            <div id="news_page" class="page">
+<!--	            <div id="news_page" class="page">
 	                <section class="content-header"><h1>News</h1></section>
 	                <section class="content">
 		                <div class="row" id="rss_news_container">
@@ -1150,7 +1150,7 @@
 						</div>
 						<div id="rss_news_disabled" style="padding-top: 150px;text-align:center;">The news section is currently disabled. <a href="#" id="rss_news_enable">Click here</a> to enable it.</div>
 					</section>
-				</div>
+ 				</div>  -->
                 
                 <div id="blocks_page" class="page">
                		<section class="content-header">
@@ -1158,10 +1158,10 @@
 						<div style="position:absolute;top:9px;right:9px;">
 							<div class="btn-group" data-toggle="buttons" id="blocks_page_type">
 								<label class="btn btn-default active">
-									<input type="radio" name="blocks_page_type"> All Blocks
+									<input type="radio" name="blocks_page_type"> <span data-lang="ALL_BLOCKS">All Blocks</span>
 								</label>
 								<label class="btn btn-default">
-									<input type="radio" name="blocks_page_type"> Forged By You
+									<input type="radio" name="blocks_page_type"> <span data-lang="FORGED_BY_YOU">Forged By You</span>
 								</label>
 							</div>
 	                	</div>
@@ -1172,7 +1172,7 @@
 						        <div class="small-box bg-gray">
 						            <div class="inner inner-smaller">
 						                <h3><span id="blocks_average_amount" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-						                <p>Avg. Amount Per Block</p>
+						                <p data-lang="AVG_AMOUNT_BLOCK">Avg. Amount Per Block</p>
 						            </div>
 						            <div class="icon-smaller" style="bottom:-14px"><i class="ion ion-stats-bars"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1182,7 +1182,7 @@
 						        <div class="small-box bg-gray">
 						            <div class="inner inner-smaller">
 						                <h3><span id="blocks_average_fee" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-						                <p>Avg. Fee Per Block</p>
+						                <p data-lang="AVG_FEE_BLOCK">Avg. Fee Per Block</p>
 						            </div>
 						            <div class="icon-smaller" style="bottom:-12px"><i class="ion ion-paperclip"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1192,7 +1192,7 @@
 						        <div class="small-box bg-gray">
 						            <div class="inner inner-smaller">
 						                <h3><span id="blocks_transactions_per_hour" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-						                <p>Transactions Per Hour</p>
+						                <p data-lang="TRANSACTIONS_HOUR">Transactions Per Hour</p>
 						            </div>
 						            <div class="icon-smaller"><i class="fa fa-shopping-cart"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1202,7 +1202,7 @@
 						        <div class="small-box bg-gray">
 						            <div class="inner inner-smaller">
 						                <h3><span id="blocks_average_generation_time" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-						                <p>Block Generation Time</p>
+						                <p data-lang="BLOCK_GENERATION_TIME">Block Generation Time</p>
 						            </div>
 						            <div class="icon-smaller"><i class="ion ion-clock"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1212,7 +1212,7 @@
 						        <div class="small-box bg-gray">
 						            <div class="inner inner-smaller">
 						                <h3><span id="forged_blocks_total" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-						                <p># Forged Blocks</p>
+						                <p data-lang="FORGED_BLOCKS">Forged Blocks</p>
 						            </div>
 						            <div class="icon-smaller"><i class="fa fa-bars"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1222,7 +1222,7 @@
 						        <div class="small-box bg-gray">
 						            <div class="inner inner-smaller">
 						                <h3><span id="forged_fees_total" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
-						                <p>Forged Fees Total</p>
+						                <p data-lang="FORGED_FEES_TOTAL">Forged Fees Total</p>
 						            </div>
 						            <div class="icon-smaller"><i class="fa fa-briefcase"></i></div>
     	                            <div class="small-box-footer"></div>
@@ -1256,7 +1256,7 @@
             </aside>
         </div>
 	
-		<div id="testnet_warning" style="display:none;position:fixed;bottom:0;left:0;padding:5px;background:red;color:white;border-top-right-radius:5px;"><strong data-lang="STRING_WARNING">Warning</strong>: You are connected to the TestNet. Do not use your real password!</div>
+		<div id="testnet_warning" style="display:none;position:fixed;bottom:0;left:0;padding:5px;background:red;color:white;border-top-right-radius:5px;"><strong data-lang="STRING_WARNING">Warning</strong>: <span data-lang="WARNING_TESTNET">You are connected to the TestNet. Do not use your real password!</span></div>
 
 		<div id="lockscreen">
 			<div id="old_browser_warning" style="display:none;margin-left:auto;margin-right:auto;margin-top:200px;background:white;color:black;padding:20px;width:300px;" data-lang="WARNING_OLD_BROWSER">You are using an old browser which this application does not support.</div>
@@ -1280,7 +1280,7 @@
 		        	 <center><img src="img/splash.png" alt="Nxt" width="309" height="368" /></center>
 		            	 
 		            <div id="login_panel">   
-		            	<div class="callout callout-danger" id="testnet_login" style="max-width:400px;min-width:400px;display:none;">Log in with your <strong>TestNet</strong> account - not your real one!</div>
+		            	<div class="callout callout-danger" id="testnet_login" style="max-width:400px;min-width:400px;display:none;"><span data-lang="LOGIN_WITH_YOUR_1ST_PART">Login with your</span> <strong data-lang="TESTNET">TestNet</strong> <span data-lang="ACCOUNT_NOT_REAL_ONE_2ND_PART">account - not your real one!</span></div>
 		                    	                    
 			            <div class="lockscreen-item">
 			                <div class="lockscreen-credentials">   
@@ -1498,9 +1498,9 @@
 		      		</div>
 		      		<div class="modal-body">			
 						<form role="form">
-							<p class="show_secret_phrase">If you want to start forging, type your secret phrase to confirm.</p>
-							<p class="hide_secret_phrase" style="display:none">If you you want to start forging, click the button below to confirm.</p>
-							<div class="callout callout-danger remote_warning" style="display:none"><strong data-lang="STRING_WARNING">Warning</strong>: Your secret phrase will be sent to the server!</div>
+							<p class="show_secret_phrase" data-lang="SURE_START_FORGING_TYPE_SECRET">If you want to start forging, type your secret phrase to confirm.</p>
+							<p class="hide_secret_phrase" style="display:none" data-lang="SURE_START_FORGING_CLICK_BUTTON">If you you want to start forging, click the button below to confirm.</p>
+							<div class="callout callout-danger remote_warning" style="display:none"><strong data-lang="STRING_WARNING">Warning</strong>: <span data-lang="SECRET_SENT_TO_SERVER">Your secret phrase will be sent to the server!</span></div>
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group secret_phrase">
 								<label for="start_forging_password" data-lang="SECRET_PHRASE_UPPER">SECRET PHRASE</label>
@@ -1512,7 +1512,7 @@
 			      		<input type="hidden" name="request_type" value="startForging" />
 			      		<input type="hidden" name="success_message" value="Forging has been started." />
 				        <button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-				        <button type="button" class="btn btn-primary" id="start_forging_button" data-loading-text="Submitting...">Start Forging</button>
+				        <button type="button" class="btn btn-primary" id="start_forging_button" data-loading-text="Submitting..." data-lang="START_FORGING">Start Forging</button>
 			      	</div>
 		    	</div>
 			</div>
@@ -1529,7 +1529,7 @@
 		      		<div class="modal-body">			
 						<form role="form">
 							<div class="callout callout-danger error_message" style="display:none"></div>
-							<p>If you are sure you want to cancel your order, type your secret phrase to confirm.
+							<p>If you are sure you want to cancel your order, type your secret phrase to confirm.</p>
 							<input type="hidden" name="order" id="cancel_order_order" value="" />
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
@@ -1613,13 +1613,13 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Transfer Asset</h4>
+		        		<h4 class="modal-title" data-lang="TRANSFER_ASSET">Transfer Asset</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label>ASSET</label>
+								<label data-lang="ASSET_UPPER">ASSET</label>
 								<p><span id="transfer_asset_name"></span><span id="transfer_asset_available" style="font-style:italic"></span></p>
 								<input type="hidden" name="asset" id="transfer_asset_asset" value="" />
 								<input type="hidden" name="decimals" id="transfer_asset_decimals" value="" />
@@ -1634,13 +1634,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="transfer_asset_comment">COMMENT</label>
-								<textarea class="form-control" id="transfer_asset_comment" name="comment" rows="3" tabindex="2" placeholder="Optional"></textarea>
+								<label for="transfer_asset_comment" data-lang="COMMENT_UPPER">COMMENT</label>
+								<textarea class="form-control" id="transfer_asset_comment" name="comment" rows="3" tabindex="2" data-lang="OPTIONAL" placeholder="Optional"></textarea>
 							</div>
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label for="transfer_asset_quantity">QUANTITY</label>
+										<label for="transfer_asset_quantity" data-lang="QUANTITY_UPPER">QUANTITY</label>
 						                <input type="number" name="quantity" id="transfer_asset_quantity" class="form-control" step="any" min="0" placeholder="Quantity" tabindex="3">
 									</div>
 								</div>
@@ -1670,7 +1670,7 @@
 						<input type="hidden" name="error_message" value="An unknown error occured! Asset may or may not be transferred." />
 						<input type="hidden" name="converted_account_id" value="" />
 				     	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Transfer Asset</button>
+				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="TRANSFER_ASSET">Transfer Asset</button>
 					</div>
 		    	</div>
 			</div>
@@ -1681,13 +1681,13 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		      			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Add Asset</h4>
+		        		<h4 class="modal-title" data-lang="ADD_ASSET">Add Asset</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label for="add_asset_bookmark_id">ASSET OR ACCOUNT ID</label> <i class="fa fa-question-circle show_popover" style="color:#4CAA6E" data-content="Find the ID on the issuer's website or announcement page." data-container="body"></i></label>
+								<label for="add_asset_bookmark_id" data-lang="ASSET_OR_ACCOUNT_ID">ASSET OR ACCOUNT ID</label> <i class="fa fa-question-circle show_popover" style="color:#4CAA6E" data-content="Find the ID on the issuer's website or announcement page." data-container="body"></i></label>
 								<input type="text" class="form-control" name="id" id="add_asset_bookmark_id" placeholder="ID" autofocus tabindex="1" />
 							</div>
 						</form>
@@ -1697,7 +1697,7 @@
 						<input type="hidden" name="success_message" value="The asset has been added!" />
 						<input type="hidden" name="error_message" value="An unknown error occured!" />
 				    	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Add Asset</button>
+				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="ADD_ASSET">Add Asset</button>
 				    </div>
 				</div>
 			</div>
@@ -1708,27 +1708,27 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		      			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Add Contact</h4>
+		        		<h4 class="modal-title" data-lang="ADD_CONTACT">Add Contact</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
-							<div class="callout callout-danger never_hide"><strong>Remember</strong>: Contacts are stored locally, not on the blockchain</div>
+							<div class="callout callout-danger never_hide"><strong data-lang="REMEMBER">Remember</strong>: <span data-lang="CONTACTS_STORED_LOCALLY">Contacts are stored locally, not on the blockchain</span></div>
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label for="add_contact_name">NAME</label>
-								<input type="text" class="form-control" name="name" id="add_contact_name" placeholder="Contact Name" autofocus tabindex="1" />
+								<label for="add_contact_name" data-lang="NAME_UPPER">NAME</label>
+								<input type="text" class="form-control" name="name" id="add_contact_name" data-lang="CONTACT_NAME" placeholder="Contact Name" autofocus tabindex="1" />
 							</div>
 							<div class="form-group">
-								<label for="add_contact_account_id">ACCOUNT ID</label>
-								<input type="text" class="form-control" name="account_id" id="add_contact_account_id" placeholder="NFD Account ID" tabindex="2" />
+								<label for="add_contact_account_id" data-lang="ACCOUNT_ID_UPPER">ACCOUNT ID</label>
+								<input type="text" class="form-control" name="account_id" id="add_contact_account_id" data-lang="NFD_ACCOUNT_ID" placeholder="NFD Account ID" tabindex="2" />
 							</div>
 							<div class="form-group">
-								<label for="add_contact_email">EMAIL ADDRESS</label>
+								<label for="add_contact_email" data-lang="EMAIL_ADDRESS_UPPER">EMAIL ADDRESS</label>
 								<input type="text" class="form-control" name="email" id="add_contact_email" placeholder="contact@email.com" tabindex="3" />
 							</div>
 							<div class="form-group">
 								<label for="add_contact_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
-								<textarea class="form-control" id="add_contact_description" name="description" rows="3" tabindex="4" placeholder="Optional"></textarea>
+								<textarea class="form-control" id="add_contact_description" name="description" rows="3" tabindex="4" data-lang="OPTIONAL" placeholder="Optional"></textarea>
 							</div>
 						</form>
 						<div class="callout account_info" style="display:none;margin-bottom: 0;"></div>
@@ -1739,7 +1739,7 @@
 						<input type="hidden" name="error_message" value="An unknown error occured!" />
 						<input type="hidden" name="converted_account_id" value="" />
 				    	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Add Contact</button>
+				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="ADD_CONTACT">Add Contact</button>
 				    </div>
 				</div>
 			</div>
@@ -1750,27 +1750,27 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		      			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Update Contact</h4>
+		        		<h4 class="modal-title" data-lang="UPDATE_CONTACT">Update Contact</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label for="update_contact_name">NAME</label>
-								<input type="text" class="form-control" name="name" id="update_contact_name" placeholder="Contact Name" autofocus tabindex="1" />
+								<label for="update_contact_name" data-lang="NAME_UPPER">NAME</label>
+								<input type="text" class="form-control" name="name" id="update_contact_name" data-lang="CONTACT_NAME" placeholder="Contact Name" autofocus tabindex="1" />
 							</div>
 							<div class="form-group">
-								<label for="update_contact_account_id">ACCOUNT ID</label>
-								<input type="text" class="form-control" name="account_id" id="update_contact_account_id" placeholder="NFD Account ID" tabindex="2" />
+								<label for="update_contact_account_id" data-lang="ACCOUNT_ID_UPPER">ACCOUNT ID</label>
+								<input type="text" class="form-control" name="account_id" id="update_contact_account_id" data-lang="NFD_ACCOUNT_ID" placeholder="NFD Account ID" tabindex="2" />
 							</div>
 							<div class="form-group">
-								<label for="update_contact_email">EMAIL ADDRESS</label>
+								<label for="update_contact_email" data-lang="EMAIL_ADDRESS_UPPER">EMAIL ADDRESS</label>
 								<input type="text" class="form-control" name="email" id="update_contact_email" placeholder="contact@email.com"
 								        tabindex="3" />
 							</div>
 							<div class="form-group">
 								<label for="update_contact_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
-								<textarea class="form-control" id="update_contact_description" name="description" rows="3" tabindex="4" placeholder="Optional"></textarea>
+								<textarea class="form-control" id="update_contact_description" name="description" rows="3" tabindex="4" data-lang="OPTIONAL" placeholder="Optional"></textarea>
 							</div>
 						</form>
 						<div class="callout account_info" style="display:none;margin-bottom: 0;"></div>
@@ -1782,7 +1782,7 @@
 						<input type="hidden" name="error_message" value="An unknown error occured!" />
 						<input type="hidden" name="converted_account_id" value="" />
 				    	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Update Contact</button>
+				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="UPDATE_CONTACT">Update Contact</button>
 				    </div>
 				</div>
 			</div>
@@ -1793,7 +1793,7 @@
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		      			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Delete Contact</h4>
+		        		<h4 class="modal-title" data-lang="DELETE_CONTACT">Delete Contact</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
@@ -1807,8 +1807,8 @@
 						<input type="hidden" name="request_type" value="deleteContact" />
 						<input type="hidden" name="success_message" value="The contact has been deleted successfully!" />
 						<input type="hidden" name="error_message" value="An unknown error occured!" />
-				    	<button type="button" class="btn btn-default" data-dismiss="modal">No, Do Not Delete</button>
-				        <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Yes, Delete Contact</button>
+				    	<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="NO_DONT_DELETE">No, Do Not Delete</button>
+				        <button type="button" class="btn btn-primary" data-loading-text="Submitting..."><span data-lang="YES">Yes</span>, <span data-lang="DELETE_CONTACT">Delete Contact</span></button>
 				    </div>
 				</div>
 			</div>
@@ -1823,11 +1823,11 @@
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
-							<div class="callout callout-danger never_hide"><strong data-lang="STRING_WARNING">Warning</strong>: Once submitted, you will not be able to change this information again, ever. Make sure it is correct.</div>
+							<div class="callout callout-danger never_hide"><strong data-lang="STRING_WARNING">Warning</strong>: <span data-lang="ISSUE_ASSET_SUBMIT_WARNING">Once submitted, you will not be able to change this information again, ever. Make sure it is correct.</span></div>
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label for="issue_asset_name">ASSET NAME <i class="fa fa-question-circle show_popover" data-content="The asset name is non-unique. Should be between 3 and 10 characters long." data-container="body" style="color:#4CAA6E" ></i></label>
-								<input type="text" class="form-control" name="name" id="issue_asset_name" placeholder="Asset Name" autofocus tabindex="1" />
+								<label for="issue_asset_name"><span data-lang="ASSET_NAME_UPPER">ASSET NAME</span> <i class="fa fa-question-circle show_popover" data-content="The asset name is non-unique. Should be between 3 and 10 characters long." data-container="body" style="color:#4CAA6E" ></i></label>
+								<input type="text" class="form-control" name="name" id="issue_asset_name" data-lang="ASSET_NAME" placeholder="Asset Name" autofocus tabindex="1" />
 							</div>
 							<div class="form-group">
 								<label for="issue_asset_description" data-lang="DESCRIPTION_UPPER">DESCRIPTION</label>
@@ -1836,13 +1836,13 @@
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label for="issue_asset_quantity">QUANTITY</label>
+										<label for="issue_asset_quantity" data-lang="QUANTITY_UPPER">QUANTITY</label>
 						                <input type="number" name="quantity" id="issue_asset_quantity" class="form-control" min="1" placeholder="Quantity" tabindex="4">
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">
-										<label for="issue_asset_decimals">DECIMALS <i class="fa fa-question-circle show_popover" data-content="The maximum allowed number of digits after the asset
+										<label for="issue_asset_decimals"><span data-lang="DECIMALS_UPPER">DECIMALS</span> <i class="fa fa-question-circle show_popover" data-content="The maximum allowed number of digits after the asset
 quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></label>
 						                <input type="number" name="decimals" id="issue_asset_decimals" class="form-control" min="0" max="8" placeholder="Decimals" data-default="0" value="0" tabindex="5">
 									</div>
@@ -1885,13 +1885,13 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		      			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Create Poll</h4>
+		        		<h4 class="modal-title" data-lang="CREATE_POLL">Create Poll</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label for="create_poll_name">NAME</label>
+								<label for="create_poll_name" data-lang="NAME_UPPER">NAME</label>
 								<input type="text" class="form-control" name="name" id="create_poll_name" placeholder="Poll Name" autofocus tabindex="1" />
 							</div>
 							<div class="form-group">
@@ -1899,10 +1899,10 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 								<textarea class="form-control" id="create_poll_description" name="description" rows="3" tabindex="2"></textarea>
 							</div>
 							<div class="form-group" id="create_poll_answers">
-								<label>ANSWERS</label>
+								<label data-lang="ANSWERS_UPPER">ANSWERS</label>
 								 <div class="form-group">
 									<div class="input-group">
-										<input type="text" class="form-control create_poll_answers" name="create_poll_answers[]" placeholder="Answer" tabindex="3" />
+										<input type="text" class="form-control create_poll_answers" name="create_poll_answers[]" data-lang="ANSWER" placeholder="Answer" tabindex="3" />
 										<span class="input-group-btn">
 											<button class="btn remove_answer" type="button"><i class="fa fa-minus" style="color:white"></i></button>
 										</span>
@@ -1910,7 +1910,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 								</div>
 								 <div class="form-group">
 									<div class="input-group">
-										<input type="text" class="form-control create_poll_answers" name="create_poll_answers[]" placeholder="Answer" tabindex="3" />
+										<input type="text" class="form-control create_poll_answers" name="create_poll_answers[]" data-lang="ANSWER" placeholder="Answer" tabindex="3" />
 										<span class="input-group-btn">
 											<button class="btn remove_answer" type="button"><i class="fa fa-minus" style="color:white"></i></button>
 										</span>
@@ -1964,7 +1964,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 						<input type="hidden" name="error_message" value="An unknown error occured! Poll may or may not be created." />
 						<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
 						&nbsp;&nbsp;
-						<button type="button" class="btn btn-primary" data-loading-text="Submitting...">Create Poll</button>
+						<button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="CREATE_POLL">Create Poll</button>
 				    </div>
 				</div>
 			</div>
@@ -1983,7 +1983,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 						<form role="form">
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label for="cast_vote_poll_name">NAME</label>
+								<label for="cast_vote_poll_name" data-lang="NAME_UPPER">NAME</label>
 								<input type="text" class="form-control" name="name" id="cast_vote_poll_name" placeholder="Poll Name" autofocus tabindex="1" />
 							</div>
 							<div class="form-group">
@@ -1991,10 +1991,10 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 								<textarea class="form-control" id="cast_vote_poll_description" name="description" rows="3" tabindex="2"></textarea>
 							</div>
 							<div class="form-group" id="cast_vote_answers">
-								<label>ANSWERS</label>
+								<label data-lang="ANSWERS_UPPER">ANSWERS</label>
 								 <div class="form-group">
 									<div class="input-group">
-										<input type="text" class="form-control cast_vote_answers" name="cast_vote_answers[]" placeholder="Answer" tabindex="3" />
+										<input type="text" class="form-control cast_vote_answers" name="cast_vote_answers[]" data-lang="ANSWER" placeholder="Answer" tabindex="3" />
 										<span class="input-group-btn">
 											<button class="btn remove_answer" type="button"><i class="fa fa-minus" style="color:white"></i></button>
 										</span>
@@ -2002,7 +2002,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 								</div>
 								 <div class="form-group">
 									<div class="input-group">
-										<input type="text" class="form-control cast_vote_answers" name="cast_vote_answers[]" placeholder="Answer" tabindex="3" />
+										<input type="text" class="form-control cast_vote_answers" name="cast_vote_answers[]" data-lang="ANSWER" placeholder="Answer" tabindex="3" />
 										<span class="input-group-btn">
 											<button class="btn remove_answer" type="button"><i class="fa fa-minus" style="color:white"></i></button>
 										</span>
@@ -2107,7 +2107,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 							<div class="form-group">
 								<label for="send_message_message" data-lang="MESSAGE">MESSAGE</label>
 								<textarea class="form-control" id="send_message_message" name="message" rows="4" tabindex="2"></textarea>
-								<div style="display:none"><label for="send_message_encrypt" style="font-weight:normal;"><input type="checkbox" name="encrypt" id="send_message_encrypt" /> Encrypt Message</label></div>
+								<div style="display:none"><label for="send_message_encrypt" style="font-weight:normal;"><input type="checkbox" name="encrypt" id="send_message_encrypt" /> <span data-lang="ENCRYPT_MESSAGE">Encrypt Message</span></label></div>
 							</div>
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
@@ -2135,7 +2135,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			       		<input type="hidden" name="error_message" value="An unknown error occured! Message may or may not be sent." />
 			       		<input type="hidden" name="converted_account_id" value="" />
 						<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-			     	    <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Send Message</button>
+			     	    <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="SEND_MESSAGE">Send Message</button>
 			      	</div>
 		    	</div>
 		  	</div>
@@ -2146,13 +2146,13 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		   		<div class="modal-content">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		       		 	<h4 class="modal-title">Set Account Info</h4>
+		       		 	<h4 class="modal-title" data-lang="SET_ACCOUNT_INFO">Set Account Info</h4>
 		      		</div>
 			      	<div class="modal-body">			
 						<form role="form">
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<div class="form-group">
-								<label for="account_info_name">NAME</label>
+								<label for="account_info_name" data-lang="NAME_UPPER">NAME</label>
 								<input type="text" class="form-control" name="name" id="account_info_name" placeholder="Your Name" tabindex="1" />
 							</div>
 							<div class="form-group">
@@ -2183,7 +2183,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			       		<input type="hidden" name="request_type" value="setAccountInfo" />
 			       		<input type="hidden" name="success_message" value="Your account info has been saved successfully." />
 						<button type="button" class="btn btn-default" data-dismiss="modal" data-lang="CANCEL">Cancel</button>
-			     	    <button type="button" class="btn btn-primary" data-loading-text="Submitting...">Update Account Info</button>
+			     	    <button type="button" class="btn btn-primary" data-loading-text="Submitting..." data-lang="UPDATE_ACCOUNT_INFO">Update Account Info</button>
 			      	</div>
 		    	</div>
 		  	</div>
@@ -2285,13 +2285,13 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title"><span data-lang="BLOCK">Block</span> <strong><span id="block_info_modal_block"></span></strong> Info</h4>
+		        		<h4 class="modal-title"><span data-lang="BLOCK">Block</span> <strong><span id="block_info_modal_block"></span></strong> <span data-lang="INFO">Info</span></h4>
 		     		</div>
 			      	<div class="modal-body">	
 			      		<div class="tabbable">
 							<ul class="nav nav-pills nav-justified" style="margin-bottom:10px">
-								<li class="active"><a href="#block_info_transactions_tab" data-toggle="tab" id="block_info_transactions_tab_link">Transactions</a></li>
-								<li><a href="#block_info_details_tab" data-toggle="tab">Block Details</a></li>
+								<li class="active"><a href="#block_info_transactions_tab" data-toggle="tab" id="block_info_transactions_tab_link" data-lang="TRANSACTIONS">Transactions</a></li>
+								<li><a href="#block_info_details_tab" data-toggle="tab" data-lang="BLOCK_DETAILS">Block Details</a></li>
 							</ul>
 							<div class="tab-content">
 							    <div class="tab-pane active" id="block_info_transactions_tab" style="max-height:350px;overflow:auto;">
@@ -2301,15 +2301,15 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 									        <th data-lang="DATE">Date</th>
 									        <th data-lang="AMOUNT">Amount</th>
 									        <th data-lang="FEE">Fee</th>
-									        <th>To</th>
-									        <th>From</th>
+									        <th data-lang="STRING_TO">To</th>
+									        <th data-lang="STRING_FROM">From</th>
 									    </tr>
 									    </thead>
 									    <tbody>
 									    	
 									    </tbody>
 									</table>
-									<div id="block_info_transactions_none" style="display:none;">No transactions in this block.</div>
+									<div id="block_info_transactions_none" style="display:none;" data-lang="NO_TRANSACTIONS_BLOCK">No transactions in this block.</div>
 							    </div>
 							    <div class="tab-pane" id="block_info_details_tab" style="max-height:350px;overflow:auto;">
 									<table class="table table-striped" id="block_info_details_table" style="margin-bottom:0">
@@ -2322,7 +2322,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 			      		</div>
 					</div>
 			      	<div class="modal-footer" style="margin-top:0;">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" data-lang="CLOSE">Close</button>
 			     	</div>
 				</div>
 			</div>
@@ -2333,12 +2333,12 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		    	<div class="modal-content">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        		<h4 class="modal-title">Transaction <strong><span id="transaction_info_modal_transaction"></span></strong> Info</h4>
+		        		<h4 class="modal-title"><span data-lang="TRANSACTION">Transaction</span> <strong><span id="transaction_info_modal_transaction"></span></strong> <span data-lang="INFO">Info</span></h4>
 		     		</div>
 			      	<div class="modal-body">
 			      		<div class="tabbable">
 							<ul class="nav nav-pills nav-justified" style="margin-bottom:10px">
-								<li class="active"><a href="#transaction_info_tab" data-toggle="tab" id="transaction_info_tab_link">Info</a></li>
+								<li class="active"><a href="#transaction_info_tab" data-toggle="tab" id="transaction_info_tab_link" data-lang="INFO">Info</a></li>
 								<li><a href="#transaction_info_details_tab" data-toggle="tab">Transaction Details</a></li>
 							</ul>
 							<div class="tab-content">
@@ -2704,7 +2704,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 							<div class="callout callout-danger error_message" style="display:none"></div>
 							<p>Choose a group for this asset.</p>
 							<div class="form-group">
-								<label>ASSET</label>
+								<label data-lang="ASSET_UPPER">ASSET</label>
 								<p id="asset_exchange_group_title"></p>
 								<input type="hidden" name="asset_exchange_group_asset" id="asset_exchange_group_asset" value="" />
 							</div>
@@ -2746,7 +2746,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		<div id="messages_sidebar_context" class="context_menu dropdown clearfix">
 		    <ul class="dropdown-menu" data-container="body" role="menu" style="display:block;position:static;margin-bottom:5px;">
 		    	<li><a tabindex="-1" href="#" data-option="account_info">Account Info</a></li>
-		        <li><a tabindex="-1" href="#" data-option="add_contact">Add Contact</a></li>
+		        <li><a tabindex="-1" href="#" data-option="add_contact" data-lang="ADD_CONTACT">Add Contact</a></li>
 				<li><a tabindex="-1" href="#" data-option="send_nxt" data-lang="SEND_NFD">Send NFD</a></li>
 		    </ul>
 		</div>
@@ -2754,7 +2754,7 @@ quantity decimal point." data-container="body" style="color:#4CAA6E" ></i></labe
 		<div id="messages_sidebar_update_context" class="context_menu dropdown clearfix">
 		    <ul class="dropdown-menu" data-container="body" role="menu" style="display:block;position:static;margin-bottom:5px;">
 		    	<li><a tabindex="-1" href="#" data-option="account_info">Account Info</a></li>
-		        <li><a tabindex="-1" href="#" data-option="update_contact">Update Contact</a></li>
+		        <li><a tabindex="-1" href="#" data-option="update_contact" data-lang="UPDATE_CONTACT">Update Contact</a></li>
 				<li><a tabindex="-1" href="#" data-option="send_nxt" data-lang="SEND_NFD">Send NFD</a></li>
 		    </ul>
 		</div>

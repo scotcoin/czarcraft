@@ -32,11 +32,11 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-final class BlockchainProcessorImpl implements BlockchainProcessor {
+public final class BlockchainProcessorImpl implements BlockchainProcessor {
 
     private static final BlockchainProcessorImpl instance = new BlockchainProcessorImpl();
 
-    static BlockchainProcessorImpl getInstance() {
+    public static BlockchainProcessorImpl getInstance() {
         return instance;
     }
 

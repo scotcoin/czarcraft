@@ -12,7 +12,7 @@ public final class Db {
     private static volatile JdbcConnectionPool cp;
     private static volatile int maxActiveConnections;
 
-    static void init() {
+    public static void init() {
         long maxCacheSize = Nxt.getIntProperty("nxt.dbCacheKB");
         if (maxCacheSize == 0) {
             maxCacheSize = Runtime.getRuntime().maxMemory() / (1024 * 2);
@@ -35,7 +35,7 @@ public final class Db {
         DbVersion.init();
     }
 
-    static void shutdown() {
+    public static void shutdown() {
         if (cp != null) {
             try (Connection con = cp.getConnection();
                  Statement stmt = con.createStatement()) {

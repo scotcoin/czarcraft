@@ -24,11 +24,11 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-final class TransactionProcessorImpl implements TransactionProcessor {
+public final class TransactionProcessorImpl implements TransactionProcessor {
 
     private static final TransactionProcessorImpl instance = new TransactionProcessorImpl();
 
-    static TransactionProcessorImpl getInstance() {
+    public static TransactionProcessorImpl getInstance() {
         return instance;
     }
 
@@ -356,7 +356,7 @@ final class TransactionProcessorImpl implements TransactionProcessor {
         transactionListeners.notify(removedList, Event.REMOVED_UNCONFIRMED_TRANSACTIONS);
     }
 
-    void shutdown() {
+    public void shutdown() {
         removeUnconfirmedTransactions(new ArrayList<>(unconfirmedTransactions.values()));
     }
 

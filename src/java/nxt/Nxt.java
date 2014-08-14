@@ -16,7 +16,8 @@ import java.util.Properties;
 
 public final class Nxt {
 
-    public static final String VERSION = "NFD-1.1.6-20140709-A";
+    public static final String VERSION = "NFD-1.2.5-20140814-A";
+    public static final String APPLICATION = "NRS";
 
     private static final Properties defaultProperties = new Properties();
     static {
@@ -152,8 +153,7 @@ public final class Nxt {
         static {
 
             long startTime = System.currentTimeMillis();
-
-            Logger.logMessage("logging enabled");
+            Logger.init();
             Db.init();
             BlockchainProcessorImpl.getInstance();
             TransactionProcessorImpl.getInstance();

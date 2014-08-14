@@ -1,9 +1,12 @@
 /.idea/
+/nxt.iml
 /nxt_db/
 /webapps/
 /classes/
 /*.log
+/*.log.*
 /html/doc/*
+/html/**/*.gz
 /keystore
 /nfd.jar
 /nfd_test_db/
@@ -15,3 +18,5 @@
 /nxt.log.*
 /nfd_db
 /.metadata
+/.settings/
+/compile.bat

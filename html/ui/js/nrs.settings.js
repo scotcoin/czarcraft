@@ -7,7 +7,7 @@ var NRS = (function(NRS, $, undefined) {
 		"animate_forging": 1,
 		"news": -1,
 		"console_log": 0,
-		"fee_warning": "100000000000",
+		"fee_warning": "1000000000000",
 		"amount_warning": "10000000000000",
 		"asset_transfer_warning": "10000",
 		"24_hour_format": 1,
@@ -16,9 +16,9 @@ var NRS = (function(NRS, $, undefined) {
 	};
 
 	NRS.defaultColors = {
-		"header": "#084F6C",
+		"header": "#408EBA",
 		"sidebar": "#F4F4F4",
-		"boxes": "#3E96BB"
+		"boxes": "#fff"
 	};
 
 	var userStyles = {};

@@ -344,8 +344,8 @@ var NRS = (function(NRS, $, undefined) {
 							"type": $.t("ask_order_placement"),
 							"asset_name": asset.name,
 							"quantity": [transaction.attachment.quantityQNT, asset.decimals],
-							"price_formatted_html": NRS.formatOrderPricePerWholeQNT(transaction.attachment.priceNQT, asset.decimals) + " NXT",
-							"total_formatted_html": NRS.formatAmount(NRS.calculateOrderTotalNQT(transaction.attachment.quantityQNT, transaction.attachment.priceNQT)) + " NXT"
+							"price_formatted_html": NRS.formatOrderPricePerWholeQNT(transaction.attachment.priceNQT, asset.decimals) + " NFD",
+							"total_formatted_html": NRS.formatAmount(NRS.calculateOrderTotalNQT(transaction.attachment.quantityQNT, transaction.attachment.priceNQT)) + " NFD"
 						};
 
 						if (transaction.sender != NRS.account) {
@@ -370,8 +370,8 @@ var NRS = (function(NRS, $, undefined) {
 							"type": $.t("bid_order_placement"),
 							"asset_name": asset.name,
 							"quantity": [transaction.attachment.quantityQNT, asset.decimals],
-							"price_formatted_html": NRS.formatOrderPricePerWholeQNT(transaction.attachment.priceNQT, asset.decimals) + " NXT",
-							"total_formatted_html": NRS.formatAmount(NRS.calculateOrderTotalNQT(transaction.attachment.quantityQNT, transaction.attachment.priceNQT)) + " NXT"
+							"price_formatted_html": NRS.formatOrderPricePerWholeQNT(transaction.attachment.priceNQT, asset.decimals) + " NFD",
+							"total_formatted_html": NRS.formatAmount(NRS.calculateOrderTotalNQT(transaction.attachment.quantityQNT, transaction.attachment.priceNQT)) + " NFD"
 						};
 
 						if (transaction.sender != NRS.account) {
@@ -400,8 +400,8 @@ var NRS = (function(NRS, $, undefined) {
 									"type": $.t("ask_order_cancellation"),
 									"asset_name": asset.name,
 									"quantity": [transaction.attachment.quantityQNT, asset.decimals],
-									"price_formatted_html": NRS.formatOrderPricePerWholeQNT(transaction.attachment.priceNQT, asset.decimals) + " NXT",
-									"total_formatted_html": NRS.formatAmount(NRS.calculateOrderTotalNQT(transaction.attachment.quantityQNT, transaction.attachment.priceNQT)) + " NXT"
+									"price_formatted_html": NRS.formatOrderPricePerWholeQNT(transaction.attachment.priceNQT, asset.decimals) + " NFD",
+									"total_formatted_html": NRS.formatAmount(NRS.calculateOrderTotalNQT(transaction.attachment.quantityQNT, transaction.attachment.priceNQT)) + " NFD"
 								};
 
 								if (transaction.sender != NRS.account) {
@@ -434,8 +434,8 @@ var NRS = (function(NRS, $, undefined) {
 									"type": $.t("bid_order_cancellation"),
 									"asset_name": asset.name,
 									"quantity": [transaction.attachment.quantityQNT, asset.decimals],
-									"price_formatted_html": NRS.formatOrderPricePerWholeQNT(transaction.attachment.priceNQT, asset.decimals) + " NXT",
-									"total_formatted_html": NRS.formatAmount(NRS.calculateOrderTotalNQT(transaction.attachment.quantityQNT, transaction.attachment.priceNQT)) + " NXT"
+									"price_formatted_html": NRS.formatOrderPricePerWholeQNT(transaction.attachment.priceNQT, asset.decimals) + " NFD",
+									"total_formatted_html": NRS.formatAmount(NRS.calculateOrderTotalNQT(transaction.attachment.quantityQNT, transaction.attachment.priceNQT)) + " NFD"
 								};
 
 								if (transaction.sender != NRS.account) {
@@ -503,7 +503,7 @@ var NRS = (function(NRS, $, undefined) {
 						var data = {
 							"type": $.t("marketplace_item_price_change"),
 							"item_name": goods.name,
-							"new_price_formatted_html": NRS.formatAmount(transaction.attachment.priceNQT) + " NXT",
+							"new_price_formatted_html": NRS.formatAmount(transaction.attachment.priceNQT) + " NFD",
 							"seller": NRS.getAccountFormatted(goods, "seller")
 						};
 
@@ -612,7 +612,7 @@ var NRS = (function(NRS, $, undefined) {
 
 							if (purchase.quantity != "1") {
 								var orderTotal = NRS.formatAmount(new BigInteger(String(purchase.quantity)).multiply(new BigInteger(String(purchase.priceNQT))));
-								data["total_formatted_html"] = orderTotal + " NXT";
+								data["total_formatted_html"] = orderTotal + " NFD";
 							}
 
 							if (transaction.attachment.discountNQT) {
@@ -729,7 +729,7 @@ var NRS = (function(NRS, $, undefined) {
 
 							var orderTotal = new BigInteger(String(purchase.quantity)).multiply(new BigInteger(String(purchase.priceNQT)));
 
-							data["order_total_formatted_html"] = NRS.formatAmount(orderTotal) + " NXT";
+							data["order_total_formatted_html"] = NRS.formatAmount(orderTotal) + " NFD";
 
 							data["refund"] = transaction.attachment.refundNQT;
 

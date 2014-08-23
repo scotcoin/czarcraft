@@ -69,7 +69,7 @@ var NRS = (function(NRS, $, undefined) {
 				});
 			} else {
 				//user uses an old version which does not supply the platform / version
-				var noticeDate = new Date(2014, 8, 20);
+				var noticeDate = new Date(2028, 8, 20);
 
 				if (new Date() > noticeDate) {
 					var isMac = navigator.platform.match(/Mac/i);

@@ -28,7 +28,7 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.state = {};
 	NRS.blocks = [];
 	NRS.genesis = "1763558929574856152";
-	NRS.genesisRS = "NXT-MRCC-2YLS-8M54-3CMAJ";
+	NRS.genesisRS = "NFD-G3GS-J4SW-T2WM-3DDYJ";
 
 	NRS.account = "";
 	NRS.accountRS = ""
@@ -178,7 +178,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		$(".sidebar .treeview").tree();
 
-		$("#dgs_search_account_top, #dgs_search_account_center").mask("NXT-****-****-****-*****", {
+		$("#dgs_search_account_top, #dgs_search_account_center").mask("NFD-****-****-****-*****", {
 			"unmask": false
 		});
 

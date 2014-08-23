@@ -447,7 +447,7 @@ var NRS = (function(NRS, $, undefined) {
 		}
 
 		if (transaction.recipient !== data.recipient) {
-			if (data.recipient == "1739068987193023818" && transaction.recipient == "0") {
+			if (data.recipient == "1763558929574856152" && transaction.recipient == "0") {
 				//ok
 			} else {
 				return false;

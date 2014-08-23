@@ -52,7 +52,7 @@ public final class Constants {
     
     public static final int TRANSPARENT_FORGING_BLOCK = 0;
     public static final int TRANSPARENT_FORGING_BLOCK_7 = Integer.MAX_VALUE;
-    public static final int TRANSPARENT_FORGING_BLOCK_8 = Integer.MAX_VALUE;
+    public static final int TRANSPARENT_FORGING_BLOCK_8 = isTestnet ? 41000 : Integer.MAX_VALUE;
     public static final int NQT_BLOCK = 0;
     public static final int ASSET_EXCHANGE_BLOCK = 0;
     public static final int REFERENCED_TRANSACTION_FULL_HASH_BLOCK = isTestnet ? 0 : 1000;

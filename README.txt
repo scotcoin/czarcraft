@@ -67,7 +67,7 @@ overwritten at restart. In case of an error, the nfd.log file may contain
 helpful information, so include its contents when submitting a bug report.
 
 In addition to the default user interface at http://localhost:8876 , the
-following urls are available:
+following URLs are available:
 
 http://localhost:8876/test - a list of all available http API requests, very
 useful for client developers and for anyone who wants to execute commands
@@ -85,10 +85,8 @@ http interface.
 
 Compiling:
 
-The source is not yet included. It will be available at https://bitbucket.org/NFDcoin/nfdcoin/src soon.    
+The source is included. It is also available at https://bitbucket.org/NFDcoin/nfdcoin/src .    
 
 To compile it on linux, just
 run the enclosed compile.sh script. This will compile all java classes and
 package them in an nfd.jar file, replacing the existing one.
-
-

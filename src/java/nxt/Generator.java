@@ -208,7 +208,11 @@ public final class Generator {
         }
 
         if (verifyHit(hits.get(accountId), effectiveBalance, lastBlock, timestamp)) {
-            BlockchainProcessorImpl.getInstance().generateBlock(secretPhrase, timestamp);
+            while (! BlockchainProcessorImpl.getInstance().generateBlock(secretPhrase, timestamp)) {
+                if (Convert.getEpochTime() - timestamp > 10) {
+                    break;
+                }
+            }
         }
 
     }

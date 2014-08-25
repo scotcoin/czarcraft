@@ -932,7 +932,7 @@ var NRS = (function(NRS, $, undefined) {
 		}
 
 		if (fadeIn) {
-			$parent.fadeIn(400, function() {
+			$parent.stop(true, true).fadeIn(400, function() {
 				$parent.show();
 			});
 		}

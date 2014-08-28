@@ -1,0 +1,235 @@
+/* 
+ *              weupnp - Trivial upnp java library 
+ *
+ * Copyright (C) 2008 Alessandro Bahgat Shehata, Daniele Castagna
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, FΩifth Floor, Boston, MA  02110-1301  USA
+ * 
+ * Alessandro Bahgat Shehata - ale dot bahgat at gmail dot com
+ * Daniele Castagna - daniele dot castagna at gmail dot com
+ * 
+ */
+
+/*
+ * refer to miniupnpc-1.0-RC8
+ */
+package nxt.upnp;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.UnknownHostException;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import org.xml.sax.SAXException;
+
+import nxt.Constants;
+import nxt.Nxt;
+import nxt.util.Logger;
+import nxt.util.ThreadPool;
+
+/**
+ * This class contains a trivial main method that can be used to test whether
+ * weupnp is able to manipulate port mappings on a IGD (Internet Gateway Device)
+ * on the same network.
+ * 
+ * @author Alessandro Bahgat Shehata
+ */
+public class UPnP {
+	private static final ExecutorService uPnPService = Executors
+			.newFixedThreadPool(1);
+	private static GatewayDiscover gatewayDiscover = new GatewayDiscover();
+	private static GatewayDevice activeGW;
+	private static final String myAddress = Nxt
+			.getStringProperty("nxt.myAddress");
+	private static final String externalIP=getExternalIp();
+	
+	private static int externalPort = getExternalPort();
+	private static Runnable generateUPnPMappings;
+
+	static final int internalPort = Constants.isTestnet ? 9874 : Nxt
+			.getIntProperty("nxt.peerServerPort");
+
+	static {
+		generateUPnPMappings = null;
+
+		if (Nxt.getBooleanProperty("nxt.upnp")) {
+
+			InetAddress peerServerAddress = null;
+			try {
+				peerServerAddress = java.net.InetAddress.getByName(Nxt
+						.getStringProperty("nxt.peerServerHost"));
+			} catch (UnknownHostException e1) {
+
+			}
+			if (myAddress != null
+					&& externalIP != null
+					&& peerServerAddress != null
+					&& (peerServerAddress.isAnyLocalAddress() || !(peerServerAddress
+							.isLoopbackAddress() || peerServerAddress
+							.isMulticastAddress()))) {
+
+				generateUPnPMappings = new Runnable() {
+
+					@Override
+					public void run() {
+						// check connection and if necessary map again
+						try {
+							main();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+
+				};
+
+			} else {
+				Logger.logMessage("You need an announce address to use upnp! upnp disabled.");
+			}
+		}
+	}
+
+	static {
+		if (generateUPnPMappings != null)
+			ThreadPool.scheduleThread(generateUPnPMappings,
+					Nxt.getIntProperty("nxt.upnpRetry"), TimeUnit.SECONDS);
+	}
+
+	public static void init() {
+	}
+
+	public static void shutdown() {
+		if (generateUPnPMappings == null)
+			return;
+		try {
+			activeGW.deletePortMapping(externalPort, "TCP");
+			Logger.logMessage("UPnP mapping removed.");
+		} catch (IOException | SAXException e) {
+			// TODO Auto-generated catch block
+			Logger.logMessage("Could not remove UPnP mapping.");
+		}
+		ThreadPool.shutdownExecutor(uPnPService);
+	}
+
+	private static boolean main() throws Exception {
+
+		Logger.logMessage("Looking for Gateway Devices...");
+
+		// get gateway with same public ip as announced
+		
+		activeGW = getGateway(externalIP);
+		if (activeGW == null)
+			return false;
+
+		// check whether port is already mapped
+
+		InetAddress localAddress = activeGW.getLocalAddress();
+		Logger.logMessage("Using local address: "
+				+ localAddress.getHostAddress());
+		
+		// create portmap for mapping look up
+		PortMappingEntry portMapping = new PortMappingEntry();
+		portMapping.setRemoteHost(externalIP);
+		portMapping.setExternalPort(externalPort);
+		portMapping.setProtocol("TCP");
+
+		if (activeGW.getGenericPortMappingEntry(0, portMapping)) {
+			if (portMapping.getInternalClient().equals(
+					activeGW.getLocalAddress().getHostAddress())
+					&& portMapping.getInternalPort() == internalPort) {
+				return true;
+			} else {
+				activeGW.deletePortMapping(externalPort, "TCP");
+			}
+		}
+
+		if (activeGW.addPortMapping(externalPort, internalPort,
+				localAddress.getHostAddress(), "TCP", "NFD")) {
+			Logger.logMessage("UPnP :" + activeGW.getExternalIPAddress() + ":"
+					+ externalPort + " mapped to "
+					+ localAddress.getHostAddress() + ":" + internalPort);
+			return true;
+		}
+		return false;
+	}
+
+	private static GatewayDevice getGateway(String externalGwIp)
+			throws Exception {
+		Map<InetAddress, GatewayDevice> gateways = gatewayDiscover.discover();
+
+		for (GatewayDevice gatewayDevice : gateways.values()) {
+			if (gatewayDevice.getExternalIPAddress().equals(externalGwIp))
+				return gatewayDevice;
+		}
+
+		return null;
+	}
+
+	/**
+	 * get corresponding external IP from myAddress
+	 * 
+	 * @return Returns the IP address as String; or null if IP address is not a
+	 *         public IP address; or null if an IP address could not extracted
+	 *         from myAddress
+	 */
+	private static String getExternalIp() {
+
+		if (myAddress == null)
+			return null;
+
+		InetAddress myInetAddress;
+		try {
+			final URI myAddressUri = new URI("http://" + myAddress.trim());
+			String host = myAddressUri.getHost();
+
+			myInetAddress = java.net.InetAddress.getByName(host);
+
+			if (myInetAddress.isAnyLocalAddress()
+					|| myInetAddress.isLoopbackAddress()
+					|| myInetAddress.isSiteLocalAddress())
+				return null;
+
+			return myInetAddress.getHostAddress();
+
+		} catch (UnknownHostException | URISyntaxException e) {
+			Logger.logMessage("Your announce address is invalid: " + myAddress);
+			return null;
+		}
+	}
+
+	private static int getExternalPort() {
+		int announcedPort;
+		
+		try {
+			final URI myAddressUri = new URI("http://" + myAddress.trim());
+			announcedPort = myAddressUri.getPort();
+		} catch (URISyntaxException use) {
+			Logger.logMessage("Your announce address is invalid: " + myAddress);
+			return -1;
+		}
+
+		if (!(announcedPort >= 0 && announcedPort < 65536)) {
+			return (Constants.isTestnet ? 9874 : Nxt
+					.getIntProperty("nxt.peerServerPort"));
+		}
+
+		return announcedPort;
+	}
+}

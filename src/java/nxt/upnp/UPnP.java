@@ -56,15 +56,16 @@ public class UPnP {
 			.newFixedThreadPool(1);
 	private static GatewayDiscover gatewayDiscover = new GatewayDiscover();
 	private static GatewayDevice activeGW;
+	static final int TESTNET_PEER_PORT = 9874;
 	private static final String myAddress = Nxt
 			.getStringProperty("nxt.myAddress");
-	private static final String externalIP=getExternalIp();
-	
+	private static final String externalIP = getExternalIp();
+
 	private static int externalPort = getExternalPort();
 	private static Runnable generateUPnPMappings;
 
-	static final int internalPort = Constants.isTestnet ? 9874 : Nxt
-			.getIntProperty("nxt.peerServerPort");
+	static final int internalPort = Constants.isTestnet ? TESTNET_PEER_PORT
+			: Nxt.getIntProperty("nxt.peerServerPort");
 
 	static {
 		generateUPnPMappings = null;
@@ -215,6 +216,10 @@ public class UPnP {
 	}
 
 	private static int getExternalPort() {
+
+		if (myAddress == null)
+			return internalPort; // fallback: external port same as internal port
+
 		int announcedPort;
 		
 		try {
@@ -225,10 +230,8 @@ public class UPnP {
 			return -1;
 		}
 
-		if (!(announcedPort >= 0 && announcedPort < 65536)) {
-			return (Constants.isTestnet ? 9874 : Nxt
-					.getIntProperty("nxt.peerServerPort"));
-		}
+		if (!(announcedPort >= 0 && announcedPort < 65536))
+			return internalPort; // fallback: external port same as internal port
 
 		return announcedPort;
 	}

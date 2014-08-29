@@ -17,7 +17,7 @@ import java.util.Properties;
 
 public final class Nxt {
 
-    public static final String VERSION = "NFD-1.2.6-20140825-A";
+    public static String VERSION = "1.2.6-20140825-A";
     public static final String APPLICATION = "NRS";
 
     private static final Properties defaultProperties = new Properties();
@@ -120,6 +120,9 @@ public final class Nxt {
     }
 
     public static void main(String[] args) {
+    	
+    	VERSION = (Constants.isTestnet ? "NFD-TESTNET-" : "NFD-")+VERSION;
+    	
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {

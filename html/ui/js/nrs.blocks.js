@@ -128,7 +128,7 @@ var NRS = (function(NRS, $, undefined) {
 			}
 		}
 		if (!NRS.PKAnnouncementBlockPassed) {
-			if ((!NRS.isTestNet && (NRS.lastBlockHeight >= 2147483647 || (NRS.downloadingBlockchain && NRS.state.lastBlockchainFeederHeight >= 2147483647))) || (NRS.isTestNet && NRS.lastBlockHeight >= 41000)) {
+			if ((!NRS.isTestNet && (NRS.lastBlockHeight >= 2147483647 || (NRS.downloadingBlockchain && NRS.state.lastBlockchainFeederHeight >= 2147483647))) || (NRS.isTestNet && NRS.lastBlockHeight >= 2147483647)) {
 				NRS.PKAnnouncementBlockPassed = true;
 			}
 		}

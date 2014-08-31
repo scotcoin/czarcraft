@@ -44,13 +44,6 @@ import nxt.Nxt;
 import nxt.util.Logger;
 import nxt.util.ThreadPool;
 
-/**
- * This class contains a trivial main method that can be used to test whether
- * weupnp is able to manipulate port mappings on a IGD (Internet Gateway Device)
- * on the same network.
- * 
- * @author Alessandro Bahgat Shehata
- */
 public class UPnP {
 	private static final ExecutorService uPnPService = Executors
 			.newFixedThreadPool(1);
@@ -70,8 +63,7 @@ public class UPnP {
 	static {
 		generateUPnPMappings = null;
 
-		if (Nxt.getBooleanProperty("nxt.upnp")) {
-
+		if (Nxt.getBooleanProperty("nxt.upnp")) {			
 			InetAddress peerServerAddress = null;
 			try {
 				peerServerAddress = java.net.InetAddress.getByName(Nxt
@@ -85,7 +77,7 @@ public class UPnP {
 					&& (peerServerAddress.isAnyLocalAddress() || !(peerServerAddress
 							.isLoopbackAddress() || peerServerAddress
 							.isMulticastAddress()))) {
-
+				
 				generateUPnPMappings = new Runnable() {
 
 					@Override
@@ -100,9 +92,9 @@ public class UPnP {
 					}
 
 				};
-
+				Logger.logInfoMessage("UPnP support enabled");
 			} else {
-				Logger.logMessage("You need an announce address to use upnp! upnp disabled.");
+				Logger.logWarningMessage("You need an announce address to use UPnP! UPnP disabled");
 			}
 		}
 	}
@@ -121,17 +113,17 @@ public class UPnP {
 			return;
 		try {
 			activeGW.deletePortMapping(externalPort, "TCP");
-			Logger.logMessage("UPnP mapping removed.");
+			Logger.logDebugMessage("UPnP mapping removed.");
 		} catch (IOException | SAXException e) {
 			// TODO Auto-generated catch block
-			Logger.logMessage("Could not remove UPnP mapping.");
+			Logger.logDebugMessage("Could not remove UPnP mapping.");
 		}
 		ThreadPool.shutdownExecutor(uPnPService);
 	}
 
 	private static boolean main() throws Exception {
 
-		Logger.logMessage("Looking for Gateway Devices...");
+		Logger.logDebugMessage("Looking for Gateway Devices...");
 
 		// get gateway with same public ip as announced
 		
@@ -142,7 +134,7 @@ public class UPnP {
 		// check whether port is already mapped
 
 		InetAddress localAddress = activeGW.getLocalAddress();
-		Logger.logMessage("Using local address: "
+		Logger.logDebugMessage("Using local address: "
 				+ localAddress.getHostAddress());
 		
 		// create portmap for mapping look up
@@ -210,7 +202,7 @@ public class UPnP {
 			return myInetAddress.getHostAddress();
 
 		} catch (UnknownHostException | URISyntaxException e) {
-			Logger.logMessage("Your announce address is invalid: " + myAddress);
+			Logger.logWarningMessage("Your announce address is invalid: " + myAddress);
 			return null;
 		}
 	}
@@ -226,7 +218,8 @@ public class UPnP {
 			final URI myAddressUri = new URI("http://" + myAddress.trim());
 			announcedPort = myAddressUri.getPort();
 		} catch (URISyntaxException use) {
-			Logger.logMessage("Your announce address is invalid: " + myAddress);
+			// should never happen
+			Logger.logWarningMessage("Your announce address is invalid: " + myAddress);
 			return -1;
 		}
 

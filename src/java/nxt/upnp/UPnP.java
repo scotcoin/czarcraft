@@ -50,15 +50,14 @@ public class UPnP {
 	private static GatewayDiscover gatewayDiscover = new GatewayDiscover();
 	private static GatewayDevice activeGW;
 	static final int TESTNET_PEER_PORT = 9874;
+	static final int internalPort = Constants.isTestnet ? TESTNET_PEER_PORT
+			: Nxt.getIntProperty("nxt.peerServerPort");
 	private static final String myAddress = Nxt
 			.getStringProperty("nxt.myAddress");
 	private static final String externalIP = getExternalIp();
 
 	private static int externalPort = getExternalPort();
 	private static Runnable generateUPnPMappings;
-
-	static final int internalPort = Constants.isTestnet ? TESTNET_PEER_PORT
-			: Nxt.getIntProperty("nxt.peerServerPort");
 
 	static {
 		generateUPnPMappings = null;

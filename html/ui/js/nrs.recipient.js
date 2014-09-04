@@ -41,7 +41,7 @@ var NRS = (function(NRS, $, undefined) {
 		if (account) {
 			var $inputField = $(this).find("input[name=recipient], input[name=account_id]").not("[type=hidden]");
 
-			if (!/NXT\-/i.test(account)) {
+			if (!/NFD\-/i.test(account)) {
 				$inputField.addClass("noMask");
 			}
 

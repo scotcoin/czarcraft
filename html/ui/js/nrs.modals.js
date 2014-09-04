@@ -153,7 +153,7 @@ var NRS = (function(NRS, $, undefined) {
 				defaultFee = 1;
 			}
 
-			$(this).find(".advanced_fee").html(NRS.formatAmount(NRS.convertToNQT(defaultFee)) + " NXT");
+			$(this).find(".advanced_fee").html(NRS.formatAmount(NRS.convertToNQT(defaultFee)) + " NFD");
 		}
 
 		NRS.showedFormWarning = false;

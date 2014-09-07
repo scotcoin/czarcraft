@@ -122,13 +122,13 @@ var NRS = (function(NRS, $, undefined) {
 		}
 
 		if (!NRS.dgsBlockPassed) {
-			if ((!NRS.isTestNet && (NRS.lastBlockHeight >= 2147483647 || (NRS.downloadingBlockchain && NRS.state.lastBlockchainFeederHeight >= 2147483647))) || (NRS.isTestNet && NRS.lastBlockHeight >= 41000)) {
+			if ((!NRS.isTestNet && (NRS.lastBlockHeight >= 89000 || (NRS.downloadingBlockchain && NRS.state.lastBlockchainFeederHeight >= 89000))) || (NRS.isTestNet && NRS.lastBlockHeight >= 41000)) {
 				NRS.dgsBlockPassed = true;
 				$(".dgs_block").not(".advanced, .optional_message, .optional_note").show();
 			}
 		}
 		if (!NRS.PKAnnouncementBlockPassed) {
-			if ((!NRS.isTestNet && (NRS.lastBlockHeight >= 2147483647 || (NRS.downloadingBlockchain && NRS.state.lastBlockchainFeederHeight >= 2147483647))) || (NRS.isTestNet && NRS.lastBlockHeight >= 41000)) {
+			if ((!NRS.isTestNet && (NRS.lastBlockHeight >= 89000 || (NRS.downloadingBlockchain && NRS.state.lastBlockchainFeederHeight >= 89000))) || (NRS.isTestNet && NRS.lastBlockHeight >= 41000)) {
 				NRS.PKAnnouncementBlockPassed = true;
 			}
 		}

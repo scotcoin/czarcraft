@@ -2,6 +2,7 @@ package nxt;
 
 import nxt.http.API;
 import nxt.peer.Peers;
+import nxt.upnp.UPnP;
 import nxt.user.Users;
 import nxt.util.Logger;
 import nxt.util.ThreadPool;
@@ -16,7 +17,8 @@ import java.util.Properties;
 
 public final class Nxt {
 
-    public static final String VERSION = "NFD-1.1.6-20140709-A";
+    public static String VERSION = "1.2.6-20140825-A";
+    public static final String APPLICATION = "NRS";
 
     private static final Properties defaultProperties = new Properties();
     static {
@@ -118,6 +120,9 @@ public final class Nxt {
     }
 
     public static void main(String[] args) {
+    	
+    	VERSION = (Constants.isTestnet ? "NFD-TESTNET-" : "NFD-")+VERSION;
+    	
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
@@ -140,6 +145,7 @@ public final class Nxt {
         API.shutdown();
         Users.shutdown();
         Peers.shutdown();
+        UPnP.shutdown();
         TransactionProcessorImpl.getInstance().shutdown();
         ThreadPool.shutdown();
         Db.shutdown();
@@ -152,8 +158,8 @@ public final class Nxt {
         static {
 
             long startTime = System.currentTimeMillis();
-
-            Logger.logMessage("logging enabled");
+            Logger.init();
+            UPnP.init();
             Db.init();
             BlockchainProcessorImpl.getInstance();
             TransactionProcessorImpl.getInstance();

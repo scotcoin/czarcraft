@@ -1,3 +1,4 @@
+#!/bin/sh
 CP=nfd.jar:lib/*:conf
 SP=src/java/
 

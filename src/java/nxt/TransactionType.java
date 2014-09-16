@@ -14,7 +14,7 @@ public abstract class TransactionType {
 
     private static final byte TYPE_PAYMENT = 0;
     private static final byte TYPE_MESSAGING = 1;
-    private static final byte TYPE_COLORED_COINS = 2;
+    public static final byte TYPE_COLORED_COINS = 2;
     private static final byte TYPE_DIGITAL_GOODS = 3;
     private static final byte TYPE_ACCOUNT_CONTROL = 4;
 
@@ -30,7 +30,7 @@ public abstract class TransactionType {
     private static final byte SUBTYPE_MESSAGING_ALIAS_BUY = 7;
 
     private static final byte SUBTYPE_COLORED_COINS_ASSET_ISSUANCE = 0;
-    private static final byte SUBTYPE_COLORED_COINS_ASSET_TRANSFER = 1;
+    public static final byte SUBTYPE_COLORED_COINS_ASSET_TRANSFER = 1;
     private static final byte SUBTYPE_COLORED_COINS_ASK_ORDER_PLACEMENT = 2;
     private static final byte SUBTYPE_COLORED_COINS_BID_ORDER_PLACEMENT = 3;
     private static final byte SUBTYPE_COLORED_COINS_ASK_ORDER_CANCELLATION = 4;

@@ -62,7 +62,7 @@ public final class Generator {
         ThreadPool.scheduleThread(generateBlockThread, 500, TimeUnit.MILLISECONDS);
     }
 
-    static void init() {}
+    public static void init() {}
 
     static void clear() {
         lastBlocks.clear();

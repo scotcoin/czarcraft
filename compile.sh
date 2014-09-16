@@ -4,7 +4,7 @@ SP=src/java/
 
 /bin/mkdir -p classes/
 
-javac -sourcepath $SP -classpath $CP -d classes/ src/java/nxt/*.java src/java/nxt/*/*.java || exit 1
+javac -sourcepath $SP -classpath $CP -d classes/ src/java/nxt/*.java src/java/nxt/*/*.java src/java/nfd/util/NSCAssets/*.java|| exit 1
 
 /bin/rm -f nfd.jar 
 

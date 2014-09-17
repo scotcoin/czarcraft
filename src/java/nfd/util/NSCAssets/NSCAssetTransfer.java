@@ -32,54 +32,34 @@ public class NSCAssetTransfer {
 	static final HashSet<String> ASSET_TRANSFER_ACCOUNT_BLACKLIST = new HashSet<String>(Arrays.asList(
 			"NFD-YJP3-32TT-P88Q-22222", "NFD-MHPL-4NQF-WCE6-22222", "NFD-FMFQ-4U9B-ZNN3-22222",
 			"NFD-EUFT-4FJS-Z5KU-22222", "NFD-H98Z-39P5-4GX8-22222", "NFD-UY7N-VCUH-U5QU-B724B",
-			"NFD-BM65-Z57M-LGNK-5HCMK", "NFD-9PHZ-HTPL-JVBR-AB73P", 
-			(isTestnet? "Genesis not blacklisted":"NFD-G3GS-J4SW-T2WM-3DDYJ"), NSC_SENDER_ID));
-	
-	private static final String FORCE = "--force";
-	
+			"NFD-BM65-Z57M-LGNK-5HCMK", "NFD-9PHZ-HTPL-JVBR-AB73P", NSC_SENDER_ID,
+			(isTestnet ? "Genesis not blacklisted" : "NFD-G3GS-J4SW-T2WM-3DDYJ")));
+
+	private static final String CMD_ARGUMENT_FORCE = "--forceDb";
+	private static final String CMD_ARGUMENT_HTTP = "--http";
+
+	private static String dbUrl;
+	private static String secret;
+
+	private static boolean isHttpsConnection = true;
+
 	public static void main(String[] args) {
-		
+
 		HashMap<Long, GeneratorAccount> generatorAccounts = new HashMap<Long, GeneratorAccount>();
 		HashMap<Integer, Block> blocks = new HashMap<Integer, Block>();
 
-		final HashSet<String> parameters=new HashSet<String>(Arrays.asList(args));
-		 
-		
-		String dbUrl = Constants.isTestnet ? Nxt.getStringProperty("nxt.testDbUrl") : Nxt.getStringProperty("nxt.dbUrl");
-		
-		//stand alone h2 server or fresh copy of nfd_db/ is recommended
-		if (! dbUrl.toLowerCase().startsWith("jdbc:h2:tcp:") && ! parameters.contains("--force")) {
-			Logger.logErrorMessage("It's not recommended to use the same database directory as the nfd client!");
-			Logger.logErrorMessage("If you know what you are doing force it with parameter --force.");
-			System.exit(1);
-		}
-		
-		parameters.remove(FORCE);
-
-		String secret=null;
-		
-		if (parameters.isEmpty() || parameters.size()>1) {
-			Logger.logErrorMessage("Wrong count of parameters, abort!");
-			Logger.logErrorMessage("command --force secret");
-			System.exit(1);			
-		} else {			
-			for (String sec : parameters) {
-				// only one parameter left
-				secret=sec;				
-			}
-		}
-
+		processCmdArguments(args);
 		init();
 
-		Connection con = null;
+		Connection dbCon = null;
 		try {
-			con = Db.getConnection();
-			PreparedStatement pstmt = con
+			dbCon = Db.getConnection();
+			PreparedStatement pstmt = dbCon
 					.prepareStatement("select * from block where height< (SELECT max(heiGHT)  FROM BLOCK) "
 							+ (nxt.Constants.isTestnet ? "" : "-1440") + " and height>=" + START_HEIGHT
 							+ " order by height desc;");
 
-			try (DbIterator<? extends Block> iterator = Nxt.getBlockchain().getBlocks(con, pstmt)) {
+			try (DbIterator<? extends Block> iterator = Nxt.getBlockchain().getBlocks(dbCon, pstmt)) {
 				while (iterator.hasNext()) {
 					BlockImpl block = (BlockImpl) iterator.next();
 					blocks.put(block.getHeight(), block);
@@ -134,50 +114,61 @@ public class NSCAssetTransfer {
 				}
 			}
 		} catch (SQLException e) {
-			DbUtils.close(con);
+			DbUtils.close(dbCon);
 			throw new RuntimeException(e.toString(), e);
 		}
-		
-		//statistic
+
+		// statistic
 		int transferredAssetCount = 0;
 		HashSet<String> differentAccounts = new HashSet<String>();
-		
+
 		for (Iterator<Long> iterator = generatorAccounts.keySet().iterator(); iterator.hasNext();) {
 			Long generatorId = iterator.next();
 			GeneratorAccount generatorAccount = generatorAccounts.get(generatorId);
-			
-			Logger.logDebugMessage(generatorAccount.getRSAccountId() + "	" + generatorAccount.getTotalQuantity()
-					+ (generatorAccount.isBlacklisted() ? " blacklisted" : "") + "	Outstanding: "
-					+ generatorAccount.getOutstandingBlockIds().size() + "	Done: "
-					+ generatorAccount.getTransferedAssetsCount());
+
+			Logger.logInfoMessage(generatorAccount.getRSAccountId() 
+					+ (generatorAccount.isBlacklisted() ? " blacklisted" : "") + " Outstanding: "
+					+ generatorAccount.getOutstandingBlockIds().size() + " Done: "
+					+ generatorAccount.getTransferedAssetsCount()
+					+ " Total: " + generatorAccount.getTotalQuantity());
 
 			for (TransferMessage transferMessage : generatorAccount.getBlockIdsForMessage()) {
 				if (!generatorAccount.isBlacklisted()) {
-					
-					Logger.logDebugMessage(">>> " + generatorAccount.getRSAccountId() + "\t" + transferMessage.getQuantity()
-							+ "\t" + transferMessage.getMessage());
+
+					Logger.logDebugMessage(">>> " + generatorAccount.getRSAccountId() + " quantity="
+							+ transferMessage.getQuantity() + " blockIds=" + transferMessage.getMessage());
 
 					StringBuffer url = new StringBuffer();
-					url.append("https://localhost:" + (isTestnet ? "9876" : Nxt.getIntProperty("nxt.apiServerPort"))); 
+					url.append((isHttpsConnection ? "https" : "http"));
+					url.append("://localhost:");
+					url.append((isTestnet ? "9876" : Nxt.getIntProperty("nxt.apiServerPort")));
 					url.append("/nxt?requestType=transferAsset");
 					url.append("&secretPhrase=" + secret);
 					url.append("&comment=" + transferMessage.getMessage());
 					url.append("&recipient=" + generatorAccount.getAccountId());
 					url.append("&asset=" + NSC_ASSET_ID);
 					url.append("&quantityQNT=" + transferMessage.getQuantity());
-					url.append("&feeNQT=100000000&deadline=1440");
-					
-					StringBuffer buffer = HttpsAPIRequests.sendHTTPSPostRequest(url.toString());
+					url.append("&feeNQT=100000000&deadline=100");
+
+					StringBuffer buffer;
+					buffer = APIRequest.sendRequest(url.toString());
+
 					if (buffer != null) {
-						transferredAssetCount += transferMessage.getQuantity();
-						differentAccounts.add(generatorAccount.getAccountId().toString());
-					}
+						if ( buffer.indexOf("\"errorCode\"") == -1) {
+							transferredAssetCount += transferMessage.getQuantity();
+							differentAccounts.add(generatorAccount.getAccountId().toString());							
+							Logger.logInfoMessage("Transfered "+transferMessage.getQuantity()+" assets to account "+generatorAccount.getRSAccountId());
+							Logger.logDebugMessage(buffer.toString());
+						} else {
+							Logger.logErrorMessage(buffer.toString());
+						}
+					}  
 				}
 			}
 		}
-		
-		Logger.logInfoMessage("In total " + transferredAssetCount + " assets transferred to " + differentAccounts.size()
-				+ " different accounts.");
+
+		Logger.logInfoMessage("In total " + transferredAssetCount + " assets transferred to "
+				+ differentAccounts.size() + " different accounts.");
 
 		shutdown();
 	}
@@ -188,6 +179,44 @@ public class NSCAssetTransfer {
 
 	public static void shutdown() {
 		Db.shutdown();
+	}
+
+	private static void processCmdArguments(String[] args) {
+
+		final HashSet<String> parameters = new HashSet<String>(Arrays.asList(args));
+
+		dbUrl = Constants.isTestnet ? Nxt.getStringProperty("nxt.testDbUrl") : Nxt.getStringProperty("nxt.dbUrl");
+
+		// stand alone h2 server or fresh copy of nfd_db/ is recommended
+		if (!dbUrl.toLowerCase().startsWith("jdbc:h2:tcp:") && !parameters.contains(CMD_ARGUMENT_FORCE)) {
+			Logger.logErrorMessage("It's not recommended to use the same database directory as the nfd client!");
+			Logger.logErrorMessage("If you know what you are doing force it with parameter --forceDb.");
+			System.exit(1);
+		}
+
+		parameters.remove(CMD_ARGUMENT_FORCE);
+
+		// default is https
+		if (parameters.contains(CMD_ARGUMENT_HTTP)) {
+			isHttpsConnection = false;
+			parameters.remove(CMD_ARGUMENT_HTTP);
+		}
+		Logger.logInfoMessage("isHttpsConnection=" + new Boolean(isHttpsConnection).toString());
+
+		secret = null;
+
+		if (parameters.isEmpty() || parameters.size() > 1) {
+			Logger.logErrorMessage("Wrong count of parameters, abort!");
+			Logger.logErrorMessage("Possible command arguments are --forceDb --http secret");
+			Logger.logErrorMessage("default configuration: db h2 tcp server, https connection, post requests, localhost");
+			System.exit(1);
+		} else {
+			for (String sec : parameters) {
+				// only one parameter left
+				secret = sec;
+			}
+		}
+
 	}
 
 }

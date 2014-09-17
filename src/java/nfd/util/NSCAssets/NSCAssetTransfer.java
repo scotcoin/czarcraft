@@ -145,7 +145,7 @@ public class NSCAssetTransfer {
 					url.append("/nxt?requestType=transferAsset");
 					url.append("&secretPhrase=" + secret);
 					url.append("&comment=" + transferMessage.getMessage());
-					url.append("&recipient=" + generatorAccount.getAccountId());
+					url.append("&recipient=" + Convert.toUnsignedLong(generatorAccount.getAccountId()));
 					url.append("&asset=" + NSC_ASSET_ID);
 					url.append("&quantityQNT=" + transferMessage.getQuantity());
 					url.append("&feeNQT=100000000&deadline=100");

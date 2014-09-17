@@ -11,7 +11,7 @@ import nxt.util.Convert;
 public class GeneratorAccount {
 
 	private Long accountID;
-	private HashSet<Long> transferedAssetsBlockIds = new HashSet<Long>();
+	private HashSet<Long> transferredAssetsBlockIds = new HashSet<Long>();
 	private HashSet<Long> generatorBlockIds = new HashSet<Long>();
 	private Long totalQuantity = 0L;
 
@@ -39,7 +39,7 @@ public class GeneratorAccount {
 
 				String[] blockIds = comment.split(";");
 				for (int i = 0; i < blockIds.length; i++) {
-					this.transferedAssetsBlockIds.add(Long.parseLong(blockIds[i]));
+					this.transferredAssetsBlockIds.add(Long.parseLong(blockIds[i]));
 				}
 
 			} catch (NumberFormatException nfe) {
@@ -52,7 +52,7 @@ public class GeneratorAccount {
 	}
 
 	public String toString() {
-		return (Convert.rsAccount(accountID) + "	" + totalQuantity + "	" + transferedAssetsBlockIds.toString());
+		return (Convert.rsAccount(accountID) + "	" + totalQuantity + "	" + transferredAssetsBlockIds.toString());
 	}
 
 	public void addBlockGeneratorId(Long blockId) {
@@ -62,7 +62,7 @@ public class GeneratorAccount {
 	public HashSet<Long> getOutstandingBlockIds() {
 		@SuppressWarnings("unchecked")
 		HashSet<Long> newGeneratorBlockIds = (HashSet<Long>) generatorBlockIds.clone();
-		newGeneratorBlockIds.removeAll(transferedAssetsBlockIds);
+		newGeneratorBlockIds.removeAll(transferredAssetsBlockIds);
 		return newGeneratorBlockIds;
 	}
 

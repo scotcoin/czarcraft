@@ -157,7 +157,7 @@ public class NSCAssetTransfer {
 						if ( buffer.indexOf("\"errorCode\"") == -1) {
 							transferredAssetCount += transferMessage.getQuantity();
 							differentAccounts.add(generatorAccount.getAccountId().toString());							
-							Logger.logInfoMessage("Transfered "+transferMessage.getQuantity()+" assets to account "+generatorAccount.getRSAccountId());
+							Logger.logInfoMessage("Transferred "+transferMessage.getQuantity()+" assets to account "+generatorAccount.getRSAccountId());
 							Logger.logDebugMessage(buffer.toString());
 						} else {
 							Logger.logErrorMessage(buffer.toString());
@@ -187,7 +187,7 @@ public class NSCAssetTransfer {
 
 		dbUrl = Constants.isTestnet ? Nxt.getStringProperty("nxt.testDbUrl") : Nxt.getStringProperty("nxt.dbUrl");
 
-		// stand alone h2 server or fresh copy of nfd_db/ is recommended
+		// stand alone h2 server or a fresh copy of nfd_db/ is recommended
 		if (!dbUrl.toLowerCase().startsWith("jdbc:h2:tcp:") && !parameters.contains(CMD_ARGUMENT_FORCE)) {
 			Logger.logErrorMessage("It's not recommended to use the same database directory as the nfd client!");
 			Logger.logErrorMessage("If you know what you are doing force it with parameter --forceDb.");

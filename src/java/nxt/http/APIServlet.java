@@ -81,6 +81,7 @@ public final class APIServlet extends HttpServlet {
         map.put("encryptTo", EncryptTo.instance);
         map.put("generateToken", GenerateToken.instance);
         map.put("getAccount", GetAccount.instance);
+        map.put("getAllAccounts", GetAllAccounts.instance);
         map.put("getAccountBlockIds", GetAccountBlockIds.instance);
         map.put("getAccountId", GetAccountId.instance);
         map.put("getAccountPublicKey", GetAccountPublicKey.instance);

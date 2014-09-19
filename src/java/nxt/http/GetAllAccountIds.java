@@ -1,8 +1,6 @@
 package nxt.http;
 
 import nxt.Account;
-import nxt.Asset;
-import nxt.util.Convert;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,11 +8,11 @@ import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
 
-public final class GetAllAccounts extends APIServlet.APIRequestHandler {
+public final class GetAllAccountIds extends APIServlet.APIRequestHandler {
 
-    static final GetAllAccounts instance = new GetAllAccounts();
+    static final GetAllAccountIds instance = new GetAllAccountIds();
 
-    private GetAllAccounts() {
+    private GetAllAccountIds() {
         super(new APITag[] {APITag.ACCOUNTS});
     }
 
@@ -25,8 +23,8 @@ public final class GetAllAccounts extends APIServlet.APIRequestHandler {
         JSONArray accountJSONArray = new JSONArray();
         response.put("accounts", accountJSONArray);
         for (Account account : Account.getAllAccounts()) {
-        	 JSONObject json = new JSONObject();
-             json.put("account", Convert.rsAccount(account.getId()));             
+        	 JSONObject json = new JSONObject();        	 
+        	 JSONData.putAccount(json, "account", account.getId());                          
              accountJSONArray.add(json);
         }
         return response;

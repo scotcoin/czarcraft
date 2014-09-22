@@ -2,6 +2,7 @@ package nfd.util.NSCAssets;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class NSCAssetTransfer {
 	public static void main(String[] args) {
 
 		HashMap<Long, GeneratorAccount> generatorAccounts = new HashMap<Long, GeneratorAccount>();
-		HashMap<Integer, Block> blocks = new HashMap<Integer, Block>();
+		int blockChainHeight=0;
 
 		processCmdArguments(args);
 		init();
@@ -54,26 +55,35 @@ public class NSCAssetTransfer {
 		Connection dbCon = null;
 		try {
 			dbCon = Db.getConnection();
+			
 			PreparedStatement pstmt = dbCon
-					.prepareStatement("select * from block where height< (SELECT max(heiGHT)  FROM BLOCK) "
-							+ (nxt.Constants.isTestnet ? "" : "-1440") + " and height>=" + START_HEIGHT
+					.prepareStatement("select max(height) as height from block;"); 
+			ResultSet rs = pstmt.executeQuery();
+            if ( rs.next()) {
+            	blockChainHeight = rs.getInt("height");
+            }            
+            rs.close();
+            
+			pstmt = dbCon
+					.prepareStatement("select * from block where height>=" + START_HEIGHT
 							+ " order by height desc;");
 
 			try (DbIterator<? extends Block> iterator = Nxt.getBlockchain().getBlocks(dbCon, pstmt)) {
 				while (iterator.hasNext()) {
 					BlockImpl block = (BlockImpl) iterator.next();
-					blocks.put(block.getHeight(), block);
 
-					GeneratorAccount generatorAccount;
-					if (generatorAccounts.containsKey(block.getGeneratorId())) {
-
-						generatorAccount = generatorAccounts.get(block.getGeneratorId());
-					} else {
-						generatorAccount = new GeneratorAccount(block.getGeneratorId());
+					//reward after at least 1440 confirmations
+					if (block.getHeight()<blockChainHeight-1440) {
+						GeneratorAccount generatorAccount;
+						if (generatorAccounts.containsKey(block.getGeneratorId())) {
+							generatorAccount = generatorAccounts.get(block.getGeneratorId());
+						} else {
+							generatorAccount = new GeneratorAccount(block.getGeneratorId());
+						}
+						generatorAccount.addBlockGeneratorId(block.getId());
+						generatorAccounts.put(block.getGeneratorId(), generatorAccount);
 					}
-					generatorAccount.addBlockGeneratorId(block.getId());
-					generatorAccounts.put(block.getGeneratorId(), generatorAccount);
-
+					
 					for (TransactionImpl transaction : block.getTransactions()) {
 
 						if (transaction.getAttachment().getTransactionType() == TransactionType.findTransactionType(
@@ -107,7 +117,6 @@ public class NSCAssetTransfer {
 									if (assetRecipient.addTransaction(assetTransfer, message))
 										generatorAccounts.put(transaction.getRecipientId(), assetRecipient);
 								}
-
 							}
 						}
 					}
@@ -129,7 +138,7 @@ public class NSCAssetTransfer {
 			Logger.logInfoMessage(generatorAccount.getRSAccountId() 
 					+ (generatorAccount.isBlacklisted() ? " blacklisted" : "") + " Outstanding: "
 					+ generatorAccount.getOutstandingBlockIds().size() + " Done: "
-					+ generatorAccount.getTransferedAssetsCount()
+					+ generatorAccount.getCountOfRewardedBlocks()
 					+ " Total: " + generatorAccount.getTotalQuantity());
 
 			for (TransferMessage transferMessage : generatorAccount.getBlockIdsForMessage()) {
@@ -162,7 +171,7 @@ public class NSCAssetTransfer {
 						} else {
 							Logger.logErrorMessage(buffer.toString());
 						}
-					}  
+					}
 				}
 			}
 		}

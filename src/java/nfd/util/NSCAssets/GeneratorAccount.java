@@ -91,7 +91,7 @@ public class GeneratorAccount {
 		return transferMessages;
 	}
 
-	public int getTransferedAssetsCount() {
+	public int getCountOfRewardedBlocks() {
 		return generatorBlockIds.size() - getOutstandingBlockIds().size();
 	}
 

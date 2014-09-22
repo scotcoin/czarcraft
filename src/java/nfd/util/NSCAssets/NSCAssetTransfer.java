@@ -38,16 +38,18 @@ public class NSCAssetTransfer {
 
 	private static final String CMD_ARGUMENT_FORCE = "--forceDb";
 	private static final String CMD_ARGUMENT_HTTP = "--http";
+	private static final String CMD_ARGUMENT_DRYRUN = "--dry-run";
 
 	private static String dbUrl;
 	private static String secret;
 
 	private static boolean isHttpsConnection = true;
+	private static boolean isDryRun = false;
 
 	public static void main(String[] args) {
 
 		HashMap<Long, GeneratorAccount> generatorAccounts = new HashMap<Long, GeneratorAccount>();
-		int blockChainHeight=0;
+		int blockChainHeight = 0;
 
 		processCmdArguments(args);
 		init();
@@ -55,25 +57,23 @@ public class NSCAssetTransfer {
 		Connection dbCon = null;
 		try {
 			dbCon = Db.getConnection();
-			
-			PreparedStatement pstmt = dbCon
-					.prepareStatement("select max(height) as height from block;"); 
+
+			PreparedStatement pstmt = dbCon.prepareStatement("select max(height) as height from block;");
 			ResultSet rs = pstmt.executeQuery();
-            if ( rs.next()) {
-            	blockChainHeight = rs.getInt("height");
-            }            
-            rs.close();
-            
-			pstmt = dbCon
-					.prepareStatement("select * from block where height>=" + START_HEIGHT
-							+ " order by height desc;");
+			if (rs.next()) {
+				blockChainHeight = rs.getInt("height");
+			}
+			rs.close();
+
+			pstmt = dbCon.prepareStatement("select * from block where height>=" + START_HEIGHT
+					+ " order by height desc;");
 
 			try (DbIterator<? extends Block> iterator = Nxt.getBlockchain().getBlocks(dbCon, pstmt)) {
 				while (iterator.hasNext()) {
 					BlockImpl block = (BlockImpl) iterator.next();
 
-					//reward after at least 1440 confirmations
-					if (block.getHeight()<blockChainHeight-1440) {
+					// reward after at least 1440 confirmations
+					if (block.getHeight() < blockChainHeight - 1440) {
 						GeneratorAccount generatorAccount;
 						if (generatorAccounts.containsKey(block.getGeneratorId())) {
 							generatorAccount = generatorAccounts.get(block.getGeneratorId());
@@ -83,7 +83,7 @@ public class NSCAssetTransfer {
 						generatorAccount.addBlockGeneratorId(block.getId());
 						generatorAccounts.put(block.getGeneratorId(), generatorAccount);
 					}
-					
+
 					for (TransactionImpl transaction : block.getTransactions()) {
 
 						if (transaction.getAttachment().getTransactionType() == TransactionType.findTransactionType(
@@ -135,11 +135,10 @@ public class NSCAssetTransfer {
 			Long generatorId = iterator.next();
 			GeneratorAccount generatorAccount = generatorAccounts.get(generatorId);
 
-			Logger.logInfoMessage(generatorAccount.getRSAccountId() 
+			Logger.logInfoMessage(generatorAccount.getRSAccountId()
 					+ (generatorAccount.isBlacklisted() ? " blacklisted" : "") + " Outstanding: "
 					+ generatorAccount.getOutstandingBlockIds().size() + " Done: "
-					+ generatorAccount.getCountOfRewardedBlocks()
-					+ " Total: " + generatorAccount.getTotalQuantity());
+					+ generatorAccount.getCountOfRewardedBlocks() + " Total: " + generatorAccount.getTotalQuantity());
 
 			for (TransferMessage transferMessage : generatorAccount.getBlockIdsForMessage()) {
 				if (!generatorAccount.isBlacklisted()) {
@@ -160,13 +159,18 @@ public class NSCAssetTransfer {
 					url.append("&feeNQT=100000000&deadline=100");
 
 					StringBuffer buffer;
-					buffer = APIRequest.sendRequest(url.toString());
+					if (!isDryRun) {
+						buffer = APIRequest.sendRequest(url.toString());
+					} else {
+						buffer = new StringBuffer("mode --dry-run: sending of transactions is disabled");
+					}
 
 					if (buffer != null) {
-						if ( buffer.indexOf("\"errorCode\"") == -1) {
+						if (buffer.indexOf("\"errorCode\"") == -1) {
 							transferredAssetCount += transferMessage.getQuantity();
-							differentAccounts.add(generatorAccount.getAccountId().toString());							
-							Logger.logInfoMessage("Transferred "+transferMessage.getQuantity()+" assets to account "+generatorAccount.getRSAccountId());
+							differentAccounts.add(generatorAccount.getAccountId().toString());
+							Logger.logInfoMessage("Transferred " + transferMessage.getQuantity()
+									+ " assets to account " + generatorAccount.getRSAccountId());
 							Logger.logDebugMessage(buffer.toString());
 						} else {
 							Logger.logErrorMessage(buffer.toString());
@@ -212,11 +216,18 @@ public class NSCAssetTransfer {
 		}
 		Logger.logInfoMessage("isHttpsConnection=" + new Boolean(isHttpsConnection).toString());
 
+		// default is false
+		if (parameters.contains(CMD_ARGUMENT_DRYRUN)) {
+			isDryRun = true;
+			parameters.remove(CMD_ARGUMENT_DRYRUN);
+		}
+		Logger.logInfoMessage("isDryRun=" + new Boolean(isDryRun).toString());
+
 		secret = null;
 
 		if (parameters.isEmpty() || parameters.size() > 1) {
 			Logger.logErrorMessage("Wrong count of parameters, abort!");
-			Logger.logErrorMessage("Possible command arguments are --forceDb --http secret");
+			Logger.logErrorMessage("Possible command arguments are --forceDb --http --dry-run secret");
 			Logger.logErrorMessage("default configuration: db h2 tcp server, https connection, post requests, localhost");
 			System.exit(1);
 		} else {

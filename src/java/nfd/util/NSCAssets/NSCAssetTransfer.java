@@ -136,9 +136,9 @@ public class NSCAssetTransfer {
 			GeneratorAccount generatorAccount = generatorAccounts.get(generatorId);
 
 			Logger.logInfoMessage(generatorAccount.getRSAccountId()
-					+ (generatorAccount.isBlacklisted() ? " blacklisted" : "") + " Outstanding: "
-					+ generatorAccount.getOutstandingBlockIds().size() + " Done: "
-					+ generatorAccount.getCountOfRewardedBlocks() + " Total: " + generatorAccount.getTotalQuantity());
+					+ (generatorAccount.isBlacklisted() ? " blacklisted" : "") + " Pending: "
+					+ generatorAccount.getOutstandingBlockIds().size() + " Blocks rewarded: "
+					+ generatorAccount.getCountOfRewardedBlocks() + " Assets sent total: " + generatorAccount.getTotalQuantity());
 
 			for (TransferMessage transferMessage : generatorAccount.getBlockIdsForMessage()) {
 				if (!generatorAccount.isBlacklisted()) {

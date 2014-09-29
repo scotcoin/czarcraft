@@ -1,4 +1,4 @@
-package nxt.util;
+package nfd.util;
 
 import java.util.Random;
 
@@ -15,20 +15,20 @@ public class VanityGen {
 
 		String someDigits = "0123456789";
 		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+		String specialCharacters = ".,?!$=+#";
 		String accountId;
 		String randomSecret = null;
-		int maxLength = 100;
+		int maxLength = 19;
 		long counter = 0;
 		while (true) {
 			counter++;
-			randomSecret = generate(100, someDigits, alphabet);
+			randomSecret = generate(35, someDigits, alphabet, specialCharacters);
 			long accounIdLong = getId(Crypto.getPublicKey(randomSecret));
 			accountId = Convert.toUnsignedLong(accounIdLong);
-			if (accountId.length() < maxLength) {
+			if (accountId.length() < maxLength || accountId.length() < 11) {
 				maxLength = accountId.length();
-				System.out.println(counter + "\t" + accountId.length() + "\t"
-						+ accountId + "\t" + randomSecret + "\tNFD-"
-						+ Crypto.rsEncode(accounIdLong));
+				System.out.println(counter + "\t" + accountId.length() + "\t" + accountId + "\t" + randomSecret
+						+ "\tNFD-" + Crypto.rsEncode(accounIdLong));
 			}
 
 		}
@@ -70,15 +70,13 @@ public class VanityGen {
 	 */
 	public static String generate(int length, String... alphabets) {
 		if (alphabets.length == 0) {
-			throw new IllegalArgumentException(
-					"At least one alphabet must be given");
+			throw new IllegalArgumentException("At least one alphabet must be given");
 		}
 		StringBuffer result = new StringBuffer();
 		StringBuffer all = new StringBuffer();
 		for (int i = 0; i < alphabets.length; i++) {
 			if (alphabets[i] == null || alphabets[i].equals("")) {
-				throw new IllegalArgumentException("Invalid alphabet: "
-						+ alphabets[i]);
+				throw new IllegalArgumentException("Invalid alphabet: " + alphabets[i]);
 			}
 			StringBuffer sb = new StringBuffer(alphabets[i]);
 			result.append(selectRandom(sb, 1));

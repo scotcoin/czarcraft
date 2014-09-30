@@ -739,9 +739,24 @@ var NRS = (function(NRS, $, undefined) {
 		if (!unmodified) {
 			delete data.request_type;
 			delete data.converted_account_id;
+			delete data.merchant_info;
 		}
 
 		return data;
+	}
+
+	NRS.convertNumericToRSAccountFormat = function(account) {
+		if (/^NFD\-/i.test(account)) {
+			return String(account).escapeHTML();
+		} else {
+			var address = new NxtAddress();
+
+			if (address.set(account)) {
+				return address.toString().escapeHTML();
+			} else {
+				return "";
+			}
+		}
 	}
 
 	NRS.getAccountLink = function(object, acc) {
@@ -1493,7 +1508,7 @@ var NRS = (function(NRS, $, undefined) {
 		if ($.i18n.exists(nameKey)) {
 			return $.t(nameKey).escapeHTML();
 		} else {
-			return String(name).escapeHTML();
+			return nameKey.replace(/_/g, " ").escapeHTML();
 		}
 	}
 

@@ -121,17 +121,7 @@ var NRS = (function(NRS, $, undefined) {
 			NRS.lastBlockHeight = blockHeight;
 		}
 
-		if (!NRS.dgsBlockPassed) {
-			if ((!NRS.isTestNet && (NRS.lastBlockHeight >= 89000 || (NRS.downloadingBlockchain && NRS.state.lastBlockchainFeederHeight >= 89000))) || (NRS.isTestNet && NRS.lastBlockHeight >= 41000)) {
-				NRS.dgsBlockPassed = true;
-				$(".dgs_block").not(".advanced, .optional_message, .optional_note").show();
-			}
-		}
-		if (!NRS.PKAnnouncementBlockPassed) {
-			if ((!NRS.isTestNet && (NRS.lastBlockHeight >= 89000 || (NRS.downloadingBlockchain && NRS.state.lastBlockchainFeederHeight >= 89000))) || (NRS.isTestNet && NRS.lastBlockHeight >= 41000)) {
-				NRS.PKAnnouncementBlockPassed = true;
-			}
-		}
+		//no checks needed at the moment
 	}
 
 	//we always update the dashboard page..
@@ -218,8 +208,6 @@ var NRS = (function(NRS, $, undefined) {
 
 			var confirmations = parseInt($(this).data("confirmations"), 10);
 
-			// lordoliver 17.06.2014
-			// bugfix: updating confirmations in dashboard right
 			var nrConfirmations = confirmations + newBlocks.length;
 			$(this).data("confirmations", nrConfirmations);
 				$(this).attr("data-content", $.t("x_confirmations", {

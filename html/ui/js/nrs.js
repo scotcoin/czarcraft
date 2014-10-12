@@ -74,7 +74,7 @@ var NRS = (function(NRS, $, undefined) {
 	var isScanning = false;
 
 	NRS.init = function() {
-		if (window.location.port && window.location.port != "9876") {
+		if (window.location.port && window.location.port != "8876") {
 			$(".testnet_only").hide();
 		} else {
 			NRS.isTestNet = true;			

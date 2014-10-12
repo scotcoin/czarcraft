@@ -595,7 +595,7 @@ var NRS = (function(NRS, $, undefined) {
 			if (NRS.isTestNet) {
 			      var date = new Date(Date.UTC(2014, 4, 22, 22, 0, 0, 0) + timestamp * 1000);
 		         } else {			
-			       var date = new Date(Date.UTC(2014, 5, 5, 6, 21, 19, 83) + timestamp * 1000);
+			       var date = new Date(Date.UTC(2014, 9, 11, 20, 51, 0, 0) + timestamp * 1000);
 		         }
 		}
 
@@ -652,7 +652,7 @@ var NRS = (function(NRS, $, undefined) {
 		if (NRS.isTestNet) {
 			var date = new Date(Date.UTC(2014, 4, 22, 22, 0, 0, 0) + timestamp * 1000);
 		} else {			
-			var date = new Date(Date.UTC(2014, 5, 5, 6, 21, 19, 83) + timestamp * 1000);
+			var date = new Date(Date.UTC(2014, 9, 11, 20, 51, 0, 0) + timestamp * 1000);
 		}
 		
 		if (!isNaN(date) && typeof(date.getFullYear) == 'function') {

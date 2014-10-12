@@ -66,12 +66,12 @@ public final class Constants {
     static {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.set(Calendar.YEAR, 2014);
-        calendar.set(Calendar.MONTH, isTestnet ? Calendar.MAY : Calendar.JUNE);
-        calendar.set(Calendar.DAY_OF_MONTH, isTestnet ? 22 : 05);
-        calendar.set(Calendar.HOUR_OF_DAY, isTestnet ? 22 : 06);
-        calendar.set(Calendar.MINUTE, isTestnet ? 0 : 21);
-        calendar.set(Calendar.SECOND, isTestnet ? 0 :19);
-        calendar.set(Calendar.MILLISECOND, isTestnet ? 0 :83);
+        calendar.set(Calendar.MONTH, isTestnet ? Calendar.MAY : Calendar.OCTOBER);
+        calendar.set(Calendar.DAY_OF_MONTH, isTestnet ? 22 : 11);
+        calendar.set(Calendar.HOUR_OF_DAY, isTestnet ? 22 : 20);
+        calendar.set(Calendar.MINUTE, isTestnet ? 0 : 51);
+        calendar.set(Calendar.SECOND, isTestnet ? 0 : 0);
+        calendar.set(Calendar.MILLISECOND, isTestnet ? 0 : 0);
         EPOCH_BEGINNING = calendar.getTimeInMillis();
     }
 

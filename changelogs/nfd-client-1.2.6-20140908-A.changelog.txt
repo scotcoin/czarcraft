@@ -1,4 +1,4 @@
-New NFD feature:
+New Czarcraft feature:
 UPnP support added
 
 Merged features from NXT 1.2.6:
@@ -21,6 +21,6 @@ nxt-client-1.2.4-changelog.txt
 nxt-client-1.2.5-changelog.txt
 nxt-client-1.2.6-changelog.txt
 
-NFD changes:
+TZR changes:
 DGS enabled at block height 89000
 publick key announcement is not forced

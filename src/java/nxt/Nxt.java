@@ -22,7 +22,7 @@ public final class Nxt {
 
     private static final Properties defaultProperties = new Properties();
     static {
-        System.out.println("Initializing NFD server version " + Nxt.VERSION);
+        System.out.println("Initializing TZR server version " + Nxt.VERSION);
         try (InputStream is = ClassLoader.getSystemResourceAsStream("nxt-default.properties")) {
             if (is != null) {
                 Nxt.defaultProperties.load(is);
@@ -121,7 +121,7 @@ public final class Nxt {
 
     public static void main(String[] args) {
     	
-    	VERSION = (Constants.isTestnet ? "NFD-TESTNET-" : "NFD-")+VERSION;
+    	VERSION = (Constants.isTestnet ? "TZR-TESTNET-" : "TZR-")+VERSION;
     	
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
@@ -149,7 +149,7 @@ public final class Nxt {
         TransactionProcessorImpl.getInstance().shutdown();
         ThreadPool.shutdown();
         Db.shutdown();
-        Logger.logMessage("NFD server " + VERSION + " stopped.");
+        Logger.logMessage("TZR server " + VERSION + " stopped.");
         Logger.shutdown();
     }
 
@@ -172,7 +172,7 @@ public final class Nxt {
 
             long currentTime = System.currentTimeMillis();
             Logger.logDebugMessage("Initialization took " + (currentTime - startTime) / 1000 + " seconds");
-            Logger.logMessage("NFD server " + VERSION + " started successfully.");
+            Logger.logMessage("TZR server " + VERSION + " started successfully.");
             if (Constants.isTestnet) {
                 Logger.logMessage("RUNNING ON TESTNET - DO NOT USE REAL ACCOUNTS!");
             }

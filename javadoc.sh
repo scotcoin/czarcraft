@@ -1,5 +1,5 @@
 #!/bin/sh
-CP=nfd.jar:lib/*:conf
+CP=tzr.jar:lib/*:conf
 SP=src/java/
 
 /bin/rm -rf html/doc/*

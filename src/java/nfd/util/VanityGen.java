@@ -1,4 +1,4 @@
-package nfd.util;
+package tzr.util;
 
 import java.util.Random;
 
@@ -28,7 +28,7 @@ public class VanityGen {
 			if (accountId.length() < maxLength || accountId.length() < 11) {
 				maxLength = accountId.length();
 				System.out.println(counter + "\t" + accountId.length() + "\t" + accountId + "\t" + randomSecret
-						+ "\tNFD-" + Crypto.rsEncode(accounIdLong));
+						+ "\tTZR-" + Crypto.rsEncode(accounIdLong));
 			}
 
 		}

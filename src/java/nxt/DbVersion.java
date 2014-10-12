@@ -144,12 +144,10 @@ final class DbVersion {
             case 37:
                 if (!Constants.isTestnet) {
                     apply("INSERT INTO peer (address) VALUES " +
-                    	"('wallet.nfdcoin.com'), ('node1.nfdcoin.com'), ('node2.nfdcoin.com'), ('node3.nfdcoin.com'), " +
-                   		"('node4.nfdcoin.com'), ('node5.nfdcoin.com'), ('node6.nfdcoin.com'), ('node7.nfdcoin.com'), " +
-                   		"('node8.nfdcoin.com'), ('node9.nfdcoin.com'), ('node10.nfdcoin.com')");
+                    	"('czarcraft.co'), ('czarcraft.com')");
                 } else {
                     apply("INSERT INTO peer (address) VALUES " +
-                   		"('woll-e.net'), ('testnet1.nfdcoin.com'), ('testnet2.nfdcoin.com'), ('testnet3.nfdcoin.com')");
+                   		"('czarcraft.co'), ('czarcraft.com')");
                     		 
                 }
             case 38:

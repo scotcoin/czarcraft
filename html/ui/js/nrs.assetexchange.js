@@ -131,13 +131,13 @@ var NRS = (function(NRS, $, undefined) {
 			};
 		}
 
-		if (!/^\d+$/.test(data.id) && !/^NFD\-/i.test(data.id)) {
+		if (!/^\d+$/.test(data.id) && !/^TZR\-/i.test(data.id)) {
 			return {
 				"error": $.t("error_asset_or_account_id_invalid")
 			};
 		}
 
-		if (/^NFD\-/i.test(data.id)) {
+		if (/^TZR\-/i.test(data.id)) {
 			NRS.sendRequest("getAssetsByIssuer", {
 				"account": data.id
 			}, function(response) {
@@ -799,7 +799,7 @@ var NRS = (function(NRS, $, undefined) {
 		} else {
 			NRS.assetSearch = [];
 
-			if (/NFD\-/i.test(input)) {
+			if (/TZR\-/i.test(input)) {
 				$.each(NRS.assets, function(key, asset) {
 					if (asset.accountRS.toLowerCase() == input || asset.accountRS.toLowerCase().indexOf(input) !== -1) {
 						NRS.assetSearch.push(asset.asset);
@@ -1106,8 +1106,8 @@ var NRS = (function(NRS, $, undefined) {
 		}
 
 		$("#asset_order_description").html(description);
-		$("#asset_order_total").html(totalNXT + " NFD");
-		$("#asset_order_fee_paid").html(NRS.formatAmount(feeNQT) + " NFD");
+		$("#asset_order_total").html(totalNXT + " TZR");
+		$("#asset_order_fee_paid").html(NRS.formatAmount(feeNQT) + " TZR");
 
 		if (quantity != "1") {
 			$("#asset_order_total_tooltip").show();

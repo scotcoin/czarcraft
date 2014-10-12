@@ -37,7 +37,7 @@ public class APITestServlet extends HttpServlet {
             "    <meta charset=\"UTF-8\"/>\n" +
             "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">" +
             "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" + 
-            "    <title>NFD http API</title>\n" +
+            "    <title>Czarcraft http API</title>\n" +
             "    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\" />" +
             "    <style type=\"text/css\">\n" +
             "        table {border-collapse: collapse;}\n" +

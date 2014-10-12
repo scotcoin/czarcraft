@@ -126,7 +126,7 @@ public class UPnP {
 		}
 
 		if (activeGW.addPortMapping(externalPort, internalPort,
-				localAddress.getHostAddress(), "TCP", "NFD")) {
+				localAddress.getHostAddress(), "TCP", "TZR")) {
 			Logger.logMessage("UPnP :" + activeGW.getExternalIPAddress() + ":"
 					+ externalPort + " mapped to "
 					+ localAddress.getHostAddress() + ":" + internalPort);

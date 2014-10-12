@@ -1,2 +1,2 @@
 #!/bin/sh
-java -cp nfd.jar:lib/*:conf nxt.Nxt
+java -cp tzr.jar:lib/*:conf nxt.Nxt

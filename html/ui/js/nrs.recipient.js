@@ -13,7 +13,7 @@ var NRS = (function(NRS, $, undefined) {
 			var value = $(this).val();
 			var modal = $(this).closest(".modal");
 
-			if (value && value != "NFD-____-____-____-_____") {
+			if (value && value != "TZR-____-____-____-_____") {
 				NRS.checkRecipient(value, modal);
 			} else {
 				modal.find(".account_info").hide();
@@ -41,7 +41,7 @@ var NRS = (function(NRS, $, undefined) {
 		if (account) {
 			var $inputField = $(this).find("input[name=recipient], input[name=account_id]").not("[type=hidden]");
 
-			if (!/NFD\-/i.test(account)) {
+			if (!/TZR\-/i.test(account)) {
 				$inputField.addClass("noMask");
 			}
 
@@ -121,7 +121,7 @@ var NRS = (function(NRS, $, undefined) {
 					if (response.errorCode == 4) {
 						callback({
 							"type": "danger",
-							"message": $.t("recipient_malformed") + (!/^(NFD\-)/i.test(accountId) ? " " + $.t("recipient_alias_suggestion") : ""),
+							"message": $.t("recipient_malformed") + (!/^(TZR\-)/i.test(accountId) ? " " + $.t("recipient_alias_suggestion") : ""),
 							"account": null
 						});
 					} else if (response.errorCode == 5) {
@@ -168,7 +168,7 @@ var NRS = (function(NRS, $, undefined) {
 		account = $.trim(account);
 
 		//solomon reed. Btw, this regex can be shortened..
-		if (/^(NFD\-)?[A-Z0-9]+\-[A-Z0-9]+\-[A-Z0-9]+\-[A-Z0-9]+/i.test(account)) {
+		if (/^(TZR\-)?[A-Z0-9]+\-[A-Z0-9]+\-[A-Z0-9]+\-[A-Z0-9]+/i.test(account)) {
 			var address = new NxtAddress();
 
 			if (address.set(account)) {
@@ -256,7 +256,7 @@ var NRS = (function(NRS, $, undefined) {
 					var alias = String(response.aliasURI);
 					var timestamp = response.timestamp;
 
-					var regex_1 = /acct:(.*)@nfd/;
+					var regex_1 = /acct:(.*)@tzr/;
 					var regex_2 = /nacc:(.*)/;
 
 					var match = alias.match(regex_1);

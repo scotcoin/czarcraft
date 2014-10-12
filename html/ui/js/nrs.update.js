@@ -273,7 +273,7 @@ var NRS = (function(NRS, $, undefined) {
 			}, "*");
 			$("#nrs_modal").modal("hide");
 		} else {
-			$("#nrs_update_iframe").attr("src", "https://bitbucket.org/NFDcoin/nfdcoin/downloads/nfd-client-" + NRS.downloadedVersion.versionNr + ".zip");
+			$("#nrs_update_iframe").attr("src", "https://github.com/Czarcoin/czarcraft/archive/" + NRS.downloadedVersion.versionNr + ".zip");
 			$("#nrs_update_explanation").hide();
 			$("#nrs_update_drop_zone").show();
 

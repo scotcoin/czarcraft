@@ -1,4 +1,4 @@
-package nfd.util.NSCAssets;
+package tzr.util.NSCAssets;
 
 import java.util.ArrayList;
 import java.util.HashSet;

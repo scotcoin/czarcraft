@@ -89,7 +89,7 @@ public final class Convert {
             return null;
         }
         account = account.toUpperCase();
-        if (account.startsWith("NFD-")) {
+        if (account.startsWith("TZR-")) {
             return zeroToNull(Crypto.rsDecode(account.substring(4)));
         } else {
             return parseUnsignedLong(account);
@@ -97,7 +97,7 @@ public final class Convert {
     }
 
     public static String rsAccount(Long accountId) {
-        return "NFD-" + Crypto.rsEncode(nullToZero(accountId));
+        return "TZR-" + Crypto.rsEncode(nullToZero(accountId));
     }
 
     public static Long fullHashToId(byte[] hash) {

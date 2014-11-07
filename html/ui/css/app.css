@@ -1960,7 +1960,8 @@ body > .header .logo .icon {
 }
 .lockscreen-item > .lockscreen-credentials .btn {
   background-color: #fff;
-  border: 0;
+  /*border: 0;*/
+  border: 1px solid #B0C5E4;
 }
 /* Extra to give the user an option to navigate the website [optional]*/
 #registration_link {

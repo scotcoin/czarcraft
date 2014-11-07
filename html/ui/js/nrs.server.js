@@ -263,7 +263,7 @@ var NRS = (function(NRS, $, undefined) {
 			}
 
 			if (typeof data == "object" && "recipient" in data) {
-				if (/^NFD\-/i.test(data.recipient)) {
+				if (/^TZR\-/i.test(data.recipient)) {
 					data.recipientRS = data.recipient;
 
 					var address = new NxtAddress();
@@ -435,7 +435,7 @@ var NRS = (function(NRS, $, undefined) {
 		if (!("recipient" in data)) {
 			//recipient == genesis
 			data.recipient = "1763558929574856152";
-			data.recipientRS = "NFD-G3GS-J4SW-T2WM-3DDYJ";
+			data.recipientRS = "TZR-G3GS-J4SW-T2WM-3DDYJ";
 		}
 
 		if (transaction.publicKey != NRS.accountInfo.publicKey) {

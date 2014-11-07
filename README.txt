@@ -1,15 +1,15 @@
-Running the NFD software:
+Running the TZR software:
 
 Dependencies: Java 7 or later needs to be installed first. Only the Oracle JVM
 has been tested by NXT team.
 
-There is no installation needed. Unpack the NFD-client.zip package and open a
-shell in the resulting NFD directory. Execute the run.sh script if using Linux,
+There is no installation needed. Unpack the TZR-client.zip package and open a
+shell in the resulting TZR directory. Execute the run.sh script if using Linux,
 or run.bat if using Windows. This will start a java server process, which will
 begin logging its activities to the console. The initialization takes a few
-seconds. When it is ready, you should see the message "NFD server 1.0.0 started
+seconds. When it is ready, you should see the message "TZR server 1.0.0 started
 successfully". Open a browser, without stopping the java process, and go to
-http://localhost:8876 , where the NFD UI should now be available. To stop the
+http://localhost:8876 , where the TZR UI should now be available. To stop the
 application, type Ctrl-C inside the console window.
 
 
@@ -31,7 +31,7 @@ safe in the nxt.properties file.
 
 Technical details:
 
-The NFD software is a client-server application. It consists of a java server
+The TZR software is a client-server application. It consists of a java server
 process, the one started by the run.sh script, and a javascript user interface
 run in a browser. To run a node, forge, update the blockchain, interact with
 peers, only the java process needs to be running, so you could logout and close
@@ -45,16 +45,16 @@ connections, you should setup port forwarding. The server will still work though
 even if only outgoing connections are allowed, so opening this port is optional.
 
 The user interface is available on port 8876. This port also accepts http API
-requests which other NFD client applications could use.
+requests which other TZR client applications could use.
 
 The blockchain is stored on disk using the H2 embedded database, inside the
-nfd_db directory. When upgrading, you should not delete the old nfd_db
+tzr_db directory. When upgrading, you should not delete the old tzr_db
 directory, upgrades always include code that can upgrade old database files to
 the new version whenever needed. But there is no harm if you do delete the
-nfd_db, except that it will take some extra time to download the blockchain
+tzr_db, except that it will take some extra time to download the blockchain
 from scratch.
 
-The default NFD client does not store any wallet-type file on disk. Unlike
+The default TZR client does not store any wallet-type file on disk. Unlike
 bitcoin, your password is the only thing you need to get access to your account,
 and is the only piece of data you need to backup or remember. This also means
 that anybody can get access to your account with only your password - so make
@@ -62,8 +62,8 @@ sure it is long and random. A weak password will result in your funds being
 stolen immediately.
 
 The java process logs its activities and error messages to the standard output
-which you see in the console window, but also to a file nfd.log, which gets
-overwritten at restart. In case of an error, the nfd.log file may contain
+which you see in the console window, but also to a file tzr.log, which gets
+overwritten at restart. In case of an error, the tzr.log file may contain
 helpful information, so include its contents when submitting a bug report.
 
 In addition to the default user interface at http://localhost:8876 , the
@@ -85,8 +85,8 @@ http interface.
 
 Compiling:
 
-The source is included. It is also available at https://bitbucket.org/NFDcoin/nfdcoin/src .    
+The source is included. It is also available at https://bitbucket.org/TZRcoin/tzrcoin/src .    
 
 To compile it on linux, just
 run the enclosed compile.sh script. This will compile all java classes and
-package them in an nfd.jar file, replacing the existing one.
+package them in an tzr.jar file, replacing the existing one.

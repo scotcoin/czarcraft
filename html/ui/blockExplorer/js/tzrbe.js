@@ -1,13 +1,13 @@
 /**
- * NFDBE - NFD Block Explorer
+ * TZRBE - TZR Block Explorer
  * Author: lordoliver
- * Javascript Functionalities for ajax calls on the NFD backend 
+ * Javascript Functionalities for ajax calls on the TZR backend 
  * to search for transactions, blocks and accounts
  *
 **/
 
 $(function(){
-	var NFDBE = {};
+	var TZRBE = {};
 	var id = getUrlParameter('id');
 	
 	function getUrlParameter(sParam)
@@ -30,7 +30,7 @@ $(function(){
 //		for (var i=0; i<clses.length; i++){
 //			var clsSplit = clses[i].split("_");
 //			if (clsSplit.length == 2 && clsSplit[0]==="function"){
-//				NFDBE[clsSplit[1]]($(this).text(),function(result){
+//				TZRBE[clsSplit[1]]($(this).text(),function(result){
 //					$( "#searchResult" ).html(result);
 //				});
 //			}
@@ -38,7 +38,7 @@ $(function(){
 //		return false;
 //	});
 
-	NFDBE.getAccount = function (id,cb){
+	TZRBE.getAccount = function (id,cb){
 		$.get( "/nxt",{
 			account:id,
 			requestType:'getAccount'
@@ -48,7 +48,7 @@ $(function(){
 		}, "json" );
 	}
 
-	NFDBE.getTransaction = function (id,cb){
+	TZRBE.getTransaction = function (id,cb){
 		$.get( "/nxt",{
 			transaction:id,
 			requestType:'getTransaction'
@@ -58,14 +58,14 @@ $(function(){
 		}, "json" );
 	}
 	
-	NFDBE.getTransactionData = function (id,cb){
+	TZRBE.getTransactionData = function (id,cb){
 		$.get( "/nxt",{
 			transaction:id,
 			requestType:'getTransaction'
 		}, cb, "json" );
 	}
 	
-	NFDBE.getBlock = function(id,cb){
+	TZRBE.getBlock = function(id,cb){
 		$.get( "/nxt",{
 			block:id,
 			requestType:'getBlock'
@@ -78,11 +78,11 @@ $(function(){
 		}, "json" );
 	}
 		
-	NFDBE.dataComplete = function(){
+	TZRBE.dataComplete = function(){
 		$( "#searchResult .dataCompleteTransaction" ).each(function(){
 			var id = $(this).find('td:first a').text();
 			var columns = $(this).find('td');
-			NFDBE.getTransactionData(id,function(result){
+			TZRBE.getTransactionData(id,function(result){
 				if (result == null){
 					console.log('Transaction does not exist: '+id);
 				}
@@ -90,7 +90,7 @@ $(function(){
 					$(columns[1]).append($('<a>').text(result.sender).attr('href',"?id="+result.sender));
 					$(columns[2]).append($('<a>').text(result.recipient).attr('href',"?id="+result.recipient));
 					$(columns[3]).append(result.timestamp);
-					$(columns[4]).append("" + result.amountNQT/100000000 + " NFD");
+					$(columns[4]).append("" + result.amountNQT/100000000 + " TZR");
 					$(columns[5]).append(result.confirmations);
 				} 
 			});
@@ -100,11 +100,11 @@ $(function(){
 //	$('#searchForm').bind('submit',function(){
 //		var id = $(this).find('input[name=searchId]').val();
 //		console.log(id);
-//		NFDBE.getTransaction(id,function(result){
+//		TZRBE.getTransaction(id,function(result){
 //			if (result == null){
-//				NFDBE.getBlock(id,function(result){
+//				TZRBE.getBlock(id,function(result){
 //					if (result == null){
-//						NFDBE.getAccount(id,function(result){
+//						TZRBE.getAccount(id,function(result){
 //							if (result == null){
 //								$( "#searchResult" ).html("No such Id <b>"+id+"</b>");
 //							}
@@ -114,7 +114,7 @@ $(function(){
 //					}
 //					else {
 //						$( "#searchResult" ).html(result);
-//						NFDBE.dataComplete();
+//						TZRBE.dataComplete();
 //					}
 //				});
 //			}
@@ -126,11 +126,11 @@ $(function(){
 	
 	if (id.length > 0) {
 		$('#searchForm [name=id]').val(id);
-		NFDBE.getTransaction(id,function(result){
+		TZRBE.getTransaction(id,function(result){
 			if (result == null){
-				NFDBE.getBlock(id,function(result){
+				TZRBE.getBlock(id,function(result){
 					if (result == null){
-						NFDBE.getAccount(id,function(result){
+						TZRBE.getAccount(id,function(result){
 							if (result == null){
 								$( "#searchResult" ).html("No such Id <b>"+id+"</b>");
 							}
@@ -140,7 +140,7 @@ $(function(){
 					}
 					else {
 						$( "#searchResult" ).html(result);
-						NFDBE.dataComplete();
+						TZRBE.dataComplete();
 					}
 				});
 			}

@@ -1,4 +1,4 @@
-package nfd.util.NSCAssets;
+package tzr.util.NSCAssets;
 
 public class TransferMessage {
 	

@@ -1,4 +1,4 @@
-package nfd.util.NSCAssets;
+package tzr.util.NSCAssets;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,12 +29,12 @@ public class NSCAssetTransfer {
 	private static final boolean isTestnet = nxt.Constants.isTestnet;
 	private static final int START_HEIGHT = (isTestnet ? 70000 : 85000);
 	public static final Long NSC_ASSET_ID = (isTestnet ? 8522997021956756245L : 8537833860395844488L);
-	public static final String NSC_SENDER_ID = (isTestnet ? "NFD-C7Z7-RWVF-9MAG-DDMNL" : "NFD-BM65-Z57M-LGNK-5HCMK");
+	public static final String NSC_SENDER_ID = (isTestnet ? "TZR-C7Z7-RWVF-9MAG-DDMNL" : "TZR-BM65-Z57M-LGNK-5HCMK");
 	static final HashSet<String> ASSET_TRANSFER_ACCOUNT_BLACKLIST = new HashSet<String>(Arrays.asList(
-			"NFD-YJP3-32TT-P88Q-22222", "NFD-MHPL-4NQF-WCE6-22222", "NFD-FMFQ-4U9B-ZNN3-22222",
-			"NFD-EUFT-4FJS-Z5KU-22222", "NFD-H98Z-39P5-4GX8-22222", "NFD-UY7N-VCUH-U5QU-B724B",
-			"NFD-BM65-Z57M-LGNK-5HCMK", "NFD-9PHZ-HTPL-JVBR-AB73P", NSC_SENDER_ID,
-			(isTestnet ? "Genesis not blacklisted" : "NFD-G3GS-J4SW-T2WM-3DDYJ")));
+			"TZR-YJP3-32TT-P88Q-22222", "TZR-MHPL-4NQF-WCE6-22222", "TZR-FMFQ-4U9B-ZNN3-22222",
+			"TZR-EUFT-4FJS-Z5KU-22222", "TZR-H98Z-39P5-4GX8-22222", "TZR-UY7N-VCUH-U5QU-B724B",
+			"TZR-BM65-Z57M-LGNK-5HCMK", "TZR-9PHZ-HTPL-JVBR-AB73P", NSC_SENDER_ID,
+			(isTestnet ? "Genesis not blacklisted" : "TZR-G3GS-J4SW-T2WM-3DDYJ")));
 
 	private static final String CMD_ARGUMENT_FORCE = "--forceDb";
 	private static final String CMD_ARGUMENT_HTTP = "--http";
@@ -200,9 +200,9 @@ public class NSCAssetTransfer {
 
 		dbUrl = Constants.isTestnet ? Nxt.getStringProperty("nxt.testDbUrl") : Nxt.getStringProperty("nxt.dbUrl");
 
-		// stand alone h2 server or a fresh copy of nfd_db/ is recommended
+		// stand alone h2 server or a fresh copy of tzr_db/ is recommended
 		if (!dbUrl.toLowerCase().startsWith("jdbc:h2:tcp:") && !parameters.contains(CMD_ARGUMENT_FORCE)) {
-			Logger.logErrorMessage("It's not recommended to use the same database directory as the nfd client!");
+			Logger.logErrorMessage("It's not recommended to use the same database directory as the tzr client!");
 			Logger.logErrorMessage("If you know what you are doing force it with parameter --forceDb.");
 			System.exit(1);
 		}

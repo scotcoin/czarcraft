@@ -364,7 +364,7 @@ var NRS = (function(NRS, $, undefined) {
 
 					if (/http:\/\//i.test(response.aliasURI)) {
 						setAliasType("uri", response.aliasURI);
-					} else if ((aliasURI = /acct:(.*)@nfd/.exec(response.aliasURI)) || (aliasURI = /nacc:(.*)/.exec(response.aliasURI))) {
+					} else if ((aliasURI = /acct:(.*)@tzr/.exec(response.aliasURI)) || (aliasURI = /nacc:(.*)/.exec(response.aliasURI))) {
 						setAliasType("account", response.aliasURI);
 						response.aliasURI = String(aliasURI[1]).toUpperCase();
 					} else {
@@ -407,8 +407,8 @@ var NRS = (function(NRS, $, undefined) {
 		data.aliasURI = $.trim(data.aliasURI).toLowerCase();
 
 		if (data.type == "account") {
-			if (!(/acct:(.*)@nfd/.test(data.aliasURI)) && !(/nacc:(.*)/.test(data.aliasURI))) {
-				if (/^(NFD\-)/i.test(data.aliasURI)) {
+			if (!(/acct:(.*)@tzr/.test(data.aliasURI)) && !(/nacc:(.*)/.test(data.aliasURI))) {
+				if (/^(TZR\-)/i.test(data.aliasURI)) {
 					var address = new NxtAddress();
 
 					if (!address.set(data.aliasURI)) {
@@ -416,7 +416,7 @@ var NRS = (function(NRS, $, undefined) {
 							"error": $.t("error_invalid_account_id")
 						};
 					} else {
-						data.aliasURI = "acct:" + data.aliasURI + "@nfd";
+						data.aliasURI = "acct:" + data.aliasURI + "@tzr";
 					}
 				} else if (/^\d+$/.test(data.aliasURI)) {
 					return {
@@ -459,10 +459,10 @@ var NRS = (function(NRS, $, undefined) {
 		} else if (type == "account") {
 			$("#register_alias_uri_label").html($.t("account_id"));
 			$("#register_alias_uri").prop("placeholder", $.t("account_id"));
-			$("#register_alias_uri").val("").mask("NFD-****-****-****-*****");
+			$("#register_alias_uri").val("").mask("TZR-****-****-****-*****");
 
 			if (uri) {
-				var match = uri.match(/acct:(.*)@nfd/i);
+				var match = uri.match(/acct:(.*)@tzr/i);
 				if (!match) {
 					match = uri.match(/nacc:(.*)/i);
 				}
@@ -479,7 +479,7 @@ var NRS = (function(NRS, $, undefined) {
 					} else {
 						uri = "";
 					}
-				} else if (!/^NFD\-[A-Z0-9]{4}\-[A-Z0-9]{4}\-[A-Z0-9]{4}\-[A-Z0-9]{5}/i.test(uri)) {
+				} else if (!/^TZR\-[A-Z0-9]{4}\-[A-Z0-9]{4}\-[A-Z0-9]{4}\-[A-Z0-9]{5}/i.test(uri)) {
 					uri = NRS.accountRS;
 				}
 

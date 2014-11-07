@@ -28,7 +28,7 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.state = {};
 	NRS.blocks = [];
 	NRS.genesis = "1763558929574856152";
-	NRS.genesisRS = "NFD-G3GS-J4SW-T2WM-3DDYJ";
+	NRS.genesisRS = "TZR-G3GS-J4SW-T2WM-3DDYJ";
 
 	NRS.account = "";
 	NRS.accountRS = ""
@@ -178,7 +178,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		$(".sidebar .treeview").tree();
 
-		$("#dgs_search_account_top, #dgs_search_account_center").mask("NFD-****-****-****-*****", {
+		$("#dgs_search_account_top, #dgs_search_account_center").mask("TZR-****-****-****-*****", {
 			"unmask": false
 		});
 
@@ -927,7 +927,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		var id = $.trim($("#id_search input[name=q]").val());
 
-		if (/NFD\-/i.test(id)) {
+		if (/TZR\-/i.test(id)) {
 			NRS.sendRequest("getAccount", {
 				"account": id
 			}, function(response, input) {

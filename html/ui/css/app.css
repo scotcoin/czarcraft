@@ -1955,7 +1955,8 @@ body > .header .logo .icon {
 /* Contains the password input and the login button */
 
 .lockscreen-item > .lockscreen-credentials input {
-  border: 0 !important;
+  /*border: 0 !important;*/
+  border: 1px solid #B0C5E4;
 }
 .lockscreen-item > .lockscreen-credentials .btn {
   background-color: #fff;

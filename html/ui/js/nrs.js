@@ -27,8 +27,8 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.server = "";
 	NRS.state = {};
 	NRS.blocks = [];
-	NRS.genesis = "1763558929574856152";
-	NRS.genesisRS = "TZR-G3GS-J4SW-T2WM-3DDYJ";
+	NRS.genesis = "3957368891507624775";
+	NRS.genesisRS = "TZR-WLU9-3ARR-65S6-58VUF";
 
 	NRS.account = "";
 	NRS.accountRS = ""

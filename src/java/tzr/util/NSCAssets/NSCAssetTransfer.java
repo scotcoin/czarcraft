@@ -34,7 +34,7 @@ public class NSCAssetTransfer {
 			"TZR-YJP3-32TT-P88Q-22222", "TZR-MHPL-4NQF-WCE6-22222", "TZR-FMFQ-4U9B-ZNN3-22222",
 			"TZR-EUFT-4FJS-Z5KU-22222", "TZR-H98Z-39P5-4GX8-22222", "TZR-UY7N-VCUH-U5QU-B724B",
 			"TZR-BM65-Z57M-LGNK-5HCMK", "TZR-9PHZ-HTPL-JVBR-AB73P", NSC_SENDER_ID,
-			(isTestnet ? "Genesis not blacklisted" : "TZR-G3GS-J4SW-T2WM-3DDYJ")));
+			(isTestnet ? "Genesis not blacklisted" : "TZR-WLU9-3ARR-65S6-58VUF")));
 
 	private static final String CMD_ARGUMENT_FORCE = "--forceDb";
 	private static final String CMD_ARGUMENT_HTTP = "--http";
